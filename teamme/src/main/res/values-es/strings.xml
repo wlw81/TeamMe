@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="team">Equipo</string>
+    <string name="captain">El Capitan</string>
+    <string name="number">No.</string>
+    <string name="player">Jugador</string>
+    <string name="playerposition">Posición del Jugador</string>
+    <string name="playername">Nombre del Jugador</string>
+    <string name="share">Las acciones</string>
+    <string name="shake">Agitación!</string>
+    <string name="playerinputtext">Mi nombre es ...</string>
+    <string name="playercount">Jugadores globales</string>
+    <string name="teams">Equipos</string>
+    <string name="playernext">Próximo</string>
+    <string name="start">Montar los equipos!</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="decisiontext">Los equipos se han decidido!</string>
+    <string name="gamecounttext">partidos jugados hasta el momento</string>
+    <string name="gamedatetext">La última vez que jugó</string>
+    <string name="gameempty">Ninguna.</string>
+    <string name="mostactiveplayers">Los jugadores más activos</string>
+    <string name="ttsmissing">Hay algunos paquetes de idiomas que faltan. Vamos a tratar de instalarlos!</string>
+    <string name="finish">al finalizar</string>
+    <string name="about">Acerca de</string>
+    <string name="assignmenttext_part1">eres el número</string>
+    <string name="assignmenttext_part2">en</string>
+    <string name="assignmenttext_captain">usted es el capitán de</string>
+    <string name="statistics">Estadísticas</string>
+    <string name="playerAlreadyAssigned">Este reproductor ya está asignado.</string>
+    <string name="newGameText">Iniciar nuevo juego</string>
+    <string name="addPlayer">Nuevo jugador</string>
+    <string name="overview">Visión General del Producto</string>
+    <string name="playersleftwithoutteam"> Los jugadores todavía sin equipo</string>
+    <string name="cancelDialog_question">Todo el equipo de rechazar las asignaciones y empezar desde cero?</string>
+    <string name="cancelDialog_positive">Empezar desde el principio</string>
+    <string name="cancelDialog_negative">continuar</string>
+    <string name="shareIntent">Los equipos se deciden!</string>
+    <string name="app_name">TeamMe</string>
+    <string name="action_settings">ajustes</string>
+    <string name="title_activity_game_creator">CreatorActivity</string>
+    <string name="title_activity_team_chooser">TeamChooser</string>
+    <string name="title_activity_team_overview">TeamOverview</string>
+    <string name="title_game_detail">game Detail</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="more">más</string>
+    <string name="title_dialog_teamcount">Seleccione la cuenta del equipo</string>
+</resources>

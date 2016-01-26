@@ -1,0 +1,5 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/NextItem" android:title="@string/playernext" android:icon="@drawable/next_white" android:orderInCategory="100" android:visible="false" android:showAsAction="always|withText"></item>
+    <item android:id="@+id/CancelItem"></item>
+
+</menu><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/menu/team_chooser.xml -->

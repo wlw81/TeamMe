@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    
+    <item
+        android:id="@+id/StartItem"
+        android:showAsAction="always"
+        android:icon="@drawable/next_white"
+         android:orderInCategory="100"
+        android:title="@string/start">
+    </item>
+    <item android:id="@+id/StatisticsItem" android:title="@string/statistics" android:showAsAction="never" android:visible="false" android:orderInCategory="110"></item><item
+        android:id="@+id/AboutItem"
+        android:orderInCategory="200"
+        android:showAsAction="never"
+        android:title="@string/about"/>
+    
+    
+
+</menu><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/menu/game_creator.xml -->

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/app/src/main/res/values-v21/styles.xml -->
+    <eat-comment/>
+    <style name="AppBaseTheme" parent="android:Theme.Material">
+        <item name="android:colorPrimary">@color/active</item>
+        <item name="android:colorPrimaryDark">@color/inactive</item>
+        <item name="android:windowContentTransitions">true</item>
+        <!-- enable overlapping of exiting and entering activities -->
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+    </style>
+</resources>

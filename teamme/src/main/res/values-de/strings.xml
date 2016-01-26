@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="team">Team</string>
+    <string name="captain">Kapitän</string>
+    <string name="number">Nummer</string>
+    <string name="player">Spieler</string>
+    <string name="playerposition">Spielerposition</string>
+    <string name="playername">Spielername</string>
+    <string name="share">Teilen</string>
+    <string name="shake">&lt;&lt;&lt; Schütteln! &gt;&gt;&gt;</string>
+    <string name="playerinputtext">Mein Name lautet</string>
+    <string name="playercount">Spieler (gesamt)</string>
+    <string name="teams">Teams</string>
+    <string name="playernext">Nächster</string>
+    <string name="start">Teams zusammenstellen!</string>
+    <string name="decisiontext">Die Teams stehen fest!</string>
+    <string name="gamecounttext">Spiele gespielt bisher</string>
+    <string name="gamedatetext">Letztes Mal gespielt</string>
+    <string name="gameempty">Keine</string>
+    <string name="ttsmissing">Es fehlen einige Sprachdateien. Lass uns versuchen das nun zu ändern!</string>
+    <string name="finish">Fertig</string>
+    <string name="about">Über</string>
+    <string name="assignmenttext_part1">du bist Nummer</string>
+    <string name="assignmenttext_part2">im</string>
+    <string name="assignmenttext_captain">du bist der Anführer von</string>
+    <string name="mostactiveplayers">Die aktivsten Spieler</string>
+    <string name="statistics">Statistiken</string>
+    <string name="playerAlreadyAssigned">Der Spielername ist bereits vergeben.</string>
+    <string name="newGameText">Neues Spiel beginnen</string>
+    <string name="addPlayer">Neuer Spieler</string>
+    <string name="overview">Überblick</string>
+    <string name="playersleftwithoutteam"> Spieler noch ohne Team.</string>
+    <string name="cancelDialog_question">Alle Team Zuteilungen verwerfen und ganz von vorne beginnen?</string>
+    <string name="cancelDialog_positive">Neu beginnen</string>
+    <string name="cancelDialog_negative">Weitermachen</string>
+    <string name="shareIntent">Die Teams stehen fest!</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="app_name">TeamMe</string>
+    <string name="four">4</string>
+    <string name="three">3</string>
+    <string name="two">2</string>
+    <string name="title_activity_game_creator">CreatorActivity</string>
+    <string name="title_activity_team_chooser">TeamChooser</string>
+    <string name="title_activity_team_overview">TeamOverview</string>
+    <string name="title_game_detail">game Detail</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="more">mehr</string>
+    <string name="title_dialog_teamcount">Team Anzahl wählen</string>
+</resources>

@@ -1,0 +1,108 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/TeamChooserFormularLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_alignParentBottom="true"
+    android:gravity="center"
+    tools:context=".TeamChooser" >
+
+    <RelativeLayout
+        android:id="@+id/TeamChooserControlsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
+
+        <include
+            android:id="@+id/InputPlayerIncludeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/activity_team_chooser_inputhead" />
+
+        <include
+            android:id="@+id/NextPlayerIncludeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            layout="@layout/activity_team_chooser_nextplayerhead"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/TeamNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:gravity="bottom|right"
+            android:lineSpacingExtra="0dp"
+            android:lines="1"
+            android:singleLine="true"
+            android:textColor="@color/active"
+            android:textSize="64sp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/TeamCaptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/TeamNumberTextView"
+            android:text="@string/team"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="64sp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/TeamIntroductionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/TeamCaptionTextView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/TeamNumberTextView"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/BumperRightImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/shake"
+        android:src="@drawable/bumper2" />
+
+    <ImageView
+        android:id="@+id/BumperLeftImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/shake"
+        android:src="@drawable/bumper1" />
+
+    <TextView
+        android:id="@+id/ShakeTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:shadowColor="@color/active"
+        android:shadowDx="0.0"
+        android:shadowDy="0.0"
+        android:shadowRadius="8"
+        android:text="@string/shake"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        android:visibility="invisible" />
+
+</RelativeLayout><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/app/src/main/res/layout/activity_team_chooser.xml -->

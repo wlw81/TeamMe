@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="team">L\'équipe</string>
+    <string name="captain">Capitaine</string>
+    <string name="number">Non.</string>
+    <string name="player">Joueur</string>
+    <string name="playerposition">Position du joueur</string>
+    <string name="playername">Nom du Joueur</string>
+    <string name="share">partager</string>
+    <string name="shake">Secouez-vous!</string>
+    <string name="playerinputtext">Mon nom est</string>
+    <string name="playercount">Acteurs globaux</string>
+    <string name="teams">équipes</string>
+    <string name="playernext">Suivant</string>
+    <string name="start">Assemblez équipes!</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="decisiontext">Les équipes ont été décidées!</string>
+    <string name="gamecounttext">jeux joués jusqu\'à présent</string>
+    <string name="gamedatetext">La dernière fois joué</string>
+    <string name="gameempty">Aucune.</string>
+    <string name="mostactiveplayers">La plupart des joueurs actifs</string>
+    <string name="ttsmissing">Il ya des packs de langues disparues. Essayons de les installer!</string>
+    <string name="finish">Terminer</string>
+    <string name="about">Sur</string>
+    <string name="assignmenttext_part1">vous êtes le</string>
+    <string name="assignmenttext_part2">à</string>
+    <string name="assignmenttext_captain">vous êtes le capitaine d\'</string>
+    <string name="statistics">Statistiques</string>
+    <string name="playerAlreadyAssigned">Ce joueur est déjà attribué.</string>
+    <string name="newGameText">Commencer l\'exploration</string>
+    <string name="addPlayer">Nouveau Joueur</string>
+    <string name="overview">Présentation</string>
+    <string name="playersleftwithoutteam"> Les joueurs toujours sans équipe</string>
+    <string name="cancelDialog_question">Toute l équipe de rejeter allocations et de commencer à partir de zéro?</string>
+    <string name="cancelDialog_positive">Partir de zéro</string>
+    <string name="cancelDialog_negative">exercer</string>
+    <string name="shareIntent">Les équipes sont décidées!</string>
+    <string name="app_name">TeamMe</string>
+    <string name="action_settings">paramètres</string>
+    <string name="title_activity_game_creator">CreatorActivity</string>
+    <string name="title_activity_team_chooser">TeamChooser</string>
+    <string name="title_activity_team_overview">TeamOverview</string>
+    <string name="title_game_detail">game Detail</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="more">plus</string>
+    <string name="title_dialog_teamcount">Sélectionnez le nombre d\'équipe</string>
+</resources>

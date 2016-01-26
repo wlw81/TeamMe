@@ -1,0 +1,4 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/TeamOverviewShareContext" android:title="@string/share" android:actionProviderClass="android.widget.ShareActionProvider" android:showAsAction="always"></item>
+
+</menu><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/menu/team_overview.xml -->
