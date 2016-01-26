@@ -12,6 +12,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.NavUtils;
@@ -30,6 +31,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
+
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.Game;
 import de.pasligh.android.teamme.objects.Player;
@@ -40,368 +42,393 @@ import de.pasligh.android.teamme.tools.TTS_Tool;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
 public class TeamChooser extends Activity implements SensorEventListener,
-		OnEditorActionListener, AnimationListener, OnClickListener {
+        OnEditorActionListener, AnimationListener, OnClickListener {
 
-	private SensorManager sensorManager;
-	private long lastUpdate;
-	private Animation animationShake1;
-	private Animation animationShake2;
-	private Animation animationSlideOutLeft;
-	private Animation animationSlideOutRight;
-	private Animation animationGlow;
-	private MediaPlayer mPlayerLeft;
-	private MediaPlayer mPlayerRight;
-	private PlayerAssignemnt myAssignment;
-	private BackendFacade facade;
+    private SensorManager sensorManager;
+    private long lastUpdate;
+    private Animation animationShake1;
+    private Animation animationShake2;
+    private Animation animationSlideOutLeft;
+    private Animation animationSlideOutRight;
+    private Animation animationGlow;
+    private MediaPlayer mPlayerLeft;
+    private MediaPlayer mPlayerRight;
+    private PlayerAssignemnt myAssignment;
+    private BackendFacade facade;
+    private boolean autoShake = true;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_team_chooser);
-		Typeface tf = Typeface.createFromAsset(getAssets(),
-				"fonts/Roboto-Thin.ttf");
-		((TextView) findViewById(R.id.TeamCaptionTextView)).setTypeface(tf);
-		((TextView) findViewById(R.id.TeamNumberTextView)).setTypeface(tf);
-		((TextView) findViewById(R.id.TeamIntroductionTextView))
-				.setTypeface(tf);
- 
-		((HoloCircleSeekBar) findViewById(R.id.GameProgessCircleBar))
-				.setEnabled(false);
+        setContentView(R.layout.activity_team_chooser);
+        Typeface tf = Typeface.createFromAsset(getAssets(),
+                "fonts/Roboto-Thin.ttf");
+        ((TextView) findViewById(R.id.TeamCaptionTextView)).setTypeface(tf);
+        ((TextView) findViewById(R.id.TeamNumberTextView)).setTypeface(tf);
+        ((TextView) findViewById(R.id.TeamIntroductionTextView))
+                .setTypeface(tf);
 
-		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-		animationShake1 = AnimationUtils.loadAnimation(this, R.anim.shake1);
-		animationShake2 = AnimationUtils.loadAnimation(this, R.anim.shake2);
-		animationSlideOutLeft = AnimationUtils.loadAnimation(this, R.anim.left);
-		animationSlideOutRight = AnimationUtils.loadAnimation(this,
-				R.anim.right);
+        ((HoloCircleSeekBar) findViewById(R.id.GameProgessCircleBar))
+                .setEnabled(false);
 
-		animationShake2.setAnimationListener(this);
-		mPlayerLeft = MediaPlayer.create(getApplicationContext(), R.raw.left);
-		mPlayerRight = MediaPlayer.create(getApplicationContext(), R.raw.right);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_dropdown_item_1line, getFacade()
-						.getPlayersAsStringArray());
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        animationShake1 = AnimationUtils.loadAnimation(this, R.anim.shake1);
+        animationShake2 = AnimationUtils.loadAnimation(this, R.anim.shake2);
+        animationSlideOutLeft = AnimationUtils.loadAnimation(this, R.anim.left);
+        animationSlideOutRight = AnimationUtils.loadAnimation(this,
+                R.anim.right);
 
-		AutoCompleteTextView playerNameTextView = (AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView);
-		playerNameTextView.setHint("Player #"
-				+ (TeamReactor.getAssignmentsDone() + 1));
-		playerNameTextView.setOnEditorActionListener(this);
-		playerNameTextView.setAdapter(adapter);
+        animationShake2.setAnimationListener(this);
+        mPlayerLeft = MediaPlayer.create(getApplicationContext(), R.raw.left);
+        mPlayerRight = MediaPlayer.create(getApplicationContext(), R.raw.right);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, getFacade()
+                .getPlayersAsStringArray());
 
-		((HoloCircleSeekBar) findViewById(R.id.GameProgessCircleBar))
-				.setMax(TeamReactor.getAssignments().size());
+        AutoCompleteTextView playerNameTextView = (AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView);
+        playerNameTextView.setHint("Player #"
+                + (TeamReactor.getAssignmentsDone() + 1));
+        playerNameTextView.setOnEditorActionListener(this);
+        playerNameTextView.setAdapter(adapter);
 
-		findViewById(R.id.NextPlayerButton).setOnClickListener(this);
-	}
+        ((HoloCircleSeekBar) findViewById(R.id.GameProgessCircleBar))
+                .setMax(TeamReactor.getAssignments().size());
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		// Respond to the action bar's Up/Home button
-		case android.R.id.home:
+        findViewById(R.id.NextPlayerButton).setOnClickListener(this);
+    }
 
-			// Use the Builder class for convenient dialog construction
-			AlertDialog.Builder builder = new AlertDialog.Builder(
-					TeamChooser.this);
-			builder.setMessage(R.string.cancelDialog_question)
-					.setPositiveButton(R.string.cancelDialog_positive,
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int id) {
-									Intent upIntent = NavUtils
-											.getParentActivityIntent(TeamChooser.this);
-									NavUtils.navigateUpTo(TeamChooser.this,
-											upIntent);
-								}
-							})
-					.setNegativeButton(R.string.cancelDialog_negative,
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int id) {
-									showSoftkeyboard_if_needed();
-								}
-							});
-			// Create the AlertDialog object and return it
-			builder.create().show();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
 
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+                // Use the Builder class for convenient dialog construction
+                AlertDialog.Builder builder = new AlertDialog.Builder(
+                        TeamChooser.this);
+                builder.setMessage(R.string.cancelDialog_question)
+                        .setPositiveButton(R.string.cancelDialog_positive,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int id) {
+                                        Intent upIntent = NavUtils
+                                                .getParentActivityIntent(TeamChooser.this);
+                                        NavUtils.navigateUpTo(TeamChooser.this,
+                                                upIntent);
+                                    }
+                                })
+                        .setNegativeButton(R.string.cancelDialog_negative,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int id) {
+                                        showSoftkeyboard_if_needed();
+                                    }
+                                });
+                // Create the AlertDialog object and return it
+                builder.create().show();
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		registerSensorListener();
-		showSoftkeyboard_if_needed();
-	}
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
-	private void registerSensorListener() {
-		if (myAssignment == null) {
-			AutoCompleteTextView playerNameTextview = ((AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView));
-			if (playerNameTextview.getText().toString().length() > 0
-					&& !checkIfAlreadyAssigned()) {
-				startShakeCall();
-				sensorManager.registerListener(this, sensorManager
-						.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
-						SensorManager.SENSOR_DELAY_NORMAL);
-			}
-		}
-	}
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerSensorListener();
+        showSoftkeyboard_if_needed();
+    }
 
-	@Override
-	protected void onPause() {
-		super.onPause();
-		sensorManager.unregisterListener(this);
-	}
+    private void registerSensorListener() {
+        if (myAssignment == null) {
+            AutoCompleteTextView playerNameTextview = ((AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView));
+            if (playerNameTextview.getText().toString().length() > 0
+                    && !checkIfAlreadyAssigned()) {
+                startShakeCall();
+                sensorManager.registerListener(this, sensorManager
+                                .getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+                        SensorManager.SENSOR_DELAY_NORMAL);
+            }
+        }
+    }
 
-	private void getAccelerometer(SensorEvent event) {
-		float[] values = event.values;
-		// Movement
-		float x = values[0];
-		float y = values[1];
-		float z = values[2];
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
 
-		float accelationSquareRoot = (x * x + y * y + z * z)
-				/ (SensorManager.GRAVITY_EARTH * SensorManager.GRAVITY_EARTH);
-		long actualTime = System.currentTimeMillis();
-		if (accelationSquareRoot >= 2) //
-		{
-			if (x < 0) {
-				findViewById(R.id.BumperLeftImageView).startAnimation(
-						animationShake1);
-				mPlayerLeft.start();
-			} else {
-				findViewById(R.id.BumperRightImageView).startAnimation(
-						animationShake2);
-				mPlayerRight.start();
-				Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-				v.vibrate(50);
-			}
-			if (actualTime - lastUpdate < 200) {
-				return;
-			}
+    private void getAccelerometer(SensorEvent event) {
+        float[] values = event.values;
+        // Movement
+        float x = values[0];
+        float y = values[1];
+        float z = values[2];
 
-			Log.d(Flags.LOGTAG, "Bewegung nach " + x + "-" + y + "-" + z);
-			acceptPlayername();
-			lastUpdate = actualTime;
-			findViewById(R.id.PlayerNameAutoCompleteTextView).setEnabled(false);
-			stopShakeCall();
-		}
-	}
+        float accelationSquareRoot = (x * x + y * y + z * z)
+                / (SensorManager.GRAVITY_EARTH * SensorManager.GRAVITY_EARTH);
+        long actualTime = System.currentTimeMillis();
+        if (accelationSquareRoot >= 2) //
+        {
+            if (x < 0) {
+                findViewById(R.id.BumperLeftImageView).startAnimation(
+                        animationShake1);
+                mPlayerLeft.start();
+            } else {
+                findViewById(R.id.BumperRightImageView).startAnimation(
+                        animationShake2);
+                mPlayerRight.start();
+                vibrate();
+            }
+            if (actualTime - lastUpdate < 200) {
+                return;
+            }
 
-	private void stopShakeCall() {
-		findViewById(R.id.ShakeTextView).clearAnimation();
-		findViewById(R.id.ShakeTextView).setVisibility(View.GONE);
-	}
+            Log.d(Flags.LOGTAG, "Bewegung nach " + x + "-" + y + "-" + z);
+            acceptPlayername();
+            lastUpdate = actualTime;
+            findViewById(R.id.PlayerNameAutoCompleteTextView).setEnabled(false);
+            stopShakeCall();
+        }
+    }
 
-	private void acceptPlayername() {
-		AutoCompleteTextView playerNameTextview = ((AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView));
-		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-		imm.hideSoftInputFromWindow(playerNameTextview.getWindowToken(), 0);
-		registerSensorListener();
-	}
+    private void vibrate() {
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(50);
+    }
 
-	private boolean checkIfAlreadyAssigned() {
-		AutoCompleteTextView v = ((AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView));
-		String playerName = v.getText().toString().trim();
-		for (PlayerAssignemnt checkAssignment : TeamReactor.getAssignments()) {
-			if (null != checkAssignment.getPlayer()
-					&& checkAssignment.getPlayer().getName()
-							.equalsIgnoreCase(playerName)) {
-				v.setText(playerName);
-				v.requestFocus();
-				Toast.makeText(getApplicationContext(),
-						getString(R.string.playerAlreadyAssigned),
-						Toast.LENGTH_LONG).show();
-				return true;
-			}
-		}
+    private void stopShakeCall() {
+        findViewById(R.id.ShakeTextView).clearAnimation();
+        findViewById(R.id.ShakeTextView).setVisibility(View.GONE);
+    }
 
-		return false;
-	}
+    private void acceptPlayername() {
+        AutoCompleteTextView playerNameTextview = ((AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView));
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(playerNameTextview.getWindowToken(), 0);
+        if (autoShake) {
+            // auto shake - directly start animations and sound effects
+            vibrate();
+            findViewById(R.id.BumperLeftImageView).startAnimation(
+                    animationShake1);
+            mPlayerLeft.start();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    vibrate();
+                    findViewById(R.id.BumperRightImageView).startAnimation(
+                            animationShake2); // ending of animation 2 will automatically lead to #onAnimationEnd
+                    mPlayerRight.start();
+                    stopShakeCall();
+                }
+            }, 200);
 
-	private void startShakeCall() {
-		findViewById(R.id.ShakeTextView).startAnimation(getAnimationGlow());
-		findViewById(R.id.ShakeTextView).setVisibility(View.VISIBLE);
-	}
+        } else {
+            // manual shake - only if enabled by user settings
+            registerSensorListener();
+        }
+    }
 
-	@Override
-	public void onAccuracyChanged(Sensor sensor, int accuracy) {
-		// TODO Auto-generated method stub
+    private boolean checkIfAlreadyAssigned() {
+        AutoCompleteTextView v = ((AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView));
+        String playerName = v.getText().toString().trim();
+        for (PlayerAssignemnt checkAssignment : TeamReactor.getAssignments()) {
+            if (null != checkAssignment.getPlayer()
+                    && checkAssignment.getPlayer().getName()
+                    .equalsIgnoreCase(playerName)) {
+                v.setText(playerName);
+                v.requestFocus();
+                Toast.makeText(getApplicationContext(),
+                        getString(R.string.playerAlreadyAssigned),
+                        Toast.LENGTH_LONG).show();
+                return true;
+            }
+        }
 
-	}
+        return false;
+    }
 
-	@Override
-	public void onSensorChanged(SensorEvent event) {
-		getAccelerometer(event);
-	}
+    private void startShakeCall() {
+        findViewById(R.id.ShakeTextView).startAnimation(getAnimationGlow());
+        findViewById(R.id.ShakeTextView).setVisibility(View.VISIBLE);
+    }
 
-	@Override
-	public void onAnimationEnd(Animation animation) {
-		chooseTeamAssignment();
-	}
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        // TODO Auto-generated method stub
 
-	private void chooseTeamAssignment() {
-		sensorManager.unregisterListener(this);
-		stopShakeCall();
+    }
 
-		findViewById(R.id.BumperLeftImageView).startAnimation(
-				animationSlideOutLeft);
-		findViewById(R.id.BumperRightImageView).startAnimation(
-				animationSlideOutRight);
-		findViewById(R.id.TeamNumberTextView).setVisibility(View.VISIBLE);
-		findViewById(R.id.TeamCaptionTextView).setVisibility(View.VISIBLE);
-		findViewById(R.id.TeamIntroductionTextView).setVisibility(View.VISIBLE);
-		findViewById(R.id.BumperLeftImageView).setVisibility(View.GONE);
-		findViewById(R.id.BumperRightImageView).setVisibility(View.GONE);
-		findViewById(R.id.NextPlayerIncludeLayout).setVisibility(View.VISIBLE);
-		if (null != findViewById(R.id.InputPlayerIncludeLayout)) {
-			findViewById(R.id.InputPlayerIncludeLayout)
-					.setVisibility(View.GONE);
-		}
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        getAccelerometer(event);
+    }
 
-		findViewById(R.id.GameProgessCircleBar).startAnimation(
-				getAnimationGlow());
-		String playername = ((AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView))
-				.getText().toString();
+    @Override
+    public void onAnimationEnd(Animation animation) {
+        chooseTeamAssignment();
+    }
 
-		String teamHeaderText = playername + ", "
-				+ getString(R.string.assignmenttext_part1) + " "
-				+ getMyAssignment().getOrderNumber() + " "
-				+ getString(R.string.assignmenttext_part2);
-		String speakText = playername + " - " + getString(R.string.team) + " "
-				+ getMyAssignment().getTeam();
-		if (getMyAssignment().getOrderNumber() == 1) {
-			speakText = getString(R.string.captain) + " " + playername + " "
-					+ getString(R.string.assignmenttext_captain) + " "
-					+ getString(R.string.team) + " "
-					+ getMyAssignment().getTeam();
-		}
-		((TextView) findViewById(R.id.TeamIntroductionTextView))
-				.setText(teamHeaderText);
-		((TextView) findViewById(R.id.TeamNumberTextView)).setText(String
-				.valueOf(getMyAssignment().getTeam()));
+    private void chooseTeamAssignment() {
+        sensorManager.unregisterListener(this);
+        stopShakeCall();
 
-		TeamReactor.getAssignments().remove(getMyAssignment());
-		Player playerNew = new Player(playername);
-		getMyAssignment().setPlayer(playerNew);
-		TeamReactor.getAssignments().add(getMyAssignment());
-		try {
-			getFacade().persistPlayer(playerNew);
-		} catch (Exception e) {
-			Log.d(Flags.LOGTAG, playerNew + " already known.");
-		}
+        findViewById(R.id.BumperLeftImageView).startAnimation(
+                animationSlideOutLeft);
+        findViewById(R.id.BumperRightImageView).startAnimation(
+                animationSlideOutRight);
+        findViewById(R.id.TeamNumberTextView).setVisibility(View.VISIBLE);
+        findViewById(R.id.TeamCaptionTextView).setVisibility(View.VISIBLE);
+        findViewById(R.id.TeamIntroductionTextView).setVisibility(View.VISIBLE);
+        findViewById(R.id.BumperLeftImageView).setVisibility(View.GONE);
+        findViewById(R.id.BumperRightImageView).setVisibility(View.GONE);
+        findViewById(R.id.NextPlayerIncludeLayout).setVisibility(View.VISIBLE);
+        if (null != findViewById(R.id.InputPlayerIncludeLayout)) {
+            findViewById(R.id.InputPlayerIncludeLayout)
+                    .setVisibility(View.GONE);
+        }
 
-		((HoloCircleSeekBar) findViewById(R.id.GameProgessCircleBar))
-				.setProgress(TeamReactor.getAssignmentsDone());
+        findViewById(R.id.GameProgessCircleBar).startAnimation(
+                getAnimationGlow());
+        String playername = ((AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView))
+                .getText().toString();
 
-		if (TeamReactor.hasAssignmentsLeft()) {
-			int playersLeft = TeamReactor.getAssignments().size()
-					- TeamReactor.getAssignmentsDone();
-			((TextView) findViewById(R.id.GameProgressTextView))
-					.setText(playersLeft + " "
-							+ getString(R.string.playersleftwithoutteam));
-		} else {
-			((TextView) findViewById(R.id.GameProgressTextView))
-					.setText(getString(R.string.decisiontext));
-		}
+        String teamHeaderText = playername + ", "
+                + getString(R.string.assignmenttext_part1) + " "
+                + getMyAssignment().getOrderNumber() + " "
+                + getString(R.string.assignmenttext_part2);
+        String speakText = playername + " - " + getString(R.string.team) + " "
+                + getMyAssignment().getTeam();
+        if (getMyAssignment().getOrderNumber() == 1) {
+            speakText = getString(R.string.captain) + " " + playername + " "
+                    + getString(R.string.assignmenttext_captain) + " "
+                    + getString(R.string.team) + " "
+                    + getMyAssignment().getTeam();
+        }
+        ((TextView) findViewById(R.id.TeamIntroductionTextView))
+                .setText(teamHeaderText);
+        ((TextView) findViewById(R.id.TeamNumberTextView)).setText(String
+                .valueOf(getMyAssignment().getTeam()));
 
-		TTS_Tool.getInstance(this)
-				.sprechen(speakText, TextToSpeech.QUEUE_FLUSH);
-		invalidateOptionsMenu();
-	}
+        TeamReactor.getAssignments().remove(getMyAssignment());
+        Player playerNew = new Player(playername);
+        getMyAssignment().setPlayer(playerNew);
+        TeamReactor.getAssignments().add(getMyAssignment());
+        try {
+            getFacade().persistPlayer(playerNew);
+        } catch (Exception e) {
+            Log.d(Flags.LOGTAG, playerNew + " already known.");
+        }
 
-	@Override
-	public void onAnimationRepeat(Animation animation) {
-		// TODO Auto-generated method stub
+        ((HoloCircleSeekBar) findViewById(R.id.GameProgessCircleBar))
+                .setProgress(TeamReactor.getAssignmentsDone());
 
-	}
+        if (TeamReactor.hasAssignmentsLeft()) {
+            int playersLeft = TeamReactor.getAssignments().size()
+                    - TeamReactor.getAssignmentsDone();
+            ((TextView) findViewById(R.id.GameProgressTextView))
+                    .setText(playersLeft + " "
+                            + getString(R.string.playersleftwithoutteam));
+        } else {
+            ((TextView) findViewById(R.id.GameProgressTextView))
+                    .setText(getString(R.string.decisiontext));
+        }
 
-	@Override
-	public void onAnimationStart(Animation animation) {
+        TTS_Tool.getInstance(this)
+                .sprechen(speakText, TextToSpeech.QUEUE_FLUSH);
+        invalidateOptionsMenu();
+    }
 
-	}
+    @Override
+    public void onAnimationRepeat(Animation animation) {
+        // TODO Auto-generated method stub
 
-	private void completeTeams() {
-		Game saveGame = new Game(TeamReactor.getAssignments());
-		getFacade().persistGame(saveGame);
-		Intent callChooser = new Intent(getApplicationContext(),
-				TeamOverview.class);
-		startActivity(callChooser);
-	}
+    }
 
-	@Override
-	public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-		if (actionId == EditorInfo.IME_ACTION_DONE
-				|| event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-			acceptPlayername();
-			return true;
-		}
-		return false;
-	}
+    @Override
+    public void onAnimationStart(Animation animation) {
 
-	/**
-	 * @return the facade
-	 */
-	public BackendFacade getFacade() {
-		if (null == facade) {
-			facade = new BackendFacade(getApplicationContext());
-		}
-		return facade;
-	}
+    }
 
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		getFacade().getObjDB_API().close();
-	}
+    private void completeTeams() {
+        Game saveGame = new Game(TeamReactor.getAssignments());
+        getFacade().persistGame(saveGame);
+        Intent callChooser = new Intent(getApplicationContext(),
+                TeamOverview.class);
+        startActivity(callChooser);
+    }
 
-	/**
-	 * @return the myAssignment
-	 */
-	public PlayerAssignemnt getMyAssignment() {
-		if (null == myAssignment) {
-			myAssignment = TeamReactor.revealNextAssignment();
-		}
-		return myAssignment;
-	}
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        if (actionId == EditorInfo.IME_ACTION_DONE
+                || event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+            acceptPlayername();
+            return true;
+        }
+        return false;
+    }
 
-	/**
-	 * @return the animationGlow
-	 */
-	private Animation getAnimationGlow() {
-		if (null == animationGlow) {
-			animationGlow = AnimationUtils.loadAnimation(this, R.anim.glow);
-		}
-		return animationGlow;
-	}
+    /**
+     * @return the facade
+     */
+    public BackendFacade getFacade() {
+        if (null == facade) {
+            facade = new BackendFacade(getApplicationContext());
+        }
+        return facade;
+    }
 
-	@Override
-	public void onClick(View v) {
-		if (v.getId() == R.id.NextPlayerButton) {
-			if (TeamReactor.hasAssignmentsLeft()) {
-				Intent callChooser = new Intent(getApplicationContext(),
-						TeamChooser.class);
-				callChooser.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				startActivity(callChooser);
-				overridePendingTransition(R.anim.enter_from_right, R.anim.left);
-			} else {
-				completeTeams();
-			}
-		}
-	}
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        getFacade().getObjDB_API().close();
+    }
 
-	public void showSoftkeyboard_if_needed() {
-		AutoCompleteTextView playerNameTextView = (AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView);
-		if (playerNameTextView.isShown() && playerNameTextView.isEnabled()) {
-			playerNameTextView.requestFocus();
-			InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-			imm.showSoftInput(playerNameTextView,
-					InputMethodManager.SHOW_IMPLICIT);
-			playerNameTextView.selectAll();
-		}
-	}
+    /**
+     * @return the myAssignment
+     */
+    public PlayerAssignemnt getMyAssignment() {
+        if (null == myAssignment) {
+            myAssignment = TeamReactor.revealNextAssignment();
+        }
+        return myAssignment;
+    }
+
+    /**
+     * @return the animationGlow
+     */
+    private Animation getAnimationGlow() {
+        if (null == animationGlow) {
+            animationGlow = AnimationUtils.loadAnimation(this, R.anim.glow);
+        }
+        return animationGlow;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.NextPlayerButton) {
+            if (TeamReactor.hasAssignmentsLeft()) {
+                Intent callChooser = new Intent(getApplicationContext(),
+                        TeamChooser.class);
+                callChooser.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(callChooser);
+                overridePendingTransition(R.anim.enter_from_right, R.anim.left);
+            } else {
+                completeTeams();
+            }
+        }
+    }
+
+    public void showSoftkeyboard_if_needed() {
+        AutoCompleteTextView playerNameTextView = (AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView);
+        if (playerNameTextView.isShown() && playerNameTextView.isEnabled()) {
+            playerNameTextView.requestFocus();
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.showSoftInput(playerNameTextView,
+                    InputMethodManager.SHOW_IMPLICIT);
+            playerNameTextView.selectAll();
+        }
+    }
 
 }
