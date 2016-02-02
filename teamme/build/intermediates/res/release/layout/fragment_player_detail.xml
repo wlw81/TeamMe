@@ -34,4 +34,4 @@
         android:paddingRight="8dp"
         android:src="@drawable/player" />
 
-</RelativeLayout><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/app/src/main/res/layout/fragment_player_detail.xml -->
+</RelativeLayout><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/layout/fragment_player_detail.xml -->

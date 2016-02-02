@@ -16,6 +16,7 @@ import android.os.Handler;
 import android.os.Vibrator;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -41,7 +42,7 @@ import de.pasligh.android.teamme.tools.HoloCircleSeekBar;
 import de.pasligh.android.teamme.tools.TTS_Tool;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
-public class TeamChooser extends Activity implements SensorEventListener,
+public class TeamChooser extends AppCompatActivity implements SensorEventListener,
         OnEditorActionListener, AnimationListener, OnClickListener {
 
     private SensorManager sensorManager;

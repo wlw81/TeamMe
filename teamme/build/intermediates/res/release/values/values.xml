@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="active">#9933CC</color>
-    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values/common_colors.xml -->
+    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values/common_colors.xml -->
     <eat-comment/>
     <color name="common_action_bar_splitter">#d2d2d2</color>
     <color name="common_signin_btn_dark_text_default">@android:color/white</color>
@@ -15,20 +15,20 @@
     <color name="common_signin_btn_light_text_disabled">#FFAAAAAA</color>
     <color name="common_signin_btn_light_text_focused">#FF737373</color>
     <color name="common_signin_btn_light_text_pressed">@android:color/white</color>
-    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="font">#FFFFFF</color>
     <color name="inactive">#AA66CC</color>
     <declare-styleable name="HoloCircleSeekBar"><attr format="integer" name="wheel_size"/><attr format="integer" name="pointer_size"/><attr format="integer" name="max"/><attr format="boolean" name="show_text"/><attr format="integer" name="start_angle"/><attr format="integer" name="end_angle"/><attr format="integer" name="text_size"/><attr format="integer" name="init_position"/><attr format="string" name="color"/><attr format="string" name="wheel_active_color"/><attr format="string" name="wheel_unactive_color"/><attr format="string" name="pointer_color"/><attr format="string" name="pointer_halo_color"/><attr format="string" name="text_color"/></declare-styleable>
     <declare-styleable name="LoadingImageView"><attr format="enum" name="imageAspectRatioAdjust"><enum name="none" value="0"/><enum name="adjust_width" value="1"/><enum name="adjust_height" value="2"/></attr><attr format="float" name="imageAspectRatio"/><attr format="boolean" name="circleCrop"/></declare-styleable>
-    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values/version.xml -->
+    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values/version.xml -->
     <eat-comment/>
     <integer name="google_play_services_version">8115000</integer>
-    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="about">About</string>
     <string name="action_settings">Settings</string>
@@ -37,17 +37,17 @@
     <string name="assignmenttext_captain">you are the captain of</string>
     <string name="assignmenttext_part1">you are number</string>
     <string name="assignmenttext_part2">in</string>
-    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values/auth_strings.xml -->
+    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values/auth_strings.xml -->
     <eat-comment/>
     <string name="auth_google_play_services_client_facebook_display_name">Facebook</string>
     <string name="auth_google_play_services_client_google_display_name">Google</string>
-    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="cancelDialog_negative">Continue team building</string>
     <string name="cancelDialog_positive">Start from scratch</string>
     <string name="cancelDialog_question">Abort team building and start from scratch?</string>
     <string name="captain">Captain</string>
-    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values/common_strings.xml -->
+    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values/common_strings.xml -->
     <eat-comment/>
     <string name="common_android_wear_notification_needs_update_text"><ns1:g id="app_name">%1$s</ns1:g> requires an update to the Android Wear app.</string>
     <string name="common_android_wear_update_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t run unless you update the Android Wear app.</string>
@@ -79,7 +79,7 @@
     <string name="common_google_play_services_updating_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t run without Google Play services, which are currently updating.</string>
     <string name="common_google_play_services_updating_title">Google Play services are updating</string>
     <string name="common_open_on_phone">Open on phone</string>
-    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="decisiontext">The teams have been decided!</string>
     <string name="finish">Finish</string>
@@ -116,7 +116,7 @@
     <string name="title_game_detail">game Detail</string>
     <string name="ttsmissing">There are some language packs missing. Let us try to install them!</string>
     <string name="two">2</string>
-    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Holo">
     </style>

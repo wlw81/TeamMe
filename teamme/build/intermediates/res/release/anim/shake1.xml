@@ -10,4 +10,4 @@
     android:repeatMode="reverse"
     android:toXDelta="-5%"
     android:toYDelta="0%" />
-</set><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/app/src/main/res/anim/shake1.xml -->
+</set><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/anim/shake1.xml -->

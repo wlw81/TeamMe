@@ -1,22 +1,27 @@
 package de.pasligh.android.teamme;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewAnimationUtils;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -43,7 +48,7 @@ import de.pasligh.android.teamme.tools.TeamReactor;
  * {@link GameCreatorFragment.Callbacks} interface to listen for item
  * selections.
  */
-public class GameCreatorActivity extends FragmentActivity implements
+public class GameCreatorActivity extends AppCompatActivity implements
         GameCreatorFragment.Callbacks, OnCircleSeekBarChangeListener, OnCheckedChangeListener, OnClickListener {
 
     /**
@@ -72,6 +77,9 @@ public class GameCreatorActivity extends FragmentActivity implements
         ((RadioButton) findViewById(R.id.MoreTeamRadioButton))
                 .setOnClickListener(this);
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.newGameFAB);
+        fab.setOnClickListener(this);
+
         playerCount = 4;
 
         if (findViewById(R.id.game_detail_container) != null) {
@@ -83,7 +91,7 @@ public class GameCreatorActivity extends FragmentActivity implements
             GameStatisticsFragment fragment = new GameStatisticsFragment();
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.game_detail_container, fragment).commit();
-            invalidateOptionsMenu();
+            validateTeamMe_Start();
         }
 
         Typeface tf = Typeface.createFromAsset(getAssets(),
@@ -103,13 +111,7 @@ public class GameCreatorActivity extends FragmentActivity implements
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.StartItem) {
-            int teamCount = getTeamCount();
-            TeamReactor.decideTeams(teamCount, playerCount);
-            Intent callChooser = new Intent(getApplicationContext(),
-                    TeamChooser.class);
-            startActivity(callChooser);
-        } else if (item.getItemId() == R.id.AboutItem) {
+        if (item.getItemId() == R.id.AboutItem) {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle(getString(R.string.app_name));
             alertDialog.setMessage("by Thomas Pasligh");
@@ -129,11 +131,16 @@ public class GameCreatorActivity extends FragmentActivity implements
         return super.onOptionsItemSelected(item);
     }
 
+    private void teamMe() {
+        int teamCount = getTeamCount();
+        TeamReactor.decideTeams(teamCount, playerCount);
+        Intent callChooser = new Intent(getApplicationContext(),
+                TeamChooser.class);
+        startActivity(callChooser);
+    }
+
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        boolean valid = playerCount >= getTeamCount();
-        MenuItem startItemView = menu.findItem(R.id.StartItem);
-        startItemView.setVisible(valid);
         menu.findItem(R.id.StatisticsItem).setVisible(!mTwoPane);
         return super.onPrepareOptionsMenu(menu);
     }
@@ -163,7 +170,7 @@ public class GameCreatorActivity extends FragmentActivity implements
     public void onProgressChanged(HoloCircleSeekBar seekBar, int progress,
                                   boolean fromUser) {
         playerCount = progress;
-        invalidateOptionsMenu();
+        validateTeamMe_Start();
     }
 
     @Override
@@ -174,7 +181,7 @@ public class GameCreatorActivity extends FragmentActivity implements
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        invalidateOptionsMenu();
+        validateTeamMe_Start();
     }
 
     @Override
@@ -217,15 +224,84 @@ public class GameCreatorActivity extends FragmentActivity implements
         client.disconnect();
     }
 
+    public void validateTeamMe_Start() {
+        boolean valid = playerCount >= getTeamCount();
+        if (valid) {
+
+            // previously invisible view
+            View myView = findViewById(R.id.newGameFAB);
+            if(myView.getVisibility() != View.VISIBLE){
+                // create the animator for this view (the start radius is zero)
+                Animator anim = null;
+                anim = reveal(myView);
+                // make the view visible and start the animation
+                myView.setVisibility(View.VISIBLE);
+                if (anim != null) {
+                    anim.start();
+                }
+            }
+        } else {
+            if(findViewById(R.id.newGameFAB).getVisibility() == View.VISIBLE){
+                if (!hide()) {
+                    findViewById(R.id.newGameFAB).setVisibility(View.INVISIBLE);
+                }
+            }
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private boolean hide() {
+        // previously visible view
+        final View myView = findViewById(R.id.newGameFAB);
+
+        // get the center for the clipping circle
+        int cx = myView.getWidth() / 2;
+        int cy = myView.getHeight() / 2;
+
+        // get the initial radius for the clipping circle
+        float initialRadius = (float) Math.hypot(cx, cy);
+
+        // create the animation (the final radius is zero)
+        Animator anim =
+                ViewAnimationUtils.createCircularReveal(myView, cx, cy, initialRadius, 0);
+
+        // make the view invisible when the animation is done
+        anim.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                myView.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        // start the animation
+        anim.start();
+        return true;
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private Animator reveal(View myView) {
+        Animator anim;// get the center for the clipping circle
+        int cx = myView.getWidth() / 2;
+        int cy = myView.getHeight() / 2;
+
+        // get the final radius for the clipping circle
+        float finalRadius = (float) Math.hypot(cx, cy);
+        anim = ViewAnimationUtils.createCircularReveal(myView, cx, cy, 0, finalRadius);
+        return anim;
+    }
+
     @Override
     public void onClick(View v) {
-        if(v.getId() == (R.id.MoreTeamRadioButton)){
+        if (v.getId() == (R.id.newGameFAB)) {
+            teamMe();
+        } else if (v.getId() == (R.id.MoreTeamRadioButton)) {
 
-            if(teamCount <= 4){
+            if (teamCount <= 4) {
                 // more players? if selected start with 4 - getting everything prepared nice and smoothly
                 teamCount = 4;
                 ((RadioButton) findViewById(R.id.MoreTeamRadioButton)).setText(String.valueOf(teamCount));
-                invalidateOptionsMenu();
+                validateTeamMe_Start();
             }
 
             final NumberPicker np = new NumberPicker(getApplicationContext());
@@ -239,7 +315,7 @@ public class GameCreatorActivity extends FragmentActivity implements
                 public void onClick(DialogInterface dialog, int which) {
                     teamCount = np.getValue();
                     ((RadioButton) findViewById(R.id.MoreTeamRadioButton)).setText(String.valueOf(np.getValue()));
-                    invalidateOptionsMenu();
+                    validateTeamMe_Start();
                 }
             });
             builder.show();

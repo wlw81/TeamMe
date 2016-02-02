@@ -1,12 +1,12 @@
 package de.pasligh.android.teamme;
 
-import de.pasligh.android.teamme.backend.BackendFacade;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
+
+import de.pasligh.android.teamme.backend.BackendFacade;
 
 /**
  * An activity representing a single game detail screen. This activity is only
@@ -16,7 +16,7 @@ import android.widget.TextView;
  * This activity is mostly just a 'shell' activity containing nothing more than
  * a {@link GameStatisticsFragment}.
  */
-public class GameStatisticsActivity extends FragmentActivity {
+public class GameStatisticsActivity extends AppCompatActivity {
 
 	private BackendFacade facade;
 
@@ -26,7 +26,7 @@ public class GameStatisticsActivity extends FragmentActivity {
 		setContentView(R.layout.activity_game_detail);
 
 		// Show the Up button in the action bar.
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		// getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		// savedInstanceState is non-null when there is fragment state
 		// saved from previous configurations of this activity

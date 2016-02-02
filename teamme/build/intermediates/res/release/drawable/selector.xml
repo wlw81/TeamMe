@@ -14,4 +14,4 @@
     <item
         android:state_enabled="true"
         android:drawable="@drawable/roundedbutton" />
-    </selector><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/app/src/main/res/drawable/selector.xml -->
+    </selector><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/drawable/selector.xml -->

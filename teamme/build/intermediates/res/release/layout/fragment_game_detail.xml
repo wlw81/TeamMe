@@ -95,4 +95,4 @@
         android:text="@string/mostactiveplayers"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-</RelativeLayout><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/app/src/main/res/layout/fragment_game_detail.xml -->
+</RelativeLayout><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/layout/fragment_game_detail.xml -->

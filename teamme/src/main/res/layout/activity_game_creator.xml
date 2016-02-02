@@ -90,4 +90,13 @@
         android:text="@string/teams"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/newGameFAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/next_white"
+        app:elevation="4dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

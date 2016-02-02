@@ -7,4 +7,4 @@
         android:duration="1600"
          android:repeatMode="reverse"
         android:repeatCount="infinite" />
-</set><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/app/src/main/res/anim/glow.xml -->
+</set><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/anim/glow.xml -->
