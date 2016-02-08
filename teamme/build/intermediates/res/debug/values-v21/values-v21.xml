@@ -15,7 +15,7 @@
 
         <item name="actionBarStyle">@style/TeamMeActionBar</item>
         <item name="android:progressBarStyleHorizontal">@style/TeamMeProgressBar</item>
-        <item name="colorAccent">@color/floating_action_button_color</item>
+        <item name="colorAccent">@color/accent_color</item>
     </style>
     <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-v21/values-v21.xml -->
     <eat-comment/>

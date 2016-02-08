@@ -9,6 +9,10 @@
     <dimen name="abc_config_prefDialogWidth">580dp</dimen>
     <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
+    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values-sw600dp/dimens.xml -->
+    <eat-comment/>
+    <dimen name="activity_horizontal_margin">24dp</dimen>
+    <dimen name="activity_vertical_margin">24dp</dimen>
     <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/values-sw600dp/values-sw600dp.xml -->
     <eat-comment/>
     <dimen name="design_snackbar_action_inline_max_width">0dp</dimen>

@@ -36,13 +36,11 @@
             android:name="de.pasligh.android.teamme.TeamChooser"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/addPlayer"
-            android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" >
-        </activity>
+            android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" />
         <activity
             android:name="de.pasligh.android.teamme.TeamOverview"
             android:label="@string/overview"
-            android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" >
-        </activity>
+            android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" />
         <!--
              ATTENTION: This was auto-generated to add Google Play services to your project for
              App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -50,6 +48,23 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name="de.pasligh.android.teamme.PlayerSelectionActivity"
+            android:label="@string/title_activity_player_selection"
+            android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.pasligh.android.teamme.GameCreatorActivity" />
+        </activity>
+        <activity
+            android:name="de.pasligh.android.teamme.ReportScores"
+            android:label="@string/title_activity_report_scores"
+            android:parentActivityName="de.pasligh.android.teamme.TeamOverview" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.pasligh.android.teamme.TeamOverview" />
+        </activity>
     </application>
 
 </manifest>

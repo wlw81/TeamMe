@@ -354,10 +354,12 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
 
     private void completeTeams() {
         Game saveGame = new Game(TeamReactor.getAssignments());
-        getFacade().persistGame(saveGame);
-        Intent callChooser = new Intent(getApplicationContext(),
+        saveGame.setSport(getIntent().getStringExtra(Flags.SPORT));
+        long id = getFacade().persistGame(saveGame);
+        Intent callOverview = new Intent(getApplicationContext(),
                 TeamOverview.class);
-        startActivity(callChooser);
+        callOverview.putExtra(Flags.GAME_ID, id);
+        startActivity(callOverview);
     }
 
     @Override
@@ -413,6 +415,7 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
                 Intent callChooser = new Intent(getApplicationContext(),
                         TeamChooser.class);
                 callChooser.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                callChooser.putExtra(Flags.SPORT, getIntent().getStringExtra(Flags.SPORT));
                 startActivity(callChooser);
                 overridePendingTransition(R.anim.enter_from_right, R.anim.left);
             } else {

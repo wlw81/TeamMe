@@ -1,11 +1,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="fill"
-    android:padding="16dp"
-    tools:context=".GameCreatorActivity" >
+    android:padding="@dimen/activity_vertical_margin"
+    tools:context=".GameCreatorActivity">
 
     <RadioGroup
         android:id="@+id/TeamsRadioGroup"
@@ -16,7 +16,7 @@
         android:layout_below="@+id/TeamsTextView"
         android:orientation="horizontal"
         android:paddingBottom="16dp"
-        android:paddingTop="16dp" >
+        android:paddingTop="16dp">
 
         <RadioButton
             android:id="@+id/TwoTeamRadioButton"
@@ -51,29 +51,45 @@
         android:text="@string/playercount"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <AutoCompleteTextView
+        android:id="@+id/SportTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint="@string/sport_example"
+        android:inputType="textCapWords"
+        android:lines="1" />
+
     <de.pasligh.android.teamme.tools.HoloCircleSeekBar
         android:id="@+id/PlayerPicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/PlayersTextView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_below="@+id/PlayersTextView"
         android:layout_marginTop="16dp"
         app:init_position="4"
         app:max="24"
+        app:pointer_color="@color/accent_color"
         app:pointer_size="24"
-        app:text_color="#FFFFFF"
+        app:text_color="@color/active"
         app:text_size="150"
-        app:wheel_active_color="#9933CC"
+        app:wheel_active_color="@color/active"
         app:wheel_size="2"
-        app:wheel_unactive_color="#AA66CC" />
+        app:wheel_unactive_color="@color/inactive" />
 
     <TextView
         android:id="@+id/NewGameLabelTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:paddingBottom="8dp"
+        android:paddingBottom="16dp"
         android:text="@string/newGameText"
         android:textAllCaps="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -84,8 +100,8 @@
         android:id="@+id/TeamsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/NewGameLabelTextView"
-        android:layout_below="@+id/NewGameLabelTextView"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/SportTextView"
         android:layout_marginTop="8dp"
         android:text="@string/teams"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -94,9 +110,19 @@
         android:id="@+id/newGameFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/next_white"
-        app:elevation="4dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="bottom|right"
+        android:src="@drawable/next_white"
+        app:elevation="4dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/NewGameLabelTextView"
+        android:text="@string/sport"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/layout/activity_game_creator.xml -->

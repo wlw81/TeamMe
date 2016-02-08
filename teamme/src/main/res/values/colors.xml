@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="active">#9933CC</color>
-    <color name="inactive">#AA66CC</color>
+    <color name="active">#9C27B0</color>
+    <color name="inactive">#BA68C8</color>
     <color name="font">#FFFFFF</color>
-    <color name="floating_action_button_color">#9933CC</color>
+    <color name="accent_color">#FF9100</color>
 </resources>

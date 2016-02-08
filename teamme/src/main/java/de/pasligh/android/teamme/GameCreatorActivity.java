@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -12,21 +13,29 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewAnimationUtils;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import de.pasligh.android.teamme.backend.BackendFacade;
+import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.HoloCircleSeekBar;
 import de.pasligh.android.teamme.tools.HoloCircleSeekBar.OnCircleSeekBarChangeListener;
 import de.pasligh.android.teamme.tools.TTS_Tool;
@@ -49,7 +58,7 @@ import de.pasligh.android.teamme.tools.TeamReactor;
  * selections.
  */
 public class GameCreatorActivity extends AppCompatActivity implements
-        GameCreatorFragment.Callbacks, OnCircleSeekBarChangeListener, OnCheckedChangeListener, OnClickListener {
+        GameCreatorFragment.Callbacks, OnCircleSeekBarChangeListener, OnCheckedChangeListener, OnClickListener, TextView.OnEditorActionListener {
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -58,6 +67,15 @@ public class GameCreatorActivity extends AppCompatActivity implements
     private boolean mTwoPane;
     private int playerCount;
     private int teamCount = 4;
+
+    private BackendFacade facade;
+
+    public BackendFacade getFacade() {
+        if (null == facade) {
+            facade = new BackendFacade(getApplicationContext());
+        }
+        return facade;
+    }
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -68,8 +86,18 @@ public class GameCreatorActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         TTS_Tool.getInstance(this);
         setContentView(R.layout.activity_game_list);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, getFacade()
+                .getSports());
+
+        AutoCompleteTextView playerNameTextView = (AutoCompleteTextView) findViewById(R.id.SportTextView);
+        playerNameTextView.setOnEditorActionListener(this);
+        playerNameTextView.setAdapter(adapter);
+
         HoloCircleSeekBar seekbar = ((HoloCircleSeekBar) findViewById(R.id.PlayerPicker));
         seekbar.setOnSeekBarChangeListener(this);
         ((RadioGroup) findViewById(R.id.TeamsRadioGroup))
@@ -133,10 +161,23 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
     private void teamMe() {
         int teamCount = getTeamCount();
-        TeamReactor.decideTeams(teamCount, playerCount);
-        Intent callChooser = new Intent(getApplicationContext(),
-                TeamChooser.class);
-        startActivity(callChooser);
+        String sport = ((AutoCompleteTextView) findViewById(R.id.SportTextView)).getText().toString().trim();
+        if (getFacade().getPlayers().isEmpty()) {
+            // get things started - because we know no players
+            TeamReactor.decideTeams(teamCount, playerCount);
+            Intent callChooser = new Intent(getApplicationContext(),
+                    TeamChooser.class);
+            callChooser.putExtra(Flags.SPORT, sport);
+            startActivity(callChooser);
+        } else {
+            // we already know some player names, let's offer a preselection!
+            Intent playerPreselection = new Intent(getApplicationContext(),
+                    PlayerSelectionActivity.class);
+            playerPreselection.putExtra(Flags.TEAMCOUNT, teamCount);
+            playerPreselection.putExtra(Flags.PLAYERCOUNT, playerCount);
+            playerPreselection.putExtra(Flags.SPORT, sport);
+            startActivity(playerPreselection);
+        }
     }
 
     @Override
@@ -163,6 +204,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
         } catch (Exception e) {
             // TODO: handle exception
         }
+        getFacade().getObjDB_API().close();
         super.onDestroy();
     }
 
@@ -225,12 +267,16 @@ public class GameCreatorActivity extends AppCompatActivity implements
     }
 
     public void validateTeamMe_Start() {
-        boolean valid = playerCount >= getTeamCount();
+        AutoCompleteTextView sportTextView = ((AutoCompleteTextView) findViewById(R.id.SportTextView));
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(sportTextView.getWindowToken(), 0);
+
+        boolean valid = playerCount >= getTeamCount() && !sportTextView.getText().toString().trim().isEmpty();
         if (valid) {
 
             // previously invisible view
             View myView = findViewById(R.id.newGameFAB);
-            if(myView.getVisibility() != View.VISIBLE){
+            if (myView.getVisibility() != View.VISIBLE) {
                 // create the animator for this view (the start radius is zero)
                 Animator anim = null;
                 anim = reveal(myView);
@@ -241,7 +287,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
                 }
             }
         } else {
-            if(findViewById(R.id.newGameFAB).getVisibility() == View.VISIBLE){
+            if (findViewById(R.id.newGameFAB).getVisibility() == View.VISIBLE) {
                 if (!hide()) {
                     findViewById(R.id.newGameFAB).setVisibility(View.INVISIBLE);
                 }
@@ -320,5 +366,16 @@ public class GameCreatorActivity extends AppCompatActivity implements
             });
             builder.show();
         }
+    }
+
+
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        if (actionId == EditorInfo.IME_ACTION_DONE
+                || event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+            validateTeamMe_Start();
+            return true;
+        }
+        return false;
     }
 }

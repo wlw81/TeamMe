@@ -24,10 +24,11 @@ import android.widget.ShareActionProvider;
 import android.widget.TextView;
 
 import de.pasligh.android.teamme.objects.PlayerAssignemnt;
+import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.PredicateLayout;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
-public class TeamOverview extends AppCompatActivity {
+public class TeamOverview extends AppCompatActivity implements View.OnClickListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -59,6 +60,7 @@ public class TeamOverview extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        findViewById(R.id.reportScoresFAB).setOnClickListener(this);
     }
 
     private Intent createShareIntent() {
@@ -95,8 +97,8 @@ public class TeamOverview extends AppCompatActivity {
         MenuItem item = menu.findItem(R.id.TeamOverviewShareContext);
 
         // Fetch and store ShareActionProvider
-        mShareActionProvider = (ShareActionProvider) item.getActionProvider();
-        mShareActionProvider.setShareIntent(createShareIntent());
+        //    mShareActionProvider = (ShareActionProvider) item.getActionProvider();
+        //  mShareActionProvider.setShareIntent(createShareIntent());
         return true;
     }
 
@@ -185,4 +187,13 @@ public class TeamOverview extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == (R.id.reportScoresFAB)) {
+            Intent reportScores = new Intent(getApplicationContext(),
+                    ReportScores.class);
+            reportScores.putExtra(Flags.GAME_ID, getIntent().getExtras().getLong(Flags.GAME_ID));
+            startActivity(reportScores);
+        }
+    }
 }

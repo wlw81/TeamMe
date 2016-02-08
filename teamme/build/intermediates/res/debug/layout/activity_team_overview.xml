@@ -1,23 +1,41 @@
-<android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/pager"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".TeamOverview" >
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".TeamOverview">
 
-    <!--
-    This title strip will display the currently visible page title, as well as the page
-    titles for adjacent pages.
-    -->
 
-    <android.support.v4.view.PagerTitleStrip
-        android:id="@+id/pager_title_strip"
-        android:layout_width="match_parent"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/reportScoresFAB"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:background="@color/inactive"
-        android:paddingBottom="4dp"
-        android:paddingTop="4dp"
-        android:textColor="#fff" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:src="@drawable/write" />
 
-</android.support.v4.view.ViewPager><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/layout/activity_team_overview.xml -->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--
+           This title strip will display the currently visible page title, as well as the page
+           titles for adjacent pages.
+           -->
+
+        <android.support.v4.view.PagerTitleStrip
+            android:id="@+id/pager_title_strip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="@color/active"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:textColor="@color/primary_material_light" />
+
+    </android.support.v4.view.ViewPager>
+
+
+</RelativeLayout><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/layout/activity_team_overview.xml -->

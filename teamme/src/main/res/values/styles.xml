@@ -1,13 +1,12 @@
 <resources>
 
-    <style name="AppBaseTheme" parent="Theme.AppCompat">
-    </style>
+    <style name="AppBaseTheme" parent="Theme.AppCompat"></style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="actionBarStyle">@style/TeamMeActionBar</item>
         <item name="android:progressBarStyleHorizontal">@style/TeamMeProgressBar</item>
-        <item name="colorAccent">@color/floating_action_button_color</item>
+        <item name="colorAccent">@color/accent_color</item>
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
@@ -15,7 +14,7 @@
         <item name="background">@color/active</item>
         <item name="logo">@drawable/actionbar</item>
         <item name="displayOptions">useLogo|showHome|showTitle</item>
-
+        <item name="elevation">0dp</item>
     </style>
 
     <style name="TeamMeProgressBar" parent="@android:style/Widget.Holo.ProgressBar.Horizontal">

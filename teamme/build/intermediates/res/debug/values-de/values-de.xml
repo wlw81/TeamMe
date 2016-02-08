@@ -88,9 +88,12 @@
     <string name="playernext">Nächster</string>
     <string name="playerposition">Spielerposition</string>
     <string name="playersleftwithoutteam"> Spieler noch ohne Team.</string>
+    <string name="random">Zufall</string>
     <string name="shake">&lt;&lt;&lt; Schütteln! >>></string>
     <string name="share">Teilen</string>
     <string name="shareIntent">Die Teams stehen fest!</string>
+    <string name="sport">Sportart</string>
+    <string name="sport_example">Fußball, Handball, Tischtennis...</string>
     <string name="start">Teams zusammenstellen!</string>
     <string name="statistics">Statistiken</string>
     <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-de/values-de.xml -->

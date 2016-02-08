@@ -47,4 +47,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="more">plus</string>
     <string name="title_dialog_teamcount">Sélectionnez le nombre d\'équipe</string>
+    <string name="random">aléatoire</string>
+    <string name="sport">Sport genre</string>
+    <string name="sport_example">Football, handball, tennis de table ...</string>
 </resources>
