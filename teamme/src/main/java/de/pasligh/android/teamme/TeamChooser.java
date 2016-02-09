@@ -1,6 +1,5 @@
 package de.pasligh.android.teamme;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -89,7 +88,7 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
 
         AutoCompleteTextView playerNameTextView = (AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView);
         playerNameTextView.setHint("Player #"
-                + (TeamReactor.getAssignmentsDone() + 1));
+                + (TeamReactor.getAssignmentsRevealed() + 1));
         playerNameTextView.setOnEditorActionListener(this);
         playerNameTextView.setAdapter(adapter);
 
@@ -323,11 +322,11 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
         }
 
         ((HoloCircleSeekBar) findViewById(R.id.GameProgessCircleBar))
-                .setProgress(TeamReactor.getAssignmentsDone());
+                .setProgress(TeamReactor.getAssignmentsRevealed());
 
         if (TeamReactor.hasAssignmentsLeft()) {
             int playersLeft = TeamReactor.getAssignments().size()
-                    - TeamReactor.getAssignmentsDone();
+                    - TeamReactor.getAssignmentsRevealed();
             ((TextView) findViewById(R.id.GameProgressTextView))
                     .setText(playersLeft + " "
                             + getString(R.string.playersleftwithoutteam));

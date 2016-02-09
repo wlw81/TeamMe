@@ -22,7 +22,6 @@
             android:id="@+id/TwoTeamRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
             android:paddingRight="24dp"
             android:text="@string/two"
             android:textColorLink="@color/active" />

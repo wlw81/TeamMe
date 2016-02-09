@@ -2,6 +2,7 @@ package de.pasligh.android.teamme;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -14,7 +15,7 @@ import de.pasligh.android.teamme.objects.Score;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.ScoreRV_Adapter;
 
-public class ReportScores extends Activity {
+public class ReportScores extends AppCompatActivity {
     private BackendFacade facade;
     ScoreRV_Adapter adapter;
 
@@ -26,23 +27,19 @@ public class ReportScores extends Activity {
         RecyclerView rv = (RecyclerView) findViewById(R.id.RoundResultRV);
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         rv.setLayoutManager(llm);
-        Map<Integer, Score> roundResultMap = new HashMap<Integer, Score>();
+        Map<Integer, List> roundResultMap = new HashMap<Integer, List>();
         long gameId = getIntent().getLongExtra(Flags.GAME_ID, -1);
         List<Score> scoreList = getFacade().getScores(gameId);
         if (scoreList.isEmpty()) {
             int currentTeam = 1;
             int teamCount = getFacade().getTeamCount(gameId);
             while (currentTeam < teamCount) {
-                scoreList.add(createNowScore_toResults(1, currentTeam));
+                scoreList.add(createNowScore_toResults(0, currentTeam));
                 currentTeam++;
             }
         }
 
-        for (Score s : scoreList) {
-            roundResultMap.put(s.getRoundNr(), s);
-        }
-
-        adapter = new ScoreRV_Adapter(roundResultMap);
+        adapter = new ScoreRV_Adapter(scoreList);
         rv.setAdapter(adapter);
     }
 

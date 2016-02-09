@@ -13,6 +13,15 @@ public class PlayerAssignemnt implements Serializable{
 	private Player player;
 	private boolean assigned;
 
+	@Override
+	public String toString() {
+		String s =  getId()+ " Team "+getTeam();
+		if(getPlayer() != null){
+			s = s.concat(" "+getPlayer().getName());
+		}
+		return s;
+	}
+
 	/**
 	 * @return the orderNumber
 	 */

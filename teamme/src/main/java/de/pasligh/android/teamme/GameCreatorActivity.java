@@ -129,6 +129,8 @@ public class GameCreatorActivity extends AppCompatActivity implements
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
+        findViewById(R.id.newGameFAB).setVisibility(View.INVISIBLE);
     }
 
     @Override

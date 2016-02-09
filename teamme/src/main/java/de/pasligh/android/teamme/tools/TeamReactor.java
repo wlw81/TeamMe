@@ -7,103 +7,147 @@ import java.util.List;
 import java.util.Set;
 
 import android.content.Context;
+import android.util.Log;
+
 import de.pasligh.android.teamme.R;
 import de.pasligh.android.teamme.objects.PlayerAssignemnt;
 
 public final class TeamReactor {
 
-	private static final Set<PlayerAssignemnt> assignments = new HashSet<PlayerAssignemnt>();
-	private static int assignmentsDone;
+    private static final Set<PlayerAssignemnt> assignments = new HashSet<PlayerAssignemnt>();
+    private static int assignmentsRevealed;
 
-	private TeamReactor() {
-		super();
-	}
+    static int currentTeam = 0;
+    static int teamPosNumber = 1;
 
-	public static void decideTeams(int p_teamCount, int p_playerCount) {
-		int currentTeam = 0;
-		int teamPosNumber = 1;
-		assignmentsDone = 0;
-		assignments.clear();
-		for (int i = 0; i < p_playerCount; i++) {
-			if (currentTeam < p_teamCount) {
-				currentTeam++;
-			} else {
-				currentTeam = 1;
-				teamPosNumber++;
-			}
+    private TeamReactor() {
+        super();
+    }
 
-			PlayerAssignemnt assignment = new PlayerAssignemnt();
-			assignment.setTeam(currentTeam);
-			assignment.setOrderNumber(teamPosNumber);
-			assignments.add(assignment);
-		}
-	}
+    public static void decideTeams(int p_teamCount, int p_playerCount, List<PlayerAssignemnt> p_lisPreAssignments) {
 
-	public static boolean hasAssignmentsLeft() {
-		return getAssignmentsDone() < assignments.size();
-	}
+        assignmentsRevealed = 0;
+        assignments.clear();
 
-	public static PlayerAssignemnt revealNextAssignment() {
-		Iterator<PlayerAssignemnt> iterator = assignments.iterator();
+        for (int i = 0; i < p_playerCount; i++) {
+            assignments.add(doAssignment(p_teamCount));
+        }
 
-		while (iterator.hasNext()) {
-			PlayerAssignemnt assignemnt = iterator.next();
-			if (!assignemnt.isAssigned()) {
-				assignmentsDone++;
-				assignemnt.setAssigned(true);
-				return assignemnt;
-			}
-		}
+        if (null != p_lisPreAssignments && !p_lisPreAssignments.isEmpty()) {
+            for (PlayerAssignemnt pre : p_lisPreAssignments) {
+                transferAssignment(pre);
+            }
+        }
+    }
 
-		return null;
-	}
+    /**
+     * Transfers a pre assignment to the team reactor assignments.
+     * @param pre
+     * @return transferDone
+     */
+    private static boolean transferAssignment(PlayerAssignemnt pre) {
+        if (pre.getPlayer() != null) {
+            for (PlayerAssignemnt assignmentByTeamReactor : assignments) {
+                if (assignmentByTeamReactor.getPlayer() == null) {
+                    if (pre.getTeam() <= 0 || pre.getTeam() == assignmentByTeamReactor.getTeam()) {
+                        if (pre.getOrderNumber() != 1 || assignmentByTeamReactor.getOrderNumber() == 1) {
+                            assignmentByTeamReactor.setPlayer(pre.getPlayer());
+                            assignmentsRevealed++;
+                            assignmentByTeamReactor.setAssigned(true);
+                            Log.i(Flags.LOGTAG, "Pre assigned -> " + assignmentByTeamReactor);
+                         return true;
+                        }
+                    }
+                }
+            }
+        }
 
-	/**
-	 * @return the assignmentsDone
-	 */
-	public static int getAssignmentsDone() {
-		return assignmentsDone;
-	}
+        return false;
+    }
 
-	/**
-	 * @return the assignments
-	 */
-	public static Set<PlayerAssignemnt> getAssignments() {
-		return assignments;
-	}
+    private static PlayerAssignemnt doAssignment(int p_teamCount) {
+        if (currentTeam < p_teamCount) {
+            currentTeam++;
+        } else {
+            currentTeam = 1;
+            teamPosNumber++;
+        }
 
-	public static String createPlayertitle(Context p_contxt,
-			PlayerAssignemnt p_assignment) {
-		if (p_assignment.getOrderNumber() == 0) {
-			return (p_contxt.getResources().getString(R.string.captain));
-		} else {
-			StringBuilder playertitle = new StringBuilder(p_contxt
-					.getResources().getString(R.string.number));
-			playertitle.append(" ").append(p_assignment.getOrderNumber());
-			return playertitle.toString();
-		}
-	}
+        PlayerAssignemnt assignment = new PlayerAssignemnt();
+        assignment.setTeam(currentTeam);
+        assignment.setOrderNumber(teamPosNumber);
+        return assignment;
+    }
 
-	public static List<PlayerAssignemnt> getAssignmentsByTeam(int p_teamNr) {
-		PlayerAssignemnt[] teamAssignments = new PlayerAssignemnt[getAssignments()
-				.size()];
-		Iterator<PlayerAssignemnt> iterator = getAssignments().iterator();
-		while (iterator.hasNext()) {
-			PlayerAssignemnt next = iterator.next();
-			if (next.getTeam() == p_teamNr) {
-				teamAssignments[next.getOrderNumber()] = next;
-			}
-		}
+    public static void decideTeams(int p_teamCount, int p_playerCount) {
+        decideTeams(p_teamCount, p_playerCount, null);
+    }
 
-		// remove nuller items
-		List<PlayerAssignemnt> assignmentsReturn = new ArrayList<PlayerAssignemnt>();
-		for (PlayerAssignemnt assignmentAdd : teamAssignments) {
-			if (null != assignmentAdd) {
-				assignmentsReturn.add(assignmentAdd);
-			}
-		}
-		return assignmentsReturn;
+    public static boolean hasAssignmentsLeft() {
+        return getAssignmentsRevealed() < assignments.size();
+    }
 
-	}
+    public static PlayerAssignemnt revealNextAssignment() {
+        Iterator<PlayerAssignemnt> iterator = assignments.iterator();
+
+        while (iterator.hasNext()) {
+            PlayerAssignemnt assignemnt = iterator.next();
+            if (!assignemnt.isAssigned()) {
+                assignmentsRevealed++;
+                assignemnt.setAssigned(true);
+                return assignemnt;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @return the assignmentsRevealed
+     */
+    public static int getAssignmentsRevealed() {
+        return assignmentsRevealed;
+    }
+
+    /**
+     * @return the assignments
+     */
+    public static Set<PlayerAssignemnt> getAssignments() {
+        return assignments;
+    }
+
+    public static String createPlayertitle(Context p_contxt,
+                                           PlayerAssignemnt p_assignment) {
+        if (p_assignment.getOrderNumber() == 0) {
+            return (p_contxt.getResources().getString(R.string.captain));
+        } else {
+            StringBuilder playertitle = new StringBuilder(p_contxt
+                    .getResources().getString(R.string.number));
+            playertitle.append(" ").append(p_assignment.getOrderNumber());
+            return playertitle.toString();
+        }
+    }
+
+    public static List<PlayerAssignemnt> getAssignmentsByTeam(int p_teamNr) {
+        PlayerAssignemnt[] teamAssignments = new PlayerAssignemnt[getAssignments()
+                .size()];
+        Iterator<PlayerAssignemnt> iterator = getAssignments().iterator();
+        while (iterator.hasNext()) {
+            PlayerAssignemnt next = iterator.next();
+            if (next.getTeam() == p_teamNr) {
+                teamAssignments[next.getOrderNumber()] = next;
+            }
+        }
+
+        // remove nuller items
+        List<PlayerAssignemnt> assignmentsReturn = new ArrayList<PlayerAssignemnt>();
+        for (PlayerAssignemnt assignmentAdd : teamAssignments) {
+            if (null != assignmentAdd) {
+                assignmentsReturn.add(assignmentAdd);
+            }
+        }
+        return assignmentsReturn;
+
+    }
 
 }

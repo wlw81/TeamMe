@@ -2,6 +2,7 @@ package de.pasligh.android.teamme.tools;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,18 +25,27 @@ import de.pasligh.android.teamme.objects.Score;
  */
 public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundResultViewHolder> {
 
-    Map<Integer, Score> roundResultMap;
+    Map<Integer, List> roundResultMap;
 
 
-    public ScoreRV_Adapter(Map<Integer, Score> p_rounds) {
-        this.roundResultMap = p_rounds;
+    public ScoreRV_Adapter(List<Score> p_scores) {
+
+
+        roundResultMap = new HashMap<Integer, List>();
+        for (Score s : p_scores) {
+
+            if (roundResultMap.get(s.getRoundNr()) == null) {
+                roundResultMap.put((int) s.getRoundNr(), new ArrayList<Score>());
+            }
+
+            roundResultMap.get(s.getRoundNr()).add(s);
+        }
     }
 
     @Override
     public RoundResultViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_player_selection, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_roundresult, parent, false);
         RoundResultViewHolder pvh = new RoundResultViewHolder(v);
-
         return pvh;
     }
 
@@ -44,7 +56,19 @@ public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundR
 
     @Override
     public void onBindViewHolder(RoundResultViewHolder holder, int position) {
-        holder.playerName.setText(roundResultMap.get(0).getRoundNr());
+        try {
+            for(int i : roundResultMap.keySet()){
+                if(i == position){
+                    Score score = (Score) roundResultMap.get(i).get(0);
+                    holder.playerName.setText(String.valueOf(score.getRoundNr()+1));
+                }
+            }
+
+
+        } catch (Exception e) {
+            Log.e(Flags.LOGTAG, e.getMessage());
+            holder.playerName.setText("?");
+        }
     }
 
     @Override
