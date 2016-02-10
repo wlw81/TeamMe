@@ -1,12 +1,17 @@
 package de.pasligh.android.teamme.tools;
 
+import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -25,21 +30,32 @@ import de.pasligh.android.teamme.objects.Score;
  */
 public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundResultViewHolder> {
 
+
+
     Map<Integer, List> roundResultMap;
+    ScoreRV_Interface listener;
 
+    List<RoundResultViewHolder> holderList;
+    Typeface tf;
 
-    public ScoreRV_Adapter(List<Score> p_scores) {
-
-
+    public void updateScores(List<Score> p_scores, boolean reload){
         roundResultMap = new HashMap<Integer, List>();
         for (Score s : p_scores) {
-
             if (roundResultMap.get(s.getRoundNr()) == null) {
                 roundResultMap.put((int) s.getRoundNr(), new ArrayList<Score>());
             }
 
             roundResultMap.get(s.getRoundNr()).add(s);
         }
+        if(reload){
+            notifyDataSetChanged();
+        }
+    }
+
+    public ScoreRV_Adapter(List<Score> p_scores, Typeface p_tf, ScoreRV_Interface p_listener) {
+        tf = p_tf;
+        listener = p_listener;
+        updateScores(p_scores, false);
     }
 
     @Override
@@ -54,22 +70,23 @@ public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundR
         return roundResultMap.size();
     }
 
+
     @Override
     public void onBindViewHolder(RoundResultViewHolder holder, int position) {
+        Score score = null;
         try {
-            for(int i : roundResultMap.keySet()){
-                if(i == position){
-                    Score score = (Score) roundResultMap.get(i).get(0);
-                    holder.playerName.setText(String.valueOf(score.getRoundNr()+1));
-                }
-            }
-
-
+            score = (Score) roundResultMap.get(position).get(0);
+            holder.playerName.setText(String.valueOf(score.getRoundNr() + 1));
+            holder.playerName.setTypeface(tf);
+            holder.round.setTypeface(tf);
         } catch (Exception e) {
             Log.e(Flags.LOGTAG, e.getMessage());
             holder.playerName.setText("?");
+        } finally {
+            listener.recieveHolder(holder, score);
         }
     }
+
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
@@ -77,12 +94,20 @@ public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundR
     }
 
 
-    public static class RoundResultViewHolder extends RecyclerView.ViewHolder {
+    public class RoundResultViewHolder extends RecyclerView.ViewHolder {
+        TextView round;
+        LinearLayout layoutButtons;
         TextView playerName;
+
+        public LinearLayout getLayoutButtons() {
+            return layoutButtons;
+        }
 
         RoundResultViewHolder(View itemView) {
             super(itemView);
             playerName = (TextView) itemView.findViewById(R.id.RoundResultNumberTV);
+            round = (TextView) itemView.findViewById(R.id.RoundResultTitleTV);
+            layoutButtons = (LinearLayout) itemView.findViewById(R.id.RoundResult_TeamButtonsLayout);
         }
     }
 

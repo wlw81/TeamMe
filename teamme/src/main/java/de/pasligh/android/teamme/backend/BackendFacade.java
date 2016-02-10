@@ -97,15 +97,16 @@ public class BackendFacade {
 
         try {
             Cursor query = getObjDatabase().query(false,
-                    DatabaseHelper.TABLE_SCORES, new String[]{"_id", "TEAM", "game_id", "round", "scorecount"},
+                    DatabaseHelper.TABLE_SCORES, new String[]{"TEAM", "game_id", "round", "scorecount"},
                     "game_id = ?1", new String[]{String.valueOf(p_lngGameID)}, null, null, "game_id", null);
             while (query.moveToNext()) {
                 Score scoreRead = new Score();
-                scoreRead.setId(query.getInt(0));
-                scoreRead.setTeamNr(query.getInt(1));
-                scoreRead.setGameId(query.getInt(2));
+                scoreRead.setTeamNr(query.getInt(0));
+                scoreRead.setGameId(query.getInt(1));
+                scoreRead.setRoundNr((query.getInt(2)));
                 scoreRead.setScoreCount
                         (query.getInt(3));
+                scores.add(scoreRead);
             }
             query.close();
         } catch (Exception e) {
@@ -123,6 +124,17 @@ public class BackendFacade {
         valuesReturn.put("team", p_saveAssignment.getTeam());
         valuesReturn.put("game_id", p_saveAssignment.getGame());
         valuesReturn.put("player_id", p_saveAssignment.getPlayer().getName());
+        return valuesReturn;
+    }
+
+    private ContentValues createScore_Values(Score p_scoreValues, boolean p_scorecount) {
+        ContentValues valuesReturn = new ContentValues();
+        valuesReturn.put("team", p_scoreValues.getTeamNr());
+        valuesReturn.put("game_id", p_scoreValues.getGameId());
+        valuesReturn.put("round", p_scoreValues.getRoundNr());
+        if (p_scorecount) {
+            valuesReturn.put("scorecount", p_scoreValues.getScoreCount());
+        }
         return valuesReturn;
     }
 
@@ -226,5 +238,21 @@ public class BackendFacade {
         }
         return assignments;
     }
+
+    public void mergeScore(Score p_score) {
+        int id = -1;
+        try {
+            // getObjDatabase().update(DatabaseHelper.TABLE_SCORES, createScore_Values(p_score, true), "game_id = ?1 and round = ?2 and team = ?3", new String[]{String.valueOf(p_score.getGameId()), String.valueOf(p_score.getRoundNr()), String.valueOf(p_score.getTeamNr())});
+            id = getObjDatabase().update(DatabaseHelper.TABLE_SCORES, createScore_Values(p_score, true), "game_id = " + p_score.getGameId() + " and round = " + p_score.getRoundNr() + " and team = " + p_score.getTeamNr(), null);
+        } catch (Exception e) {
+            Log.i(Flags.LOGTAG, e.getMessage());
+        } finally {
+            if (id <= 0) {
+                id = (int) getObjDatabase().insert(DatabaseHelper.TABLE_SCORES, null, createScore_Values(p_score, true));
+            }
+        }
+
+    }
+
 
 }

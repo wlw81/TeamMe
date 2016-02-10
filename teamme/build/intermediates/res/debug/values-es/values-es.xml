@@ -88,6 +88,7 @@
     <string name="playernext">Próximo</string>
     <string name="playerposition">Posición del Jugador</string>
     <string name="playersleftwithoutteam"> Los jugadores todavía sin equipo</string>
+    <string name="points">La puntuación </string>
     <string name="random">aleatorio</string>
     <string name="shake">Agitación!</string>
     <string name="share">Las acciones</string>

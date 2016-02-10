@@ -50,4 +50,5 @@
     <string name="random">aléatoire</string>
     <string name="sport">Sport genre</string>
     <string name="sport_example">Football, handball, tennis de table ...</string>
+    <string name="points">Score</string>
 </resources>

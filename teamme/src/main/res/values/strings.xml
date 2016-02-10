@@ -141,4 +141,5 @@
     <string name="sport">Kind of sport</string>
     <string name="sport_example">Football, Baseball, Soccer...</string>
     <string name="title_activity_report_scores">ReportScores</string>
+    <string name="points">points</string>
 </resources>

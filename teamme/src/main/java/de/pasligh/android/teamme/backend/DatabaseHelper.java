@@ -25,7 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_PLAYERS = "CREATE TABLE "
             + TABLE_PLAYERS + " (name text primary key not null);";
     private static final String CREATE_SCORES = "CREATE TABLE "
-            + TABLE_SCORES + " (_id integer primary key autoincrement, team integer not null, game_id integer not null,round integer not null, scorecount integer not null);";
+            + TABLE_SCORES + " (game_id integer not null, round integer not null, team integer not null, scorecount integer not null, PRIMARY KEY (game_id, round, team));";
 
     private static final String UPGRADE_1_to_2_GAMES_TABLE = "alter table " + TABLE_GAMES + " add column sport text not null default ('unknown')";
 
@@ -60,7 +60,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onOpen(SQLiteDatabase db) {
         super.onOpen(db);
-        // onUpgrade(db, 1, 2);
+        //db.execSQL("drop table score;");
     }
 
 }

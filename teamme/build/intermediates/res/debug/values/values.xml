@@ -520,6 +520,7 @@
     <string name="playernext">Next</string>
     <string name="playerposition">Player Position</string>
     <string name="playersleftwithoutteam"> player(s) left without a team.</string>
+    <string name="points">points</string>
     <string name="random">random</string>
     <string name="shake">&lt;&lt;&lt; Shake! >>></string>
     <string name="share">Share</string>

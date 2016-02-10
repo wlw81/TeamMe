@@ -5,7 +5,6 @@ package de.pasligh.android.teamme.objects;
  */
 public class Score {
 
-    int id;
     int gameId;
     int teamNr;
 
@@ -29,13 +28,6 @@ public class Score {
         this.scoreCount = scoreCount;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getGameId() {
         return gameId;
