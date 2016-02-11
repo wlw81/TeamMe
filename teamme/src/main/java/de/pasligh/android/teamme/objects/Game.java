@@ -10,8 +10,23 @@ import java.util.Set;
 public class Game implements Serializable {
 
     private static final long serialVersionUID = -3420071497019663100L;
+
+    public void setStartedAt(Date startedAt) {
+        this.startedAt = startedAt;
+    }
+
     private Date startedAt;
     private List<PlayerAssignemnt> assignments;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
 
     public String getSport() {
         return sport;

@@ -39,14 +39,16 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
     Map<Switch, PlayerViewHolder> mapSwitchHolder;
     Map<PlayerViewHolder, PlayerAssignemnt> mapAssignments;
     ArrayAdapter spinnerAdapter;
+    Map<String, Integer> mapStarsPerPlayer;
 
-    public PlayerSelectionRV_Adapter(List<PlayerAssignemnt> persons, Typeface p_tf, ArrayAdapter p_spinnerAdapter) {
+    public PlayerSelectionRV_Adapter(List<PlayerAssignemnt> persons, Typeface p_tf, ArrayAdapter p_spinnerAdapter, Map<String, Integer> p_mapStarsPerPlayer) {
         this.assignmentsBlank = persons;
         tf = p_tf;
         mapSwitchHolder = new HashMap<Switch, PlayerViewHolder>();
         spinnerAdapter = p_spinnerAdapter;
         mapAssignments = new HashMap<>();
         assignmentsDone = new ArrayList<>();
+        mapStarsPerPlayer = p_mapStarsPerPlayer;
     }
 
     @Override
@@ -73,7 +75,15 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
 
     @Override
     public void onBindViewHolder(PlayerViewHolder holder, int position) {
-        holder.playerName.setText(assignmentsBlank.get(position).getPlayer().getName());
+        String name = assignmentsBlank.get(position).getPlayer().getName();
+        holder.playerName.setText(name);
+        if(mapStarsPerPlayer.containsKey(name)){
+            int stars = mapStarsPerPlayer.get(assignmentsBlank.get(position).getPlayer().getName());
+            if(stars > 0){
+                holder.rating.setNumStars(stars);
+                holder.rating.setMax(5);
+            }
+        }
         holder.spinner.setAdapter(spinnerAdapter);
         mapSwitchHolder.put(holder.switchPlayer, holder);
         mapAssignments.put(holder, assignmentsBlank.get(position));
@@ -97,7 +107,7 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
 
                 if (selectedSwitches <= spinnerAdapter.getCount() - 1) {
                     mapSwitchHolder.get(buttonView).spinner.setVisibility(View.VISIBLE);
-                    mapSwitchHolder.get(buttonView).toggle.setVisibility(View.VISIBLE);
+                    //mapSwitchHolder.get(buttonView).toggle.setVisibility(View.VISIBLE);
                     mapSwitchHolder.get(buttonView).rating.setVisibility(View.VISIBLE);
                     assignmentsDone.add(mapAssignments.get(mapSwitchHolder.get(buttonView)));
                     mapSwitchHolder.get(buttonView).expandView();

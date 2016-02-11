@@ -51,4 +51,6 @@
     <string name="sport">Sportart</string>
     <string name="sport_example">Fußball, Handball, Tischtennis...</string>
     <string name="points">Punkte</string>
+    <string name="title_activity_player_selection">Spieler vorauswählen</string>
+    <string name="title_activity_report_scores">Punktestand</string>
 </resources>

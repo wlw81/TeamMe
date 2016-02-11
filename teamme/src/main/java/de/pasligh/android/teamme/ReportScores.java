@@ -50,10 +50,11 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
         adapter = new ScoreRV_Adapter(scoreList, tf, this);
         rv.setAdapter(adapter);
 
-        getSupportActionBar().setTitle("Game "+gameId);
+        getSupportActionBar().setTitle("Game " + gameId);
     }
 
     public void reload() {
+        mapScore.clear();
         adapter.updateScores(getScores(), true);
     }
 
@@ -107,7 +108,7 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
             np.setValue(score.getScoreCount());
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this).setView(np);
-            builder.setMessage(getString(R.string.team) + " " + score.getTeamNr() + " - "+getString(R.string.points)+": ").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            builder.setMessage(getString(R.string.team) + " " + score.getTeamNr() + " - " + getString(R.string.points) + ": ").setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     score.setScoreCount(np.getValue());

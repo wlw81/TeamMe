@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:padding="4dp">
 
         <TextView
             android:id="@+id/playerSelectionCV_NameTV"
@@ -28,33 +28,40 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true" />
+            android:layout_alignParentTop="true"
+            android:paddingTop="4dp" />
 
         <RatingBar
             android:id="@+id/playerSelectionCV_RatingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/playerSelectionCV_NameTV"
+            style="?android:attr/ratingBarStyleSmall"
+            android:rating="2.5"
+            android:isIndicator="true"
+            android:max="5"
+            android:stepSize="0.01"
             android:layout_below="@+id/playerSelectionCV_NameTV"
-            style="?android:attr/ratingBarStyleSmall"/>
+            android:layout_alignStart="@+id/playerSelectionCV_NameTV" />
 
         <Spinner
             android:id="@+id/playerSelectionCV_TeamSpinner"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
+            android:textSize="20sp"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/playerSelectionCV_NameTV"
-            android:layout_alignBottom="@+id/playerSelectionCV_Switch"
-            android:layout_alignStart="@+id/playerSelectionCV_CaptainToggle" />
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_above="@+id/playerSelectionCV_CaptainToggle"
+            android:spinnerMode="dropdown" />
 
         <ToggleButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CAPTAIN"
             android:id="@+id/playerSelectionCV_CaptainToggle"
-            android:layout_below="@+id/playerSelectionCV_TeamSpinner"
-            android:layout_alignParentEnd="true"
             android:textOff="PROMOTE"
-            android:textOn="CAPTAIN" />
+            android:layout_below="@+id/playerSelectionCV_RatingBar"
+            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@+id/playerSelectionCV_RatingBar" />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

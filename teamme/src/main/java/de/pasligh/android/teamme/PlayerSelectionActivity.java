@@ -1,34 +1,32 @@
 package de.pasligh.android.teamme;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.Game;
 import de.pasligh.android.teamme.objects.Player;
 import de.pasligh.android.teamme.objects.PlayerAssignemnt;
+import de.pasligh.android.teamme.objects.Score;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.PlayerSelectionRV_Adapter;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
-public class PlayerSelectionActivity extends AppCompatActivity implements View.OnClickListener {
+public class PlayerSelectionActivity extends Activity implements View.OnClickListener {
 
     private BackendFacade facade;
     PlayerSelectionRV_Adapter adapter;
@@ -62,18 +60,57 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_item, list);
 
-        List<PlayerAssignemnt> assignmentList = new ArrayList<PlayerAssignemnt>();
+        List<PlayerAssignemnt> blankAssignments = new ArrayList<PlayerAssignemnt>();
+        List<Player> allPlayers = getFacade().getPlayers();
 
-        for (Player p : getFacade().getPlayers()) {
-            PlayerAssignemnt assignBlank = new PlayerAssignemnt();
-            assignBlank.setPlayer(p);
-            assignmentList.add(assignBlank);
+        Map<String, Integer> mapStarsPerPlayer = new HashMap<String, Integer>();
+        Map<String, Integer> mapPointsPerPlayer = new HashMap<String, Integer>();
+
+        List<Game> games = getFacade().getGames(getIntent().getStringExtra(Flags.SPORT));
+        int overallScore = 0;
+
+        for (Game g : games) {
+            List<PlayerAssignemnt> assignemntsForGame = getFacade().getAssignments(g.getId());
+
+            for (Score s : getFacade().getScores(g.getId())) {
+                for (PlayerAssignemnt assignment : assignemntsForGame) {
+                    if (s.getTeamNr() == assignment.getTeam()) {
+                        Integer pointsPerPlayer = mapPointsPerPlayer.get(assignment.getPlayer().getName());
+                        if(null != pointsPerPlayer ){
+                            mapPointsPerPlayer.put(assignment.getPlayer().getName(), pointsPerPlayer + s.getScoreCount());
+                        }else{
+                            mapPointsPerPlayer.put(assignment.getPlayer().getName(),  s.getScoreCount());
+                        }
+
+                        overallScore += s.getScoreCount();
+                    }
+                }
+            }
         }
 
+        if (overallScore > 0) {
+            int maxScore = overallScore / mapPointsPerPlayer.size();
+            int oneStar = maxScore / 5;
+            for (String playername : mapPointsPerPlayer.keySet()) {
+                int scored = mapPointsPerPlayer.get(playername);
+                mapStarsPerPlayer.put(playername, Math.min(5, scored / oneStar));
+            }
 
-        adapter = new PlayerSelectionRV_Adapter(assignmentList, Typeface.createFromAsset(getAssets(),
-                "fonts/Roboto-Thin.ttf"), dataAdapter);
+        }
+
+        for (Player p : allPlayers) {
+            PlayerAssignemnt assignBlank = new PlayerAssignemnt();
+            assignBlank.setPlayer(p);
+            blankAssignments.add(assignBlank);
+        }
+
+        adapter = new PlayerSelectionRV_Adapter(blankAssignments, Typeface.createFromAsset(getAssets(),
+                "fonts/Roboto-Thin.ttf"), dataAdapter, mapStarsPerPlayer);
         rv.setAdapter(adapter);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.playserSelectionToolbar);
+        toolbar.setTitle(getString(R.string.title_activity_player_selection));
+        toolbar.setLogo(R.drawable.actionbar);
     }
 
     @Override

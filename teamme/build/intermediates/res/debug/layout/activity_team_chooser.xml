@@ -36,26 +36,26 @@
             android:id="@+id/TeamNumberTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
             android:gravity="bottom|right"
             android:lineSpacingExtra="0dp"
             android:lines="1"
             android:singleLine="true"
             android:textColor="@color/active"
             android:textSize="64sp"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:layout_below="@+id/TeamIntroductionTextView"
+            android:layout_toEndOf="@+id/TeamCaptionTextView" />
 
         <TextView
             android:id="@+id/TeamCaptionTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@+id/TeamNumberTextView"
             android:text="@string/team"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="64sp"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:id="@+id/TeamIntroductionTextView"
@@ -63,9 +63,9 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/TeamCaptionTextView"
             android:layout_alignParentLeft="true"
-            android:layout_alignRight="@+id/TeamNumberTextView"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:layout_alignEnd="@+id/NextPlayerIncludeLayout" />
     </RelativeLayout>
 
     <ImageView

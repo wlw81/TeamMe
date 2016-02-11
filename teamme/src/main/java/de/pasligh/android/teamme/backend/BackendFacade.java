@@ -92,13 +92,45 @@ public class BackendFacade {
         }
     }
 
+    public List<Game> getGames(String p_strSports) {
+        List<Game> games = new ArrayList<Game>();
+
+        try {
+            Cursor query = getObjDatabase().query(false,
+                    DatabaseHelper.TABLE_GAMES, new String[]{"_id", "category_ordinal", "sport", "created"},
+                    "sport = ?1", new String[]{p_strSports}, null, null, "_id", null);
+
+            while (query.moveToNext()) {
+                Game gameRead = new Game();
+                gameRead.setId(query.getInt(0));
+                //gameRead...
+                gameRead.setSport(query.getString(2));
+                games.add(gameRead);
+            }
+            query.close();
+        } catch (Exception e) {
+            Log.e(Flags.LOGTAG, e.toString());
+            return null;
+        }
+
+        return games;
+    }
+
     public List<Score> getScores(long p_lngGameID) {
         List<Score> scores = new ArrayList<Score>();
 
         try {
-            Cursor query = getObjDatabase().query(false,
-                    DatabaseHelper.TABLE_SCORES, new String[]{"TEAM", "game_id", "round", "scorecount"},
-                    "game_id = ?1", new String[]{String.valueOf(p_lngGameID)}, null, null, "game_id", null);
+            Cursor query;
+            if (p_lngGameID >= 0) {
+                query = getObjDatabase().query(false,
+                        DatabaseHelper.TABLE_SCORES, new String[]{"TEAM", "game_id", "round", "scorecount"},
+                        "game_id = ?1", new String[]{String.valueOf(p_lngGameID)}, null, null, "game_id", null);
+            } else {
+                query = getObjDatabase().query(false,
+                        DatabaseHelper.TABLE_SCORES, new String[]{"TEAM", "game_id", "round", "scorecount"},
+                        null, null, null, null, "game_id", null);
+            }
+
             while (query.moveToNext()) {
                 Score scoreRead = new Score();
                 scoreRead.setTeamNr(query.getInt(0));
@@ -210,6 +242,18 @@ public class BackendFacade {
         }
 
         return lasttime;
+    }
+
+    public List<PlayerAssignemnt> getAssignments(int p_intGameID) {
+        try {
+            Cursor query = getObjDatabase().query(false,
+                    DatabaseHelper.TABLE_ASSIGNMENTS, new String[]{"_id", "sequence", "team", "game_id", "player_id"},
+                    "game_id = ?1", new String[]{String.valueOf(p_intGameID)}, null, null, "_id", null);
+            return moveQueryToAssignments(query);
+        } catch (Exception e) {
+            Log.e(Flags.LOGTAG, e.toString());
+            return null;
+        }
     }
 
     public List<PlayerAssignemnt> getAllAssignments() {

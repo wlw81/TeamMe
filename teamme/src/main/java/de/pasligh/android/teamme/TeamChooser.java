@@ -1,5 +1,7 @@
 package de.pasligh.android.teamme;
 
+import android.animation.Animator;
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,6 +12,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
@@ -21,6 +24,7 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewAnimationUtils;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
@@ -28,6 +32,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
@@ -37,7 +42,6 @@ import de.pasligh.android.teamme.objects.Game;
 import de.pasligh.android.teamme.objects.Player;
 import de.pasligh.android.teamme.objects.PlayerAssignemnt;
 import de.pasligh.android.teamme.tools.Flags;
-import de.pasligh.android.teamme.tools.HoloCircleSeekBar;
 import de.pasligh.android.teamme.tools.TTS_Tool;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
@@ -69,9 +73,6 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
         ((TextView) findViewById(R.id.TeamIntroductionTextView))
                 .setTypeface(tf);
 
-        ((HoloCircleSeekBar) findViewById(R.id.GameProgessCircleBar))
-                .setEnabled(false);
-
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         animationShake1 = AnimationUtils.loadAnimation(this, R.anim.shake1);
         animationShake2 = AnimationUtils.loadAnimation(this, R.anim.shake2);
@@ -92,10 +93,22 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
         playerNameTextView.setOnEditorActionListener(this);
         playerNameTextView.setAdapter(adapter);
 
-        ((HoloCircleSeekBar) findViewById(R.id.GameProgessCircleBar))
-                .setMax(TeamReactor.getAssignments().size());
-
         findViewById(R.id.NextPlayerButton).setOnClickListener(this);
+
+
+    }
+
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private Animator reveal(View myView) {
+        Animator anim;// get the center for the clipping circle
+        int cx = myView.getWidth() / 2;
+        int cy = myView.getHeight() / 2;
+
+        // get the final radius for the clipping circle
+        float finalRadius = (float) Math.hypot(cx, cy);
+        anim = ViewAnimationUtils.createCircularReveal(myView, cx, cy, 0, finalRadius);
+        return anim;
     }
 
     @Override
@@ -274,6 +287,10 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
         sensorManager.unregisterListener(this);
         stopShakeCall();
 
+
+        View myView = findViewById(R.id.NextPlayerButton);
+        myView.setVisibility(View.INVISIBLE);
+
         findViewById(R.id.BumperLeftImageView).startAnimation(
                 animationSlideOutLeft);
         findViewById(R.id.BumperRightImageView).startAnimation(
@@ -284,13 +301,14 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
         findViewById(R.id.BumperLeftImageView).setVisibility(View.GONE);
         findViewById(R.id.BumperRightImageView).setVisibility(View.GONE);
         findViewById(R.id.NextPlayerIncludeLayout).setVisibility(View.VISIBLE);
+        startRevealAnimation(myView);
+
+
         if (null != findViewById(R.id.InputPlayerIncludeLayout)) {
             findViewById(R.id.InputPlayerIncludeLayout)
                     .setVisibility(View.GONE);
         }
 
-        findViewById(R.id.GameProgessCircleBar).startAnimation(
-                getAnimationGlow());
         String playername = ((AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView))
                 .getText().toString();
 
@@ -321,8 +339,18 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
             Log.d(Flags.LOGTAG, playerNew + " already known.");
         }
 
-        ((HoloCircleSeekBar) findViewById(R.id.GameProgessCircleBar))
-                .setProgress(TeamReactor.getAssignmentsRevealed());
+
+        LinearLayout layout = (LinearLayout) findViewById(R.id.AssignedPlayerLayout);
+        for (PlayerAssignemnt assignment : TeamReactor.getAssignments()) {
+            if (assignment.isAssigned()) {
+                TextView tv = new TextView(getApplicationContext());
+                tv.setVisibility(View.INVISIBLE);
+                tv.setText(assignment.getPlayer().getName());
+                tv.setBackgroundColor(getResources().getColor(R.color.inactive));
+                layout.addView(tv);
+                startRevealAnimation(tv);
+            }
+        }
 
         if (TeamReactor.hasAssignmentsLeft()) {
             int playersLeft = TeamReactor.getAssignments().size()
@@ -338,6 +366,17 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
         TTS_Tool.getInstance(this)
                 .sprechen(speakText, TextToSpeech.QUEUE_FLUSH);
         invalidateOptionsMenu();
+    }
+
+    private void startRevealAnimation(View myView) {
+        // create the animator for this view (the start radius is zero)
+        Animator anim = null;
+        anim = reveal(myView);
+        // make the view visible and start the animation
+        myView.setVisibility(View.VISIBLE);
+        if (anim != null) {
+            anim.start();
+        }
     }
 
     @Override

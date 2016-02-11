@@ -51,4 +51,6 @@
     <string name="sport">Deporte</string>
     <string name="sport_example">Fútbol, balonmano, tenis de mesa ...</string>
     <string name="points">La puntuación </string>
+    <string name="title_activity_player_selection">Preselección del jugador</string>
+    <string name="title_activity_report_scores">Puntuación</string>
 </resources>

@@ -47,7 +47,7 @@
     <string name="shareIntent">The teams are decided!</string>
     <string name="more">more</string>
     <string name="title_dialog_teamcount">Select team count</string>
-    <string name="title_activity_player_selection">PlayerSelectionActivity</string>
+    <string name="title_activity_player_selection">Select your players</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -140,6 +140,6 @@
     <string name="random">random</string>
     <string name="sport">Kind of sport</string>
     <string name="sport_example">Football, Baseball, Soccer...</string>
-    <string name="title_activity_report_scores">ReportScores</string>
+    <string name="title_activity_report_scores">Reportscores</string>
     <string name="points">points</string>
 </resources>

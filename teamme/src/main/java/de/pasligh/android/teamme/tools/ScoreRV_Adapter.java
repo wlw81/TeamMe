@@ -17,6 +17,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,14 +33,17 @@ import de.pasligh.android.teamme.objects.Score;
 public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundResultViewHolder> {
 
 
+    public Map<Integer, List> getRoundResultMap() {
+        return roundResultMap;
+    }
 
     Map<Integer, List> roundResultMap;
     ScoreRV_Interface listener;
 
-    List<RoundResultViewHolder> holderList;
+
     Typeface tf;
 
-    public void updateScores(List<Score> p_scores, boolean reload){
+    public void updateScores(List<Score> p_scores, boolean reload) {
         roundResultMap = new HashMap<Integer, List>();
         for (Score s : p_scores) {
             if (roundResultMap.get(s.getRoundNr()) == null) {
@@ -47,7 +52,7 @@ public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundR
 
             roundResultMap.get(s.getRoundNr()).add(s);
         }
-        if(reload){
+        if (reload) {
             notifyDataSetChanged();
         }
     }
@@ -79,6 +84,27 @@ public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundR
             holder.playerName.setText(String.valueOf(score.getRoundNr() + 1));
             holder.playerName.setTypeface(tf);
             holder.round.setTypeface(tf);
+            holder.getLayoutButtons().removeAllViews();
+
+            int intWinnerTeam = -1;
+            int intHighestScore = -1;
+            List<Score> lisScore = getRoundResultMap().get(score.getRoundNr());
+            for (Score s : lisScore) {
+                if (s.getScoreCount() > intHighestScore) {
+                    intHighestScore = s.getScoreCount();
+                    if (intWinnerTeam < 0) {
+                        intWinnerTeam = s.getTeamNr();
+                    } else {
+                        intWinnerTeam = 4200;
+                    }
+                }
+            }
+
+            if (intWinnerTeam >= 0 && intWinnerTeam < 4200) {
+                holder.getResult().setText("TEAM " + intWinnerTeam + " GEWINNT");
+            } else {
+                holder.getResult().setText("UNENTSCHIEDEN");
+            }
         } catch (Exception e) {
             Log.e(Flags.LOGTAG, e.getMessage());
             holder.playerName.setText("?");
@@ -99,6 +125,12 @@ public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundR
         LinearLayout layoutButtons;
         TextView playerName;
 
+        public TextView getResult() {
+            return result;
+        }
+
+        TextView result;
+
         public LinearLayout getLayoutButtons() {
             return layoutButtons;
         }
@@ -108,6 +140,7 @@ public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundR
             playerName = (TextView) itemView.findViewById(R.id.RoundResultNumberTV);
             round = (TextView) itemView.findViewById(R.id.RoundResultTitleTV);
             layoutButtons = (LinearLayout) itemView.findViewById(R.id.RoundResult_TeamButtonsLayout);
+            result = (TextView) itemView.findViewById(R.id.RoundResultResultTV);
         }
     }
 
