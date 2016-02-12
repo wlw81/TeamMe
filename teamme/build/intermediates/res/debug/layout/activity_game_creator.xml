@@ -112,7 +112,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_gravity="bottom|right"
-        android:src="@drawable/next_white"
+        android:src="@drawable/actionbar"
         app:elevation="4dp" />
 
     <TextView

@@ -116,11 +116,13 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         List<PlayerAssignemnt> assignments = adapter.getAssignmentsDone();
-        TeamReactor.decideTeams(getIntent().getIntExtra(Flags.TEAMCOUNT, -1), getIntent().getIntExtra(Flags.PLAYERCOUNT, -1), assignments);
+        int teamcount = getIntent().getIntExtra(Flags.TEAMCOUNT, -1);
+        TeamReactor.decideTeams(teamcount, getIntent().getIntExtra(Flags.PLAYERCOUNT, -1), assignments);
         if (assignments.size() < TeamReactor.getAssignments().size()) {
             Intent callChooser = new Intent(getApplicationContext(),
                     TeamChooser.class);
             callChooser.putExtra(Flags.SPORT, getIntent().getStringExtra(Flags.SPORT));
+            callChooser.putExtra(Flags.TEAMCOUNT, teamcount);
             startActivity(callChooser);
         } else {
             Game saveGame = new Game(TeamReactor.getAssignments());
@@ -129,6 +131,7 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
             Intent callOverview = new Intent(getApplicationContext(),
                     TeamOverview.class);
             callOverview.putExtra(Flags.GAME_ID, id);
+            callOverview.putExtra(Flags.TEAMCOUNT, teamcount);
             startActivity(callOverview);
         }
 

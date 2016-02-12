@@ -14,35 +14,24 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/inactive" />
 
-    <RelativeLayout
-        android:id="@+id/ProgressCircleBarLayout"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" >
-
-        <de.pasligh.android.teamme.tools.HoloCircleSeekBar
-            android:id="@+id/GameProgessCircleBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:max="24"
-            app:pointer_color="#AA66CC"
-            app:pointer_halo_color="#AA66CC"
-            app:pointer_size="16"
-            app:show_text="false"
-            app:wheel_active_color="@color/active"
-            app:wheel_size="32"
-            app:wheel_unactive_color="#AA66CC" />
-    </RelativeLayout>
-
-    <ImageButton
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/NextPlayerButton"
-        android:layout_width="82dp"
-        android:layout_height="82dp"
-        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="bottom|right"
+        android:src="@drawable/next_white"
+        app:elevation="4dp" />
+
+    <LinearLayout
+        android:id="@+id/AssignedPlayerLayout"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:background="@drawable/selector"
-        android:contentDescription="@string/playernext"
-        android:src="@drawable/next_white" />
+        android:layout_centerHorizontal="true">
+    </LinearLayout>
+
 
 </RelativeLayout><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/layout/activity_team_chooser_nextplayerhead.xml -->

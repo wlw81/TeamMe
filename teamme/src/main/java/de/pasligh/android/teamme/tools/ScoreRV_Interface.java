@@ -1,5 +1,7 @@
 package de.pasligh.android.teamme.tools;
 
+import java.util.List;
+
 import de.pasligh.android.teamme.objects.Score;
 
 /**
@@ -7,6 +9,6 @@ import de.pasligh.android.teamme.objects.Score;
  */
 public interface ScoreRV_Interface {
 
-    public void recieveHolder(ScoreRV_Adapter.RoundResultViewHolder p_holder, Score p_score);
+    public void recieveHolder(ScoreRV_Adapter.RoundResultViewHolder p_holder, List<Score> lisScore  );
 
 }

@@ -53,4 +53,8 @@
     <string name="points">Score</string>
     <string name="title_activity_player_selection">Présélection Joueur</string>
     <string name="title_activity_report_scores">Score</string>
+    <string name="title_activity_settings">Réglages</string>
+    <string name="pref_default_display_name"></string>
+    <string name="pref_autoshake">Secouer stocks</string>
+    <string name="pref_description_autoshake">Si vous désactivez cette option, le joueur doit secouer l\'appareil à allouer.</string>
 </resources>

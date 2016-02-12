@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -16,6 +17,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
+import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
@@ -95,7 +97,8 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
 
         findViewById(R.id.NextPlayerButton).setOnClickListener(this);
 
-
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        autoShake =  sharedPref.getBoolean("autoshake",true);
     }
 
 
@@ -339,16 +342,21 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
             Log.d(Flags.LOGTAG, playerNew + " already known.");
         }
 
-
-        LinearLayout layout = (LinearLayout) findViewById(R.id.AssignedPlayerLayout);
-        for (PlayerAssignemnt assignment : TeamReactor.getAssignments()) {
-            if (assignment.isAssigned()) {
-                TextView tv = new TextView(getApplicationContext());
-                tv.setVisibility(View.INVISIBLE);
-                tv.setText(assignment.getPlayer().getName());
-                tv.setBackgroundColor(getResources().getColor(R.color.inactive));
-                layout.addView(tv);
-                startRevealAnimation(tv);
+        LinearLayout teamLayout = (LinearLayout) findViewById(R.id.AssignedPlayerLayout);
+        int teamcount = getIntent().getIntExtra(Flags.TEAMCOUNT, -1);
+        for(int i = 0; i < teamcount; i++){
+            LinearLayout playerLayout = new LinearLayout(getApplicationContext());
+            playerLayout.setOrientation(LinearLayout.HORIZONTAL);
+            teamLayout.addView(playerLayout);
+            for (PlayerAssignemnt assignment : TeamReactor.getAssignmentsByTeam(i)) {
+                if (assignment.isAssigned()) {
+                    TextView tv = new TextView(getApplicationContext());
+                    //tv.setVisibility(View.INVISIBLE);
+                    tv.setText(assignment.getPlayer().getName());
+                    tv.setBackground(getResources().getDrawable(R.drawable.roundedcorner));
+                    playerLayout.addView(tv);
+                    //startRevealAnimation(tv);
+                }
             }
         }
 
@@ -396,7 +404,9 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
         long id = getFacade().persistGame(saveGame);
         Intent callOverview = new Intent(getApplicationContext(),
                 TeamOverview.class);
+        int teamcount = getIntent().getIntExtra(Flags.TEAMCOUNT, -1);
         callOverview.putExtra(Flags.GAME_ID, id);
+        callOverview.putExtra(Flags.TEAMCOUNT, teamcount);
         startActivity(callOverview);
     }
 

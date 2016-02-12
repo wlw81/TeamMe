@@ -89,6 +89,9 @@
     <string name="playerposition">Position du joueur</string>
     <string name="playersleftwithoutteam"> Les joueurs toujours sans équipe</string>
     <string name="points">Score</string>
+    <string name="pref_autoshake">Secouer stocks</string>
+    <string name="pref_default_display_name"/>
+    <string name="pref_description_autoshake">Si vous désactivez cette option, le joueur doit secouer l\'appareil à allouer.</string>
     <string name="random">aléatoire</string>
     <string name="shake">Secouez-vous!</string>
     <string name="share">partager</string>
@@ -106,6 +109,9 @@
     <string name="teams">équipes</string>
     <string name="three">3</string>
     <string name="title_activity_game_creator">CreatorActivity</string>
+    <string name="title_activity_player_selection">Présélection Joueur</string>
+    <string name="title_activity_report_scores">Score</string>
+    <string name="title_activity_settings">Réglages</string>
     <string name="title_activity_team_chooser">TeamChooser</string>
     <string name="title_activity_team_overview">TeamOverview</string>
     <string name="title_dialog_teamcount">Sélectionnez le nombre d\'équipe</string>

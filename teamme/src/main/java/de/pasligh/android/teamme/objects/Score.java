@@ -11,6 +11,20 @@ public class Score {
     int roundNr;
     int scoreCount;
 
+    @Override
+    public String toString() {
+        return "Game " + getGameId() + "Round #"+getRoundNr()+" Team " + getTeamNr() + ": " + getScoreCount();
+    }
+
+    @Override
+    public boolean equals(Object compare) {
+        if (compare instanceof Score) {
+            Score s = (Score) compare;
+            return s.getGameId() == getGameId() && s.getRoundNr() == getRoundNr() && s.getTeamNr() == getTeamNr();
+        }
+        return false;
+    }
+
     public int getRoundNr() {
         return roundNr;
     }

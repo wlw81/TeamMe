@@ -8,6 +8,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".TeamOverview$DummySectionFragment" >
+    tools:context=".TeamOverview$DummySectionFragment">
 
 </de.pasligh.android.teamme.tools.PredicateLayout><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/layout/fragment_team_overview.xml -->

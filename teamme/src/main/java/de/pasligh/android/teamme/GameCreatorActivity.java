@@ -152,6 +152,10 @@ public class GameCreatorActivity extends AppCompatActivity implements
                     });
             alertDialog.setIcon(R.drawable.ic_launcher);
             alertDialog.show();
+        } else if (item.getItemId() == R.id.SettingsItem) {
+            Intent settingsActivity = new Intent(getApplicationContext(),
+                    SettingsActivity.class);
+            startActivity(settingsActivity);
         } else if (item.getItemId() == R.id.StatisticsItem) {
             Intent statisticsActivity = new Intent(getApplicationContext(),
                     GameStatisticsActivity.class);

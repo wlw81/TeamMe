@@ -53,4 +53,7 @@
     <string name="points">Punkte</string>
     <string name="title_activity_player_selection">Spieler vorauswählen</string>
     <string name="title_activity_report_scores">Punktestand</string>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="pref_autoshake">Automatisch schütteln</string>
+    <string name="pref_description_autoshake">Wenn Sie diese Option deaktivieren, muss der Spieler das Gerät schütteln um zugeteilt zu werden.</string>
 </resources>

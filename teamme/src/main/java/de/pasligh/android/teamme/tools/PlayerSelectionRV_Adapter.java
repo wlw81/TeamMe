@@ -118,7 +118,8 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
                 mapSwitchHolder.get(buttonView).spinner.setVisibility(View.GONE);
                 mapSwitchHolder.get(buttonView).toggle.setVisibility(View.GONE);
                 mapSwitchHolder.get(buttonView).rating.setVisibility(View.GONE);
-                assignmentsDone.remove(mapSwitchHolder.get(buttonView));
+
+                assignmentsDone.remove(mapAssignments.get(mapSwitchHolder.get(buttonView)));
                 mapSwitchHolder.get(buttonView).collapseView();
             }
         } else if (buttonView.getId() == R.id.playerSelectionCV_CaptainToggle) {

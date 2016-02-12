@@ -109,7 +109,7 @@ public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundR
             Log.e(Flags.LOGTAG, e.getMessage());
             holder.playerName.setText("?");
         } finally {
-            listener.recieveHolder(holder, score);
+            listener.recieveHolder(holder, roundResultMap.get(position));
         }
     }
 

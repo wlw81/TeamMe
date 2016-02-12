@@ -89,6 +89,8 @@
     <string name="playerposition">Posición del Jugador</string>
     <string name="playersleftwithoutteam"> Los jugadores todavía sin equipo</string>
     <string name="points">La puntuación </string>
+    <string name="pref_autoshake">Agitar stock</string>
+    <string name="pref_description_autoshake">Si deshabilita esta opción, el jugador debe agitar el dispositivo para ser asignado.</string>
     <string name="random">aleatorio</string>
     <string name="shake">Agitación!</string>
     <string name="share">Las acciones</string>
@@ -106,6 +108,9 @@
     <string name="teams">Equipos</string>
     <string name="three">3</string>
     <string name="title_activity_game_creator">CreatorActivity</string>
+    <string name="title_activity_player_selection">Preselección del jugador</string>
+    <string name="title_activity_report_scores">Puntuación</string>
+    <string name="title_activity_settings">Ajustes</string>
     <string name="title_activity_team_chooser">TeamChooser</string>
     <string name="title_activity_team_overview">TeamOverview</string>
     <string name="title_dialog_teamcount">Seleccione la cuenta del equipo</string>

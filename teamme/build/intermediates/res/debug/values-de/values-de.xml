@@ -89,6 +89,8 @@
     <string name="playerposition">Spielerposition</string>
     <string name="playersleftwithoutteam"> Spieler noch ohne Team.</string>
     <string name="points">Punkte</string>
+    <string name="pref_autoshake">Automatisch schütteln</string>
+    <string name="pref_description_autoshake">Wenn Sie diese Option deaktivieren, muss der Spieler das Gerät schütteln um zugeteilt zu werden.</string>
     <string name="random">Zufall</string>
     <string name="shake">&lt;&lt;&lt; Schütteln! >>></string>
     <string name="share">Teilen</string>
@@ -106,6 +108,9 @@
     <string name="teams">Teams</string>
     <string name="three">3</string>
     <string name="title_activity_game_creator">CreatorActivity</string>
+    <string name="title_activity_player_selection">Spieler vorauswählen</string>
+    <string name="title_activity_report_scores">Punktestand</string>
+    <string name="title_activity_settings">Einstellungen</string>
     <string name="title_activity_team_chooser">TeamChooser</string>
     <string name="title_activity_team_overview">TeamOverview</string>
     <string name="title_dialog_teamcount">Team Anzahl wählen</string>

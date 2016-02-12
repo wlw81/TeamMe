@@ -6,9 +6,13 @@
         android:title="@string/statistics"
         android:visible="false"></item>
     <item
+        android:id="@+id/SettingsItem"
+        android:orderInCategory="120"
+        android:title="@string/title_activity_settings"
+        android:visible="true"></item>
+    <item
         android:id="@+id/AboutItem"
         android:orderInCategory="200"
         android:title="@string/about" />
-
 
 </menu>
