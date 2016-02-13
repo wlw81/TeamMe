@@ -6,4 +6,10 @@
         android:summary="@string/pref_description_autoshake"
         android:title="@string/pref_autoshake" />
 
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="preselection"
+        android:summary="@string/pref_description_preselection"
+        android:title="@string/pref_preselection" />
+
 </PreferenceScreen>

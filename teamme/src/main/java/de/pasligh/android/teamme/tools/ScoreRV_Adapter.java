@@ -40,10 +40,18 @@ public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundR
     Map<Integer, List> roundResultMap;
     ScoreRV_Interface listener;
 
-
+    Context ctxt;
     Typeface tf;
 
+    public ScoreRV_Adapter(Context p_context, List<Score> p_scores, Typeface p_tf, ScoreRV_Interface p_listener) {
+        ctxt = p_context;
+        tf = p_tf;
+        listener = p_listener;
+        updateScores(p_scores, false);
+    }
+
     public void updateScores(List<Score> p_scores, boolean reload) {
+
         roundResultMap = new HashMap<Integer, List>();
         for (Score s : p_scores) {
             if (roundResultMap.get(s.getRoundNr()) == null) {
@@ -55,12 +63,6 @@ public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundR
         if (reload) {
             notifyDataSetChanged();
         }
-    }
-
-    public ScoreRV_Adapter(List<Score> p_scores, Typeface p_tf, ScoreRV_Interface p_listener) {
-        tf = p_tf;
-        listener = p_listener;
-        updateScores(p_scores, false);
     }
 
     @Override
@@ -92,18 +94,16 @@ public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundR
             for (Score s : lisScore) {
                 if (s.getScoreCount() > intHighestScore) {
                     intHighestScore = s.getScoreCount();
-                    if (intWinnerTeam < 0) {
-                        intWinnerTeam = s.getTeamNr();
-                    } else {
-                        intWinnerTeam = 4200;
-                    }
+                    intWinnerTeam = s.getTeamNr();
+                } else if (intHighestScore >= 0 && s.getScoreCount() == intHighestScore) {
+                    intWinnerTeam = 4200;
                 }
             }
 
             if (intWinnerTeam >= 0 && intWinnerTeam < 4200) {
-                holder.getResult().setText("TEAM " + intWinnerTeam + " GEWINNT");
+                holder.getResult().setText(ctxt.getString(R.string.team) + " " + TeamReactor.getAssignmentsByTeam(intWinnerTeam).get(0).getPlayer().getName() + " " + ctxt.getString(R.string.wins));
             } else {
-                holder.getResult().setText("UNENTSCHIEDEN");
+                holder.getResult().setText(ctxt.getString(R.string.draw));
             }
         } catch (Exception e) {
             Log.e(Flags.LOGTAG, e.getMessage());

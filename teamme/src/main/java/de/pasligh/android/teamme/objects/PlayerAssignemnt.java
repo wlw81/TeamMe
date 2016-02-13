@@ -11,7 +11,7 @@ public class PlayerAssignemnt implements Serializable{
 	private int team;
 	private int game;
 	private Player player;
-	private boolean assigned;
+	private boolean revealed;
 
 	@Override
 	public String toString() {
@@ -68,18 +68,18 @@ public class PlayerAssignemnt implements Serializable{
 	}
 
 	/**
-	 * @return the assigned
+	 * @return the revealed
 	 */
-	public boolean isAssigned() {
-		return assigned;
+	public boolean isRevealed() {
+		return revealed;
 	}
 
 	/**
-	 * @param assigned
-	 *            the assigned to set
+	 * @param revealed
+	 *            the revealed to set
 	 */
-	public void setAssigned(boolean assigned) {
-		this.assigned = assigned;
+	public void setRevealed(boolean revealed) {
+		this.revealed = revealed;
 	}
 
 	/**

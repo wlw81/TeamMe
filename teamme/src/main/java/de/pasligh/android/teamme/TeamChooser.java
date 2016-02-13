@@ -34,6 +34,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
@@ -98,7 +99,7 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
         findViewById(R.id.NextPlayerButton).setOnClickListener(this);
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        autoShake =  sharedPref.getBoolean("autoshake",true);
+        autoShake = sharedPref.getBoolean("autoshake", true);
     }
 
 
@@ -344,18 +345,32 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
 
         LinearLayout teamLayout = (LinearLayout) findViewById(R.id.AssignedPlayerLayout);
         int teamcount = getIntent().getIntExtra(Flags.TEAMCOUNT, -1);
-        for(int i = 0; i < teamcount; i++){
+        for (int i = 1; i <= teamcount; i++) {
             LinearLayout playerLayout = new LinearLayout(getApplicationContext());
-            playerLayout.setOrientation(LinearLayout.HORIZONTAL);
+            int padding = (int) (getResources().getDimension(R.dimen.activity_horizontal_margin)) / 2;
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+            layoutParams.setMargins(0, 4, 0, 4);
+
+            playerLayout.setPadding(padding, 0, padding, 0);
+            playerLayout.setOrientation(LinearLayout.VERTICAL);
+            ImageView viewTeamIcon = new ImageView(getApplicationContext());
+            viewTeamIcon.setImageResource(R.drawable.team);
             teamLayout.addView(playerLayout);
             for (PlayerAssignemnt assignment : TeamReactor.getAssignmentsByTeam(i)) {
-                if (assignment.isAssigned()) {
+                if (assignment.isRevealed()) {
                     TextView tv = new TextView(getApplicationContext());
-                    //tv.setVisibility(View.INVISIBLE);
+                    tv.setVisibility(View.INVISIBLE);
+                    tv.setPadding(0, padding, 0, padding);
                     tv.setText(assignment.getPlayer().getName());
                     tv.setBackground(getResources().getDrawable(R.drawable.roundedcorner));
-                    playerLayout.addView(tv);
-                    //startRevealAnimation(tv);
+                    if(playerLayout.getChildCount() <= 0){
+                        playerLayout.addView(viewTeamIcon);
+                    }
+
+                    playerLayout.addView(tv, layoutParams);
+                    startRevealAnimation(tv);
                 }
             }
         }
@@ -464,6 +479,7 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
                         TeamChooser.class);
                 callChooser.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 callChooser.putExtra(Flags.SPORT, getIntent().getStringExtra(Flags.SPORT));
+                callChooser.putExtra(Flags.TEAMCOUNT, getIntent().getIntExtra(Flags.TEAMCOUNT, -1));
                 startActivity(callChooser);
                 overridePendingTransition(R.anim.enter_from_right, R.anim.left);
             } else {

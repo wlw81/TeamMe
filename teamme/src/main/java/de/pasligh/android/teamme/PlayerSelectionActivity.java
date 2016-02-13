@@ -90,10 +90,10 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
 
         if (overallScore > 0) {
             int maxScore = overallScore / mapPointsPerPlayer.size();
-            int oneStar = maxScore / 5;
+            int oneStar = maxScore / Flags.MAXSTARS;
             for (String playername : mapPointsPerPlayer.keySet()) {
                 int scored = mapPointsPerPlayer.get(playername);
-                mapStarsPerPlayer.put(playername, Math.min(5, scored / oneStar));
+                mapStarsPerPlayer.put(playername, Math.min(Flags.MAXSTARS, scored / oneStar));
             }
 
         }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/TeamChooserFormularNextPlayerHeadLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/GameProgressTextView"
@@ -24,13 +24,15 @@
         android:src="@drawable/next_white"
         app:elevation="4dp" />
 
+
     <LinearLayout
         android:id="@+id/AssignedPlayerLayout"
-        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:orientation="horizontal">
+
     </LinearLayout>
 
 

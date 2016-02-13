@@ -105,6 +105,7 @@ public class BackendFacade {
                 gameRead.setId(query.getInt(0));
                 //gameRead...
                 gameRead.setSport(query.getString(2));
+                gameRead.setStartedAt(objDateFormat.parse(query.getString(3)));
                 games.add(gameRead);
             }
             query.close();
@@ -242,6 +243,46 @@ public class BackendFacade {
         }
 
         return lasttime;
+    }
+
+    public Game getGame(int p_intID) {
+        Game readGame = null;
+        try {
+            Cursor query = getObjDatabase().query(DatabaseHelper.TABLE_GAMES, new String[]{"_id", "category_ordinal", "sport", "created"},
+                    "_id = ?1", new String[]{String.valueOf(p_intID)}, null, null, "_id", "1");
+            query.moveToFirst();
+            readGame = new Game();
+            readGame.setId(query.getInt(0));
+            //gameRead...
+            readGame.setSport(query.getString(2));
+            readGame.setStartedAt(objDateFormat.parse(query.getString(3)));
+            query.close();
+        } catch (Exception e) {
+            Log.e(Flags.LOGTAG, e.toString());
+            return null;
+        }
+
+        return readGame;
+    }
+
+    public Game getLastGamePlayed() {
+        Game lastgame = null;
+        try {
+            Cursor query = getObjDatabase().query(DatabaseHelper.TABLE_GAMES, new String[]{"_id", "category_ordinal", "sport", "created"},
+                    null, null, null, null, "created desc", "1");
+            query.moveToFirst();
+            lastgame = new Game();
+            lastgame.setId(query.getInt(0));
+            //gameRead...
+            lastgame.setSport(query.getString(2));
+            lastgame.setStartedAt(objDateFormat.parse(query.getString(3)));
+            query.close();
+        } catch (Exception e) {
+            Log.e(Flags.LOGTAG, e.toString());
+            return null;
+        }
+
+        return lastgame;
     }
 
     public List<PlayerAssignemnt> getAssignments(int p_intGameID) {

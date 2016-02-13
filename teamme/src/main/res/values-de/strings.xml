@@ -56,4 +56,9 @@
     <string name="title_activity_settings">Einstellungen</string>
     <string name="pref_autoshake">Automatisch schütteln</string>
     <string name="pref_description_autoshake">Wenn Sie diese Option deaktivieren, muss der Spieler das Gerät schütteln um zugeteilt zu werden.</string>
+    <string name="pref_preselection">Spieler Vorauswahl</string>
+    <string name="pref_description_preselection">Zeigt einen Bildschirm zur Vorauswahl von Spielern.</string>
+    <string name="log">Nachtragen</string>
+    <string name="wins">gewinnt</string>
+    <string name="draw">Unentschieden</string>
 </resources>

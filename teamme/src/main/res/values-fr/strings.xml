@@ -57,4 +57,9 @@
     <string name="pref_default_display_name"></string>
     <string name="pref_autoshake">Secouer stocks</string>
     <string name="pref_description_autoshake">Si vous désactivez cette option, le joueur doit secouer l\'appareil à allouer.</string>
+    <string name="pref_preselection">Les joueurs présélection</string>
+    <string name="pref_description_preselection">Affiche un écran de sélection des joueurs.</string>
+    <string name="log">Entrer</string>
+    <string name="wins">gagnant</string>
+    <string name="draw">Dessiner</string>
 </resources>

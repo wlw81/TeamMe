@@ -14,6 +14,7 @@ import de.pasligh.android.teamme.objects.PlayerAssignemnt;
 
 public final class TeamReactor {
 
+
     private static final Set<PlayerAssignemnt> assignments = new HashSet<PlayerAssignemnt>();
     private static int assignmentsRevealed;
 
@@ -53,7 +54,7 @@ public final class TeamReactor {
                         if (pre.getOrderNumber() != 1 || assignmentByTeamReactor.getOrderNumber() == 1) {
                             assignmentByTeamReactor.setPlayer(pre.getPlayer());
                             assignmentsRevealed++;
-                            assignmentByTeamReactor.setAssigned(true);
+                            assignmentByTeamReactor.setRevealed(true);
                             Log.i(Flags.LOGTAG, "Pre assigned -> " + assignmentByTeamReactor);
                          return true;
                         }
@@ -92,9 +93,9 @@ public final class TeamReactor {
 
         while (iterator.hasNext()) {
             PlayerAssignemnt assignemnt = iterator.next();
-            if (!assignemnt.isAssigned()) {
+            if (!assignemnt.isRevealed()) {
                 assignmentsRevealed++;
-                assignemnt.setAssigned(true);
+                assignemnt.setRevealed(true);
                 return assignemnt;
             }
         }
@@ -114,6 +115,13 @@ public final class TeamReactor {
      */
     public static Set<PlayerAssignemnt> getAssignments() {
         return assignments;
+    }
+
+    public static void overwriteAssignments(Set<PlayerAssignemnt> p_set){
+        assignmentsRevealed = 0;
+        assignments.clear();
+        assignments.addAll(p_set);
+        assignmentsRevealed = p_set.size();
     }
 
     public static String createPlayertitle(Context p_contxt,

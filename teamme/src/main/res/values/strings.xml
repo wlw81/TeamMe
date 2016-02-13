@@ -36,7 +36,7 @@
     <string name="assignmenttext_part2">in</string>
     <string name="assignmenttext_captain">you are the captain of</string>
     <string name="statistics">Statistics</string>
-    <string name="playerAlreadyAssigned">This player is already assigned.</string>
+    <string name="playerAlreadyAssigned">This player is already revealed.</string>
     <string name="newGameText">Start new game</string>
     <string name="addPlayer">New Player</string>
     <string name="overview">Overview</string>
@@ -113,5 +113,10 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="pref_autoshake">Enable auto shake</string>
-    <string name="pref_description_autoshake">If you disable this option, the player has to shake the device to get assigned.</string>
+    <string name="pref_description_autoshake">If you disable this option, the player has to shake the device to get revealed.</string>
+    <string name="pre_fpreselection">Enable player pre selection</string>
+    <string name="pre_fdescription_preselection">Show the player selection to boost teambuilding.</string>
+    <string name="log">log</string>
+    <string name="wins">wins</string>
+    <string name="draw">Draw</string>
 </resources>

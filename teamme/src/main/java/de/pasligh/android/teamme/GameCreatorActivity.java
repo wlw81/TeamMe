@@ -7,11 +7,14 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -35,6 +38,7 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
+import de.pasligh.android.teamme.objects.Game;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.HoloCircleSeekBar;
 import de.pasligh.android.teamme.tools.HoloCircleSeekBar.OnCircleSeekBarChangeListener;
@@ -130,7 +134,9 @@ public class GameCreatorActivity extends AppCompatActivity implements
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
-        findViewById(R.id.newGameFAB).setVisibility(View.INVISIBLE);
+        // todo umstellen
+        findViewById(R.id.newGameFAB).setVisibility(View.VISIBLE);
+
     }
 
     @Override
@@ -168,7 +174,10 @@ public class GameCreatorActivity extends AppCompatActivity implements
     private void teamMe() {
         int teamCount = getTeamCount();
         String sport = ((AutoCompleteTextView) findViewById(R.id.SportTextView)).getText().toString().trim();
-        if (getFacade().getPlayers().isEmpty()) {
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean preselection = sharedPref.getBoolean("preselection", true);
+        if (getFacade().getPlayers().isEmpty() || !preselection) {
             // get things started - because we know no players
             TeamReactor.decideTeams(teamCount, playerCount);
             Intent callChooser = new Intent(getApplicationContext(),

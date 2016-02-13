@@ -60,7 +60,6 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
         pvh.spinner.setSelection(0);
         pvh.spinner.setVisibility(View.GONE);
         pvh.rating.setEnabled(false);
-        pvh.rating.setVisibility(View.GONE);
         pvh.toggle.setVisibility(View.GONE);
         pvh.switchPlayer.setOnCheckedChangeListener(this);
         pvh.toggle.setOnCheckedChangeListener(this);
@@ -108,7 +107,6 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
                 if (selectedSwitches <= spinnerAdapter.getCount() - 1) {
                     mapSwitchHolder.get(buttonView).spinner.setVisibility(View.VISIBLE);
                     //mapSwitchHolder.get(buttonView).toggle.setVisibility(View.VISIBLE);
-                    mapSwitchHolder.get(buttonView).rating.setVisibility(View.VISIBLE);
                     assignmentsDone.add(mapAssignments.get(mapSwitchHolder.get(buttonView)));
                     mapSwitchHolder.get(buttonView).expandView();
                 } else {
@@ -117,7 +115,6 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
             } else {
                 mapSwitchHolder.get(buttonView).spinner.setVisibility(View.GONE);
                 mapSwitchHolder.get(buttonView).toggle.setVisibility(View.GONE);
-                mapSwitchHolder.get(buttonView).rating.setVisibility(View.GONE);
 
                 assignmentsDone.remove(mapAssignments.get(mapSwitchHolder.get(buttonView)));
                 mapSwitchHolder.get(buttonView).collapseView();
@@ -196,7 +193,6 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
             rating = ((RatingBar) itemView.findViewById(R.id.playerSelectionCV_RatingBar));
             switchPlayer = ((Switch) itemView.findViewById(R.id.playerSelectionCV_Switch));
             toggle = ((ToggleButton) itemView.findViewById(R.id.playerSelectionCV_CaptainToggle));
-
 
             cv.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
 

@@ -69,12 +69,14 @@
     <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values-de/strings.xml -->
     <eat-comment/>
     <string name="decisiontext">Die Teams stehen fest!</string>
+    <string name="draw">Unentschieden</string>
     <string name="finish">Fertig</string>
     <string name="four">4</string>
     <string name="gamecounttext">Spiele gespielt bisher</string>
     <string name="gamedatetext">Letztes Mal gespielt</string>
     <string name="gameempty">Keine</string>
     <string name="hello_world">Hello world!</string>
+    <string name="log">Nachtragen</string>
     <string name="more">mehr</string>
     <string name="mostactiveplayers">Die aktivsten Spieler</string>
     <string name="newGameText">Neues Spiel beginnen</string>
@@ -91,6 +93,8 @@
     <string name="points">Punkte</string>
     <string name="pref_autoshake">Automatisch schütteln</string>
     <string name="pref_description_autoshake">Wenn Sie diese Option deaktivieren, muss der Spieler das Gerät schütteln um zugeteilt zu werden.</string>
+    <string name="pref_description_preselection">Zeigt einen Bildschirm zur Vorauswahl von Spielern.</string>
+    <string name="pref_preselection">Spieler Vorauswahl</string>
     <string name="random">Zufall</string>
     <string name="shake">&lt;&lt;&lt; Schütteln! >>></string>
     <string name="share">Teilen</string>
@@ -117,4 +121,5 @@
     <string name="title_game_detail">game Detail</string>
     <string name="ttsmissing">Es fehlen einige Sprachdateien. Lass uns versuchen das nun zu ändern!</string>
     <string name="two">2</string>
+    <string name="wins">gewinnt</string>
 </resources>
