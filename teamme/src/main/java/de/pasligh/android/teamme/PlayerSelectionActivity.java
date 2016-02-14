@@ -76,13 +76,14 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
                 for (PlayerAssignemnt assignment : assignemntsForGame) {
                     if (s.getTeamNr() == assignment.getTeam()) {
                         Integer pointsPerPlayer = mapPointsPerPlayer.get(assignment.getPlayer().getName());
+                        int newscore = s.getScoreCount() * 100;
                         if(null != pointsPerPlayer ){
-                            mapPointsPerPlayer.put(assignment.getPlayer().getName(), pointsPerPlayer + s.getScoreCount());
+                            mapPointsPerPlayer.put(assignment.getPlayer().getName(), pointsPerPlayer + newscore);
                         }else{
-                            mapPointsPerPlayer.put(assignment.getPlayer().getName(),  s.getScoreCount());
+                            mapPointsPerPlayer.put(assignment.getPlayer().getName(),  newscore);
                         }
 
-                        overallScore += s.getScoreCount();
+                        overallScore += newscore;
                     }
                 }
             }

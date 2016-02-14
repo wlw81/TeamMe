@@ -67,11 +67,17 @@ public class GameCreatorFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         final Game lastGame = getFacade().getLastGamePlayed();
+
+        int snackbarShowlenght = Snackbar.LENGTH_INDEFINITE;
+        if(!getFacade().getScores(lastGame.getId()).isEmpty()){
+            snackbarShowlenght = Snackbar.LENGTH_SHORT;
+        }
+
         if (null != lastGame) {
             java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getContext());
 
             Snackbar
-                    .make(getView(), lastGame.getSport() + " " + dateFormat.format(lastGame.getStartedAt()), Snackbar.LENGTH_INDEFINITE)
+                    .make(getView(), lastGame.getSport() + " " + dateFormat.format(lastGame.getStartedAt()), snackbarShowlenght)
                     .setAction(getString(R.string.log), new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

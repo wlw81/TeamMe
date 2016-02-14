@@ -440,6 +440,7 @@
     <string name="pref_header_general">General</string>
     <string name="pref_preselection">Enable player pre selection</string>
     <string name="random">random</string>
+    <string name="round">Round</string>
     <string name="shake">&lt;&lt;&lt; Shake! >>></string>
     <string name="share">Share</string>
     <string name="shareIntent">The teams are decided!</string>

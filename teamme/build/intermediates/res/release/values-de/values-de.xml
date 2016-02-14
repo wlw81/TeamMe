@@ -97,6 +97,7 @@
     <string name="pref_header_general">Allgemein</string>
     <string name="pref_preselection">Spieler Vorauswahl</string>
     <string name="random">Zufall</string>
+    <string name="round">Runde</string>
     <string name="shake">&lt;&lt;&lt; Schütteln! >>></string>
     <string name="share">Teilen</string>
     <string name="shareIntent">Die Teams stehen fest!</string>
