@@ -123,7 +123,6 @@ public class GameCreatorActivity extends AppCompatActivity implements
             GameStatisticsFragment fragment = new GameStatisticsFragment();
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.game_detail_container, fragment).commit();
-            validateTeamMe_Start();
         }
 
         Typeface tf = Typeface.createFromAsset(getAssets(),
@@ -134,8 +133,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
-        // todo umstellen
-        findViewById(R.id.newGameFAB).setVisibility(View.VISIBLE);
+        findViewById(R.id.newGameFAB).setVisibility(View.INVISIBLE);
 
     }
 

@@ -92,11 +92,12 @@
     <string name="playersleftwithoutteam"> Les joueurs toujours sans équipe</string>
     <string name="points">Score</string>
     <string name="pref_autoshake">Secouer stocks</string>
-    <string name="pref_default_display_name"/>
     <string name="pref_description_autoshake">Si vous désactivez cette option, le joueur doit secouer l\'appareil à allouer.</string>
     <string name="pref_description_preselection">Affiche un écran de sélection des joueurs.</string>
+    <string name="pref_header_general">Généralement</string>
     <string name="pref_preselection">Les joueurs présélection</string>
     <string name="random">aléatoire</string>
+    <string name="round">Ronde</string>
     <string name="shake">Secouez-vous!</string>
     <string name="share">partager</string>
     <string name="shareIntent">Les équipes sont décidées!</string>

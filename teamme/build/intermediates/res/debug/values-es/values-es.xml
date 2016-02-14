@@ -94,8 +94,10 @@
     <string name="pref_autoshake">Agitar stock</string>
     <string name="pref_description_autoshake">Si deshabilita esta opción, el jugador debe agitar el dispositivo para ser asignado.</string>
     <string name="pref_description_preselection">Muestra una pantalla de selección de jugadores.</string>
+    <string name="pref_header_general">En general</string>
     <string name="pref_preselection">Los jugadores de preselección</string>
     <string name="random">aleatorio</string>
+    <string name="round">Ronda</string>
     <string name="shake">Agitación!</string>
     <string name="share">Las acciones</string>
     <string name="shareIntent">Los equipos se deciden!</string>
