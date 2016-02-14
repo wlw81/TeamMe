@@ -61,4 +61,5 @@
     <string name="log">Nachtragen</string>
     <string name="wins">gewinnt</string>
     <string name="draw">Unentschieden</string>
+    <string name="pref_header_general">Allgemein</string>
 </resources>

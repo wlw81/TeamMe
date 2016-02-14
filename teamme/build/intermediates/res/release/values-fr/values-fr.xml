@@ -69,12 +69,14 @@
     <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values-fr/strings.xml -->
     <eat-comment/>
     <string name="decisiontext">Les équipes ont été décidées!</string>
+    <string name="draw">Dessiner</string>
     <string name="finish">Terminer</string>
     <string name="four">4</string>
     <string name="gamecounttext">jeux joués jusqu\'à présent</string>
     <string name="gamedatetext">La dernière fois joué</string>
     <string name="gameempty">Aucune.</string>
     <string name="hello_world">Hello world!</string>
+    <string name="log">Entrer</string>
     <string name="more">plus</string>
     <string name="mostactiveplayers">La plupart des joueurs actifs</string>
     <string name="newGameText">Commencer l\'exploration</string>
@@ -89,6 +91,11 @@
     <string name="playerposition">Position du joueur</string>
     <string name="playersleftwithoutteam"> Les joueurs toujours sans équipe</string>
     <string name="points">Score</string>
+    <string name="pref_autoshake">Secouer stocks</string>
+    <string name="pref_description_autoshake">Si vous désactivez cette option, le joueur doit secouer l\'appareil à allouer.</string>
+    <string name="pref_description_preselection">Affiche un écran de sélection des joueurs.</string>
+    <string name="pref_header_general">Généralement</string>
+    <string name="pref_preselection">Les joueurs présélection</string>
     <string name="random">aléatoire</string>
     <string name="shake">Secouez-vous!</string>
     <string name="share">partager</string>
@@ -108,10 +115,12 @@
     <string name="title_activity_game_creator">CreatorActivity</string>
     <string name="title_activity_player_selection">Présélection Joueur</string>
     <string name="title_activity_report_scores">Score</string>
+    <string name="title_activity_settings">Réglages</string>
     <string name="title_activity_team_chooser">TeamChooser</string>
     <string name="title_activity_team_overview">TeamOverview</string>
     <string name="title_dialog_teamcount">Sélectionnez le nombre d\'équipe</string>
     <string name="title_game_detail">game Detail</string>
     <string name="ttsmissing">Il ya des packs de langues disparues. Essayons de les installer!</string>
     <string name="two">2</string>
+    <string name="wins">gagnant</string>
 </resources>

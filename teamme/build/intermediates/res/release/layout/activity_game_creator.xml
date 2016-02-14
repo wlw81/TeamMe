@@ -1,127 +1,135 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gameCreatorCL"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:gravity="fill"
     android:padding="@dimen/activity_vertical_margin"
+    android:gravity="fill"
     tools:context=".GameCreatorActivity">
 
-    <RadioGroup
-        android:id="@+id/TeamsRadioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TeamsTextView"
-        android:layout_alignRight="@+id/PlayerPicker"
-        android:layout_below="@+id/TeamsTextView"
-        android:orientation="horizontal"
-        android:paddingBottom="16dp"
-        android:paddingTop="16dp">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/gameCreatorRV"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-        <RadioButton
-            android:id="@+id/TwoTeamRadioButton"
+        <RadioGroup
+            android:id="@+id/TeamsRadioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="24dp"
-            android:text="@string/two"
-            android:textColorLink="@color/active" />
+            android:layout_alignLeft="@+id/TeamsTextView"
+            android:layout_alignRight="@+id/PlayerPicker"
+            android:layout_below="@+id/TeamsTextView"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp">
 
-        <RadioButton
-            android:id="@+id/ThreeTeamRadioButton"
+            <RadioButton
+                android:id="@+id/TwoTeamRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="24dp"
+                android:text="@string/two"
+                android:textColorLink="@color/active" />
+
+            <RadioButton
+                android:id="@+id/ThreeTeamRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="24dp"
+                android:text="@string/three" />
+
+            <RadioButton
+                android:id="@+id/MoreTeamRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="24dp"
+                android:text="@string/more" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/PlayersTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="24dp"
-            android:text="@string/three" />
+            android:layout_alignLeft="@+id/TeamsTextView"
+            android:layout_below="@+id/TeamsRadioGroup"
+            android:text="@string/playercount"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <RadioButton
-            android:id="@+id/MoreTeamRadioButton"
+        <AutoCompleteTextView
+            android:id="@+id/SportTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView"
+            android:layout_marginTop="4dp"
+            android:ems="10"
+            android:hint="@string/sport_example"
+            android:inputType="textCapWords"
+            android:lines="1" />
+
+        <de.pasligh.android.teamme.tools.HoloCircleSeekBar
+            android:id="@+id/PlayerPicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="24dp"
-            android:text="@string/more" />
-    </RadioGroup>
+            android:layout_alignLeft="@+id/PlayersTextView"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/PlayersTextView"
+            android:layout_marginTop="16dp"
+            app:init_position="4"
+            app:max="24"
+            app:pointer_color="@color/accent_color"
+            app:pointer_size="28"
+            app:text_color="@color/active"
+            app:text_size="150"
+            app:wheel_active_color="@color/active"
+            app:wheel_size="10"
+            app:wheel_unactive_color="@color/inactive" />
 
-    <TextView
-        android:id="@+id/PlayersTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TeamsTextView"
-        android:layout_below="@+id/TeamsRadioGroup"
-        android:text="@string/playercount"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <TextView
+            android:id="@+id/NewGameLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:paddingBottom="16dp"
+            android:text="@string/newGameText"
+            android:textAllCaps="true"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/inactive"
+            android:textSize="18sp" />
 
-    <AutoCompleteTextView
-        android:id="@+id/SportTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView"
-        android:layout_marginTop="4dp"
-        android:ems="10"
-        android:hint="@string/sport_example"
-        android:inputType="textCapWords"
-        android:lines="1" />
+        <TextView
+            android:id="@+id/TeamsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/SportTextView"
+            android:layout_marginTop="8dp"
+            android:text="@string/teams"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <de.pasligh.android.teamme.tools.HoloCircleSeekBar
-        android:id="@+id/PlayerPicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/PlayersTextView"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/PlayersTextView"
-        android:layout_marginTop="16dp"
-        app:init_position="4"
-        app:max="24"
-        app:pointer_color="@color/accent_color"
-        app:pointer_size="24"
-        app:text_color="@color/active"
-        app:text_size="150"
-        app:wheel_active_color="@color/active"
-        app:wheel_size="2"
-        app:wheel_unactive_color="@color/inactive" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/NewGameLabelTextView"
+            android:text="@string/sport"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/NewGameLabelTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:paddingBottom="16dp"
-        android:text="@string/newGameText"
-        android:textAllCaps="true"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/inactive"
-        android:textSize="18sp" />
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/TeamsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/SportTextView"
-        android:layout_marginTop="8dp"
-        android:text="@string/teams"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/newGameFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_gravity="bottom|right"
-        android:src="@drawable/next_white"
-        app:elevation="4dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/NewGameLabelTextView"
-        android:text="@string/sport"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-</RelativeLayout><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/layout/activity_game_creator.xml -->
+        android:src="@drawable/actionbar"
+        app:elevation="4dp"
+        app:layout_anchor="@id/gameCreatorRV"
+        app:layout_anchorGravity="bottom|right|end" />
+</android.support.design.widget.CoordinatorLayout><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/layout/activity_game_creator.xml -->

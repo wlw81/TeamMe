@@ -45,7 +45,7 @@
     <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="card_color">@color/primary_material_dark</color>
-    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.0.1/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <color name="cardview_dark_background">#FF202020</color>
     <color name="cardview_light_background">#FFFAFAFA</color>
@@ -243,7 +243,7 @@
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.0.1/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="cardview_compat_inset_shadow">1dp</dimen>
     <dimen name="cardview_default_elevation">2dp</dimen>
@@ -412,19 +412,21 @@
     <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="decisiontext">The teams have been decided!</string>
+    <string name="draw">Draw</string>
     <string name="finish">Finish</string>
     <string name="four">4</string>
     <string name="gamecounttext">played games so far</string>
     <string name="gamedatetext">Last time played</string>
     <string name="gameempty">None.</string>
     <string name="hello_world">Hello world!</string>
+    <string name="log">log</string>
     <string name="more">more</string>
     <string name="mostactiveplayers">Most active players</string>
     <string name="newGameText">Start new game</string>
     <string name="number">No.</string>
     <string name="overview">Overview</string>
     <string name="player">Player</string>
-    <string name="playerAlreadyAssigned">This player is already assigned.</string>
+    <string name="playerAlreadyAssigned">This player is already revealed.</string>
     <string name="playercount">Overall players</string>
     <string name="playerinputtext">My name is</string>
     <string name="playername">Player Name</string>
@@ -432,6 +434,11 @@
     <string name="playerposition">Player Position</string>
     <string name="playersleftwithoutteam"> player(s) left without a team.</string>
     <string name="points">points</string>
+    <string name="pref_autoshake">Enable auto shake</string>
+    <string name="pref_description_autoshake">If you disable this option, the player has to shake the device to get revealed.</string>
+    <string name="pref_description_preselection">Show the player selection to boost teambuilding.</string>
+    <string name="pref_header_general">General</string>
+    <string name="pref_preselection">Enable player pre selection</string>
     <string name="random">random</string>
     <string name="shake">&lt;&lt;&lt; Shake! >>></string>
     <string name="share">Share</string>
@@ -451,12 +458,14 @@
     <string name="title_activity_game_creator">CreatorActivity</string>
     <string name="title_activity_player_selection">Select your players</string>
     <string name="title_activity_report_scores">Reportscores</string>
+    <string name="title_activity_settings">Settings</string>
     <string name="title_activity_team_chooser">TeamChooser</string>
     <string name="title_activity_team_overview">TeamOverview</string>
     <string name="title_dialog_teamcount">Select team count</string>
     <string name="title_game_detail">game Detail</string>
     <string name="ttsmissing">There are some language packs missing. Let us try to install them!</string>
     <string name="two">2</string>
+    <string name="wins">wins</string>
     <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
@@ -1421,7 +1430,7 @@
         <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
         <item name="tabSelectedTextColor">?android:textColorPrimary</item>
     </style>
-    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.0.1/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>
     <style name="CardView">
         <item name="cardBackgroundColor">@color/cardview_light_background</item>

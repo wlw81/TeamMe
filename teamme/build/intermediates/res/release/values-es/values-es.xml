@@ -69,12 +69,14 @@
     <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values-es/strings.xml -->
     <eat-comment/>
     <string name="decisiontext">Los equipos se han decidido!</string>
+    <string name="draw">Dibujar</string>
     <string name="finish">al finalizar</string>
     <string name="four">4</string>
     <string name="gamecounttext">partidos jugados hasta el momento</string>
     <string name="gamedatetext">La última vez que jugó</string>
     <string name="gameempty">Ninguna.</string>
     <string name="hello_world">Hello world!</string>
+    <string name="log">Entrar</string>
     <string name="more">más</string>
     <string name="mostactiveplayers">Los jugadores más activos</string>
     <string name="newGameText">Iniciar nuevo juego</string>
@@ -89,6 +91,11 @@
     <string name="playerposition">Posición del Jugador</string>
     <string name="playersleftwithoutteam"> Los jugadores todavía sin equipo</string>
     <string name="points">La puntuación </string>
+    <string name="pref_autoshake">Agitar stock</string>
+    <string name="pref_description_autoshake">Si deshabilita esta opción, el jugador debe agitar el dispositivo para ser asignado.</string>
+    <string name="pref_description_preselection">Muestra una pantalla de selección de jugadores.</string>
+    <string name="pref_header_general">En general</string>
+    <string name="pref_preselection">Los jugadores de preselección</string>
     <string name="random">aleatorio</string>
     <string name="shake">Agitación!</string>
     <string name="share">Las acciones</string>
@@ -108,10 +115,12 @@
     <string name="title_activity_game_creator">CreatorActivity</string>
     <string name="title_activity_player_selection">Preselección del jugador</string>
     <string name="title_activity_report_scores">Puntuación</string>
+    <string name="title_activity_settings">Ajustes</string>
     <string name="title_activity_team_chooser">TeamChooser</string>
     <string name="title_activity_team_overview">TeamOverview</string>
     <string name="title_dialog_teamcount">Seleccione la cuenta del equipo</string>
     <string name="title_game_detail">game Detail</string>
     <string name="ttsmissing">Hay algunos paquetes de idiomas que faltan. Vamos a tratar de instalarlos!</string>
     <string name="two">2</string>
+    <string name="wins">ganadora</string>
 </resources>
