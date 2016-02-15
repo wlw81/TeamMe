@@ -133,8 +133,6 @@ public class GameCreatorActivity extends AppCompatActivity implements
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
-        findViewById(R.id.newGameFAB).setVisibility(View.INVISIBLE);
-
     }
 
     @Override
@@ -170,26 +168,28 @@ public class GameCreatorActivity extends AppCompatActivity implements
     }
 
     private void teamMe() {
-        int teamCount = getTeamCount();
-        String sport = ((AutoCompleteTextView) findViewById(R.id.SportTextView)).getText().toString().trim();
+        if(validateTeamMe_Start()){
+            int teamCount = getTeamCount();
+            String sport = ((AutoCompleteTextView) findViewById(R.id.SportTextView)).getText().toString().trim();
 
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean preselection = sharedPref.getBoolean("preselection", true);
-        if (getFacade().getPlayers().isEmpty() || !preselection) {
-            // get things started - because we know no players
-            TeamReactor.decideTeams(teamCount, playerCount);
-            Intent callChooser = new Intent(getApplicationContext(),
-                    TeamChooser.class);
-            callChooser.putExtra(Flags.SPORT, sport);
-            startActivity(callChooser);
-        } else {
-            // we already know some player names, let's offer a preselection!
-            Intent playerPreselection = new Intent(getApplicationContext(),
-                    PlayerSelectionActivity.class);
-            playerPreselection.putExtra(Flags.TEAMCOUNT, teamCount);
-            playerPreselection.putExtra(Flags.PLAYERCOUNT, playerCount);
-            playerPreselection.putExtra(Flags.SPORT, sport);
-            startActivity(playerPreselection);
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+            boolean preselection = sharedPref.getBoolean("preselection", true);
+            if (getFacade().getPlayers().isEmpty() || !preselection) {
+                // get things started - because we know no players
+                TeamReactor.decideTeams(teamCount, playerCount);
+                Intent callChooser = new Intent(getApplicationContext(),
+                        TeamChooser.class);
+                callChooser.putExtra(Flags.SPORT, sport);
+                startActivity(callChooser);
+            } else {
+                // we already know some player names, let's offer a preselection!
+                Intent playerPreselection = new Intent(getApplicationContext(),
+                        PlayerSelectionActivity.class);
+                playerPreselection.putExtra(Flags.TEAMCOUNT, teamCount);
+                playerPreselection.putExtra(Flags.PLAYERCOUNT, playerCount);
+                playerPreselection.putExtra(Flags.SPORT, sport);
+                startActivity(playerPreselection);
+            }
         }
     }
 
@@ -279,7 +279,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
         client.disconnect();
     }
 
-    public void validateTeamMe_Start() {
+    public boolean validateTeamMe_Start() {
         AutoCompleteTextView sportTextView = ((AutoCompleteTextView) findViewById(R.id.SportTextView));
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(sportTextView.getWindowToken(), 0);
@@ -306,6 +306,8 @@ public class GameCreatorActivity extends AppCompatActivity implements
                 }
             }
         }
+
+        return valid;
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)

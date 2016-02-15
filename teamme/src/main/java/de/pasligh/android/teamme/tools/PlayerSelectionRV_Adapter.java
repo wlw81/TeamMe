@@ -1,9 +1,11 @@
 package de.pasligh.android.teamme.tools;
 
 import android.animation.ValueAnimator;
+import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,42 +29,49 @@ import de.pasligh.android.teamme.objects.PlayerAssignemnt;
 /**
  * Created by Thomas on 06.02.2016.
  */
-public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelectionRV_Adapter.PlayerViewHolder> implements CompoundButton.OnCheckedChangeListener {
+public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelectionRV_Adapter.PlayerViewHolder> {
+
 
     public List<PlayerAssignemnt> getAssignmentsDone() {
+
+        List<PlayerAssignemnt> assignmentsDone = new ArrayList<>();
+        for (PlayerAssignemnt p : assignmentsBlank) {
+            if (p.isRevealed()) {
+                assignmentsDone.add(p);
+            }
+        }
+
         return assignmentsDone;
     }
 
-    List<PlayerAssignemnt> assignmentsBlank;
-    List<PlayerAssignemnt> assignmentsDone;
+    private final static List<PlayerAssignemnt> assignmentsBlank = new ArrayList<PlayerAssignemnt>();
+
     Typeface tf;
-    Map<Switch, PlayerViewHolder> mapSwitchHolder;
-    Map<PlayerViewHolder, PlayerAssignemnt> mapAssignments;
     ArrayAdapter spinnerAdapter;
     Map<String, Integer> mapStarsPerPlayer;
+    Context ctxt;
+    int maxplayers = -1;
 
-    public PlayerSelectionRV_Adapter(List<PlayerAssignemnt> persons, Typeface p_tf, ArrayAdapter p_spinnerAdapter, Map<String, Integer> p_mapStarsPerPlayer) {
-        this.assignmentsBlank = persons;
+    public PlayerSelectionRV_Adapter(Context p_ctxt, List<PlayerAssignemnt> p_playerAssignments, Typeface p_tf, ArrayAdapter p_spinnerAdapter, Map<String, Integer> p_mapStarsPerPlayer, int p_maxPlayers) {
+        ctxt = p_ctxt;
+        assignmentsBlank.addAll(p_playerAssignments);
         tf = p_tf;
-        mapSwitchHolder = new HashMap<Switch, PlayerViewHolder>();
         spinnerAdapter = p_spinnerAdapter;
-        mapAssignments = new HashMap<>();
-        assignmentsDone = new ArrayList<>();
         mapStarsPerPlayer = p_mapStarsPerPlayer;
+        maxplayers = p_maxPlayers;
+
     }
 
     @Override
     public PlayerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_player_selection, parent, false);
-        PlayerViewHolder pvh = new PlayerViewHolder(v);
+        final View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_player_selection, parent, false);
+        final PlayerViewHolder pvh = new PlayerViewHolder(v);
 
         pvh.playerName.setTypeface(tf);
         pvh.spinner.setSelection(0);
         pvh.spinner.setVisibility(View.GONE);
         pvh.rating.setEnabled(false);
-        pvh.toggle.setVisibility(View.GONE);
-        pvh.switchPlayer.setOnCheckedChangeListener(this);
-        pvh.toggle.setOnCheckedChangeListener(this);
+        pvh.captainToggle.setVisibility(View.GONE);
 
         return pvh;
     }
@@ -76,55 +85,74 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
     public void onBindViewHolder(PlayerViewHolder holder, int position) {
         String name = assignmentsBlank.get(position).getPlayer().getName();
         holder.playerName.setText(name);
-        if(mapStarsPerPlayer.containsKey(name)){
+
+        if (assignmentsBlank.get(position).isRevealed()) {
+            showControls(holder, true, View.VISIBLE);
+        } else {
+            showControls(holder, false, View.GONE);
+        }
+
+        if (mapStarsPerPlayer.containsKey(name)) {
             int stars = mapStarsPerPlayer.get(assignmentsBlank.get(position).getPlayer().getName());
-            if(stars > 0){
+            if (stars > 0) {
                 holder.rating.setNumStars(stars);
                 holder.rating.setMax(5);
             }
         }
         holder.spinner.setAdapter(spinnerAdapter);
-        mapSwitchHolder.put(holder.switchPlayer, holder);
-        mapAssignments.put(holder, assignmentsBlank.get(position));
+        holder.switchPlayer.setOnCheckedChangeListener(new MyOnCheckListener(holder, position));
+    }
+
+    private void showControls(PlayerViewHolder holder, boolean checked, int visible) {
+        if( visible == View.GONE){
+            Log.i(Flags.LOGTAG, "Hide "+holder.playerName.getText().toString());
+        }
+        holder.switchPlayer.setChecked(checked);
+        holder.spinner.setVisibility(visible);
+        holder.captainToggle.setVisibility(visible);
+    }
+
+    class MyOnCheckListener implements CompoundButton.OnCheckedChangeListener {
+
+        int position = -1;
+        PlayerViewHolder holder;
+
+        public MyOnCheckListener(PlayerViewHolder p_holder, int p_intPosition) {
+            position = p_intPosition;
+            holder = p_holder;
+        }
+
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+            if (buttonView.getId() == R.id.playerSelectionCV_Switch) {
+                if (isChecked) {
+                    if (getAssignmentsDone().size() < maxplayers) {
+                        Log.i(Flags.LOGTAG, "Selection " + assignmentsBlank.get(position));
+                        //mapSwitchHolder.get(buttonView).captainToggle.setVisibility(View.VISIBLE);
+                        assignmentsBlank.get(position).setRevealed(true);
+                        showControls(holder, true, View.VISIBLE);
+                        holder.expandView();
+                    } else {
+                        buttonView.setChecked(false);
+                    }
+                } else {
+                    Log.i(Flags.LOGTAG, "Unchecked " + assignmentsBlank.get(position));
+                    assignmentsBlank.get(position).setRevealed(false);
+                    holder.collapseView();
+                    showControls(holder, false, View.GONE);
+                }
+            } else if (buttonView.getId() == R.id.playerSelectionCV_CaptainToggle) {
+                {
+                    // todo
+                }
+            }
+        }
     }
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
-    }
-
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (buttonView.getId() == R.id.playerSelectionCV_Switch) {
-            if (isChecked) {
-                int selectedSwitches = 0;
-                for (Switch s : mapSwitchHolder.keySet()) {
-                    if (s.isChecked()) {
-                        selectedSwitches++;
-                    }
-                }
-
-                if (selectedSwitches <= spinnerAdapter.getCount() - 1) {
-                    mapSwitchHolder.get(buttonView).spinner.setVisibility(View.VISIBLE);
-                    //mapSwitchHolder.get(buttonView).toggle.setVisibility(View.VISIBLE);
-                    assignmentsDone.add(mapAssignments.get(mapSwitchHolder.get(buttonView)));
-                    mapSwitchHolder.get(buttonView).expandView();
-                } else {
-                    buttonView.setChecked(false);
-                }
-            } else {
-                mapSwitchHolder.get(buttonView).spinner.setVisibility(View.GONE);
-                mapSwitchHolder.get(buttonView).toggle.setVisibility(View.GONE);
-
-                assignmentsDone.remove(mapAssignments.get(mapSwitchHolder.get(buttonView)));
-                mapSwitchHolder.get(buttonView).collapseView();
-            }
-        } else if (buttonView.getId() == R.id.playerSelectionCV_CaptainToggle) {
-            {
-                // todo
-            }
-        }
-
     }
 
     public static class PlayerViewHolder extends RecyclerView.ViewHolder {
@@ -134,21 +162,9 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
         RatingBar rating;
         Switch switchPlayer;
         View item;
-        ToggleButton toggle;
+        ToggleButton captainToggle;
 
         int minHeight = 0;
-
-        private void toggleCardViewnHeight() {
-
-            if (cv.getHeight() == minHeight) {
-                // expand
-                expandView(); //'height' is the height of screen which we have measured already.
-            } else {
-                // collapse
-                collapseView();
-
-            }
-        }
 
         public void collapseView() {
 
@@ -192,7 +208,7 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
             spinner = ((Spinner) itemView.findViewById(R.id.playerSelectionCV_TeamSpinner));
             rating = ((RatingBar) itemView.findViewById(R.id.playerSelectionCV_RatingBar));
             switchPlayer = ((Switch) itemView.findViewById(R.id.playerSelectionCV_Switch));
-            toggle = ((ToggleButton) itemView.findViewById(R.id.playerSelectionCV_CaptainToggle));
+            captainToggle = ((ToggleButton) itemView.findViewById(R.id.playerSelectionCV_CaptainToggle));
 
             cv.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
 

@@ -15,10 +15,11 @@ public class PlayerAssignemnt implements Serializable{
 
 	@Override
 	public String toString() {
-		String s =  getId()+ " Team "+getTeam();
+		String s =  "#"+getId()+ " Team "+getTeam();
 		if(getPlayer() != null){
 			s = s.concat(" "+getPlayer().getName());
 		}
+		s = s.concat(" Revealed: "+isRevealed());
 		return s;
 	}
 

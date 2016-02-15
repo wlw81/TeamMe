@@ -77,10 +77,10 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
                     if (s.getTeamNr() == assignment.getTeam()) {
                         Integer pointsPerPlayer = mapPointsPerPlayer.get(assignment.getPlayer().getName());
                         int newscore = s.getScoreCount() * 100;
-                        if(null != pointsPerPlayer ){
+                        if (null != pointsPerPlayer) {
                             mapPointsPerPlayer.put(assignment.getPlayer().getName(), pointsPerPlayer + newscore);
-                        }else{
-                            mapPointsPerPlayer.put(assignment.getPlayer().getName(),  newscore);
+                        } else {
+                            mapPointsPerPlayer.put(assignment.getPlayer().getName(), newscore);
                         }
 
                         overallScore += newscore;
@@ -105,8 +105,8 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
             blankAssignments.add(assignBlank);
         }
 
-        adapter = new PlayerSelectionRV_Adapter(blankAssignments, Typeface.createFromAsset(getAssets(),
-                "fonts/Roboto-Thin.ttf"), dataAdapter, mapStarsPerPlayer);
+        adapter = new PlayerSelectionRV_Adapter(getApplicationContext(), blankAssignments, Typeface.createFromAsset(getAssets(),
+                "fonts/Roboto-Thin.ttf"), dataAdapter, mapStarsPerPlayer, getIntent().getIntExtra(Flags.PLAYERCOUNT, -1));
         rv.setAdapter(adapter);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.playserSelectionToolbar);

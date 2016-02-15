@@ -3,14 +3,12 @@ package de.pasligh.android.teamme;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
-import java.text.SimpleDateFormat;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.Game;
@@ -66,29 +64,38 @@ public class GameCreatorFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        final Game lastGame = getFacade().getLastGamePlayed();
 
-        int snackbarShowlenght = Snackbar.LENGTH_INDEFINITE;
-        if(!getFacade().getScores(lastGame.getId()).isEmpty()){
-            snackbarShowlenght = Snackbar.LENGTH_SHORT;
-        }
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                final Game lastGame = getFacade().getLastGamePlayed();
+                int snackbarShowlenght = Snackbar.LENGTH_INDEFINITE;
+                if(!getFacade().getScores(lastGame.getId()).isEmpty()){
+                    snackbarShowlenght = Snackbar.LENGTH_SHORT;
+                }
 
-        if (null != lastGame) {
-            java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getContext());
+                if (null != lastGame) {
+                    java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getContext());
 
-            Snackbar
-                    .make(getView(), lastGame.getSport() + " " + dateFormat.format(lastGame.getStartedAt()), snackbarShowlenght)
-                    .setAction(getString(R.string.log), new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent reportScores = new Intent(getContext(),
-                                    ReportScores.class);
-                            reportScores.putExtra(Flags.GAME_ID, lastGame.getId());
-                            startActivity(reportScores);
-                        }
-                    })
-                    .show();
-        }
+                    Snackbar
+                            .make(getView(), lastGame.getSport() + " " + dateFormat.format(lastGame.getStartedAt()), snackbarShowlenght)
+                            .setAction(getString(R.string.log), new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent reportScores = new Intent(getContext(),
+                                            ReportScores.class);
+                                    reportScores.putExtra(Flags.GAME_ID, lastGame.getId());
+                                    startActivity(reportScores);
+                                }
+                            })
+                            .show();
+                }
+            }
+        }, 2000);
+
+
+
     }
 
     @Override

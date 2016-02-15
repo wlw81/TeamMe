@@ -1,27 +1,27 @@
 package de.pasligh.android.teamme;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ShareActionProvider;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.ShareActionProvider;
 import android.widget.TextView;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 
 import de.pasligh.android.teamme.objects.PlayerAssignemnt;
 import de.pasligh.android.teamme.tools.Flags;
@@ -97,8 +97,8 @@ public class TeamOverview extends AppCompatActivity implements View.OnClickListe
         MenuItem item = menu.findItem(R.id.TeamOverviewShareContext);
 
         // Fetch and store ShareActionProvider
-        //    mShareActionProvider = (ShareActionProvider) item.getActionProvider();
-        //  mShareActionProvider.setShareIntent(createShareIntent());
+        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
+        mShareActionProvider.setShareIntent(createShareIntent());
         return true;
     }
 
