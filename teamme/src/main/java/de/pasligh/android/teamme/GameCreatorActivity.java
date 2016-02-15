@@ -16,6 +16,7 @@ import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -168,11 +169,11 @@ public class GameCreatorActivity extends AppCompatActivity implements
     }
 
     private void teamMe() {
-        if(validateTeamMe_Start()){
+        if (validateTeamMe_Start()) {
             int teamCount = getTeamCount();
             String sport = ((AutoCompleteTextView) findViewById(R.id.SportTextView)).getText().toString().trim();
-
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+
             boolean preselection = sharedPref.getBoolean("preselection", true);
             if (getFacade().getPlayers().isEmpty() || !preselection) {
                 // get things started - because we know no players
@@ -283,20 +284,15 @@ public class GameCreatorActivity extends AppCompatActivity implements
         AutoCompleteTextView sportTextView = ((AutoCompleteTextView) findViewById(R.id.SportTextView));
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(sportTextView.getWindowToken(), 0);
-
-        boolean valid = playerCount >= getTeamCount() && !sportTextView.getText().toString().trim().isEmpty();
+        RadioGroup group = ((RadioGroup) findViewById(R.id.TeamsRadioGroup));
+        boolean valid = playerCount >= getTeamCount() && !sportTextView.getText().toString().trim().isEmpty() && group.getCheckedRadioButtonId() >= 0;
         if (valid) {
 
             // previously invisible view
             View myView = findViewById(R.id.newGameFAB);
             if (myView.getVisibility() != View.VISIBLE) {
-                // create the animator for this view (the start radius is zero)
-                Animator anim = null;
-                anim = reveal(myView);
-                // make the view visible and start the animation
-                myView.setVisibility(View.VISIBLE);
-                if (anim != null) {
-                    anim.start();
+                if (!reveal(myView)) {
+                    myView.setVisibility(View.VISIBLE);
                 }
             }
         } else {
@@ -312,44 +308,54 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private boolean hide() {
-        // previously visible view
-        final View myView = findViewById(R.id.newGameFAB);
+        try {
+            // previously visible view
+            final View myView = findViewById(R.id.newGameFAB);
 
-        // get the center for the clipping circle
-        int cx = myView.getWidth() / 2;
-        int cy = myView.getHeight() / 2;
+            // get the center for the clipping circle
+            int cx = myView.getWidth() / 2;
+            int cy = myView.getHeight() / 2;
 
-        // get the initial radius for the clipping circle
-        float initialRadius = (float) Math.hypot(cx, cy);
+            // get the initial radius for the clipping circle
+            float initialRadius = (float) Math.hypot(cx, cy);
 
-        // create the animation (the final radius is zero)
-        Animator anim =
-                ViewAnimationUtils.createCircularReveal(myView, cx, cy, initialRadius, 0);
+            // create the animation (the final radius is zero)
+            Animator anim =
+                    ViewAnimationUtils.createCircularReveal(myView, cx, cy, initialRadius, 0);
 
-        // make the view invisible when the animation is done
-        anim.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-                myView.setVisibility(View.INVISIBLE);
-            }
-        });
+            // make the view invisible when the animation is done
+            anim.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    myView.setVisibility(View.INVISIBLE);
+                }
+            });
 
-        // start the animation
-        anim.start();
+            // start the animation
+            anim.start();
+        } catch (Exception e) {
+            Log.i(Flags.LOGTAG, e.getMessage());
+            return false;
+        }
         return true;
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private Animator reveal(View myView) {
-        Animator anim;// get the center for the clipping circle
-        int cx = myView.getWidth() / 2;
-        int cy = myView.getHeight() / 2;
+    private boolean reveal(View p_myView) {
+        try{
+            p_myView.setVisibility(View.VISIBLE);
+            int cx = p_myView.getWidth() / 2;
+            int cy = p_myView.getHeight() / 2;
 
-        // get the final radius for the clipping circle
-        float finalRadius = (float) Math.hypot(cx, cy);
-        anim = ViewAnimationUtils.createCircularReveal(myView, cx, cy, 0, finalRadius);
-        return anim;
+            // get the final radius for the clipping circle
+            float finalRadius = (float) Math.hypot(cx, cy);
+            ViewAnimationUtils.createCircularReveal(p_myView, cx, cy, 0, finalRadius).start();
+        }catch (Exception e) {
+            Log.i(Flags.LOGTAG, e.getMessage());
+            return false;
+        }
+        return true;
     }
 
     @Override

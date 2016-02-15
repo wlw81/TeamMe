@@ -363,7 +363,8 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
                     TextView tv = new TextView(getApplicationContext());
                     tv.setVisibility(View.INVISIBLE);
                     tv.setPadding(0, padding, 0, padding);
-                    tv.setText(assignment.getPlayer().getName());
+                    tv.setText(" "+assignment.getPlayer().getName()+" ");
+                    tv.setTextColor(getResources().getColor(R.color.material_grey_600));
                     tv.setBackground(getResources().getDrawable(R.drawable.roundedcorner));
                     if(playerLayout.getChildCount() <= 0){
                         playerLayout.addView(viewTeamIcon);

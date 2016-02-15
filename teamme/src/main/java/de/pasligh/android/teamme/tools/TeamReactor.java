@@ -27,8 +27,7 @@ public final class TeamReactor {
 
     public static void decideTeams(int p_teamCount, int p_playerCount, List<PlayerAssignemnt> p_lisPreAssignments) {
 
-        assignmentsRevealed = 0;
-        assignments.clear();
+        resetReactor();
 
         for (int i = 0; i < p_playerCount; i++) {
             assignments.add(doAssignment(p_teamCount));
@@ -41,6 +40,12 @@ public final class TeamReactor {
         }
     }
 
+    private static void resetReactor() {
+        teamPosNumber = 1;
+        assignmentsRevealed = 0;
+        assignments.clear();
+    }
+
     /**
      * Transfers a pre assignment to the team reactor assignments.
      * @param pre
@@ -50,6 +55,8 @@ public final class TeamReactor {
         if (pre.getPlayer() != null) {
             for (PlayerAssignemnt assignmentByTeamReactor : assignments) {
                 if (assignmentByTeamReactor.getPlayer() == null) {
+
+                    // if there is no team preferred or the preferred team is fitting to the current assignment
                     if (pre.getTeam() <= 0 || pre.getTeam() == assignmentByTeamReactor.getTeam()) {
                         if (pre.getOrderNumber() != 1 || assignmentByTeamReactor.getOrderNumber() == 1) {
                             assignmentByTeamReactor.setPlayer(pre.getPlayer());
@@ -118,8 +125,7 @@ public final class TeamReactor {
     }
 
     public static void overwriteAssignments(Set<PlayerAssignemnt> p_set){
-        assignmentsRevealed = 0;
-        assignments.clear();
+        resetReactor();
         assignments.addAll(p_set);
         assignmentsRevealed = p_set.size();
     }

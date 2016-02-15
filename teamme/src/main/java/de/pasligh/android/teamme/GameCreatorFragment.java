@@ -73,7 +73,7 @@ public class GameCreatorFragment extends Fragment {
                 if (null != lastGame) {
                     int snackbarShowlenght = Snackbar.LENGTH_INDEFINITE;
                     if(!getFacade().getScores(lastGame.getId()).isEmpty()){
-                        snackbarShowlenght = Snackbar.LENGTH_SHORT;
+                        snackbarShowlenght = Snackbar.LENGTH_LONG;
                     }
 
                     java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getContext());
