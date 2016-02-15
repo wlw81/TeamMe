@@ -1,4 +1,10 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:id="@+id/TeamOverviewShareContext" android:title="@string/share" android:actionProviderClass="android.widget.ShareActionProvider" android:showAsAction="always"></item>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" >
+    <item
+        android:id="@+id/TeamOverviewShareContext"
+        app:actionProviderClass="android.support.v7.widget.ShareActionProvider"
+        app:showAsAction="always"
+        android:title="@string/share"></item>
 
 </menu><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/menu/team_overview.xml -->

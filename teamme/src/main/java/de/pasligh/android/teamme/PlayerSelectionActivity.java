@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +27,7 @@ import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.PlayerSelectionRV_Adapter;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
-public class PlayerSelectionActivity extends Activity implements View.OnClickListener {
+public class PlayerSelectionActivity extends Activity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
     private BackendFacade facade;
     PlayerSelectionRV_Adapter adapter;
@@ -106,7 +107,7 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
         }
 
         adapter = new PlayerSelectionRV_Adapter(getApplicationContext(), blankAssignments, Typeface.createFromAsset(getAssets(),
-                "fonts/Roboto-Thin.ttf"), dataAdapter, mapStarsPerPlayer, getIntent().getIntExtra(Flags.PLAYERCOUNT, -1));
+                "fonts/Roboto-Thin.ttf"), dataAdapter, this, mapStarsPerPlayer, getIntent().getIntExtra(Flags.PLAYERCOUNT, -1));
         rv.setAdapter(adapter);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.playserSelectionToolbar);
@@ -138,4 +139,14 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
 
     }
 
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        PlayerSelectionRV_Adapter.PlayerViewHolder pvh = (PlayerSelectionRV_Adapter.PlayerViewHolder) buttonView.getTag();
+        adapter.getAssignments().get(pvh.getAdapterPosition()).setRevealed(isChecked);
+        if (isChecked) {
+            pvh.expandView();
+        } else {
+            pvh.collapseView();
+        }
+    }
 }

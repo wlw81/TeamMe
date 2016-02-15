@@ -70,12 +70,12 @@ public class GameCreatorFragment extends Fragment {
             @Override
             public void run() {
                 final Game lastGame = getFacade().getLastGamePlayed();
-                int snackbarShowlenght = Snackbar.LENGTH_INDEFINITE;
-                if(!getFacade().getScores(lastGame.getId()).isEmpty()){
-                    snackbarShowlenght = Snackbar.LENGTH_SHORT;
-                }
-
                 if (null != lastGame) {
+                    int snackbarShowlenght = Snackbar.LENGTH_INDEFINITE;
+                    if(!getFacade().getScores(lastGame.getId()).isEmpty()){
+                        snackbarShowlenght = Snackbar.LENGTH_SHORT;
+                    }
+
                     java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getContext());
 
                     Snackbar
@@ -93,9 +93,6 @@ public class GameCreatorFragment extends Fragment {
                 }
             }
         }, 2000);
-
-
-
     }
 
     @Override
