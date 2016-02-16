@@ -420,6 +420,7 @@
     <string name="gameempty">None.</string>
     <string name="hello_world">Hello world!</string>
     <string name="log">log</string>
+    <string name="maxplayers_reached">Maximum player count reached.</string>
     <string name="more">more</string>
     <string name="mostactiveplayers">Most active players</string>
     <string name="newGameText">Start new game</string>

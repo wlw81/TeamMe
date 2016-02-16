@@ -21,7 +21,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import de.pasligh.android.teamme.backend.BackendFacade;
-import de.pasligh.android.teamme.objects.PlayerAssignemnt;
+import de.pasligh.android.teamme.objects.PlayerAssignment;
 
 /**
  * A fragment representing a single game detail screen. This fragment is either
@@ -66,9 +66,9 @@ public class GameStatisticsFragment extends Fragment {
 	private void addPlayerData(int p_gameCount) {
 		int minimumGames = p_gameCount / 8;
 		Map<String, Integer> gameCount_to_Player = new HashMap<String, Integer>();
-		List<PlayerAssignemnt> assignments = getFacade().getAllAssignments();
+		List<PlayerAssignment> assignments = getFacade().getAllAssignments();
 		if (!assignments.isEmpty()) {
-			for (PlayerAssignemnt addToCount : assignments) {
+			for (PlayerAssignment addToCount : assignments) {
 				if (gameCount_to_Player.containsKey(addToCount.getPlayer()
 						.getName())) {
 					gameCount_to_Player.put(addToCount.getPlayer().getName(),

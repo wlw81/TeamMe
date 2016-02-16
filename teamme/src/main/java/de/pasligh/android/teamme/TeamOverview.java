@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-import de.pasligh.android.teamme.objects.PlayerAssignemnt;
+import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.PredicateLayout;
 import de.pasligh.android.teamme.tools.TeamReactor;
@@ -40,6 +40,7 @@ public class TeamOverview extends AppCompatActivity implements View.OnClickListe
      */
     SectionsPagerAdapter mSectionsPagerAdapter;
     private ShareActionProvider mShareActionProvider;
+    private long gameId;
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -50,6 +51,8 @@ public class TeamOverview extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_overview);
+
+        gameId = getIntent().getExtras().getLong(Flags.GAME_ID);
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the app.
@@ -67,7 +70,7 @@ public class TeamOverview extends AppCompatActivity implements View.OnClickListe
         StringBuilder shareText = new StringBuilder();
         shareText.append(getString(R.string.shareIntent)).append(" ");
         int teamNr = 1;
-        List<PlayerAssignemnt> assignments;
+        List<PlayerAssignment> assignments;
         while (!(assignments = TeamReactor.getAssignmentsByTeam(teamNr))
                 .isEmpty()) {
             shareText.append(getString(R.string.team).toUpperCase(Locale.getDefault())).append(" ")
@@ -126,11 +129,11 @@ public class TeamOverview extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public int getCount() {
-            Iterator<PlayerAssignemnt> iterator = TeamReactor.getAssignments()
+            Iterator<PlayerAssignment> iterator = TeamReactor.getAssignments()
                     .iterator();
             Set<Integer> setTeamNr = new HashSet<Integer>();
             while (iterator.hasNext()) {
-                PlayerAssignemnt next = iterator.next();
+                PlayerAssignment next = iterator.next();
                 setTeamNr.add(next.getTeam());
             }
             return setTeamNr.size();
@@ -165,7 +168,7 @@ public class TeamOverview extends AppCompatActivity implements View.OnClickListe
                     container, false);
             PredicateLayout layout = (PredicateLayout) rootView
                     .findViewById(R.id.TeamOverviewSectionLayout);
-            for (PlayerAssignemnt assignmentToLayout : TeamReactor
+            for (PlayerAssignment assignmentToLayout : TeamReactor
                     .getAssignmentsByTeam(sectionr)) {
                 RelativeLayout playerDetail = (RelativeLayout) inflater
                         .inflate(R.layout.fragment_player_detail, container,
@@ -192,7 +195,7 @@ public class TeamOverview extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == (R.id.reportScoresFAB)) {
             Intent reportScores = new Intent(getApplicationContext(),
                     ReportScores.class);
-            reportScores.putExtra(Flags.GAME_ID, getIntent().getExtras().getLong(Flags.GAME_ID));
+            reportScores.putExtra(Flags.GAME_ID, gameId);
             startActivity(reportScores);
         }
     }

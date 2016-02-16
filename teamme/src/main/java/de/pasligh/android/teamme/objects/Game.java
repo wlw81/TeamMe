@@ -16,7 +16,7 @@ public class Game implements Serializable {
     }
 
     private Date startedAt;
-    private List<PlayerAssignemnt> assignments;
+    private List<PlayerAssignment> assignments;
 
     public int getId() {
         return id;
@@ -42,12 +42,12 @@ public class Game implements Serializable {
         super();
     }
 
-    public Game(Set<PlayerAssignemnt> p_assignments) {
+    public Game(Set<PlayerAssignment> p_assignments) {
         super();
-        assignments = new ArrayList<PlayerAssignemnt>();
+        assignments = new ArrayList<PlayerAssignment>();
         startedAt = new Date();
         sport = "unknown";
-        Iterator<PlayerAssignemnt> iterator = p_assignments.iterator();
+        Iterator<PlayerAssignment> iterator = p_assignments.iterator();
         while (iterator.hasNext()) {
             assignments.add(iterator.next());
         }
@@ -63,7 +63,7 @@ public class Game implements Serializable {
     /**
      * @return the assignments
      */
-    public List<PlayerAssignemnt> getAssignments() {
+    public List<PlayerAssignment> getAssignments() {
         return assignments;
     }
 

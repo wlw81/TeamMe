@@ -77,6 +77,7 @@
     <string name="gameempty">Aucune.</string>
     <string name="hello_world">Hello world!</string>
     <string name="log">Entrer</string>
+    <string name="maxplayers_reached">Atteint Nombre maximum de joueurs.</string>
     <string name="more">plus</string>
     <string name="mostactiveplayers">La plupart des joueurs actifs</string>
     <string name="newGameText">Commencer l\'exploration</string>

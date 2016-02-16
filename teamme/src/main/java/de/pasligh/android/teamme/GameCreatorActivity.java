@@ -95,6 +95,8 @@ public class GameCreatorActivity extends AppCompatActivity implements
         TTS_Tool.getInstance(this);
         setContentView(R.layout.activity_game_list);
 
+        TeamReactor.resetReactor();
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, getFacade()
                 .getSports());

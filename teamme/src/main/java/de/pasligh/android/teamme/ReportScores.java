@@ -23,7 +23,7 @@ import java.util.Set;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.Game;
-import de.pasligh.android.teamme.objects.PlayerAssignemnt;
+import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.objects.Score;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.ScoreRV_Adapter;
@@ -50,8 +50,8 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
         teamCount = getFacade().getTeamCount(gameId);
 
         if (TeamReactor.getAssignments() == null || TeamReactor.getAssignments().isEmpty()) {
-            Set<PlayerAssignemnt> readAssignments = new HashSet<>();
-            for (PlayerAssignemnt p : getFacade().getAssignments((int) gameId)) {
+            Set<PlayerAssignment> readAssignments = new HashSet<>();
+            for (PlayerAssignment p : getFacade().getAssignments((int) gameId)) {
                 p.setRevealed(true);
                 readAssignments.add(p);
             }

@@ -43,7 +43,7 @@ import android.widget.Toast;
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.Game;
 import de.pasligh.android.teamme.objects.Player;
-import de.pasligh.android.teamme.objects.PlayerAssignemnt;
+import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.TTS_Tool;
 import de.pasligh.android.teamme.tools.TeamReactor;
@@ -60,7 +60,7 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
     private Animation animationGlow;
     private MediaPlayer mPlayerLeft;
     private MediaPlayer mPlayerRight;
-    private PlayerAssignemnt myAssignment;
+    private PlayerAssignment myAssignment;
     private BackendFacade facade;
     private boolean autoShake = true;
 
@@ -250,7 +250,7 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
     private boolean checkIfAlreadyAssigned() {
         AutoCompleteTextView v = ((AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView));
         String playerName = v.getText().toString().trim();
-        for (PlayerAssignemnt checkAssignment : TeamReactor.getAssignments()) {
+        for (PlayerAssignment checkAssignment : TeamReactor.getAssignments()) {
             if (null != checkAssignment.getPlayer()
                     && checkAssignment.getPlayer().getName()
                     .equalsIgnoreCase(playerName)) {
@@ -358,7 +358,7 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
             ImageView viewTeamIcon = new ImageView(getApplicationContext());
             viewTeamIcon.setImageResource(R.drawable.team);
             teamLayout.addView(playerLayout);
-            for (PlayerAssignemnt assignment : TeamReactor.getAssignmentsByTeam(i)) {
+            for (PlayerAssignment assignment : TeamReactor.getAssignmentsByTeam(i)) {
                 if (assignment.isRevealed()) {
                     TextView tv = new TextView(getApplicationContext());
                     tv.setVisibility(View.INVISIBLE);
@@ -455,7 +455,7 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
     /**
      * @return the myAssignment
      */
-    public PlayerAssignemnt getMyAssignment() {
+    public PlayerAssignment getMyAssignment() {
         if (null == myAssignment) {
             myAssignment = TeamReactor.revealNextAssignment();
         }

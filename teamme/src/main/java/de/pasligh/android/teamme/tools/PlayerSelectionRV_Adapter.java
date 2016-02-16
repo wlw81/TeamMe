@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.RatingBar;
@@ -23,17 +24,17 @@ import java.util.List;
 import java.util.Map;
 
 import de.pasligh.android.teamme.R;
-import de.pasligh.android.teamme.objects.PlayerAssignemnt;
+import de.pasligh.android.teamme.objects.PlayerAssignment;
 
 /**
  * Created by Thomas on 06.02.2016.
  */
 public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelectionRV_Adapter.PlayerViewHolder> {
 
-    public List<PlayerAssignemnt> getAssignmentsDone() {
+    public List<PlayerAssignment> getAssignmentsDone() {
 
-        List<PlayerAssignemnt> assignmentsDone = new ArrayList<>();
-        for (PlayerAssignemnt p : assignments) {
+        List<PlayerAssignment> assignmentsDone = new ArrayList<>();
+        for (PlayerAssignment p : assignments) {
             if (p.isRevealed()) {
                 assignmentsDone.add(p);
             }
@@ -42,11 +43,11 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
         return assignmentsDone;
     }
 
-    public List<PlayerAssignemnt> getAssignments() {
+    public List<PlayerAssignment> getAssignments() {
         return assignments;
     }
 
-    private final static List<PlayerAssignemnt> assignments = new ArrayList<PlayerAssignemnt>();
+    private final static List<PlayerAssignment> assignments = new ArrayList<PlayerAssignment>();
     CompoundButton.OnCheckedChangeListener checkedChangeListener;
     Typeface tf;
     ArrayAdapter spinnerAdapter;
@@ -54,7 +55,7 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
     Context ctxt;
     int maxplayers = -1;
 
-    public PlayerSelectionRV_Adapter(Context p_ctxt, List<PlayerAssignemnt> p_playerAssignments, Typeface p_tf, ArrayAdapter p_spinnerAdapter, CompoundButton.OnCheckedChangeListener p_checkedChangeListener, Map<String, Integer> p_mapStarsPerPlayer, int p_maxPlayers) {
+    public PlayerSelectionRV_Adapter(Context p_ctxt, List<PlayerAssignment> p_playerAssignments, Typeface p_tf, ArrayAdapter p_spinnerAdapter, CompoundButton.OnCheckedChangeListener p_checkedChangeListener, Map<String, Integer> p_mapStarsPerPlayer, int p_maxPlayers) {
         ctxt = p_ctxt;
         assignments.addAll(p_playerAssignments);
         tf = p_tf;
@@ -75,6 +76,20 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
         pvh.rating.setEnabled(false);
         pvh.captainToggle.setVisibility(View.GONE);
         pvh.switchPlayer.setOnCheckedChangeListener(checkedChangeListener);
+        pvh.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                getAssignments().get(pvh.getAdapterPosition()).setTeam(arg2);
+                Log.i(Flags.LOGTAG, "Team change: "+getAssignments().get(pvh.getAdapterPosition())+ " now in Team "+arg2);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+
+            }
+
+        });
 
         return pvh;
     }
@@ -105,44 +120,6 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
         holder.spinner.setAdapter(spinnerAdapter);
     }
 
-    class MyOnCheckListener implements CompoundButton.OnCheckedChangeListener {
-
-        int position = -1;
-        PlayerViewHolder holder;
-
-        public MyOnCheckListener(PlayerViewHolder p_holder, int p_intPosition) {
-            position = p_intPosition;
-            holder = p_holder;
-        }
-
-        @Override
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if (buttonView.getId() == R.id.playerSelectionCV_Switch) {
-                if (isChecked) {
-                    if (getAssignmentsDone().size() < maxplayers) {
-                        Log.i(Flags.LOGTAG, "Selection " + assignments.get(position));
-                        //mapSwitchHolder.get(buttonView).captainToggle.setVisibility(View.VISIBLE);
-                        assignments.get(position).setRevealed(true);
-                        notifyDataSetChanged();
-                        holder.expandView();
-                    } else {
-                        buttonView.setChecked(false);
-                    }
-                } else {
-                    Log.i(Flags.LOGTAG, "Unchecked " + assignments.get(position));
-                    assignments.get(position).setRevealed(false);
-                    notifyDataSetChanged();
-                    holder.collapseView();
-                }
-            } else if (buttonView.getId() == R.id.playerSelectionCV_CaptainToggle) {
-                {
-                    // todo
-                }
-            }
-
-        }
-    }
-
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
@@ -161,9 +138,9 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
 
         public void showControls(boolean checked) {
             switchPlayer.setChecked(checked);
-            if(checked){
+            if (checked) {
                 spinner.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 spinner.setVisibility(View.GONE);
             }
             //holder.captainToggle.setVisibility(visible);
@@ -212,6 +189,7 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
             switchPlayer = ((Switch) itemView.findViewById(R.id.playerSelectionCV_Switch));
             captainToggle = ((ToggleButton) itemView.findViewById(R.id.playerSelectionCV_CaptainToggle));
             switchPlayer.setTag(this);
+            spinner.setTag(this);
 
             cv.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
 

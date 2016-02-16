@@ -14,7 +14,7 @@ import android.util.Log;
 
 import de.pasligh.android.teamme.objects.Game;
 import de.pasligh.android.teamme.objects.Player;
-import de.pasligh.android.teamme.objects.PlayerAssignemnt;
+import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.objects.Score;
 import de.pasligh.android.teamme.tools.Flags;
 
@@ -57,7 +57,7 @@ public class BackendFacade {
             value = getObjDatabase().insert(DatabaseHelper.TABLE_GAMES, null,
                     createGame_Values(p_saveGame));
             if (value >= 0) {
-                for (PlayerAssignemnt saveAssignment : p_saveGame.getAssignments()) {
+                for (PlayerAssignment saveAssignment : p_saveGame.getAssignments()) {
                     saveAssignment.setGame((int) value);
                     getObjDatabase().insert(DatabaseHelper.TABLE_ASSIGNMENTS, null,
                             createAssignment_Values(saveAssignment));
@@ -151,7 +151,7 @@ public class BackendFacade {
     }
 
     private ContentValues createAssignment_Values(
-            PlayerAssignemnt p_saveAssignment) {
+            PlayerAssignment p_saveAssignment) {
         ContentValues valuesReturn = new ContentValues();
         valuesReturn.put("sequence", p_saveAssignment.getOrderNumber());
         valuesReturn.put("team", p_saveAssignment.getTeam());
@@ -285,7 +285,7 @@ public class BackendFacade {
         return lastgame;
     }
 
-    public List<PlayerAssignemnt> getAssignments(int p_intGameID) {
+    public List<PlayerAssignment> getAssignments(int p_intGameID) {
         try {
             Cursor query = getObjDatabase().query(false,
                     DatabaseHelper.TABLE_ASSIGNMENTS, new String[]{"_id", "sequence", "team", "game_id", "player_id"},
@@ -297,7 +297,7 @@ public class BackendFacade {
         }
     }
 
-    public List<PlayerAssignemnt> getAllAssignments() {
+    public List<PlayerAssignment> getAllAssignments() {
         try {
             Cursor query = getObjDatabase().query(false,
                     DatabaseHelper.TABLE_ASSIGNMENTS, new String[]{"_id", "sequence", "team", "game_id", "player_id"},
@@ -309,10 +309,10 @@ public class BackendFacade {
         }
     }
 
-    private List<PlayerAssignemnt> moveQueryToAssignments(Cursor query) {
-        List<PlayerAssignemnt> assignments = new ArrayList<PlayerAssignemnt>();
+    private List<PlayerAssignment> moveQueryToAssignments(Cursor query) {
+        List<PlayerAssignment> assignments = new ArrayList<PlayerAssignment>();
         while (query.moveToNext()) {
-            PlayerAssignemnt addAssignment = new PlayerAssignemnt();
+            PlayerAssignment addAssignment = new PlayerAssignment();
             addAssignment.setId(query.getInt(0));
             addAssignment.setOrderNumber(query.getInt(1));
             addAssignment.setTeam(query.getInt(2));

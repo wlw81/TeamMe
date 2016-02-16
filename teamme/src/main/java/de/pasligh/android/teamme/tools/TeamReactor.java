@@ -10,12 +10,13 @@ import android.content.Context;
 import android.util.Log;
 
 import de.pasligh.android.teamme.R;
-import de.pasligh.android.teamme.objects.PlayerAssignemnt;
+import de.pasligh.android.teamme.objects.Player;
+import de.pasligh.android.teamme.objects.PlayerAssignment;
 
 public final class TeamReactor {
 
 
-    private static final Set<PlayerAssignemnt> assignments = new HashSet<PlayerAssignemnt>();
+    private static final Set<PlayerAssignment> assignments = new HashSet<PlayerAssignment>();
     private static int assignmentsRevealed;
 
     static int currentTeam = 0;
@@ -25,22 +26,23 @@ public final class TeamReactor {
         super();
     }
 
-    public static void decideTeams(int p_teamCount, int p_playerCount, List<PlayerAssignemnt> p_lisPreAssignments) {
-
+    public static void decideTeams(int p_teamCount, int p_playerCount, List<PlayerAssignment> p_lisPreAssignments) {
         resetReactor();
 
+        // adding the assignments to the hashset, will already randomize the order!
         for (int i = 0; i < p_playerCount; i++) {
             assignments.add(doAssignment(p_teamCount));
         }
 
         if (null != p_lisPreAssignments && !p_lisPreAssignments.isEmpty()) {
-            for (PlayerAssignemnt pre : p_lisPreAssignments) {
+            for (PlayerAssignment pre : p_lisPreAssignments) {
                 transferAssignment(pre);
             }
         }
     }
 
-    private static void resetReactor() {
+    public static void resetReactor() {
+        currentTeam = 0;
         teamPosNumber = 1;
         assignmentsRevealed = 0;
         assignments.clear();
@@ -48,12 +50,13 @@ public final class TeamReactor {
 
     /**
      * Transfers a pre assignment to the team reactor assignments.
+     *
      * @param pre
      * @return transferDone
      */
-    private static boolean transferAssignment(PlayerAssignemnt pre) {
+    private static boolean transferAssignment(PlayerAssignment pre) {
         if (pre.getPlayer() != null) {
-            for (PlayerAssignemnt assignmentByTeamReactor : assignments) {
+            for (PlayerAssignment assignmentByTeamReactor : assignments) {
                 if (assignmentByTeamReactor.getPlayer() == null) {
 
                     // if there is no team preferred or the preferred team is fitting to the current assignment
@@ -63,7 +66,7 @@ public final class TeamReactor {
                             assignmentsRevealed++;
                             assignmentByTeamReactor.setRevealed(true);
                             Log.i(Flags.LOGTAG, "Pre assigned -> " + assignmentByTeamReactor);
-                         return true;
+                            return true;
                         }
                     }
                 }
@@ -73,7 +76,7 @@ public final class TeamReactor {
         return false;
     }
 
-    private static PlayerAssignemnt doAssignment(int p_teamCount) {
+    private static PlayerAssignment doAssignment(int p_teamCount) {
         if (currentTeam < p_teamCount) {
             currentTeam++;
         } else {
@@ -81,7 +84,7 @@ public final class TeamReactor {
             teamPosNumber++;
         }
 
-        PlayerAssignemnt assignment = new PlayerAssignemnt();
+        PlayerAssignment assignment = new PlayerAssignment();
         assignment.setTeam(currentTeam);
         assignment.setOrderNumber(teamPosNumber);
         return assignment;
@@ -95,11 +98,11 @@ public final class TeamReactor {
         return getAssignmentsRevealed() < assignments.size();
     }
 
-    public static PlayerAssignemnt revealNextAssignment() {
-        Iterator<PlayerAssignemnt> iterator = assignments.iterator();
+    public static PlayerAssignment revealNextAssignment() {
+        Iterator<PlayerAssignment> iterator = assignments.iterator();
 
         while (iterator.hasNext()) {
-            PlayerAssignemnt assignemnt = iterator.next();
+            PlayerAssignment assignemnt = iterator.next();
             if (!assignemnt.isRevealed()) {
                 assignmentsRevealed++;
                 assignemnt.setRevealed(true);
@@ -120,18 +123,18 @@ public final class TeamReactor {
     /**
      * @return the assignments
      */
-    public static Set<PlayerAssignemnt> getAssignments() {
+    public static Set<PlayerAssignment> getAssignments() {
         return assignments;
     }
 
-    public static void overwriteAssignments(Set<PlayerAssignemnt> p_set){
+    public static void overwriteAssignments(Set<PlayerAssignment> p_set) {
         resetReactor();
         assignments.addAll(p_set);
         assignmentsRevealed = p_set.size();
     }
 
     public static String createPlayertitle(Context p_contxt,
-                                           PlayerAssignemnt p_assignment) {
+                                           PlayerAssignment p_assignment) {
         if (p_assignment.getOrderNumber() == 0) {
             return (p_contxt.getResources().getString(R.string.captain));
         } else {
@@ -142,25 +145,17 @@ public final class TeamReactor {
         }
     }
 
-    public static List<PlayerAssignemnt> getAssignmentsByTeam(int p_teamNr) {
-        PlayerAssignemnt[] teamAssignments = new PlayerAssignemnt[getAssignments()
-                .size()];
-        Iterator<PlayerAssignemnt> iterator = getAssignments().iterator();
-        while (iterator.hasNext()) {
-            PlayerAssignemnt next = iterator.next();
-            if (next.getTeam() == p_teamNr) {
-                teamAssignments[next.getOrderNumber()] = next;
+    public static List<PlayerAssignment> getAssignmentsByTeam(int p_teamNr) {
+        List<PlayerAssignment> teamAssignments = new ArrayList<>();
+
+        for (PlayerAssignment p : getAssignments()) {
+            if (p.getTeam() == p_teamNr) {
+                if(p.getPlayer() != null){
+                    teamAssignments.add(p);}
             }
         }
 
-        // remove nuller items
-        List<PlayerAssignemnt> assignmentsReturn = new ArrayList<PlayerAssignemnt>();
-        for (PlayerAssignemnt assignmentAdd : teamAssignments) {
-            if (null != assignmentAdd) {
-                assignmentsReturn.add(assignmentAdd);
-            }
-        }
-        return assignmentsReturn;
+        return teamAssignments;
 
     }
 

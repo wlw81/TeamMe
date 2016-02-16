@@ -2,7 +2,7 @@ package de.pasligh.android.teamme.objects;
 
 import java.io.Serializable;
 
-public class PlayerAssignemnt implements Serializable{
+public class PlayerAssignment implements Serializable{
 
 	private static final long serialVersionUID = 1184064512639132414L;
 	

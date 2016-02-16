@@ -81,36 +81,30 @@ public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundR
     @Override
     public void onBindViewHolder(RoundResultViewHolder holder, int position) {
         Score score = null;
-        try {
-            score = (Score) roundResultMap.get(position).get(0);
-            holder.playerName.setText(String.valueOf(score.getRoundNr() + 1));
-            holder.playerName.setTypeface(tf);
-            holder.round.setTypeface(tf);
-            holder.getLayoutButtons().removeAllViews();
+        score = (Score) roundResultMap.get(position).get(0);
+        holder.playerName.setText(String.valueOf(score.getRoundNr() + 1));
+        holder.playerName.setTypeface(tf);
+        holder.round.setTypeface(tf);
+        holder.getLayoutButtons().removeAllViews();
 
-            int intWinnerTeam = -1;
-            int intHighestScore = -1;
-            List<Score> lisScore = getRoundResultMap().get(score.getRoundNr());
-            for (Score s : lisScore) {
-                if (s.getScoreCount() > intHighestScore) {
-                    intHighestScore = s.getScoreCount();
-                    intWinnerTeam = s.getTeamNr();
-                } else if (intHighestScore >= 0 && s.getScoreCount() == intHighestScore) {
-                    intWinnerTeam = 4200;
-                }
+        int intWinnerTeam = -1;
+        int intHighestScore = -1;
+        List<Score> lisScore = getRoundResultMap().get(score.getRoundNr());
+        for (Score s : lisScore) {
+            if (s.getScoreCount() > intHighestScore) {
+                intHighestScore = s.getScoreCount();
+                intWinnerTeam = s.getTeamNr();
+            } else if (intHighestScore >= 0 && s.getScoreCount() == intHighestScore) {
+                intWinnerTeam = 4200;
             }
-
-            if (intWinnerTeam >= 0 && intWinnerTeam < 4200) {
-                holder.getResult().setText(ctxt.getString(R.string.team) + " " + TeamReactor.getAssignmentsByTeam(intWinnerTeam).get(0).getPlayer().getName() + " " + ctxt.getString(R.string.wins));
-            } else {
-                holder.getResult().setText(ctxt.getString(R.string.draw));
-            }
-        } catch (Exception e) {
-            Log.e(Flags.LOGTAG, e.getMessage());
-            holder.playerName.setText("?");
-        } finally {
-            listener.recieveHolder(holder, roundResultMap.get(position));
         }
+
+        if (intWinnerTeam >= 0 && intWinnerTeam < 4200) {
+            holder.getResult().setText(ctxt.getString(R.string.team) + " " + TeamReactor.getAssignmentsByTeam(intWinnerTeam).get(0).getPlayer().getName() + " " + ctxt.getString(R.string.wins));
+        } else {
+            holder.getResult().setText(ctxt.getString(R.string.draw));
+        }
+        listener.recieveHolder(holder, getRoundResultMap().get(position));
     }
 
 

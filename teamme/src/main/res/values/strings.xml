@@ -69,4 +69,5 @@
     <string name="wins">wins</string>
     <string name="draw">Draw</string>
     <string name="round">Round</string>
+    <string name="maxplayers_reached">Maximum player count reached.</string>
 </resources>
