@@ -92,6 +92,31 @@ public class BackendFacade {
         }
     }
 
+    public List<Game> getGames() {
+        List<Game> games = new ArrayList<Game>();
+
+        try {
+            Cursor query = getObjDatabase().query(false,
+                    DatabaseHelper.TABLE_GAMES, new String[]{"_id", "category_ordinal", "sport", "created"},
+                    null, null, null, null, "_id desc", "50");
+
+            while (query.moveToNext()) {
+                Game gameRead = new Game();
+                gameRead.setId(query.getInt(0));
+                //gameRead...
+                gameRead.setSport(query.getString(2));
+                gameRead.setStartedAt(objDateFormat.parse(query.getString(3)));
+                games.add(gameRead);
+            }
+            query.close();
+        } catch (Exception e) {
+            Log.e(Flags.LOGTAG, e.toString());
+            return null;
+        }
+
+        return games;
+    }
+
     public List<Game> getGames(String p_strSports) {
         List<Game> games = new ArrayList<Game>();
 
@@ -125,11 +150,11 @@ public class BackendFacade {
             if (p_lngGameID >= 0) {
                 query = getObjDatabase().query(false,
                         DatabaseHelper.TABLE_SCORES, new String[]{"TEAM", "game_id", "round", "scorecount"},
-                        "game_id = ?1", new String[]{String.valueOf(p_lngGameID)}, null, null, "game_id", null);
+                        "game_id = ?1", new String[]{String.valueOf(p_lngGameID)}, null, null, "game_id, round, team", null);
             } else {
                 query = getObjDatabase().query(false,
                         DatabaseHelper.TABLE_SCORES, new String[]{"TEAM", "game_id", "round", "scorecount"},
-                        null, null, null, null, "game_id", null);
+                        null, null, null, null, "game_id, round, team", null);
             }
 
             while (query.moveToNext()) {

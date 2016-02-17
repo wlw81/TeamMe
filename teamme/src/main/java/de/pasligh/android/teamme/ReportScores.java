@@ -1,23 +1,37 @@
 package de.pasligh.android.teamme;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.ShareActionProvider;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.widget.Button;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -35,7 +49,8 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
     ScoreRV_Adapter adapter;
     int teamCount;
     long gameId;
-
+    private ShareActionProvider mShareActionProvider;
+    private StaggeredGridLayoutManager gridLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +74,23 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
         }
 
         RecyclerView rv = (RecyclerView) findViewById(R.id.RoundResultRV);
-        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
-        rv.setLayoutManager(llm);
+
+        float scalefactor = getResources().getDisplayMetrics().density * 100;
+        int number = getWindowManager().getDefaultDisplay().getWidth();
+        int columns = 1;
+        try {
+            columns = (int) Math.max(1, ((float) number / (float) scalefactor) / 4);
+        } catch (Exception e) {
+            Log.w(Flags.LOGTAG, "Can't determine column count (" + e.getMessage() + ")!");
+        }
+
+
+        // First param is number of columns and second param is orientation i.e Vertical or Horizontal
+        gridLayoutManager =
+                new StaggeredGridLayoutManager(columns, StaggeredGridLayoutManager.VERTICAL);
+        // Attach the layout manager to the recycler view
+        rv.setLayoutManager(gridLayoutManager);
+
         List<Score> scoreList = getScores();
         if (scoreList.isEmpty()) {
             scoreList.addAll(createDummyScores(0));
@@ -68,12 +98,154 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
         Typeface tf = Typeface.createFromAsset(getAssets(),
                 "fonts/Roboto-Thin.ttf");
 
+        ((TextView) findViewById(R.id.ScoreWinnerTV)).setTypeface(tf);
+
         adapter = new ScoreRV_Adapter(getApplicationContext(), scoreList, tf, this);
         rv.setAdapter(adapter);
         java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         ((FloatingActionButton) findViewById(R.id.addScoreFAB)).setOnClickListener(this);
         Game game = getFacade().getGame((int) gameId);
         getSupportActionBar().setTitle(game.getSport() + " " + dateFormat.format(game.getStartedAt()));
+        publishWinningTeam(scoreList);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.report_scores, menu);
+        // Locate MenuItem with ShareActionProvider
+        MenuItem item = menu.findItem(R.id.ScoreShareContext);
+
+        // Fetch and store ShareActionProvider
+        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
+        mShareActionProvider.setShareIntent(createShareIntent());
+        return true;
+    }
+
+    private Intent createShareIntent() {
+        java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
+        Game game = getFacade().getGame((int) gameId);
+        String title = game.getSport() + " " + dateFormat.format(game.getStartedAt());
+        StringBuilder shareText = new StringBuilder(title + " - ");
+
+        for (int i = 0; i < adapter.getItemCount(); i++) {
+            int roundNr = 1 + i;
+            shareText.append(getString(R.string.round) + " " + roundNr + ":");
+            for (Score p_score : getScores()) {
+                if (p_score.getRoundNr() == i) {
+                    String teamname = TeamReactor.getAssignmentsByTeam(p_score.getTeamNr()).get(0).getPlayer().getName();
+                    shareText.append(" " + getString(R.string.team) + " " + teamname + " " + p_score.getScoreCount());
+                }
+            }
+            shareText.append(". ");
+        }
+
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, ((TextView) (findViewById(R.id.ScoreWinnerTV))).getText().toString());
+        shareIntent.putExtra(Intent.EXTRA_TEXT, shareText.toString().trim());
+        return shareIntent;
+    }
+
+    public void publishWinningTeam(List<Score> p_scoreList) {
+        Integer[][] wonRounds = new Integer[adapter.getItemCount()][teamCount + 1];
+        Integer[][] pointsEachRound = new Integer[adapter.getItemCount()][teamCount + 1];
+
+        for (int currentRoundNr = 0; currentRoundNr < pointsEachRound.length; currentRoundNr++) {
+            int highestScore = -1;
+            for (int currentTeam = 1; currentTeam < pointsEachRound[currentRoundNr].length; currentTeam++) {
+                // we're adding everything up to an 2dim array, so we can scroll through nicely
+                for (Score s : p_scoreList) {
+                    if (s.getRoundNr() == currentRoundNr && s.getTeamNr() == currentTeam) {
+                        if (pointsEachRound[currentRoundNr][currentTeam] == null) {
+                            pointsEachRound[currentRoundNr][currentTeam] = new Integer(0);
+                        }
+                        pointsEachRound[currentRoundNr][currentTeam] += s.getScoreCount();
+
+                        // let's measure the highest score!
+                        if (s.getScoreCount() >= highestScore) {
+                            highestScore = s.getScoreCount();
+                        }
+                    }
+                }
+            }
+
+
+            // let's see wich team gained the most points this round
+            for (int currentTeam = 1; currentTeam < pointsEachRound[currentRoundNr].length; currentTeam++) {
+                if (pointsEachRound[currentRoundNr][currentTeam] == highestScore) {
+                    if (wonRounds[currentRoundNr][currentTeam] == null) {
+                        wonRounds[currentRoundNr][currentTeam] = new Integer(0);
+                    }
+                    wonRounds[currentRoundNr][currentTeam] += 1; // team scored a round point!
+                }
+            }
+
+
+        }
+
+        Integer[] overAllScoreEachTeam = new Integer[teamCount + 1];
+        Integer[] roundPointsEachTeam = new Integer[teamCount + 1];
+
+        for (int round = 0; round < wonRounds.length; round++) {
+            for (int team = 1; team < wonRounds[round].length; team++) {
+
+                if (roundPointsEachTeam[team] == null) {
+                    roundPointsEachTeam[team] = new Integer(0);
+                }
+
+                if (overAllScoreEachTeam[team] == null) {
+                    overAllScoreEachTeam[team] = new Integer(0);
+                }
+
+                if (null != wonRounds[round][team]) {
+                    roundPointsEachTeam[team] += wonRounds[round][team];
+                }
+
+                if (null != pointsEachRound[round][team]) {
+                    overAllScoreEachTeam[team] += pointsEachRound[round][team];
+                }
+            }
+        }
+
+
+        int maxRoundPoints = 0;
+        int winningTeam = -1;
+        for (int team = 1; team < roundPointsEachTeam.length; team++) {
+            if (winningTeam == -1 || roundPointsEachTeam[team] > maxRoundPoints) {
+                maxRoundPoints = roundPointsEachTeam[team];
+                winningTeam = team;
+                Log.i(Flags.LOGTAG, "Wins through roundpoints - team " + team + " round points:  " + roundPointsEachTeam[team]);
+            } else if (roundPointsEachTeam[team] == maxRoundPoints) {
+                winningTeam = 4200;
+                Log.i(Flags.LOGTAG, "Even through roundpoints - team " + team + " round points:  " + roundPointsEachTeam[team]);
+            }
+        }
+
+        if (winningTeam == 4200) {
+            winningTeam = -1;
+            int maxOverAllScore = 0;
+            for (int team = 1; team < overAllScoreEachTeam.length; team++) {
+                int compareScore = overAllScoreEachTeam[team];
+                if (winningTeam == -1 || compareScore > maxOverAllScore) {
+                    maxOverAllScore = compareScore;
+                    winningTeam = team;
+                    Log.i(Flags.LOGTAG, "Wins through overall score - team " + team + " score:  " + compareScore);
+                } else if (compareScore == maxOverAllScore) {
+                    winningTeam = 4200;
+                    Log.i(Flags.LOGTAG, "Even through overall score - team " + team + " score:  " + compareScore);
+                }
+            }
+        }
+
+
+        if (winningTeam != 4200) {
+            ((TextView) findViewById(R.id.ScoreWinnerTV)).setText(getString(R.string.team)+" " + TeamReactor.getAssignmentsByTeam(winningTeam).get(0).getPlayer().getName() + " "+getString(R.string.wins)+"!");
+        } else {
+            ((TextView) findViewById(R.id.ScoreWinnerTV)).setText(getString(R.string.draw).toUpperCase()+"!");
+        }
+
+
     }
 
     private List<Score> createDummyScores(int p_intRoundNr) {
@@ -86,8 +258,17 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
         return scoreList;
     }
 
-    public void reload(List<Score> p_lisScores) {
+    public void reload(List<Score> p_lisScores, boolean p_hideFAB) {
         adapter.updateScores(p_lisScores, true);
+        publishWinningTeam(p_lisScores);
+        mShareActionProvider.setShareIntent(createShareIntent());
+        if (p_hideFAB) {
+            if (findViewById(R.id.addScoreFAB).getVisibility() == View.VISIBLE) {
+                if (!hide()) {
+                    findViewById(R.id.addScoreFAB).setVisibility(View.INVISIBLE);
+                }
+            }
+        }
     }
 
     @NonNull
@@ -124,7 +305,14 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
                                 }
                                 s.setScoreCount(np.getValue());
                                 getFacade().mergeScore(s);
-                                reload(getScores());
+                                reload(getScores(), false);
+                                // previously invisible view
+                                View myView = findViewById(R.id.addScoreFAB);
+                                if (myView.getVisibility() != View.VISIBLE) {
+                                    if (!reveal(myView)) {
+                                        myView.setVisibility(View.VISIBLE);
+                                    }
+                                }
                             }
                         });
                         builder.show();
@@ -133,6 +321,58 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
             });
             p_holder.getLayoutButtons().addView(buttonTeam);
         }
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private boolean hide() {
+        try {
+            // previously visible view
+            final View myView = findViewById(R.id.newGameFAB);
+
+            // get the center for the clipping circle
+            int cx = myView.getWidth() / 2;
+            int cy = myView.getHeight() / 2;
+
+            // get the initial radius for the clipping circle
+            float initialRadius = (float) Math.hypot(cx, cy);
+
+            // create the animation (the final radius is zero)
+            Animator anim =
+                    ViewAnimationUtils.createCircularReveal(myView, cx, cy, initialRadius, 0);
+
+            // make the view invisible when the animation is done
+            anim.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    myView.setVisibility(View.INVISIBLE);
+                }
+            });
+
+            // start the animation
+            anim.start();
+        } catch (Exception e) {
+            Log.i(Flags.LOGTAG, e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private boolean reveal(View p_myView) {
+        try {
+            p_myView.setVisibility(View.VISIBLE);
+            int cx = p_myView.getWidth() / 2;
+            int cy = p_myView.getHeight() / 2;
+
+            // get the final radius for the clipping circle
+            float finalRadius = (float) Math.hypot(cx, cy);
+            ViewAnimationUtils.createCircularReveal(p_myView, cx, cy, 0, finalRadius).start();
+        } catch (Exception e) {
+            Log.i(Flags.LOGTAG, e.getMessage());
+            return false;
+        }
+        return true;
     }
 
     public Score createNewScore_toResults(int p_intRoundNr, int p_intTeamNr) {
@@ -155,7 +395,7 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
         if (v.getId() == R.id.addScoreFAB) {
             List<Score> lisScores = getScores();
             lisScores.addAll(createDummyScores(adapter.getRoundResultMap().size()));
-            reload(lisScores);
+            reload(lisScores, true);
         }
     }
 }

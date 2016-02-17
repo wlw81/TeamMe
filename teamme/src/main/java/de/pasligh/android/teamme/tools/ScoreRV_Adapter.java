@@ -87,20 +87,19 @@ public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundR
         holder.round.setTypeface(tf);
         holder.getLayoutButtons().removeAllViews();
 
-        int intWinnerTeam = -1;
-        int intHighestScore = -1;
         List<Score> lisScore = getRoundResultMap().get(score.getRoundNr());
+        int intHighestScore = -1;
         for (Score s : lisScore) {
             if (s.getScoreCount() > intHighestScore) {
                 intHighestScore = s.getScoreCount();
-                intWinnerTeam = s.getTeamNr();
+                holder.setIntWinnerTeam( s.getTeamNr());
             } else if (intHighestScore >= 0 && s.getScoreCount() == intHighestScore) {
-                intWinnerTeam = 4200;
+                holder.setIntWinnerTeam(4200);
             }
         }
 
-        if (intWinnerTeam >= 0 && intWinnerTeam < 4200) {
-            holder.getResult().setText(ctxt.getString(R.string.team) + " " + TeamReactor.getAssignmentsByTeam(intWinnerTeam).get(0).getPlayer().getName() + " " + ctxt.getString(R.string.wins));
+        if (holder.getIntWinnerTeam() >= 0 && holder.getIntWinnerTeam() < 4200) {
+            holder.getResult().setText(ctxt.getString(R.string.team) + " " + TeamReactor.getAssignmentsByTeam(holder.getIntWinnerTeam()).get(0).getPlayer().getName() + " " + ctxt.getString(R.string.wins));
         } else {
             holder.getResult().setText(ctxt.getString(R.string.draw));
         }
@@ -118,6 +117,16 @@ public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundR
         TextView round;
         LinearLayout layoutButtons;
         TextView playerName;
+
+        public int getIntWinnerTeam() {
+            return intWinnerTeam;
+        }
+
+        public void setIntWinnerTeam(int intWinnerTeam) {
+            this.intWinnerTeam = intWinnerTeam;
+        }
+
+        int intWinnerTeam = -1;
 
         public TextView getResult() {
             return result;

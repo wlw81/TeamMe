@@ -29,7 +29,7 @@ import de.pasligh.android.teamme.objects.PlayerAssignment;
 /**
  * Created by Thomas on 06.02.2016.
  */
-public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelectionRV_Adapter.PlayerViewHolder> {
+public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelectionRV_Adapter.PlayerViewHolder> implements AdapterView.OnItemSelectedListener, CompoundButton.OnCheckedChangeListener {
 
     public List<PlayerAssignment> getAssignmentsDone() {
 
@@ -57,6 +57,7 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
 
     public PlayerSelectionRV_Adapter(Context p_ctxt, List<PlayerAssignment> p_playerAssignments, Typeface p_tf, ArrayAdapter p_spinnerAdapter, CompoundButton.OnCheckedChangeListener p_checkedChangeListener, Map<String, Integer> p_mapStarsPerPlayer, int p_maxPlayers) {
         ctxt = p_ctxt;
+        assignments.clear();
         assignments.addAll(p_playerAssignments);
         tf = p_tf;
         spinnerAdapter = p_spinnerAdapter;
@@ -75,21 +76,9 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
         pvh.spinner.setVisibility(View.GONE);
         pvh.rating.setEnabled(false);
         pvh.captainToggle.setVisibility(View.GONE);
+        pvh.captainToggle.setOnCheckedChangeListener(PlayerSelectionRV_Adapter.this);
         pvh.switchPlayer.setOnCheckedChangeListener(checkedChangeListener);
-        pvh.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                getAssignments().get(pvh.getAdapterPosition()).setTeam(arg2);
-                Log.i(Flags.LOGTAG, "Team change: "+getAssignments().get(pvh.getAdapterPosition())+ " now in Team "+arg2);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-
-            }
-
-        });
+        pvh.spinner.setOnItemSelectedListener(PlayerSelectionRV_Adapter.this);
 
         return pvh;
     }
@@ -140,10 +129,11 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
             switchPlayer.setChecked(checked);
             if (checked) {
                 spinner.setVisibility(View.VISIBLE);
+                captainToggle.setVisibility(View.VISIBLE);
             } else {
                 spinner.setVisibility(View.GONE);
+                captainToggle.setVisibility(View.GONE);
             }
-            //holder.captainToggle.setVisibility(visible);
         }
 
         public void collapseView() {
@@ -188,6 +178,8 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
             rating = ((RatingBar) itemView.findViewById(R.id.playerSelectionCV_RatingBar));
             switchPlayer = ((Switch) itemView.findViewById(R.id.playerSelectionCV_Switch));
             captainToggle = ((ToggleButton) itemView.findViewById(R.id.playerSelectionCV_CaptainToggle));
+
+            captainToggle.setTag(this);
             switchPlayer.setTag(this);
             spinner.setTag(this);
 
@@ -208,6 +200,28 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
 
         }
     }
+    @Override
+    public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+        PlayerViewHolder pvh = (PlayerViewHolder) arg0.getTag();
+        getAssignments().get(pvh.getAdapterPosition()).setTeam(arg2);
+        Log.i(Flags.LOGTAG, "Team change: " + getAssignments().get(pvh.getAdapterPosition()) + " now in Team " + arg2);
+    }
 
+    @Override
+    public void onNothingSelected(AdapterView<?> arg0) {
 
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        PlayerViewHolder pvh = (PlayerViewHolder) buttonView.getTag();
+        if(isChecked){
+            getAssignments().get(pvh.getAdapterPosition()).setOrderNumber(1);
+            Log.i(Flags.LOGTAG, "Team change: " + getAssignments().get(pvh.getAdapterPosition()).getPlayer() + " is now el capitano!");
+        }else{
+            getAssignments().get(pvh.getAdapterPosition()).setOrderNumber(-1);
+            Log.i(Flags.LOGTAG, "Team change: " + getAssignments().get(pvh.getAdapterPosition()).getPlayer() + " is not the captain anymore");
+        }
+
+    }
 }

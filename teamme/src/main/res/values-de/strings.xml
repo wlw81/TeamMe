@@ -58,10 +58,14 @@
     <string name="pref_description_autoshake">Wenn Sie diese Option deaktivieren, muss der Spieler das Gerät schütteln um zugeteilt zu werden.</string>
     <string name="pref_preselection">Spieler Vorauswahl</string>
     <string name="pref_description_preselection">Zeigt einen Bildschirm zur Vorauswahl von Spielern.</string>
-    <string name="log">Nachtragen</string>
     <string name="wins">gewinnt</string>
     <string name="draw">Unentschieden</string>
     <string name="pref_header_general">Allgemein</string>
     <string name="round">Runde</string>
     <string name="maxplayers_reached">Maximale Spieleranzahl erreicht.</string>
+    <string name="log_complete">Hinzufügen</string>
+    <string name="log">Eintragen</string>
+    <string name="jump2game">Spielausgänge ansehen</string>
+    <string name="selectGame">Spiel auswählen</string>
+    <string name="cancel">Abbrechen</string>
 </resources>

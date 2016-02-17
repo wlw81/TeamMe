@@ -1,6 +1,8 @@
 package de.pasligh.android.teamme.tools;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -146,17 +148,24 @@ public final class TeamReactor {
     }
 
     public static List<PlayerAssignment> getAssignmentsByTeam(int p_teamNr) {
-        List<PlayerAssignment> teamAssignments = new ArrayList<>();
+        PlayerAssignment[] assignments = new PlayerAssignment[getAssignments().size()];
 
         for (PlayerAssignment p : getAssignments()) {
             if (p.getTeam() == p_teamNr) {
-                if(p.getPlayer() != null){
-                    teamAssignments.add(p);}
+                if (p.getPlayer() != null) {
+                    assignments[p.getOrderNumber() - 1] = p;
+                }
             }
         }
 
-        return teamAssignments;
+        ArrayList<PlayerAssignment> list = new ArrayList<>();
+        for(PlayerAssignment p : assignments){
+            if(p != null && p.getOrderNumber() > 0){
+                list.add(p);
+            }
+        }
 
+        return list;
     }
 
 }

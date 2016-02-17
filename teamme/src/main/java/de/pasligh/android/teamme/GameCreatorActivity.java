@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
@@ -38,8 +40,12 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.Game;
+import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.HoloCircleSeekBar;
 import de.pasligh.android.teamme.tools.HoloCircleSeekBar.OnCircleSeekBarChangeListener;
@@ -148,7 +154,16 @@ public class GameCreatorActivity extends AppCompatActivity implements
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.AboutItem) {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-            alertDialog.setTitle(getString(R.string.app_name));
+
+            String version = "";
+            try {
+                PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+                version = pInfo.versionName;
+            } catch (PackageManager.NameNotFoundException e) {
+                version = "unknown";
+            }
+
+            alertDialog.setTitle(getString(R.string.app_name) + " " + version);
             alertDialog.setMessage("by Thomas Pasligh");
             alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
                     new DialogInterface.OnClickListener() {
@@ -157,6 +172,54 @@ public class GameCreatorActivity extends AppCompatActivity implements
                     });
             alertDialog.setIcon(R.drawable.ic_launcher);
             alertDialog.show();
+        } else if (item.getItemId() == R.id.Jump2GameItem) {
+
+            if(getFacade().getLastGamePlayed() != null){
+                AlertDialog.Builder builderSingle = new AlertDialog.Builder(GameCreatorActivity.this);
+                builderSingle.setIcon(R.drawable.write);
+                builderSingle.setTitle(getString(R.string.selectGame));
+
+                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                        GameCreatorActivity.this,
+                        android.R.layout.simple_selectable_list_item);
+                java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
+                final List<Game> games = new ArrayList<>(); // so we don't have to read that later again
+                for (Game g : getFacade().getGames()) {
+                    List<PlayerAssignment> assignments = getFacade().getAssignments(g.getId());
+
+                    String caption = g.getSport() + " " + dateFormat.format(g.getStartedAt());
+                    if (assignments != null) {
+                        caption += " (" + getFacade().getAssignments(g.getId()).size() + " " + getString(R.string.player)+ ")";
+                    }
+                    arrayAdapter.add(caption);
+                    games.add(g);
+                }
+
+                builderSingle.setNegativeButton(
+                        getString(R.string.cancel),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                builderSingle.setAdapter(
+                        arrayAdapter,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent reportScores = new Intent(getApplicationContext(),
+                                        ReportScores.class);
+                                reportScores.putExtra(Flags.GAME_ID, games.get(which).getId());
+                                startActivity(reportScores);
+                            }
+                        });
+                builderSingle.show();
+            }else{
+                Toast.makeText(getApplicationContext(), getString(R.string.cancel), Toast.LENGTH_SHORT).show();;
+            }
+
         } else if (item.getItemId() == R.id.SettingsItem) {
             Intent settingsActivity = new Intent(getApplicationContext(),
                     SettingsActivity.class);
@@ -345,7 +408,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private boolean reveal(View p_myView) {
-        try{
+        try {
             p_myView.setVisibility(View.VISIBLE);
             int cx = p_myView.getWidth() / 2;
             int cy = p_myView.getHeight() / 2;
@@ -353,7 +416,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
             // get the final radius for the clipping circle
             float finalRadius = (float) Math.hypot(cx, cy);
             ViewAnimationUtils.createCircularReveal(p_myView, cx, cy, 0, finalRadius).start();
-        }catch (Exception e) {
+        } catch (Exception e) {
             Log.i(Flags.LOGTAG, e.getMessage());
             return false;
         }

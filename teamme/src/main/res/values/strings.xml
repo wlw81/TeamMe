@@ -65,9 +65,13 @@
     <string name="pref_description_autoshake">If you disable this option, the player has to shake the device to get revealed.</string>
     <string name="pref_preselection">Enable player pre selection</string>
     <string name="pref_description_preselection">Show the player selection to boost teambuilding.</string>
-    <string name="log">log</string>
+    <string name="log">Log</string>
     <string name="wins">wins</string>
     <string name="draw">Draw</string>
     <string name="round">Round</string>
     <string name="maxplayers_reached">Maximum player count reached.</string>
+    <string name="log_complete">Add</string>
+    <string name="jump2game">Browse game results</string>
+    <string name="selectGame">Select game</string>
+    <string name="cancel">Cancel</string>
 </resources>

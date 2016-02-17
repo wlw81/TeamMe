@@ -370,6 +370,7 @@
     <string name="auth_google_play_services_client_google_display_name">Google</string>
     <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="cancel">Cancel</string>
     <string name="cancelDialog_negative">Continue team building</string>
     <string name="cancelDialog_positive">Start from scratch</string>
     <string name="cancelDialog_question">Abort team building and start from scratch?</string>
@@ -419,7 +420,9 @@
     <string name="gamedatetext">Last time played</string>
     <string name="gameempty">None.</string>
     <string name="hello_world">Hello world!</string>
-    <string name="log">log</string>
+    <string name="jump2game">Browse game results</string>
+    <string name="log">Log</string>
+    <string name="log_complete">Add</string>
     <string name="maxplayers_reached">Maximum player count reached.</string>
     <string name="more">more</string>
     <string name="mostactiveplayers">Most active players</string>
@@ -442,6 +445,7 @@
     <string name="pref_preselection">Enable player pre selection</string>
     <string name="random">random</string>
     <string name="round">Round</string>
+    <string name="selectGame">Select game</string>
     <string name="shake">&lt;&lt;&lt; Shake! >>></string>
     <string name="share">Share</string>
     <string name="shareIntent">The teams are decided!</string>

@@ -116,35 +116,36 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
     }
 
     @Override
+    public void onBackPressed() {
+        // Use the Builder class for convenient dialog construction
+        AlertDialog.Builder builder = new AlertDialog.Builder(
+                TeamChooser.this);
+        builder.setMessage(R.string.cancelDialog_question)
+                .setPositiveButton(R.string.cancelDialog_positive,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+                                TeamChooser.super.onBackPressed();
+                            }
+                        })
+                .setNegativeButton(R.string.cancelDialog_negative,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+                                showSoftkeyboard_if_needed();
+                            }
+                        });
+        // Create the AlertDialog object and return it
+        builder.create().show();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
-
-                // Use the Builder class for convenient dialog construction
-                AlertDialog.Builder builder = new AlertDialog.Builder(
-                        TeamChooser.this);
-                builder.setMessage(R.string.cancelDialog_question)
-                        .setPositiveButton(R.string.cancelDialog_positive,
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,
-                                                        int id) {
-                                        Intent upIntent = NavUtils
-                                                .getParentActivityIntent(TeamChooser.this);
-                                        NavUtils.navigateUpTo(TeamChooser.this,
-                                                upIntent);
-                                    }
-                                })
-                        .setNegativeButton(R.string.cancelDialog_negative,
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,
-                                                        int id) {
-                                        showSoftkeyboard_if_needed();
-                                    }
-                                });
-                // Create the AlertDialog object and return it
-                builder.create().show();
-
+                onBackPressed();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -225,21 +226,25 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(playerNameTextview.getWindowToken(), 0);
         if (autoShake) {
-            // auto shake - directly start animations and sound effects
-            vibrate();
-            findViewById(R.id.BumperLeftImageView).startAnimation(
-                    animationShake1);
-            mPlayerLeft.start();
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                public void run() {
-                    vibrate();
-                    findViewById(R.id.BumperRightImageView).startAnimation(
-                            animationShake2); // ending of animation 2 will automatically lead to #onAnimationEnd
-                    mPlayerRight.start();
-                    stopShakeCall();
-                }
-            }, 200);
+            if (playerNameTextview.getText().toString().length() > 0
+                    && !checkIfAlreadyAssigned()) {
+                // auto shake - directly start animations and sound effects
+                vibrate();
+                findViewById(R.id.BumperLeftImageView).startAnimation(
+                        animationShake1);
+                mPlayerLeft.start();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        vibrate();
+                        findViewById(R.id.BumperRightImageView).startAnimation(
+                                animationShake2); // ending of animation 2 will automatically lead to #onAnimationEnd
+                        mPlayerRight.start();
+                        stopShakeCall();
+                    }
+                }, 200);
+            }
+
 
         } else {
             // manual shake - only if enabled by user settings
@@ -363,10 +368,10 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
                     TextView tv = new TextView(getApplicationContext());
                     tv.setVisibility(View.INVISIBLE);
                     tv.setPadding(0, padding, 0, padding);
-                    tv.setText(" "+assignment.getPlayer().getName()+" ");
-                    tv.setTextColor(getResources().getColor(R.color.material_grey_600));
+                    tv.setText(" " + assignment.getPlayer().getName() + " ");
+                    tv.setTextColor(getResources().getColor(R.color.abc_primary_text_material_dark));
                     tv.setBackground(getResources().getDrawable(R.drawable.roundedcorner));
-                    if(playerLayout.getChildCount() <= 0){
+                    if (playerLayout.getChildCount() <= 0) {
                         playerLayout.addView(viewTeamIcon);
                     }
 

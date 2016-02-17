@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.NavUtils;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -44,20 +45,6 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        this.finish();
-    }
-
-    @Override
-    public void finish() {
-        super.finish();
-        if(null != adapter){
-            adapter.getAssignments().clear();
-        }
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_selection);
@@ -76,7 +63,7 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
         }
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>
-                (this, android.R.layout.simple_spinner_item, list);
+                (this, android.R.layout.simple_spinner_dropdown_item, list);
 
         List<PlayerAssignment> blankAssignments = new ArrayList<PlayerAssignment>();
         List<Player> allPlayers = getFacade().getPlayers();
@@ -84,7 +71,7 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
         Map<String, Integer> mapStarsPerPlayer = new HashMap<String, Integer>();
         Map<String, Integer> mapPointsPerPlayer = new HashMap<String, Integer>();
 
-        sports =  getIntent().getStringExtra(Flags.SPORT);
+        sports = getIntent().getStringExtra(Flags.SPORT);
         teamcount = getIntent().getIntExtra(Flags.TEAMCOUNT, -1);
         playercount = getIntent().getIntExtra(Flags.PLAYERCOUNT, -1);
 
@@ -135,6 +122,13 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
         Toolbar toolbar = (Toolbar) findViewById(R.id.playserSelectionToolbar);
         toolbar.setTitle(getString(R.string.title_activity_player_selection));
         toolbar.setLogo(R.drawable.actionbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavUtils.navigateUpFromSameTask(PlayerSelectionActivity.this);
+            }
+        });
+
     }
 
     @Override
@@ -157,23 +151,27 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
             callOverview.putExtra(Flags.TEAMCOUNT, teamcount);
             startActivity(callOverview);
         }
-
+        // adapter.getAssignments().clear();
     }
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if(isChecked && adapter.getAssignmentsDone().size() < playercount){
-            PlayerSelectionRV_Adapter.PlayerViewHolder pvh = (PlayerSelectionRV_Adapter.PlayerViewHolder) buttonView.getTag();
-            adapter.getAssignments().get(pvh.getAdapterPosition()).setRevealed(isChecked);
+        if (isChecked) {
+            if (adapter.getAssignmentsDone().size() < playercount) {
+                PlayerSelectionRV_Adapter.PlayerViewHolder pvh = (PlayerSelectionRV_Adapter.PlayerViewHolder) buttonView.getTag();
+                adapter.getAssignments().get(pvh.getAdapterPosition()).setRevealed(isChecked);
 
-            if (isChecked) {
-                pvh.expandView();
+                if (isChecked) {
+                    pvh.expandView();
+                }
             } else {
-                pvh.collapseView();
+                buttonView.setChecked(false);
+                Toast.makeText(getApplicationContext(), getString(R.string.maxplayers_reached), Toast.LENGTH_SHORT).show();
             }
         }else{
-            buttonView.setChecked(false);
-            Toast.makeText(getApplicationContext(), getString(R.string.maxplayers_reached), Toast.LENGTH_SHORT).show();
+            PlayerSelectionRV_Adapter.PlayerViewHolder pvh = (PlayerSelectionRV_Adapter.PlayerViewHolder) buttonView.getTag();
+            adapter.getAssignments().get(pvh.getAdapterPosition()).setRevealed(isChecked);
+            pvh.collapseView();
         }
     }
 }

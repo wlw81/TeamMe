@@ -64,4 +64,8 @@
     <string name="pref_header_general">Généralement</string>
     <string name="round">Ronde</string>
     <string name="maxplayers_reached">Atteint Nombre maximum de joueurs.</string>
+    <string name="log_complete">Ajouter</string>
+    <string name="jump2game">Les résultats du jeu</string>
+    <string name="selectGame">Choisir jeu</string>
+    <string name="cancel">Annuler</string>
 </resources>

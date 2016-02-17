@@ -30,6 +30,7 @@
     <string name="assignmenttext_captain">du bist der Anführer von</string>
     <string name="assignmenttext_part1">du bist Nummer</string>
     <string name="assignmenttext_part2">im</string>
+    <string name="cancel">Abbrechen</string>
     <string name="cancelDialog_negative">Weitermachen</string>
     <string name="cancelDialog_positive">Neu beginnen</string>
     <string name="cancelDialog_question">Alle Team Zuteilungen verwerfen und ganz von vorne beginnen?</string>
@@ -76,7 +77,9 @@
     <string name="gamedatetext">Letztes Mal gespielt</string>
     <string name="gameempty">Keine</string>
     <string name="hello_world">Hello world!</string>
-    <string name="log">Nachtragen</string>
+    <string name="jump2game">Spielausgänge ansehen</string>
+    <string name="log">Eintragen</string>
+    <string name="log_complete">Hinzufügen</string>
     <string name="maxplayers_reached">Maximale Spieleranzahl erreicht.</string>
     <string name="more">mehr</string>
     <string name="mostactiveplayers">Die aktivsten Spieler</string>
@@ -99,6 +102,7 @@
     <string name="pref_preselection">Spieler Vorauswahl</string>
     <string name="random">Zufall</string>
     <string name="round">Runde</string>
+    <string name="selectGame">Spiel auswählen</string>
     <string name="shake">&lt;&lt;&lt; Schütteln! >>></string>
     <string name="share">Teilen</string>
     <string name="shareIntent">Die Teams stehen fest!</string>
