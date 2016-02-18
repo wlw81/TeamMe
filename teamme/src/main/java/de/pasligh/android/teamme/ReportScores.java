@@ -94,6 +94,7 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
         List<Score> scoreList = getScores();
         if (scoreList.isEmpty()) {
             scoreList.addAll(createDummyScores(0));
+            findViewById(R.id.addScoreFAB).setVisibility(View.INVISIBLE);
         }
         Typeface tf = Typeface.createFromAsset(getAssets(),
                 "fonts/Roboto-Thin.ttf");
@@ -240,9 +241,9 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
 
 
         if (winningTeam != 4200) {
-            ((TextView) findViewById(R.id.ScoreWinnerTV)).setText(getString(R.string.team)+" " + TeamReactor.getAssignmentsByTeam(winningTeam).get(0).getPlayer().getName() + " "+getString(R.string.wins)+"!");
+            ((TextView) findViewById(R.id.ScoreWinnerTV)).setText(getString(R.string.team) + " " + TeamReactor.getAssignmentsByTeam(winningTeam).get(0).getPlayer().getName() + " " + getString(R.string.wins) + "!");
         } else {
-            ((TextView) findViewById(R.id.ScoreWinnerTV)).setText(getString(R.string.draw).toUpperCase()+"!");
+            ((TextView) findViewById(R.id.ScoreWinnerTV)).setText(getString(R.string.draw).toUpperCase() + "!");
         }
 
 
@@ -266,6 +267,12 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
             if (findViewById(R.id.addScoreFAB).getVisibility() == View.VISIBLE) {
                 if (!hide()) {
                     findViewById(R.id.addScoreFAB).setVisibility(View.INVISIBLE);
+                }
+            }
+        } else {
+            if (findViewById(R.id.addScoreFAB).getVisibility() == View.INVISIBLE) {
+                if (!reveal(findViewById(R.id.addScoreFAB))) {
+                    findViewById(R.id.addScoreFAB).setVisibility(View.VISIBLE);
                 }
             }
         }

@@ -74,4 +74,5 @@
     <string name="jump2game">Browse game results</string>
     <string name="selectGame">Select game</string>
     <string name="cancel">Cancel</string>
+    <string name="promote">Promote</string>
 </resources>

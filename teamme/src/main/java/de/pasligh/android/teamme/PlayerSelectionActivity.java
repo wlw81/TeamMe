@@ -156,20 +156,17 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked) {
+        PlayerSelectionRV_Adapter.PlayerViewHolder pvh = (PlayerSelectionRV_Adapter.PlayerViewHolder) buttonView.getTag();
+        PlayerAssignment pa = adapter.getAssignments().get(pvh.getAdapterPosition());
+        if (isChecked && !pa.isRevealed()) {
             if (adapter.getAssignmentsDone().size() < playercount) {
-                PlayerSelectionRV_Adapter.PlayerViewHolder pvh = (PlayerSelectionRV_Adapter.PlayerViewHolder) buttonView.getTag();
                 adapter.getAssignments().get(pvh.getAdapterPosition()).setRevealed(isChecked);
-
-                if (isChecked) {
-                    pvh.expandView();
-                }
+                pvh.expandView();
             } else {
                 buttonView.setChecked(false);
                 Toast.makeText(getApplicationContext(), getString(R.string.maxplayers_reached), Toast.LENGTH_SHORT).show();
             }
-        }else{
-            PlayerSelectionRV_Adapter.PlayerViewHolder pvh = (PlayerSelectionRV_Adapter.PlayerViewHolder) buttonView.getTag();
+        } else if (!isChecked && pa.isRevealed()) {
             adapter.getAssignments().get(pvh.getAdapterPosition()).setRevealed(isChecked);
             pvh.collapseView();
         }

@@ -93,17 +93,16 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
         String name = assignments.get(position).getPlayer().getName();
         holder.playerName.setText(name);
 
-        if (assignments.get(position).isRevealed()) {
-            holder.showControls(true);
-        } else {
-            holder.showControls(false);
+        if(assignments.get(position).isRevealed()){
+            holder.expandView();
+        }else{
+            holder.collapseView();
         }
 
         if (mapStarsPerPlayer.containsKey(name)) {
             int stars = mapStarsPerPlayer.get(assignments.get(position).getPlayer().getName());
             if (stars > 0) {
-                holder.rating.setNumStars(stars);
-                holder.rating.setMax(5);
+                holder.rating.setRating(stars);
             }
         }
         holder.spinner.setAdapter(spinnerAdapter);
@@ -138,35 +137,39 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
 
         public void collapseView() {
             showControls(false);
-            ValueAnimator anim = ValueAnimator.ofInt(cv.getMeasuredHeightAndState(),
-                    minHeight);
-            anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                    int val = (Integer) valueAnimator.getAnimatedValue();
-                    ViewGroup.LayoutParams layoutParams = cv.getLayoutParams();
-                    layoutParams.height = val;
-                    cv.setLayoutParams(layoutParams);
+            if(cv.getLayoutParams().height == maxHeight){
+                ValueAnimator anim = ValueAnimator.ofInt(cv.getMeasuredHeightAndState(),
+                        minHeight);
+                anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                        int val = (Integer) valueAnimator.getAnimatedValue();
+                        ViewGroup.LayoutParams layoutParams = cv.getLayoutParams();
+                        layoutParams.height = val;
+                        cv.setLayoutParams(layoutParams);
 
-                }
-            });
-            anim.start();
+                    }
+                });
+                anim.start();
+            }
         }
 
         public void expandView() {
             showControls(true);
-            ValueAnimator anim = ValueAnimator.ofInt(cv.getMeasuredHeightAndState(), maxHeight
-            );
-            anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                    int val = (Integer) valueAnimator.getAnimatedValue();
-                    ViewGroup.LayoutParams layoutParams = cv.getLayoutParams();
-                    layoutParams.height = val;
-                    cv.setLayoutParams(layoutParams);
-                }
-            });
-            anim.start();
+            if(cv.getLayoutParams().height == minHeight){{
+                ValueAnimator anim = ValueAnimator.ofInt(cv.getMeasuredHeightAndState(), maxHeight
+                );
+                anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                        int val = (Integer) valueAnimator.getAnimatedValue();
+                        ViewGroup.LayoutParams layoutParams = cv.getLayoutParams();
+                        layoutParams.height = val;
+                        cv.setLayoutParams(layoutParams);
+                    }
+                });
+                anim.start();
+            }}
         }
 
         PlayerViewHolder(View itemView) {

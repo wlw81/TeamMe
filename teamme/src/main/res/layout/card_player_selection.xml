@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="?android:attr/ratingBarStyleSmall"
-            android:rating="2.5"
+            android:rating="1"
             android:isIndicator="true"
             android:max="5"
             android:stepSize="0.01"
@@ -57,9 +57,10 @@
         <ToggleButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textOn="CAPTAIN"
+            android:textAllCaps="true"
+            android:textOn="@string/captain"
             android:id="@+id/playerSelectionCV_CaptainToggle"
-            android:textOff="PROMOTE"
+            android:textOff="@string/promote"
             android:checked="false"
             android:layout_below="@+id/playerSelectionCV_Switch"
             android:layout_alignParentEnd="true" />

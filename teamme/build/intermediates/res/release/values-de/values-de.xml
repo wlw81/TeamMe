@@ -100,6 +100,7 @@
     <string name="pref_description_preselection">Zeigt einen Bildschirm zur Vorauswahl von Spielern.</string>
     <string name="pref_header_general">Allgemein</string>
     <string name="pref_preselection">Spieler Vorauswahl</string>
+    <string name="promote">Befördern</string>
     <string name="random">Zufall</string>
     <string name="round">Runde</string>
     <string name="selectGame">Spiel auswählen</string>

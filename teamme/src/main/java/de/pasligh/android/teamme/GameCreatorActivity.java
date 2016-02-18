@@ -246,6 +246,8 @@ public class GameCreatorActivity extends AppCompatActivity implements
                 Intent callChooser = new Intent(getApplicationContext(),
                         TeamChooser.class);
                 callChooser.putExtra(Flags.SPORT, sport);
+                callChooser.putExtra(Flags.TEAMCOUNT, teamCount);
+                callChooser.putExtra(Flags.PLAYERCOUNT, playerCount);
                 startActivity(callChooser);
             } else {
                 // we already know some player names, let's offer a preselection!
