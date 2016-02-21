@@ -72,6 +72,7 @@
     <string name="decisiontext">Die Teams stehen fest!</string>
     <string name="draw">Unentschieden</string>
     <string name="finish">Fertig</string>
+    <string name="forceMove">wurde umgesetzt.</string>
     <string name="four">4</string>
     <string name="gamecounttext">Spiele gespielt bisher</string>
     <string name="gamedatetext">Letztes Mal gespielt</string>

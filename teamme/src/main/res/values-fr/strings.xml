@@ -69,4 +69,5 @@
     <string name="selectGame">Choisir jeu</string>
     <string name="cancel">Annuler</string>
     <string name="promote">Porter</string>
+    <string name="forceMove">a dû être déplacé.</string>
 </resources>

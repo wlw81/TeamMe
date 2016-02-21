@@ -53,16 +53,14 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
     ArrayAdapter spinnerAdapter;
     Map<String, Integer> mapStarsPerPlayer;
     Context ctxt;
-    int maxplayers = -1;
 
-    public PlayerSelectionRV_Adapter(Context p_ctxt, List<PlayerAssignment> p_playerAssignments, Typeface p_tf, ArrayAdapter p_spinnerAdapter, CompoundButton.OnCheckedChangeListener p_checkedChangeListener, Map<String, Integer> p_mapStarsPerPlayer, int p_maxPlayers) {
+    public PlayerSelectionRV_Adapter(Context p_ctxt, List<PlayerAssignment> p_playerAssignments, Typeface p_tf, ArrayAdapter p_spinnerAdapter, CompoundButton.OnCheckedChangeListener p_checkedChangeListener, Map<String, Integer> p_mapStarsPerPlayer) {
         ctxt = p_ctxt;
         assignments.clear();
         assignments.addAll(p_playerAssignments);
         tf = p_tf;
         spinnerAdapter = p_spinnerAdapter;
         mapStarsPerPlayer = p_mapStarsPerPlayer;
-        maxplayers = p_maxPlayers;
         checkedChangeListener = p_checkedChangeListener;
     }
 

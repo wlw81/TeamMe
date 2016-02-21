@@ -116,7 +116,7 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
         }
 
         adapter = new PlayerSelectionRV_Adapter(getApplicationContext(), blankAssignments, Typeface.createFromAsset(getAssets(),
-                "fonts/Roboto-Thin.ttf"), dataAdapter, this, mapStarsPerPlayer, playercount);
+                "fonts/Roboto-Thin.ttf"), dataAdapter, this, mapStarsPerPlayer);
         rv.setAdapter(adapter);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.playserSelectionToolbar);
@@ -132,9 +132,18 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
     public void onClick(View v) {
         List<PlayerAssignment> assignments = adapter.getAssignmentsDone();
-        TeamReactor.decideTeams(teamcount, playercount, assignments);
+        String conflicts = TeamReactor.decideTeams(teamcount, playercount, assignments);
+        if (!conflicts.isEmpty()) {
+            Toast.makeText(getApplicationContext(), conflicts+"\n..."+getString(R.string.forceMove), Toast.LENGTH_LONG).show();
+        }
         if (assignments.size() < TeamReactor.getAssignments().size()) {
             Intent callChooser = new Intent(getApplicationContext(),
                     TeamChooser.class);
@@ -151,7 +160,6 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
             callOverview.putExtra(Flags.TEAMCOUNT, teamcount);
             startActivity(callOverview);
         }
-        // adapter.getAssignments().clear();
     }
 
     @Override

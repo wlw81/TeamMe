@@ -72,6 +72,7 @@
     <string name="decisiontext">Los equipos se han decidido!</string>
     <string name="draw">Dibujar</string>
     <string name="finish">al finalizar</string>
+    <string name="forceMove">tuvo que ser trasladado.</string>
     <string name="four">4</string>
     <string name="gamecounttext">partidos jugados hasta el momento</string>
     <string name="gamedatetext">La última vez que jugó</string>

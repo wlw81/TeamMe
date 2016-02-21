@@ -415,6 +415,7 @@
     <string name="decisiontext">The teams have been decided!</string>
     <string name="draw">Draw</string>
     <string name="finish">Finish</string>
+    <string name="forceMove">had to be moved.</string>
     <string name="four">4</string>
     <string name="gamecounttext">played games so far</string>
     <string name="gamedatetext">Last time played</string>

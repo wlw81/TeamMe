@@ -28,7 +28,8 @@ public final class TeamReactor {
         super();
     }
 
-    public static void decideTeams(int p_teamCount, int p_playerCount, List<PlayerAssignment> p_lisPreAssignments) {
+    public static String decideTeams(int p_teamCount, int p_playerCount, List<PlayerAssignment> p_lisPreAssignments) {
+        StringBuilder conflicts = new StringBuilder();
         resetReactor();
 
         // adding the assignments to the hashset, will already randomize the order!
@@ -36,11 +37,39 @@ public final class TeamReactor {
             assignments.add(doAssignment(p_teamCount));
         }
 
+        List<PlayerAssignment> lisPreAssignments = new ArrayList<>();
+
         if (null != p_lisPreAssignments && !p_lisPreAssignments.isEmpty()) {
             for (PlayerAssignment pre : p_lisPreAssignments) {
-                transferAssignment(pre);
+                if (pre.getTeam() > 0 || pre.getOrderNumber() > 0) {
+                    if (transferAssignment(pre)) {
+                        if(conflicts.length() > 0){
+                            conflicts.append("\n");
+                        }
+                        conflicts.append(pre.getPlayer());
+                        if (pre.getOrderNumber() > 0 && pre.getTeam() > 0) {
+                            pre.setOrderNumber(-1);
+                        } else {
+                            pre.setTeam(-1);
+                        }
+
+                        if (transferAssignment(pre)) {
+                            pre.setTeam(-1);
+                            pre.setOrderNumber(-1);
+                            transferAssignment(pre);
+                        }
+                    }
+                }
+            }
+
+            for (PlayerAssignment pre : p_lisPreAssignments) {
+                if (pre.getTeam() <= 0 && pre.getOrderNumber() <= 0) {
+                    transferAssignment(pre);
+                }
             }
         }
+
+        return conflicts.toString();
     }
 
     public static void resetReactor() {
@@ -54,29 +83,30 @@ public final class TeamReactor {
      * Transfers a pre assignment to the team reactor assignments.
      *
      * @param pre
-     * @return transferDone
+     * @return conflict
      */
     private static boolean transferAssignment(PlayerAssignment pre) {
-        if (pre.getPlayer() != null) {
-            for (PlayerAssignment assignmentByTeamReactor : assignments) {
-                if (assignmentByTeamReactor.getPlayer() == null) {
+        for (PlayerAssignment assignmentByTeamReactor : assignments) {
 
-                    // if there is no team preferred or the preferred team is fitting to the current assignment
-                    if (pre.getTeam() <= 0 || pre.getTeam() == assignmentByTeamReactor.getTeam()) {
-                        if (pre.getOrderNumber() != 1 || assignmentByTeamReactor.getOrderNumber() == 1) {
-                            assignmentByTeamReactor.setPlayer(pre.getPlayer());
-                            assignmentsRevealed++;
-                            assignmentByTeamReactor.setRevealed(true);
-                            Log.i(Flags.LOGTAG, "Pre assigned -> " + assignmentByTeamReactor);
-                            return true;
-                        }
+            // if there is no team preferred or the preferred team is fitting to the current assignment
+            if (pre.getTeam() <= 0 || pre.getTeam() == assignmentByTeamReactor.getTeam()) {
+
+                // if there is no order nr preferred or the current slot is the captain slot
+                if (pre.getOrderNumber() != 1 || assignmentByTeamReactor.getOrderNumber() == 1) {
+
+                    if (assignmentByTeamReactor.getPlayer() == null || assignmentByTeamReactor.getPlayer().getName().trim().isEmpty()) {
+                        assignmentByTeamReactor.setPlayer(pre.getPlayer());
+                        assignmentsRevealed++;
+                        assignmentByTeamReactor.setRevealed(true);
+                        Log.i(Flags.LOGTAG, "Pre assigned -> " + assignmentByTeamReactor);
+                        return false;
                     }
                 }
             }
         }
-
-        return false;
+        return true;
     }
+
 
     private static PlayerAssignment doAssignment(int p_teamCount) {
         if (currentTeam < p_teamCount) {
@@ -159,8 +189,8 @@ public final class TeamReactor {
         }
 
         ArrayList<PlayerAssignment> list = new ArrayList<>();
-        for(PlayerAssignment p : assignments){
-            if(p != null && p.getOrderNumber() > 0){
+        for (PlayerAssignment p : assignments) {
+            if (p != null && p.getOrderNumber() > 0) {
                 list.add(p);
             }
         }

@@ -75,4 +75,5 @@
     <string name="selectGame">Select game</string>
     <string name="cancel">Cancel</string>
     <string name="promote">Promote</string>
+    <string name="forceMove">had to be moved.</string>
 </resources>

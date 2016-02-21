@@ -7,6 +7,11 @@ public class Player implements Serializable{
 	private static final long serialVersionUID = -7059822969888234480L;
 	private String name;
 
+	@Override
+	public String toString() {
+		return getName();
+	}
+
 	public Player(String p_name) {
 		name = p_name;
 	}
