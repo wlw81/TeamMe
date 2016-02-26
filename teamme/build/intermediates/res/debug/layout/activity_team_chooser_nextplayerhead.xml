@@ -22,7 +22,7 @@
         android:layout_alignParentEnd="true"
         android:layout_gravity="bottom|right"
         android:src="@drawable/next_white"
-        app:elevation="4dp" />
+        app:elevation="6dp" />
 
 
     <LinearLayout

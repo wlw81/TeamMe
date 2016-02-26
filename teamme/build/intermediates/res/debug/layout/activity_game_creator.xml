@@ -4,8 +4,11 @@
     android:id="@+id/gameCreatorCL"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:padding="@dimen/activity_vertical_margin"
     android:gravity="fill"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".GameCreatorActivity">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -129,7 +132,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/actionbar"
-        app:elevation="4dp"
+        app:elevation="6dp"
         app:layout_anchor="@id/gameCreatorRV"
         app:layout_anchorGravity="bottom|right|end" />
 </android.support.design.widget.CoordinatorLayout><!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/layout/activity_game_creator.xml -->
