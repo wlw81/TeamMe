@@ -70,4 +70,9 @@
     <string name="cancel">Cancelar</string>
     <string name="promote">Llevar</string>
     <string name="forceMove">tuvo que ser trasladado.</string>
+    <string name="deleted">Suprimido</string>
+    <string name="playerDeleteDialog_question">Borrar $1 de forma permanente?</string>
+    <string name="delete">Borrar</string>
+    <string name="merge">Unir</string>
+    <string name="mergeTo">Combinar en</string>
 </resources>

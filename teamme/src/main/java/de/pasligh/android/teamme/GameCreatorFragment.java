@@ -86,7 +86,7 @@ public class GameCreatorFragment extends Fragment {
                                 @Override
                                 public void onClick(View v) {
                                     Intent reportScores = new Intent(getContext(),
-                                            ReportScores.class);
+                                            ReportScoresActivity.class);
                                     reportScores.putExtra(Flags.GAME_ID, lastGame.getId());
                                     startActivity(reportScores);
                                 }

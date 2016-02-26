@@ -364,5 +364,30 @@ public class BackendFacade {
 
     }
 
+    public boolean mergePlayer(String p_strFromPlayer, String p_strToPlayer) {
+        try {
+            ContentValues valuesReturn = new ContentValues();
+            valuesReturn.put("player_id", p_strToPlayer);
+            getObjDatabase().update(DatabaseHelper.TABLE_ASSIGNMENTS, valuesReturn, "player_id = '" + p_strFromPlayer + "'", null);
+            return deletePlayer(p_strFromPlayer);
+        } catch (Exception e) {
+            Log.i(Flags.LOGTAG, e.getMessage());
+        }
+
+        return false;
+    }
+
+    public boolean deletePlayer(String p_strPlayername) {
+        try {
+            // getObjDatabase().delete(DatabaseHelper.TABLE_ASSIGNMENTS, "player_id = ?1", new String[]{p_strPlayername}); don't do that - because it will mess all recorded data!!!
+            int i = getObjDatabase().delete(DatabaseHelper.TABLE_PLAYERS, "name = ?1", new String[]{p_strPlayername});
+            return i > 0;
+        } catch (Exception e) {
+            Log.i(Flags.LOGTAG, e.getMessage());
+        }
+
+        return false;
+    }
+
 
 }

@@ -28,7 +28,7 @@ import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.PredicateLayout;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
-public class TeamOverview extends AppCompatActivity implements View.OnClickListener {
+public class TeamOverviewActivity extends AppCompatActivity implements View.OnClickListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -194,7 +194,7 @@ public class TeamOverview extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v.getId() == (R.id.reportScoresFAB)) {
             Intent reportScores = new Intent(getApplicationContext(),
-                    ReportScores.class);
+                    ReportScoresActivity.class);
             reportScores.putExtra(Flags.GAME_ID, gameId);
             startActivity(reportScores);
         }

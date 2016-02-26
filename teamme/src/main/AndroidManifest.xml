@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.pasligh.android.teamme"
-    android:versionCode="33"
-    android:versionName="2.0.9">
+    android:versionCode="36"
+    android:versionName="2.2.2">
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
@@ -17,7 +17,6 @@
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -29,12 +28,12 @@
                 android:value=".GameCreatorActivity" />
         </activity>
         <activity
-            android:name=".TeamChooser"
+            android:name=".TeamChooserActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/addPlayer"
             android:parentActivityName=".GameCreatorActivity" />
         <activity
-            android:name=".TeamOverview"
+            android:name=".TeamOverviewActivity"
             android:launchMode="singleTop"
             android:label="@string/overview"
             android:parentActivityName=".GameCreatorActivity" />
@@ -55,12 +54,12 @@
                 android:value="de.pasligh.android.teamme.GameCreatorActivity" />
         </activity>
         <activity
-            android:name=".ReportScores"
+            android:name=".ReportScoresActivity"
             android:label="@string/title_activity_report_scores"
-            android:parentActivityName=".TeamOverview">
+            android:parentActivityName=".TeamOverviewActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.pasligh.android.teamme.TeamOverview" />
+                android:value=".TeamOverviewActivity" />
         </activity>
         <activity
             android:name=".SettingsActivity"

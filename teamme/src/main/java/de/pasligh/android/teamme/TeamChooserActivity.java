@@ -1,7 +1,6 @@
 package de.pasligh.android.teamme;
 
 import android.animation.Animator;
-import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,20 +12,17 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewAnimationUtils;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
@@ -44,11 +40,12 @@ import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.Game;
 import de.pasligh.android.teamme.objects.Player;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
+import de.pasligh.android.teamme.tools.AnimationHelper;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.TTS_Tool;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
-public class TeamChooser extends AppCompatActivity implements SensorEventListener,
+public class TeamChooserActivity extends AppCompatActivity implements SensorEventListener,
         OnEditorActionListener, AnimationListener, OnClickListener {
 
     private SensorManager sensorManager;
@@ -103,29 +100,17 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
     }
 
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private Animator reveal(View myView) {
-        Animator anim;// get the center for the clipping circle
-        int cx = myView.getWidth() / 2;
-        int cy = myView.getHeight() / 2;
-
-        // get the final radius for the clipping circle
-        float finalRadius = (float) Math.hypot(cx, cy);
-        anim = ViewAnimationUtils.createCircularReveal(myView, cx, cy, 0, finalRadius);
-        return anim;
-    }
-
     @Override
     public void onBackPressed() {
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(
-                TeamChooser.this);
+                TeamChooserActivity.this);
         builder.setMessage(R.string.cancelDialog_question)
                 .setPositiveButton(R.string.cancelDialog_positive,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,
                                                 int id) {
-                                TeamChooser.super.onBackPressed();
+                                TeamChooserActivity.super.onBackPressed();
                             }
                         })
                 .setNegativeButton(R.string.cancelDialog_negative,
@@ -310,8 +295,9 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
         findViewById(R.id.BumperLeftImageView).setVisibility(View.GONE);
         findViewById(R.id.BumperRightImageView).setVisibility(View.GONE);
         findViewById(R.id.NextPlayerIncludeLayout).setVisibility(View.VISIBLE);
-        startRevealAnimation(myView);
-
+        if (AnimationHelper.reveal(myView) == null) {
+            myView.setVisibility(View.VISIBLE);
+        }
 
         if (null != findViewById(R.id.InputPlayerIncludeLayout)) {
             findViewById(R.id.InputPlayerIncludeLayout)
@@ -376,7 +362,10 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
                     }
 
                     playerLayout.addView(tv, layoutParams);
-                    startRevealAnimation(tv);
+                    if (AnimationHelper.reveal(tv) == null) {
+                        tv.setVisibility(View.VISIBLE);
+                    }
+
                 }
             }
         }
@@ -397,16 +386,6 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
         invalidateOptionsMenu();
     }
 
-    private void startRevealAnimation(View myView) {
-        // create the animator for this view (the start radius is zero)
-        Animator anim = null;
-        anim = reveal(myView);
-        // make the view visible and start the animation
-        myView.setVisibility(View.VISIBLE);
-        if (anim != null) {
-            anim.start();
-        }
-    }
 
     @Override
     public void onAnimationRepeat(Animation animation) {
@@ -424,7 +403,7 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
         saveGame.setSport(getIntent().getStringExtra(Flags.SPORT));
         long id = getFacade().persistGame(saveGame);
         Intent callOverview = new Intent(getApplicationContext(),
-                TeamOverview.class);
+                TeamOverviewActivity.class);
         int teamcount = getIntent().getIntExtra(Flags.TEAMCOUNT, -1);
         callOverview.putExtra(Flags.GAME_ID, id);
         callOverview.putExtra(Flags.TEAMCOUNT, teamcount);
@@ -482,7 +461,7 @@ public class TeamChooser extends AppCompatActivity implements SensorEventListene
         if (v.getId() == R.id.NextPlayerButton) {
             if (TeamReactor.hasAssignmentsLeft()) {
                 Intent callChooser = new Intent(getApplicationContext(),
-                        TeamChooser.class);
+                        TeamChooserActivity.class);
                 callChooser.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 callChooser.putExtra(Flags.SPORT, getIntent().getStringExtra(Flags.SPORT));
                 callChooser.putExtra(Flags.TEAMCOUNT, getIntent().getIntExtra(Flags.TEAMCOUNT, -1));

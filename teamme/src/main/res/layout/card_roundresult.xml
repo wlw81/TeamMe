@@ -10,48 +10,74 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+       >
 
-        <TextView
-            android:id="@+id/RoundResultTitleTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:text="@string/round"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/RoundResultNumberTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="4dp"
-            android:layout_toEndOf="@+id/RoundResultTitleTV"
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <LinearLayout
-            android:id="@+id/RoundResult_TeamButtonsLayout"
+            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/RoundResultResultTV"
-            android:orientation="vertical">
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/linearLayout"
+            android:layout_marginLeft="16dp"
+            android:id="@+id/linearLayout2">
 
+            <TextView
+                android:id="@+id/RoundResultResultTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:text="TEAM _ GEWINNT!"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/inactive"
+                android:layout_alignBaseline="@+id/RoundResultNumberTV"
+                android:layout_alignBottom="@+id/RoundResultNumberTV"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp" />
+
+            <LinearLayout
+                android:id="@+id/RoundResult_TeamButtonsLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/RoundResultResultTV"
+                android:orientation="vertical">
+
+            </LinearLayout>
         </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/RoundResultResultTV"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/RoundResultTitleTV"
-            android:textAllCaps="true"
-            android:text="TEAM _ GEWINNT!"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/inactive" />
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/linearLayout2"
+            android:id="@+id/linearLayout"
+            android:gravity="center"
+            android:background="@color/active"
+            android:layout_alignTop="@+id/linearLayout2"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/RoundResultTitleTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="@string/round"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                 />
+
+            <TextView
+                android:id="@+id/RoundResultNumberTV"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Medium Text"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_below="@+id/RoundResultTitleTV"
+                android:layout_alignParentStart="true"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
 
 
     </RelativeLayout>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/activity_vertical_margin"
-    tools:context="de.pasligh.android.teamme.ReportScores">
+    tools:context=".ReportScoresActivity">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addScoreFAB"

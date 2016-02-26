@@ -70,6 +70,8 @@
     <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values-fr/strings.xml -->
     <eat-comment/>
     <string name="decisiontext">Les équipes ont été décidées!</string>
+    <string name="delete">Effacer</string>
+    <string name="deleted">Supprimé</string>
     <string name="draw">Dessiner</string>
     <string name="finish">Terminer</string>
     <string name="forceMove">a dû être déplacé.</string>
@@ -82,6 +84,8 @@
     <string name="log">Entrer</string>
     <string name="log_complete">Ajouter</string>
     <string name="maxplayers_reached">Atteint Nombre maximum de joueurs.</string>
+    <string name="merge">Fusionner</string>
+    <string name="mergeTo">Fusionner pour</string>
     <string name="more">plus</string>
     <string name="mostactiveplayers">La plupart des joueurs actifs</string>
     <string name="newGameText">Commencer l\'exploration</string>
@@ -89,6 +93,7 @@
     <string name="overview">Présentation</string>
     <string name="player">Joueur</string>
     <string name="playerAlreadyAssigned">Ce joueur est déjà attribué.</string>
+    <string name="playerDeleteDialog_question">Supprimer $1 de façon permanente?</string>
     <string name="playercount">Acteurs globaux</string>
     <string name="playerinputtext">Mon nom est</string>
     <string name="playername">Nom du Joueur</string>

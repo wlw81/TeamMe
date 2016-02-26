@@ -70,4 +70,9 @@
     <string name="cancel">Abbrechen</string>
     <string name="promote">Befördern</string>
     <string name="forceMove">wurde umgesetzt.</string>
+    <string name="delete">Löschen</string>
+    <string name="playerDeleteDialog_question">$1 unwiderruflich löschen?</string>
+    <string name="deleted">Gelöscht</string>
+    <string name="merge">Zusammenführen</string>
+    <string name="mergeTo">Zusammenführen zu</string>
 </resources>

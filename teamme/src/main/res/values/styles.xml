@@ -1,6 +1,10 @@
 <resources>
 
-    <style name="AppBaseTheme" parent="Theme.AppCompat"></style>
+    <style name="AppBaseTheme" parent="Theme.AppCompat">
+        <item name="colorButtonNormal">@color/accent_color</item>
+    </style>
+
+
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
@@ -24,5 +28,11 @@
         -->
 
     </style>
+
+    <style name="SpecialButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/accent_color</item>
+        <item name="android:textColorPrimary">@color/abc_primary_text_material_dark</item>
+    </style>
+
 
 </resources>

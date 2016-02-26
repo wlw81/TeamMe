@@ -413,6 +413,8 @@
     <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="decisiontext">The teams have been decided!</string>
+    <string name="delete">Delete</string>
+    <string name="deleted">Deleted</string>
     <string name="draw">Draw</string>
     <string name="finish">Finish</string>
     <string name="forceMove">had to be moved.</string>
@@ -425,6 +427,8 @@
     <string name="log">Log</string>
     <string name="log_complete">Add</string>
     <string name="maxplayers_reached">Maximum player count reached.</string>
+    <string name="merge">Merge</string>
+    <string name="mergeTo">Merge to</string>
     <string name="more">more</string>
     <string name="mostactiveplayers">Most active players</string>
     <string name="newGameText">Start new game</string>
@@ -432,6 +436,7 @@
     <string name="overview">Overview</string>
     <string name="player">Player</string>
     <string name="playerAlreadyAssigned">This player is already revealed.</string>
+    <string name="playerDeleteDialog_question">Delete $1 permanently?</string>
     <string name="playercount">Overall players</string>
     <string name="playerinputtext">My name is</string>
     <string name="playername">Player Name</string>
@@ -482,7 +487,9 @@
     <style name="Animation.AppCompat.DropDownUp" parent="Base.Animation.AppCompat.DropDownUp"/>
     <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values/styles.xml -->
     <eat-comment/>
-    <style name="AppBaseTheme" parent="Theme.AppCompat"/>
+    <style name="AppBaseTheme" parent="Theme.AppCompat">
+        <item name="colorButtonNormal">@color/accent_color</item>
+    </style>
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="actionBarStyle">@style/TeamMeActionBar</item>
         <item name="android:progressBarStyleHorizontal">@style/TeamMeProgressBar</item>
@@ -1602,6 +1609,10 @@
     </style>
     <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values/styles.xml -->
     <eat-comment/>
+    <style name="SpecialButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/accent_color</item>
+        <item name="android:textColorPrimary">@color/abc_primary_text_material_dark</item>
+    </style>
     <style name="TeamMeActionBar" parent="@style/Widget.AppCompat.ActionBar">
         <item name="background">@color/active</item>
         <item name="logo">@drawable/actionbar</item>

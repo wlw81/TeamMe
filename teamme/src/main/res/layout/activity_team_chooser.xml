@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     android:layout_alignParentBottom="true"
     android:gravity="center"
-    tools:context=".TeamChooser" >
+    tools:context=".TeamChooserActivity" >
 
     <RelativeLayout
         android:id="@+id/TeamChooserControlsLayout"

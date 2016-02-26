@@ -1,9 +1,13 @@
 package de.pasligh.android.teamme;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Vibrator;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,9 +30,10 @@ import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.objects.Score;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.PlayerSelectionRV_Adapter;
+import de.pasligh.android.teamme.tools.PlayerSelectionRV_Interface;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
-public class PlayerSelectionActivity extends Activity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
+public class PlayerSelectionActivity extends Activity implements View.OnClickListener, PlayerSelectionRV_Interface {
 
     private BackendFacade facade;
     PlayerSelectionRV_Adapter adapter;
@@ -65,11 +70,31 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_dropdown_item, list);
 
+        Map<String, Integer> mapStarsPerPlayer = new HashMap<String, Integer>();
+
+        adapter = new PlayerSelectionRV_Adapter(getApplicationContext(), assemblePlayerAssignments(mapStarsPerPlayer), Typeface.createFromAsset(getAssets(),
+                "fonts/Roboto-Thin.ttf"), dataAdapter, this, mapStarsPerPlayer);
+        rv.setAdapter(adapter);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.playserSelectionToolbar);
+        toolbar.setTitle(getString(R.string.title_activity_player_selection));
+        toolbar.setLogo(R.drawable.actionbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavUtils.navigateUpFromSameTask(PlayerSelectionActivity.this);
+            }
+        });
+
+    }
+
+    @NonNull
+    private List<PlayerAssignment> assemblePlayerAssignments(Map<String, Integer> mapStarsPerPlayer) {
+        Map<String, Integer> mapPointsPerPlayer = new HashMap<String, Integer>();
+
         List<PlayerAssignment> blankAssignments = new ArrayList<PlayerAssignment>();
         List<Player> allPlayers = getFacade().getPlayers();
 
-        Map<String, Integer> mapStarsPerPlayer = new HashMap<String, Integer>();
-        Map<String, Integer> mapPointsPerPlayer = new HashMap<String, Integer>();
 
         sports = getIntent().getStringExtra(Flags.SPORT);
         teamcount = getIntent().getIntExtra(Flags.TEAMCOUNT, -1);
@@ -77,7 +102,6 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
 
         List<Game> games = getFacade().getGames(sports);
         int overallScore = 0;
-
 
         for (Game g : games) {
             List<PlayerAssignment> assignemntsForGame = getFacade().getAssignments(g.getId());
@@ -114,21 +138,7 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
             assignBlank.setPlayer(p);
             blankAssignments.add(assignBlank);
         }
-
-        adapter = new PlayerSelectionRV_Adapter(getApplicationContext(), blankAssignments, Typeface.createFromAsset(getAssets(),
-                "fonts/Roboto-Thin.ttf"), dataAdapter, this, mapStarsPerPlayer);
-        rv.setAdapter(adapter);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.playserSelectionToolbar);
-        toolbar.setTitle(getString(R.string.title_activity_player_selection));
-        toolbar.setLogo(R.drawable.actionbar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavUtils.navigateUpFromSameTask(PlayerSelectionActivity.this);
-            }
-        });
-
+        return blankAssignments;
     }
 
     @Override
@@ -142,11 +152,11 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
         List<PlayerAssignment> assignments = adapter.getAssignmentsDone();
         String conflicts = TeamReactor.decideTeams(teamcount, playercount, assignments);
         if (!conflicts.isEmpty()) {
-            Toast.makeText(getApplicationContext(), conflicts+"\n..."+getString(R.string.forceMove), Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), conflicts + "\n..." + getString(R.string.forceMove), Toast.LENGTH_LONG).show();
         }
         if (assignments.size() < TeamReactor.getAssignments().size()) {
             Intent callChooser = new Intent(getApplicationContext(),
-                    TeamChooser.class);
+                    TeamChooserActivity.class);
             callChooser.putExtra(Flags.SPORT, sports);
             callChooser.putExtra(Flags.TEAMCOUNT, teamcount);
             startActivity(callChooser);
@@ -155,7 +165,7 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
             saveGame.setSport(sports);
             long id = getFacade().persistGame(saveGame);
             Intent callOverview = new Intent(getApplicationContext(),
-                    TeamOverview.class);
+                    TeamOverviewActivity.class);
             callOverview.putExtra(Flags.GAME_ID, id);
             callOverview.putExtra(Flags.TEAMCOUNT, teamcount);
             startActivity(callOverview);
@@ -178,5 +188,78 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
             adapter.getAssignments().get(pvh.getAdapterPosition()).setRevealed(isChecked);
             pvh.collapseView();
         }
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        ((Vibrator) getSystemService(getApplicationContext().VIBRATOR_SERVICE)).vibrate(400);
+        PlayerSelectionRV_Adapter.PlayerViewHolder pvh = (PlayerSelectionRV_Adapter.PlayerViewHolder) v.getTag();
+        int position = pvh.getAdapterPosition();
+        final PlayerAssignment contact = adapter.getAssignments().get(position);
+        // Use the Builder class for convenient dialog construction
+        AlertDialog.Builder builder = new AlertDialog.Builder(
+                PlayerSelectionActivity.this);
+        builder.setMessage(getString(R.string.playerDeleteDialog_question).replace("$1", contact.getPlayer().getName()))
+                .setPositiveButton(R.string.delete,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+                                if (getFacade().deletePlayer(contact.getPlayer().getName())) {
+                                    Toast.makeText(getApplicationContext(), getString(R.string.deleted) + ": " + contact.getPlayer().getName(), Toast.LENGTH_SHORT).show();
+                                    adapter.getAssignments().remove(contact);
+                                    adapter.notifyDataSetChanged();
+                                }
+                            }
+                        }).setNeutralButton(R.string.merge, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                AlertDialog.Builder builderSingle = new AlertDialog.Builder(PlayerSelectionActivity.this);
+                builderSingle.setTitle(getString(R.string.mergeTo));
+
+                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                        PlayerSelectionActivity.this,
+                        android.R.layout.simple_selectable_list_item);
+
+                List<Player> allPlayers = getFacade().getPlayers();
+                final List<Player> players = new ArrayList<Player>();
+
+                for (Player p : allPlayers) {
+                    if(!p.getName().equals(contact.getPlayer().getName())){
+                        arrayAdapter.add(p.getName());
+                        players.add(p);
+                    }
+                }
+
+                builderSingle.setNegativeButton(
+                        getString(R.string.cancel),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                builderSingle.setAdapter(
+                        arrayAdapter,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                getFacade().mergePlayer(contact.getPlayer().getName(), players.get(which).getName());
+                                Toast.makeText(getApplicationContext(), getString(R.string.deleted) + ": " + contact.getPlayer().getName(), Toast.LENGTH_SHORT).show();
+                                adapter.getAssignments().remove(contact);
+                                Map<String, Integer> mapStarsPerPlayer = new HashMap<String, Integer>();
+                                assemblePlayerAssignments(mapStarsPerPlayer);
+                                adapter.getMapStarsPerPlayer().clear();
+                                adapter.getMapStarsPerPlayer().putAll(mapStarsPerPlayer);
+                                adapter.notifyDataSetChanged();
+                            }
+                        });
+                builderSingle.show();
+
+            }
+        });
+        // Create the AlertDialog object and return it
+        builder.create().show();
+        return false;
     }
 }

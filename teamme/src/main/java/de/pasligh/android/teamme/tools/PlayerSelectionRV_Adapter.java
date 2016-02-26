@@ -48,13 +48,17 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
     }
 
     private final static List<PlayerAssignment> assignments = new ArrayList<PlayerAssignment>();
-    CompoundButton.OnCheckedChangeListener checkedChangeListener;
+    PlayerSelectionRV_Interface checkedChangeListener;
     Typeface tf;
     ArrayAdapter spinnerAdapter;
     Map<String, Integer> mapStarsPerPlayer;
     Context ctxt;
 
-    public PlayerSelectionRV_Adapter(Context p_ctxt, List<PlayerAssignment> p_playerAssignments, Typeface p_tf, ArrayAdapter p_spinnerAdapter, CompoundButton.OnCheckedChangeListener p_checkedChangeListener, Map<String, Integer> p_mapStarsPerPlayer) {
+    public Map<String, Integer> getMapStarsPerPlayer() {
+        return mapStarsPerPlayer;
+    }
+
+    public PlayerSelectionRV_Adapter(Context p_ctxt, List<PlayerAssignment> p_playerAssignments, Typeface p_tf, ArrayAdapter p_spinnerAdapter, PlayerSelectionRV_Interface p_checkedChangeListener, Map<String, Integer> p_mapStarsPerPlayer) {
         ctxt = p_ctxt;
         assignments.clear();
         assignments.addAll(p_playerAssignments);
@@ -77,6 +81,7 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
         pvh.captainToggle.setOnCheckedChangeListener(PlayerSelectionRV_Adapter.this);
         pvh.switchPlayer.setOnCheckedChangeListener(checkedChangeListener);
         pvh.spinner.setOnItemSelectedListener(PlayerSelectionRV_Adapter.this);
+        pvh.cv.setOnLongClickListener(checkedChangeListener);
 
         return pvh;
     }
@@ -180,6 +185,7 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
             switchPlayer = ((Switch) itemView.findViewById(R.id.playerSelectionCV_Switch));
             captainToggle = ((ToggleButton) itemView.findViewById(R.id.playerSelectionCV_CaptainToggle));
 
+            cv.setTag(this);
             captainToggle.setTag(this);
             switchPlayer.setTag(this);
             spinner.setTag(this);
@@ -197,8 +203,6 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
                     return true;
                 }
             });
-
-
         }
     }
     @Override

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.pasligh.android.teamme"
-    android:versionCode="33"
-    android:versionName="2.0.9" >
+    android:versionCode="36"
+    android:versionName="2.2.2" >
 
     <uses-sdk
         android:minSdkVersion="17"
@@ -33,12 +33,12 @@
                 android:value=".GameCreatorActivity" />
         </activity>
         <activity
-            android:name="de.pasligh.android.teamme.TeamChooser"
+            android:name="de.pasligh.android.teamme.TeamChooserActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/addPlayer"
             android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" />
         <activity
-            android:name="de.pasligh.android.teamme.TeamOverview"
+            android:name="de.pasligh.android.teamme.TeamOverviewActivity"
             android:label="@string/overview"
             android:launchMode="singleTop"
             android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" />
@@ -59,12 +59,12 @@
                 android:value="de.pasligh.android.teamme.GameCreatorActivity" />
         </activity>
         <activity
-            android:name="de.pasligh.android.teamme.ReportScores"
+            android:name="de.pasligh.android.teamme.ReportScoresActivity"
             android:label="@string/title_activity_report_scores"
-            android:parentActivityName="de.pasligh.android.teamme.TeamOverview" >
+            android:parentActivityName="de.pasligh.android.teamme.TeamOverviewActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.pasligh.android.teamme.TeamOverview" />
+                android:value=".TeamOverviewActivity" />
         </activity>
         <activity
             android:name="de.pasligh.android.teamme.SettingsActivity"

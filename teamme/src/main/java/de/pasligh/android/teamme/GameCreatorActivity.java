@@ -1,8 +1,5 @@
 package de.pasligh.android.teamme;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,19 +9,15 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewAnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
@@ -46,6 +39,7 @@ import java.util.List;
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.Game;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
+import de.pasligh.android.teamme.tools.AnimationHelper;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.HoloCircleSeekBar;
 import de.pasligh.android.teamme.tools.HoloCircleSeekBar.OnCircleSeekBarChangeListener;
@@ -174,7 +168,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
             alertDialog.show();
         } else if (item.getItemId() == R.id.Jump2GameItem) {
 
-            if(getFacade().getLastGamePlayed() != null){
+            if (getFacade().getLastGamePlayed() != null) {
                 AlertDialog.Builder builderSingle = new AlertDialog.Builder(GameCreatorActivity.this);
                 builderSingle.setIcon(R.drawable.write);
                 builderSingle.setTitle(getString(R.string.selectGame));
@@ -189,7 +183,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
                     String caption = g.getSport() + " " + dateFormat.format(g.getStartedAt());
                     if (assignments != null) {
-                        caption += " (" + getFacade().getAssignments(g.getId()).size() + " " + getString(R.string.player)+ ")";
+                        caption += " (" + getFacade().getAssignments(g.getId()).size() + " " + getString(R.string.player) + ")";
                     }
                     arrayAdapter.add(caption);
                     games.add(g);
@@ -210,14 +204,15 @@ public class GameCreatorActivity extends AppCompatActivity implements
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent reportScores = new Intent(getApplicationContext(),
-                                        ReportScores.class);
+                                        ReportScoresActivity.class);
                                 reportScores.putExtra(Flags.GAME_ID, games.get(which).getId());
                                 startActivity(reportScores);
                             }
                         });
                 builderSingle.show();
-            }else{
-                Toast.makeText(getApplicationContext(), getString(R.string.cancel), Toast.LENGTH_SHORT).show();;
+            } else {
+                Toast.makeText(getApplicationContext(), getString(R.string.cancel), Toast.LENGTH_SHORT).show();
+                ;
             }
 
         } else if (item.getItemId() == R.id.SettingsItem) {
@@ -244,7 +239,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
                 // get things started - because we know no players
                 TeamReactor.decideTeams(teamCount, playerCount);
                 Intent callChooser = new Intent(getApplicationContext(),
-                        TeamChooser.class);
+                        TeamChooserActivity.class);
                 callChooser.putExtra(Flags.SPORT, sport);
                 callChooser.putExtra(Flags.TEAMCOUNT, teamCount);
                 callChooser.putExtra(Flags.PLAYERCOUNT, playerCount);
@@ -358,71 +353,19 @@ public class GameCreatorActivity extends AppCompatActivity implements
             // previously invisible view
             View myView = findViewById(R.id.newGameFAB);
             if (myView.getVisibility() != View.VISIBLE) {
-                if (!reveal(myView)) {
+                if (AnimationHelper.reveal(myView) == null) {
                     myView.setVisibility(View.VISIBLE);
                 }
             }
         } else {
             if (findViewById(R.id.newGameFAB).getVisibility() == View.VISIBLE) {
-                if (!hide()) {
+                if (!AnimationHelper.hide(findViewById(R.id.newGameFAB))) {
                     findViewById(R.id.newGameFAB).setVisibility(View.INVISIBLE);
                 }
             }
         }
 
         return valid;
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private boolean hide() {
-        try {
-            // previously visible view
-            final View myView = findViewById(R.id.newGameFAB);
-
-            // get the center for the clipping circle
-            int cx = myView.getWidth() / 2;
-            int cy = myView.getHeight() / 2;
-
-            // get the initial radius for the clipping circle
-            float initialRadius = (float) Math.hypot(cx, cy);
-
-            // create the animation (the final radius is zero)
-            Animator anim =
-                    ViewAnimationUtils.createCircularReveal(myView, cx, cy, initialRadius, 0);
-
-            // make the view invisible when the animation is done
-            anim.addListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    super.onAnimationEnd(animation);
-                    myView.setVisibility(View.INVISIBLE);
-                }
-            });
-
-            // start the animation
-            anim.start();
-        } catch (Exception e) {
-            Log.i(Flags.LOGTAG, e.getMessage());
-            return false;
-        }
-        return true;
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private boolean reveal(View p_myView) {
-        try {
-            p_myView.setVisibility(View.VISIBLE);
-            int cx = p_myView.getWidth() / 2;
-            int cy = p_myView.getHeight() / 2;
-
-            // get the final radius for the clipping circle
-            float finalRadius = (float) Math.hypot(cx, cy);
-            ViewAnimationUtils.createCircularReveal(p_myView, cx, cy, 0, finalRadius).start();
-        } catch (Exception e) {
-            Log.i(Flags.LOGTAG, e.getMessage());
-            return false;
-        }
-        return true;
     }
 
     @Override

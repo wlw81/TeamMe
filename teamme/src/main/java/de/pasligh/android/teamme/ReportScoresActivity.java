@@ -1,28 +1,22 @@
 package de.pasligh.android.teamme;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewAnimationUtils;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -31,7 +25,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -39,12 +32,13 @@ import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.Game;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.objects.Score;
+import de.pasligh.android.teamme.tools.AnimationHelper;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.ScoreRV_Adapter;
 import de.pasligh.android.teamme.tools.ScoreRV_Interface;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
-public class ReportScores extends AppCompatActivity implements ScoreRV_Interface, View.OnClickListener {
+public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_Interface, View.OnClickListener {
     private BackendFacade facade;
     ScoreRV_Adapter adapter;
     int teamCount;
@@ -64,14 +58,12 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
         }
         teamCount = getFacade().getTeamCount(gameId);
 
-        if (TeamReactor.getAssignments() == null || TeamReactor.getAssignments().isEmpty()) {
-            Set<PlayerAssignment> readAssignments = new HashSet<>();
-            for (PlayerAssignment p : getFacade().getAssignments((int) gameId)) {
-                p.setRevealed(true);
-                readAssignments.add(p);
-            }
-            TeamReactor.overwriteAssignments(readAssignments);
+        Set<PlayerAssignment> readAssignments = new HashSet<>();
+        for (PlayerAssignment p : getFacade().getAssignments((int) gameId)) {
+            p.setRevealed(true);
+            readAssignments.add(p);
         }
+        TeamReactor.overwriteAssignments(readAssignments);
 
         RecyclerView rv = (RecyclerView) findViewById(R.id.RoundResultRV);
 
@@ -265,13 +257,13 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
         mShareActionProvider.setShareIntent(createShareIntent());
         if (p_hideFAB) {
             if (findViewById(R.id.addScoreFAB).getVisibility() == View.VISIBLE) {
-                if (!hide()) {
+                if (!AnimationHelper.hide(findViewById(R.id.newGameFAB))) {
                     findViewById(R.id.addScoreFAB).setVisibility(View.INVISIBLE);
                 }
             }
         } else {
             if (findViewById(R.id.addScoreFAB).getVisibility() == View.INVISIBLE) {
-                if (!reveal(findViewById(R.id.addScoreFAB))) {
+                if (AnimationHelper.reveal(findViewById(R.id.addScoreFAB)) == null) {
                     findViewById(R.id.addScoreFAB).setVisibility(View.VISIBLE);
                 }
             }
@@ -289,7 +281,8 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
     public void recieveHolder(ScoreRV_Adapter.RoundResultViewHolder p_holder, final List<Score> lisScore) {
         for (final Score s : lisScore) {
             Log.i(Flags.LOGTAG, "recieve holder for " + s);
-            Button buttonTeam = new Button(getApplicationContext());
+            //Button buttonTeam = new Button(new ContextThemeWrapper(getApplication(), R.style.SpecialButton), null, R.style.SpecialButton);
+            Button buttonTeam = new Button(new ContextThemeWrapper(getApplication(), R.style.AppTheme));
             buttonTeam.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             buttonTeam.setText(getString(R.string.team) + " " + (TeamReactor.getAssignmentsByTeam(s.getTeamNr()).get(0).getPlayer().getName()) + ": " + s.getScoreCount() + " " + getString(R.string.points));
             buttonTeam.setOnClickListener(new View.OnClickListener() {
@@ -298,10 +291,10 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
                     if (null != s) {
                         final NumberPicker np = new NumberPicker(getApplicationContext());
                         np.setMinValue(0);
-                        np.setMaxValue(99);
+                        np.setMaxValue(999);
                         np.setValue(s.getScoreCount());
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(ReportScores.this).setView(np);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ReportScoresActivity.this).setView(np);
                         builder.setMessage(getString(R.string.team) + " " + TeamReactor.getAssignmentsByTeam(s.getTeamNr()).get(0).getPlayer().getName() + " - " + getString(R.string.points) + ": ").setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -316,7 +309,7 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
                                 // previously invisible view
                                 View myView = findViewById(R.id.addScoreFAB);
                                 if (myView.getVisibility() != View.VISIBLE) {
-                                    if (!reveal(myView)) {
+                                    if (AnimationHelper.reveal(myView) == null) {
                                         myView.setVisibility(View.VISIBLE);
                                     }
                                 }
@@ -328,58 +321,6 @@ public class ReportScores extends AppCompatActivity implements ScoreRV_Interface
             });
             p_holder.getLayoutButtons().addView(buttonTeam);
         }
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private boolean hide() {
-        try {
-            // previously visible view
-            final View myView = findViewById(R.id.newGameFAB);
-
-            // get the center for the clipping circle
-            int cx = myView.getWidth() / 2;
-            int cy = myView.getHeight() / 2;
-
-            // get the initial radius for the clipping circle
-            float initialRadius = (float) Math.hypot(cx, cy);
-
-            // create the animation (the final radius is zero)
-            Animator anim =
-                    ViewAnimationUtils.createCircularReveal(myView, cx, cy, initialRadius, 0);
-
-            // make the view invisible when the animation is done
-            anim.addListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    super.onAnimationEnd(animation);
-                    myView.setVisibility(View.INVISIBLE);
-                }
-            });
-
-            // start the animation
-            anim.start();
-        } catch (Exception e) {
-            Log.i(Flags.LOGTAG, e.getMessage());
-            return false;
-        }
-        return true;
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private boolean reveal(View p_myView) {
-        try {
-            p_myView.setVisibility(View.VISIBLE);
-            int cx = p_myView.getWidth() / 2;
-            int cy = p_myView.getHeight() / 2;
-
-            // get the final radius for the clipping circle
-            float finalRadius = (float) Math.hypot(cx, cy);
-            ViewAnimationUtils.createCircularReveal(p_myView, cx, cy, 0, finalRadius).start();
-        } catch (Exception e) {
-            Log.i(Flags.LOGTAG, e.getMessage());
-            return false;
-        }
-        return true;
     }
 
     public Score createNewScore_toResults(int p_intRoundNr, int p_intTeamNr) {
