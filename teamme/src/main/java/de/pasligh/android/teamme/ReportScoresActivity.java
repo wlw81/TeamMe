@@ -119,15 +119,32 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
         java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         Game game = getFacade().getGame((int) gameId);
         String title = game.getSport() + " " + dateFormat.format(game.getStartedAt());
-        StringBuilder shareText = new StringBuilder(title + " - ");
+        StringBuilder shareText = new StringBuilder();
+        shareText.append(title).append(": ");
+        shareText.append(((TextView) findViewById(R.id.ScoreWinnerTV)).getText());
+        shareText.append(" - ");
 
         for (int i = 0; i < adapter.getItemCount(); i++) {
             int roundNr = 1 + i;
-            shareText.append(getString(R.string.round) + " " + roundNr + ":");
+            shareText.append(getString(R.string.round) + " #" + roundNr + ":");
+            int zeroScores = 0;
+
             for (Score p_score : getScores()) {
                 if (p_score.getRoundNr() == i) {
-                    String teamname = TeamReactor.getAssignmentsByTeam(p_score.getTeamNr()).get(0).getPlayer().getName();
-                    shareText.append(" " + getString(R.string.team) + " " + teamname + " " + p_score.getScoreCount());
+                    if (p_score.getScoreCount() > 0) {
+                        zeroScores++;
+                    }
+                }
+            }
+
+            for (Score p_score : getScores()) {
+                if (p_score.getRoundNr() == i) {
+
+                    // show zero scores only, if not all but one team had scored
+                    if (p_score.getScoreCount() > 0 || (zeroScores < (teamCount - 1))) {
+                        String teamname = TeamReactor.getAssignmentsByTeam(p_score.getTeamNr()).get(0).getPlayer().getName();
+                        shareText.append(" " + teamname + ": " + p_score.getScoreCount());
+                    }
                 }
             }
             shareText.append(". ");

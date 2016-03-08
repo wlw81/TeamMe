@@ -141,7 +141,7 @@ public class TeamOverviewActivity extends AppCompatActivity implements View.OnCl
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return getString(R.string.team) + " " + (position + 1);
+            return getString(R.string.team) + " " + TeamReactor.getAssignmentsByTeam(position+1).get(0).getPlayer().getName();
         }
     }
 

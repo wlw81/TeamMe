@@ -88,7 +88,7 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
                 .getPlayersAsStringArray());
 
         AutoCompleteTextView playerNameTextView = (AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView);
-        playerNameTextView.setHint("Player #"
+        playerNameTextView.setHint(getString(R.string.player)+" #"
                 + (TeamReactor.getAssignmentsRevealed() + 1));
         playerNameTextView.setOnEditorActionListener(this);
         playerNameTextView.setAdapter(adapter);
