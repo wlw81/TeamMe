@@ -112,6 +112,7 @@
     <string name="selectGame">Choisir jeu</string>
     <string name="shake">Secouez-vous!</string>
     <string name="share">partager</string>
+    <string name="shareFooter">Créé avec TeamMe</string>
     <string name="shareIntent">Les équipes sont décidées!</string>
     <string name="sport">Sport genre</string>
     <string name="sport_example">Football, handball, tennis de table ...</string>

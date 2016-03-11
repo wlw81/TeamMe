@@ -85,6 +85,10 @@ public class TeamOverviewActivity extends AppCompatActivity implements View.OnCl
             teamNr++;
         }
 
+        // create app footer
+        shareText.append(" ... ").append(getString(R.string.shareFooter)).append(": ").append("\n" +
+                "http://play.google.com/store/apps/details?id=de.pasligh.android.teamme");
+
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_SUBJECT, R.string.decisiontext);

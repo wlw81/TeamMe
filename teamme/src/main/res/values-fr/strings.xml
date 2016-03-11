@@ -75,4 +75,5 @@
     <string name="delete">Effacer</string>
     <string name="merge">Fusionner</string>
     <string name="mergeTo">Fusionner pour</string>
+    <string name="shareFooter">Créé avec TeamMe</string>
 </resources>

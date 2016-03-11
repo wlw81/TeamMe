@@ -81,4 +81,5 @@
     <string name="deleted">Deleted</string>
     <string name="merge">Merge</string>
     <string name="mergeTo">Merge to</string>
+    <string name="shareFooter">Created with TeamMe</string>
 </resources>

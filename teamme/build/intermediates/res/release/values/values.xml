@@ -455,6 +455,7 @@
     <string name="selectGame">Select game</string>
     <string name="shake">&lt;&lt;&lt; Shake! >>></string>
     <string name="share">Share</string>
+    <string name="shareFooter">Created with TeamMe</string>
     <string name="shareIntent">The teams are decided!</string>
     <string name="sport">Kind of sport</string>
     <string name="sport_example">Football, Baseball, Soccer...</string>

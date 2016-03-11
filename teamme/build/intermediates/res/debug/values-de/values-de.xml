@@ -112,6 +112,7 @@
     <string name="selectGame">Spiel auswählen</string>
     <string name="shake">&lt;&lt;&lt; Schütteln! >>></string>
     <string name="share">Teilen</string>
+    <string name="shareFooter">Erstellt mit TeamMe</string>
     <string name="shareIntent">Die Teams stehen fest!</string>
     <string name="sport">Sportart</string>
     <string name="sport_example">Fußball, Handball, Tischtennis...</string>
