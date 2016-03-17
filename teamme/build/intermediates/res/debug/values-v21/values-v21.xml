@@ -255,4 +255,14 @@
     </style>
     <style name="Platform.ThemeOverlay.AppCompat.Dark"/>
     <style name="Platform.ThemeOverlay.AppCompat.Light"/>
+    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values-v21/styles.xml -->
+    <eat-comment/>
+    <style name="TeamMeNoActionBar" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:progressBarStyleHorizontal">@style/TeamMeProgressBar</item>
+        <item name="colorAccent">@color/accent_color</item>
+        <item name="colorButtonNormal">@color/accent_color</item>
+        <item name="background">@color/active</item>
+        <item name="logo">@drawable/actionbar</item>
+        <item name="android:colorPrimaryDark">@color/inactive</item>
+    </style>
 </resources>

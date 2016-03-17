@@ -1,5 +1,7 @@
 package de.pasligh.android.teamme;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -71,6 +73,39 @@ public class TeamOverviewActivity extends AppCompatActivity implements View.OnCl
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         super.onResume();
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Use the Builder class for convenient dialog construction
+        AlertDialog.Builder builder = new AlertDialog.Builder(
+                TeamOverviewActivity.this);
+        builder.setMessage(R.string.cancelDialog_question)
+                .setPositiveButton(R.string.cancelDialog_positive,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,
+                                                int id) {
+                                Intent backHomne = new Intent(getApplicationContext(),
+                                        GameCreatorActivity.class);
+                                startActivity(backHomne);
+                            }
+                        })
+              ;
+        // Create the AlertDialog object and return it
+        builder.create().show();
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private Intent createShareIntent() {

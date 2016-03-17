@@ -10,6 +10,7 @@ import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -33,7 +34,7 @@ import de.pasligh.android.teamme.tools.PlayerSelectionRV_Adapter;
 import de.pasligh.android.teamme.tools.PlayerSelectionRV_Interface;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
-public class PlayerSelectionActivity extends Activity implements View.OnClickListener, PlayerSelectionRV_Interface {
+public class PlayerSelectionActivity extends AppCompatActivity implements View.OnClickListener, PlayerSelectionRV_Interface {
 
     private BackendFacade facade;
     PlayerSelectionRV_Adapter adapter;
@@ -86,6 +87,10 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
             }
         });
 
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @NonNull
@@ -224,7 +229,7 @@ public class PlayerSelectionActivity extends Activity implements View.OnClickLis
                 final List<Player> players = new ArrayList<Player>();
 
                 for (Player p : allPlayers) {
-                    if(!p.getName().equals(contact.getPlayer().getName())){
+                    if (!p.getName().equals(contact.getPlayer().getName())) {
                         arrayAdapter.add(p.getName());
                         players.add(p);
                     }

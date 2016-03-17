@@ -97,6 +97,7 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         autoShake = sharedPref.getBoolean("autoshake", true);
+        playerNameTextView.requestFocus();
     }
 
 
@@ -148,7 +149,7 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
     private void registerSensorListener() {
         if (myAssignment == null) {
             AutoCompleteTextView playerNameTextview = ((AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView));
-            if (playerNameTextview.getText().toString().length() > 0
+            if (!playerNameTextview.getText().toString().isEmpty()
                     && !checkIfAlreadyAssigned()) {
                 startShakeCall();
                 sensorManager.registerListener(this, sensorManager
@@ -477,7 +478,7 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
 
     public void showSoftkeyboard_if_needed() {
         AutoCompleteTextView playerNameTextView = (AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView);
-        if (playerNameTextView.isShown() && playerNameTextView.isEnabled()) {
+        if (playerNameTextView.isEnabled()) {
             playerNameTextView.requestFocus();
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.showSoftInput(playerNameTextView,

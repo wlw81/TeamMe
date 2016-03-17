@@ -300,7 +300,7 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
                     if (null != s) {
                         final NumberPicker np = new NumberPicker(getApplicationContext());
                         np.setMinValue(0);
-                        np.setMaxValue(999);
+                        np.setMaxValue(99999);
                         np.setValue(s.getScoreCount());
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(ReportScoresActivity.this).setView(np);
