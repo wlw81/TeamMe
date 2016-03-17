@@ -9,6 +9,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +27,7 @@ import java.util.Set;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.PredicateLayout;
+import de.pasligh.android.teamme.tools.ShareHelper;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
 public class TeamOverviewActivity extends AppCompatActivity implements View.OnClickListener {
@@ -54,6 +56,11 @@ public class TeamOverviewActivity extends AppCompatActivity implements View.OnCl
 
         gameId = getIntent().getExtras().getLong(Flags.GAME_ID);
 
+        findViewById(R.id.reportScoresFAB).setOnClickListener(this);
+    }
+
+    @Override
+    protected void onResume() {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the app.
         mSectionsPagerAdapter = new SectionsPagerAdapter(
@@ -63,7 +70,7 @@ public class TeamOverviewActivity extends AppCompatActivity implements View.OnCl
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        findViewById(R.id.reportScoresFAB).setOnClickListener(this);
+        super.onResume();
     }
 
     private Intent createShareIntent() {
@@ -86,8 +93,7 @@ public class TeamOverviewActivity extends AppCompatActivity implements View.OnCl
         }
 
         // create app footer
-        shareText.append(" ... ").append(getString(R.string.shareFooter)).append(": ").append("\n" +
-                "http://play.google.com/store/apps/details?id=de.pasligh.android.teamme");
+        ShareHelper.appendFooter_Signature(shareText, getString(R.string.shareFooter));
 
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");

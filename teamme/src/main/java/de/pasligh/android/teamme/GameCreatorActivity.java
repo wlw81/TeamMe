@@ -212,7 +212,6 @@ public class GameCreatorActivity extends AppCompatActivity implements
                 builderSingle.show();
             } else {
                 Toast.makeText(getApplicationContext(), getString(R.string.cancel), Toast.LENGTH_SHORT).show();
-                ;
             }
 
         } else if (item.getItemId() == R.id.SettingsItem) {

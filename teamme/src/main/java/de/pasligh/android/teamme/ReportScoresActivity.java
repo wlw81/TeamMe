@@ -36,6 +36,7 @@ import de.pasligh.android.teamme.tools.AnimationHelper;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.ScoreRV_Adapter;
 import de.pasligh.android.teamme.tools.ScoreRV_Interface;
+import de.pasligh.android.teamme.tools.ShareHelper;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
 public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_Interface, View.OnClickListener {
@@ -138,8 +139,8 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
         }
 
         // create app footer
-        shareText.append(" ... ").append(getString(R.string.shareFooter)).append(": ").append("\n" +
-                "http://play.google.com/store/apps/details?id=de.pasligh.android.teamme");
+        shareText.append(" ");
+        ShareHelper.appendFooter_Signature(shareText, getString(R.string.shareFooter));
 
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
