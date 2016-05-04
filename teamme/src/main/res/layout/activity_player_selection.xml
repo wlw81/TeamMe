@@ -28,13 +28,13 @@
         app:layout_anchorGravity="bottom|right|end" />
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
+        android:id="@+id/playerSelectionAB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/playserSelectionToolbar"
+            android:id="@+id/gameCreatorTB"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
 

@@ -1,6 +1,5 @@
 package de.pasligh.android.teamme;
 
-import android.animation.Animator;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -178,11 +177,11 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
         if (accelationSquareRoot >= 2) //
         {
             if (x < 0) {
-                findViewById(R.id.BumperLeftImageView).startAnimation(
+                findViewById(R.id.BumperLeftDrawable).startAnimation(
                         animationShake1);
                 mPlayerLeft.start();
             } else {
-                findViewById(R.id.BumperRightImageView).startAnimation(
+                findViewById(R.id.BumperRightDrawable).startAnimation(
                         animationShake2);
                 mPlayerRight.start();
                 vibrate();
@@ -218,14 +217,14 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
                     && !checkIfAlreadyAssigned()) {
                 // auto shake - directly start animations and sound effects
                 vibrate();
-                findViewById(R.id.BumperLeftImageView).startAnimation(
+                findViewById(R.id.BumperLeftDrawable).startAnimation(
                         animationShake1);
                 mPlayerLeft.start();
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     public void run() {
                         vibrate();
-                        findViewById(R.id.BumperRightImageView).startAnimation(
+                        findViewById(R.id.BumperRightDrawable).startAnimation(
                                 animationShake2); // ending of animation 2 will automatically lead to #onAnimationEnd
                         mPlayerRight.start();
                         stopShakeCall();
@@ -288,15 +287,15 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
         View myView = findViewById(R.id.NextPlayerButton);
         myView.setVisibility(View.INVISIBLE);
 
-        findViewById(R.id.BumperLeftImageView).startAnimation(
+        findViewById(R.id.BumperLeftDrawable).startAnimation(
                 animationSlideOutLeft);
-        findViewById(R.id.BumperRightImageView).startAnimation(
+        findViewById(R.id.BumperRightDrawable).startAnimation(
                 animationSlideOutRight);
         findViewById(R.id.TeamNumberTextView).setVisibility(View.VISIBLE);
         findViewById(R.id.TeamCaptionTextView).setVisibility(View.VISIBLE);
         findViewById(R.id.TeamIntroductionTextView).setVisibility(View.VISIBLE);
-        findViewById(R.id.BumperLeftImageView).setVisibility(View.GONE);
-        findViewById(R.id.BumperRightImageView).setVisibility(View.GONE);
+        findViewById(R.id.BumperLeftDrawable).setVisibility(View.GONE);
+        findViewById(R.id.BumperRightDrawable).setVisibility(View.GONE);
         findViewById(R.id.NextPlayerIncludeLayout).setVisibility(View.VISIBLE);
         if (AnimationHelper.reveal(myView) == null) {
             myView.setVisibility(View.VISIBLE);

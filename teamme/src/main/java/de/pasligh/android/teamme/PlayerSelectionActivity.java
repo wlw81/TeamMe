@@ -1,6 +1,5 @@
 package de.pasligh.android.teamme;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -77,7 +76,7 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
                 "fonts/Roboto-Thin.ttf"), dataAdapter, this, mapStarsPerPlayer);
         rv.setAdapter(adapter);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.playserSelectionToolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.gameCreatorTB);
         toolbar.setTitle(getString(R.string.title_activity_player_selection));
         toolbar.setLogo(R.drawable.actionbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

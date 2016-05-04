@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
+import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.PredicateLayout;
@@ -43,6 +44,7 @@ public class TeamOverviewActivity extends AppCompatActivity implements View.OnCl
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     SectionsPagerAdapter mSectionsPagerAdapter;
+    private BackendFacade facade;
     private ShareActionProvider mShareActionProvider;
     private long gameId;
 
@@ -63,16 +65,38 @@ public class TeamOverviewActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     protected void onResume() {
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the app.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(
-                getSupportFragmentManager());
 
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+        if (gameId < 0) {
+            gameId = getIntent().getIntExtra
+                    (Flags.GAME_ID, -1);
+        }
 
-        super.onResume();
+        Set<PlayerAssignment> readAssignments = new HashSet<>();
+        for (PlayerAssignment p : getFacade().getAssignments((int) gameId)) {
+            p.setRevealed(true);
+            readAssignments.add(p);
+        }
+
+        if(readAssignments.isEmpty()){
+            Intent backHomne = new Intent(getApplicationContext(),
+                    GameCreatorActivity.class);
+            startActivity(backHomne);
+        }else{
+            TeamReactor.overwriteAssignments(readAssignments);
+
+            // Create the adapter that will return a fragment for each of the three
+            // primary sections of the app.
+            mSectionsPagerAdapter = new SectionsPagerAdapter(
+                    getSupportFragmentManager());
+
+            // Set up the ViewPager with the sections adapter.
+            mViewPager = (ViewPager) findViewById(R.id.pager);
+            mViewPager.setAdapter(mSectionsPagerAdapter);
+
+            super.onResume();
+        }
+
+
     }
 
     @Override
@@ -233,6 +257,13 @@ public class TeamOverviewActivity extends AppCompatActivity implements View.OnCl
 
             return rootView;
         }
+    }
+
+    public BackendFacade getFacade() {
+        if (null == facade) {
+            facade = new BackendFacade(getApplicationContext());
+        }
+        return facade;
     }
 
     @Override

@@ -7,12 +7,19 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +29,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -72,6 +80,10 @@ public class GameCreatorActivity extends AppCompatActivity implements
     private boolean mTwoPane;
     private int playerCount;
     private int teamCount = 4;
+    private ActionBarDrawerToggle drawerToggle;
+    private NavigationView mNavigationView;
+    private DrawerLayout mDrawerLayout;
+    private Toolbar toolbar;
 
     private BackendFacade facade;
 
@@ -93,7 +105,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
 
         TTS_Tool.getInstance(this);
-        setContentView(R.layout.activity_game_list);
+        setContentView(R.layout.activity_game_creator);
 
         TeamReactor.resetReactor();
 
@@ -131,100 +143,146 @@ public class GameCreatorActivity extends AppCompatActivity implements
         Typeface tf = Typeface.createFromAsset(getAssets(),
                 "fonts/Roboto-Condensed.ttf");
         ((TextView) findViewById(R.id.NewGameLabelTextView)).setTypeface(tf);
+        initView();
+        if (toolbar != null) {
+            toolbar.setTitle(getString(R.string.app_name));
+            setSupportActionBar(toolbar);
+        }
+
+        // Initializing Drawer Layout and ActionBarToggle
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.about, R.string.action_settings) {
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                // Code here will be triggered once the drawer closes as we dont want anything to happen so we leave this blank
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                // Code here will be triggered once the drawer open as we dont want anything to happen so we leave this blank
+
+                super.onDrawerOpened(drawerView);
+            }
+        };
+
+        //Setting the actionbarToggle to drawer layout
+        mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
+
+        //calling sync state is necessay or else your hamburger icon wont show up
+        actionBarDrawerToggle.syncState();
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.game_creator, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.AboutItem) {
-            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+    private void initView() {
 
-            String version = "";
-            try {
-                PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-                version = pInfo.versionName;
-            } catch (PackageManager.NameNotFoundException e) {
-                version = "unknown";
-            }
+        toolbar = (Toolbar) findViewById(R.id.gameCreatorTB);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.gameCreatorDL);
+        mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
+        mNavigationView.getMenu().getItem(0).setVisible(!mTwoPane);
 
-            alertDialog.setTitle(getString(R.string.app_name) + " " + version);
-            alertDialog.setMessage("by Thomas Pasligh");
-            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    });
-            alertDialog.setIcon(R.drawable.ic_launcher);
-            alertDialog.show();
-        } else if (item.getItemId() == R.id.Jump2GameItem) {
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+                                                              @Override
+                                                              public boolean onNavigationItemSelected(MenuItem menuItem) {
+                                                                  menuItem.setChecked(true);
+                                                                  mDrawerLayout.closeDrawers();
+                                                                  switch (menuItem.getItemId()) {
 
-            if (getFacade().getLastGamePlayed() != null) {
-                AlertDialog.Builder builderSingle = new AlertDialog.Builder(GameCreatorActivity.this);
-                builderSingle.setIcon(R.drawable.write);
-                builderSingle.setTitle(getString(R.string.selectGame));
+                                                                      case R.id.AboutItem:
+                                                                          AlertDialog alertDialog = new AlertDialog.Builder(GameCreatorActivity.this).create();
 
-                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                        GameCreatorActivity.this,
-                        android.R.layout.simple_selectable_list_item);
-                java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
-                final List<Game> games = new ArrayList<>(); // so we don't have to read that later again
-                for (Game g : getFacade().getGames()) {
-                    List<PlayerAssignment> assignments = getFacade().getAssignments(g.getId());
+                                                                          String version = "";
+                                                                          try {
+                                                                              PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+                                                                              version = pInfo.versionName;
+                                                                          } catch (PackageManager.NameNotFoundException e) {
+                                                                              version = "unknown";
+                                                                          }
 
-                    String caption = g.getSport() + " " + dateFormat.format(g.getStartedAt());
-                    if (assignments != null) {
-                        caption += " (" + getFacade().getAssignments(g.getId()).size() + " " + getString(R.string.player) + ")";
-                    }
-                    arrayAdapter.add(caption);
-                    games.add(g);
-                }
+                                                                          alertDialog.setTitle(getString(R.string.app_name) + " " + version);
+                                                                          alertDialog.setMessage("by Thomas Pasligh");
+                                                                          alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
+                                                                                  new DialogInterface.OnClickListener() {
+                                                                                      public void onClick(DialogInterface dialog, int which) {
+                                                                                      }
+                                                                                  });
+                                                                          alertDialog.setIcon(R.drawable.ic_launcher);
+                                                                          alertDialog.show();
+                                                                          return true;
+                                                                      case R.id.Jump2GameItem:
 
-                builderSingle.setNegativeButton(
-                        getString(R.string.cancel),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
+                                                                          if (getFacade().getLastGamePlayed() != null) {
+                                                                              AlertDialog.Builder builderSingle = new AlertDialog.Builder(GameCreatorActivity.this);
+                                                                              builderSingle.setIcon(R.drawable.write);
+                                                                              builderSingle.setTitle(getString(R.string.selectGame));
 
-                builderSingle.setAdapter(
-                        arrayAdapter,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent reportScores = new Intent(getApplicationContext(),
-                                        ReportScoresActivity.class);
-                                reportScores.putExtra(Flags.GAME_ID, games.get(which).getId());
-                                startActivity(reportScores);
-                            }
-                        });
-                builderSingle.show();
-            } else {
-                Toast.makeText(getApplicationContext(), getString(R.string.cancel), Toast.LENGTH_SHORT).show();
-            }
+                                                                              final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                                                                                      GameCreatorActivity.this,
+                                                                                      android.R.layout.simple_selectable_list_item);
+                                                                              java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
+                                                                              final List<Game> games = new ArrayList<>(); // so we don't have to read that later again
+                                                                              for (Game g : getFacade().getGames()) {
+                                                                                  List<PlayerAssignment> assignments = getFacade().getAssignments(g.getId());
 
-        } else if (item.getItemId() == R.id.SettingsItem) {
-            Intent settingsActivity = new Intent(getApplicationContext(),
-                    SettingsActivity.class);
-            startActivity(settingsActivity);
-        } else if (item.getItemId() == R.id.StatisticsItem) {
-            Intent statisticsActivity = new Intent(getApplicationContext(),
-                    GameStatisticsActivity.class);
-            startActivity(statisticsActivity);
-        }
+                                                                                  String caption = g.getSport() + " " + dateFormat.format(g.getStartedAt());
+                                                                                  if (assignments != null) {
+                                                                                      caption += " (" + getFacade().getAssignments(g.getId()).size() + " " + getString(R.string.player) + ")";
+                                                                                  }
+                                                                                  arrayAdapter.add(caption);
+                                                                                  games.add(g);
+                                                                              }
 
-        return super.onOptionsItemSelected(item);
+                                                                              builderSingle.setNegativeButton(
+                                                                                      getString(R.string.cancel),
+                                                                                      new DialogInterface.OnClickListener() {
+                                                                                          @Override
+                                                                                          public void onClick(DialogInterface dialog, int which) {
+                                                                                              dialog.dismiss();
+                                                                                          }
+                                                                                      });
+
+                                                                              builderSingle.setAdapter(
+                                                                                      arrayAdapter,
+                                                                                      new DialogInterface.OnClickListener() {
+                                                                                          @Override
+                                                                                          public void onClick(DialogInterface dialog, int which) {
+                                                                                              Intent reportScores = new Intent(getApplicationContext(),
+                                                                                                      ReportScoresActivity.class);
+                                                                                              reportScores.putExtra(Flags.GAME_ID, games.get(which).getId());
+                                                                                              startActivity(reportScores);
+                                                                                          }
+                                                                                      });
+                                                                              builderSingle.show();
+                                                                          } else {
+                                                                              Toast.makeText(getApplicationContext(), getString(R.string.cancel), Toast.LENGTH_SHORT).show();
+                                                                          }
+                                                                          return true;
+
+                                                                      case R.id.SettingsItem:
+
+                                                                          Intent settingsActivity = new Intent(getApplicationContext(),
+                                                                                  SettingsActivity.class);
+                                                                          startActivity(settingsActivity);
+                                                                          return true;
+
+                                                                      case R.id.StatisticsItem:
+                                                                          Intent statisticsActivity = new Intent(getApplicationContext(),
+                                                                                  GameStatisticsActivity.class);
+                                                                          startActivity(statisticsActivity);
+                                                                          return true;
+
+                                                                      default:
+                                                                          return true;
+                                                                  }
+                                                              }
+                                                          }
+
+        );
+
     }
 
     private void teamMe() {
@@ -255,14 +313,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
         }
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        menu.findItem(R.id.StatisticsItem).setVisible(!mTwoPane);
-        return super.onPrepareOptionsMenu(menu);
-    }
-
     private int getTeamCount() {
-
         if (((RadioButton) findViewById(R.id.TwoTeamRadioButton)).isChecked()) {
             teamCount = 2;
         } else if (((RadioButton) findViewById(R.id.ThreeTeamRadioButton))

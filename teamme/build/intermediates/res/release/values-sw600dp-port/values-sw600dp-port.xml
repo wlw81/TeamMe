@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- From: file:/C:/Users/Thomas/StudioProjects/TeamMe/teamme/src/main/res/values-sw600dp-port/refs.xml -->
-    <eat-comment/>
-    <item name="activity_game_list" type="layout">@layout/activity_game_creator</item>
-</resources>
