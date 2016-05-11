@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
-import de.pasligh.android.teamme.objects.Game;
+import de.pasligh.android.teamme.objects.GameRecord;
 import de.pasligh.android.teamme.tools.Flags;
 
 /**
@@ -69,11 +69,11 @@ public class GameCreatorFragment extends Fragment {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                final Game lastGame = getFacade().getLastGamePlayed();
-                if (null != lastGame) {
+                final GameRecord lastGameRecord = getFacade().getLastGamePlayed();
+                if (null != lastGameRecord) {
                     int snackbarShowlenght = Snackbar.LENGTH_INDEFINITE;
                     String caption = getString(R.string.log);
-                    if(!getFacade().getScores(lastGame.getId()).isEmpty()){
+                    if(!getFacade().getScores(lastGameRecord.getId()).isEmpty()){
                         snackbarShowlenght = Snackbar.LENGTH_LONG;
                          caption = getString(R.string.log_complete);
                     }
@@ -81,13 +81,13 @@ public class GameCreatorFragment extends Fragment {
                     java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getContext());
 
                     Snackbar
-                            .make(getView(), lastGame.getSport() + " " + dateFormat.format(lastGame.getStartedAt()), snackbarShowlenght)
+                            .make(getView(), lastGameRecord.getSport() + " " + dateFormat.format(lastGameRecord.getStartedAt()), snackbarShowlenght)
                             .setAction(caption, new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
                                     Intent reportScores = new Intent(getContext(),
                                             ReportScoresActivity.class);
-                                    reportScores.putExtra(Flags.GAME_ID, lastGame.getId());
+                                    reportScores.putExtra(Flags.GAME_ID, lastGameRecord.getId());
                                     startActivity(reportScores);
                                 }
                             })

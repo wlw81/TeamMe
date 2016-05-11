@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
-import de.pasligh.android.teamme.objects.Game;
+import de.pasligh.android.teamme.objects.GameRecord;
 import de.pasligh.android.teamme.objects.Player;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.objects.Score;
@@ -104,10 +104,10 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
         teamcount = getIntent().getIntExtra(Flags.TEAMCOUNT, -1);
         playercount = getIntent().getIntExtra(Flags.PLAYERCOUNT, -1);
 
-        List<Game> games = getFacade().getGames(sports);
+        List<GameRecord> gameRecords = getFacade().getGames(sports);
         int overallScore = 0;
 
-        for (Game g : games) {
+        for (GameRecord g : gameRecords) {
             List<PlayerAssignment> assignemntsForGame = getFacade().getAssignments(g.getId());
 
             for (Score s : getFacade().getScores(g.getId())) {
@@ -165,11 +165,11 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
             callChooser.putExtra(Flags.TEAMCOUNT, teamcount);
             startActivity(callChooser);
         } else {
-            Game saveGame = new Game(TeamReactor.getAssignments());
-            saveGame.setSport(sports);
-            long id = getFacade().persistGame(saveGame);
+            GameRecord saveGameRecord = new GameRecord(TeamReactor.getAssignments());
+            saveGameRecord.setSport(sports);
+            long id = getFacade().persistGame(saveGameRecord);
             Intent callOverview = new Intent(getApplicationContext(),
-                    TeamOverviewActivity.class);
+                    GameRecordListActivity.class);
             callOverview.putExtra(Flags.GAME_ID, id);
             callOverview.putExtra(Flags.TEAMCOUNT, teamcount);
             startActivity(callOverview);

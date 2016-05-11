@@ -12,7 +12,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import de.pasligh.android.teamme.objects.Game;
+import de.pasligh.android.teamme.objects.GameRecord;
 import de.pasligh.android.teamme.objects.Player;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.objects.Score;
@@ -51,13 +51,13 @@ public class BackendFacade {
         return objDatabase;
     }
 
-    public long persistGame(Game p_saveGame) {
+    public long persistGame(GameRecord p_saveGameRecord) {
         long value = -1;
         try {
             value = getObjDatabase().insert(DatabaseHelper.TABLE_GAMES, null,
-                    createGame_Values(p_saveGame));
+                    createGame_Values(p_saveGameRecord));
             if (value >= 0) {
-                for (PlayerAssignment saveAssignment : p_saveGame.getAssignments()) {
+                for (PlayerAssignment saveAssignment : p_saveGameRecord.getAssignments()) {
                     saveAssignment.setGame((int) value);
                     getObjDatabase().insert(DatabaseHelper.TABLE_ASSIGNMENTS, null,
                             createAssignment_Values(saveAssignment));
@@ -92,8 +92,8 @@ public class BackendFacade {
         }
     }
 
-    public List<Game> getGames() {
-        List<Game> games = new ArrayList<Game>();
+    public List<GameRecord> getGames() {
+        List<GameRecord> gameRecords = new ArrayList<GameRecord>();
 
         try {
             Cursor query = getObjDatabase().query(false,
@@ -101,12 +101,12 @@ public class BackendFacade {
                     null, null, null, null, "_id desc", "50");
 
             while (query.moveToNext()) {
-                Game gameRead = new Game();
-                gameRead.setId(query.getInt(0));
-                //gameRead...
-                gameRead.setSport(query.getString(2));
-                gameRead.setStartedAt(objDateFormat.parse(query.getString(3)));
-                games.add(gameRead);
+                GameRecord gameRecordRead = new GameRecord();
+                gameRecordRead.setId(query.getInt(0));
+                //gameRecordRead...
+                gameRecordRead.setSport(query.getString(2));
+                gameRecordRead.setStartedAt(objDateFormat.parse(query.getString(3)));
+                gameRecords.add(gameRecordRead);
             }
             query.close();
         } catch (Exception e) {
@@ -114,11 +114,11 @@ public class BackendFacade {
             return null;
         }
 
-        return games;
+        return gameRecords;
     }
 
-    public List<Game> getGames(String p_strSports) {
-        List<Game> games = new ArrayList<Game>();
+    public List<GameRecord> getGames(String p_strSports) {
+        List<GameRecord> gameRecords = new ArrayList<GameRecord>();
 
         try {
             Cursor query = getObjDatabase().query(false,
@@ -126,12 +126,12 @@ public class BackendFacade {
                     "sport = ?1", new String[]{p_strSports}, null, null, "_id", null);
 
             while (query.moveToNext()) {
-                Game gameRead = new Game();
-                gameRead.setId(query.getInt(0));
-                //gameRead...
-                gameRead.setSport(query.getString(2));
-                gameRead.setStartedAt(objDateFormat.parse(query.getString(3)));
-                games.add(gameRead);
+                GameRecord gameRecordRead = new GameRecord();
+                gameRecordRead.setId(query.getInt(0));
+                //gameRecordRead...
+                gameRecordRead.setSport(query.getString(2));
+                gameRecordRead.setStartedAt(objDateFormat.parse(query.getString(3)));
+                gameRecords.add(gameRecordRead);
             }
             query.close();
         } catch (Exception e) {
@@ -139,7 +139,7 @@ public class BackendFacade {
             return null;
         }
 
-        return games;
+        return gameRecords;
     }
 
     public List<Score> getScores(long p_lngGameID) {
@@ -196,11 +196,11 @@ public class BackendFacade {
         return valuesReturn;
     }
 
-    private ContentValues createGame_Values(Game p_saveGame) {
+    private ContentValues createGame_Values(GameRecord p_saveGameRecord) {
         ContentValues valuesReturn = new ContentValues();
         valuesReturn.put("created",
-                objDateFormat.format(p_saveGame.getStartedAt()));
-        valuesReturn.put("sport", p_saveGame.getSport());
+                objDateFormat.format(p_saveGameRecord.getStartedAt()));
+        valuesReturn.put("sport", p_saveGameRecord.getSport());
         valuesReturn.put("category_ordinal", -1);
         return valuesReturn;
     }
@@ -270,33 +270,33 @@ public class BackendFacade {
         return lasttime;
     }
 
-    public Game getGame(int p_intID) {
-        Game readGame = null;
+    public GameRecord getGame(int p_intID) {
+        GameRecord readGameRecord = null;
         try {
             Cursor query = getObjDatabase().query(DatabaseHelper.TABLE_GAMES, new String[]{"_id", "category_ordinal", "sport", "created"},
                     "_id = ?1", new String[]{String.valueOf(p_intID)}, null, null, "_id", "1");
             query.moveToFirst();
-            readGame = new Game();
-            readGame.setId(query.getInt(0));
+            readGameRecord = new GameRecord();
+            readGameRecord.setId(query.getInt(0));
             //gameRead...
-            readGame.setSport(query.getString(2));
-            readGame.setStartedAt(objDateFormat.parse(query.getString(3)));
+            readGameRecord.setSport(query.getString(2));
+            readGameRecord.setStartedAt(objDateFormat.parse(query.getString(3)));
             query.close();
         } catch (Exception e) {
             Log.e(Flags.LOGTAG, e.toString());
             return null;
         }
 
-        return readGame;
+        return readGameRecord;
     }
 
-    public Game getLastGamePlayed() {
-        Game lastgame = null;
+    public GameRecord getLastGamePlayed() {
+        GameRecord lastgame = null;
         try {
             Cursor query = getObjDatabase().query(DatabaseHelper.TABLE_GAMES, new String[]{"_id", "category_ordinal", "sport", "created"},
                     null, null, null, null, "created desc", "1");
             query.moveToFirst();
-            lastgame = new Game();
+            lastgame = new GameRecord();
             lastgame.setId(query.getInt(0));
             //gameRead...
             lastgame.setSport(query.getString(2));

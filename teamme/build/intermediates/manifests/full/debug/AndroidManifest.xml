@@ -38,11 +38,6 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/addPlayer"
             android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" />
-        <activity
-            android:name="de.pasligh.android.teamme.TeamOverviewActivity"
-            android:label="@string/overview"
-            android:launchMode="singleTop"
-            android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" />
         <!--
              ATTENTION: This was auto-generated to add Google Play services to your project for
              App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -63,10 +58,10 @@
         <activity
             android:name="de.pasligh.android.teamme.ReportScoresActivity"
             android:label="@string/title_activity_report_scores"
-            android:parentActivityName="de.pasligh.android.teamme.TeamOverviewActivity" >
+            android:parentActivityName="de.pasligh.android.teamme.GameRecordDetailActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".TeamOverviewActivity" />
+                android:value=".GameRecordDetailActivity" />
         </activity>
         <activity
             android:name="de.pasligh.android.teamme.SettingsActivity"
@@ -75,6 +70,22 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.pasligh.android.teamme.GameCreatorActivity" />
+        </activity>
+        <activity
+            android:name="de.pasligh.android.teamme.GameRecordListActivity"
+            android:label="@string/jump2game"
+            android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.pasligh.android.teamme.GameCreatorActivity" />
+        </activity>
+        <activity
+            android:name="de.pasligh.android.teamme.GameRecordDetailActivity"
+            android:label="@string/overview"
+            android:parentActivityName="de.pasligh.android.teamme.GameRecordListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.pasligh.android.teamme.GameRecordListActivity" />
         </activity>
     </application>
 

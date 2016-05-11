@@ -13,7 +13,7 @@ public class Score {
 
     @Override
     public String toString() {
-        return "Game " + getGameId() + " Round #"+getRoundNr()+" Team " + getTeamNr() + ": " + getScoreCount();
+        return "GameRecord " + getGameId() + " Round #"+getRoundNr()+" Team " + getTeamNr() + ": " + getScoreCount();
     }
 
     @Override

@@ -36,7 +36,7 @@ import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
-import de.pasligh.android.teamme.objects.Game;
+import de.pasligh.android.teamme.objects.GameRecord;
 import de.pasligh.android.teamme.objects.Player;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.tools.AnimationHelper;
@@ -401,11 +401,11 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
     }
 
     private void completeTeams() {
-        Game saveGame = new Game(TeamReactor.getAssignments());
-        saveGame.setSport(getIntent().getStringExtra(Flags.SPORT));
-        long id = getFacade().persistGame(saveGame);
+        GameRecord saveGameRecord = new GameRecord(TeamReactor.getAssignments());
+        saveGameRecord.setSport(getIntent().getStringExtra(Flags.SPORT));
+        long id = getFacade().persistGame(saveGameRecord);
         Intent callOverview = new Intent(getApplicationContext(),
-                TeamOverviewActivity.class);
+                GameRecordListActivity.class);
         int teamcount = getIntent().getIntExtra(Flags.TEAMCOUNT, -1);
         callOverview.putExtra(Flags.GAME_ID, id);
         callOverview.putExtra(Flags.TEAMCOUNT, teamcount);

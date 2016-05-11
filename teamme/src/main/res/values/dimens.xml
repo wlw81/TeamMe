@@ -6,5 +6,6 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="bumperMargin">-300dp</dimen>
     <dimen name="bumperHeight">300dp</dimen>
+    <dimen name="item_width">200dp</dimen>
 
 </resources>

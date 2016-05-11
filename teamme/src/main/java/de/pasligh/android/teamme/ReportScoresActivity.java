@@ -29,7 +29,7 @@ import java.util.Map;
 import java.util.Set;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
-import de.pasligh.android.teamme.objects.Game;
+import de.pasligh.android.teamme.objects.GameRecord;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.objects.Score;
 import de.pasligh.android.teamme.tools.AnimationHelper;
@@ -98,8 +98,8 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
         rv.setAdapter(adapter);
         java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         ((FloatingActionButton) findViewById(R.id.addScoreFAB)).setOnClickListener(this);
-        Game game = getFacade().getGame((int) gameId);
-        getSupportActionBar().setTitle(game.getSport() + " " + dateFormat.format(game.getStartedAt()));
+        GameRecord gameRecord = getFacade().getGame((int) gameId);
+        getSupportActionBar().setTitle(gameRecord.getSport() + " " + dateFormat.format(gameRecord.getStartedAt()));
         publishWinningTeam(scoreList);
     }
 
@@ -118,8 +118,8 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
 
     private Intent createShareIntent() {
         java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
-        Game game = getFacade().getGame((int) gameId);
-        String title = game.getSport() + " " + dateFormat.format(game.getStartedAt());
+        GameRecord gameRecord = getFacade().getGame((int) gameId);
+        String title = gameRecord.getSport() + " " + dateFormat.format(gameRecord.getStartedAt());
         StringBuilder shareText = new StringBuilder();
         shareText.append(title).append(": ");
         shareText.append(((TextView) findViewById(R.id.ScoreWinnerTV)).getText());

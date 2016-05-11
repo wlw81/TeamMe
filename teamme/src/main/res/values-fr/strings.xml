@@ -43,7 +43,7 @@
     <string name="title_activity_game_creator">CreatorActivity</string>
     <string name="title_activity_team_chooser">TeamChooser</string>
     <string name="title_activity_team_overview">TeamOverview</string>
-    <string name="title_game_detail">game Detail</string>
+    <string name="title_game_detail">gameRecord Detail</string>
     <string name="hello_world">Hello world!</string>
     <string name="more">plus</string>
     <string name="title_dialog_teamcount">sélectionnez le nombre d\'équipes</string>

@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-public class Game implements Serializable {
+public class GameRecord implements Serializable {
 
     private static final long serialVersionUID = -3420071497019663100L;
 
@@ -38,11 +38,11 @@ public class Game implements Serializable {
 
     private String sport;
 
-    public Game() {
+    public GameRecord() {
         super();
     }
 
-    public Game(Set<PlayerAssignment> p_assignments) {
+    public GameRecord(Set<PlayerAssignment> p_assignments) {
         super();
         assignments = new ArrayList<PlayerAssignment>();
         startedAt = new Date();

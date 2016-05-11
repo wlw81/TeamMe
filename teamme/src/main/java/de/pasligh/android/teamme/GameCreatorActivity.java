@@ -7,21 +7,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,7 +25,6 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -45,7 +40,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
-import de.pasligh.android.teamme.objects.Game;
+import de.pasligh.android.teamme.objects.GameRecord;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.tools.AnimationHelper;
 import de.pasligh.android.teamme.tools.Flags;
@@ -214,52 +209,9 @@ public class GameCreatorActivity extends AppCompatActivity implements
                                                                           alertDialog.show();
                                                                           return true;
                                                                       case R.id.Jump2GameItem:
-
-                                                                          if (getFacade().getLastGamePlayed() != null) {
-                                                                              AlertDialog.Builder builderSingle = new AlertDialog.Builder(GameCreatorActivity.this);
-                                                                              builderSingle.setIcon(R.drawable.write);
-                                                                              builderSingle.setTitle(getString(R.string.selectGame));
-
-                                                                              final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                                                                                      GameCreatorActivity.this,
-                                                                                      android.R.layout.simple_selectable_list_item);
-                                                                              java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
-                                                                              final List<Game> games = new ArrayList<>(); // so we don't have to read that later again
-                                                                              for (Game g : getFacade().getGames()) {
-                                                                                  List<PlayerAssignment> assignments = getFacade().getAssignments(g.getId());
-
-                                                                                  String caption = g.getSport() + " " + dateFormat.format(g.getStartedAt());
-                                                                                  if (assignments != null) {
-                                                                                      caption += " (" + getFacade().getAssignments(g.getId()).size() + " " + getString(R.string.player) + ")";
-                                                                                  }
-                                                                                  arrayAdapter.add(caption);
-                                                                                  games.add(g);
-                                                                              }
-
-                                                                              builderSingle.setNegativeButton(
-                                                                                      getString(R.string.cancel),
-                                                                                      new DialogInterface.OnClickListener() {
-                                                                                          @Override
-                                                                                          public void onClick(DialogInterface dialog, int which) {
-                                                                                              dialog.dismiss();
-                                                                                          }
-                                                                                      });
-
-                                                                              builderSingle.setAdapter(
-                                                                                      arrayAdapter,
-                                                                                      new DialogInterface.OnClickListener() {
-                                                                                          @Override
-                                                                                          public void onClick(DialogInterface dialog, int which) {
-                                                                                              Intent reportScores = new Intent(getApplicationContext(),
-                                                                                                      ReportScoresActivity.class);
-                                                                                              reportScores.putExtra(Flags.GAME_ID, games.get(which).getId());
-                                                                                              startActivity(reportScores);
-                                                                                          }
-                                                                                      });
-                                                                              builderSingle.show();
-                                                                          } else {
-                                                                              Toast.makeText(getApplicationContext(), getString(R.string.cancel), Toast.LENGTH_SHORT).show();
-                                                                          }
+                                                                          Intent recordsActivity = new Intent(getApplicationContext(),
+                                                                                  GameRecordListActivity.class);
+                                                                          startActivity(recordsActivity);
                                                                           return true;
 
                                                                       case R.id.SettingsItem:
