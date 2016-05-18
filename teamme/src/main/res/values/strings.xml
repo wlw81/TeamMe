@@ -82,6 +82,4 @@
     <string name="merge">Merge</string>
     <string name="mergeTo">Merge to</string>
     <string name="shareFooter">Created with TeamMe</string>
-    <string name="title_gamerecord_list">Games</string>
-    <string name="title_gamerecord_detail">GameRecord Detail</string>
 </resources>

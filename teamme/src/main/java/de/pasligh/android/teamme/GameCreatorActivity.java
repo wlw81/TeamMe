@@ -30,18 +30,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import de.pasligh.android.teamme.backend.BackendFacade;
-import de.pasligh.android.teamme.objects.GameRecord;
-import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.tools.AnimationHelper;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.HoloCircleSeekBar;
@@ -100,7 +94,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
 
         TTS_Tool.getInstance(this);
-        setContentView(R.layout.activity_game_creator);
+        setContentView(R.layout.activity_game_list);
 
         TeamReactor.resetReactor();
 
@@ -124,7 +118,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
         playerCount = 4;
 
-        if (findViewById(R.id.game_detail_container) != null) {
+        if (findViewById(R.id.game_statistics_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-large and
             // res/values-sw600dp). If this view is present, then the
@@ -132,7 +126,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
             mTwoPane = true;
             GameStatisticsFragment fragment = new GameStatisticsFragment();
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.game_detail_container, fragment).commit();
+                    .replace(R.id.game_statistics_container, fragment).commit();
         }
 
         Typeface tf = Typeface.createFromAsset(getAssets(),
@@ -162,10 +156,10 @@ public class GameCreatorActivity extends AppCompatActivity implements
         };
 
         //Setting the actionbarToggle to drawer layout
-        mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
+       mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
 
         //calling sync state is necessay or else your hamburger icon wont show up
-        actionBarDrawerToggle.syncState();
+       actionBarDrawerToggle.syncState();
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.

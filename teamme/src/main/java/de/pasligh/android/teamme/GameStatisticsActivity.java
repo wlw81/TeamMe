@@ -23,7 +23,7 @@ public class GameStatisticsActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_game_detail);
+		setContentView(R.layout.activity_game_statistics);
 
 		// Show the Up button in the action bar.
 		// getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -46,7 +46,7 @@ public class GameStatisticsActivity extends AppCompatActivity {
 			GameStatisticsFragment fragment = new GameStatisticsFragment();
 			fragment.setArguments(arguments);
 			getSupportFragmentManager().beginTransaction()
-					.add(R.id.game_detail_container, fragment).commit();
+					.add(R.id.game_statistics_container, fragment).commit();
 		}
 
 	}

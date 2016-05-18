@@ -57,8 +57,7 @@ public class GameCreatorFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View mainview = inflater.inflate(R.layout.activity_game_creator, null);
-        return mainview;
+        return  inflater.inflate(R.layout.activity_game_creator, container);
     }
 
     @Override

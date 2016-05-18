@@ -105,23 +105,15 @@ public class GameRecordDetailFragment extends Fragment {
                 readAssignments.add(p);
             }
 
-            if (readAssignments.isEmpty()) {
-                Intent backHomne = new Intent(getApplicationContext(),
-                        GameCreatorActivity.class);
-                startActivity(backHomne);
-            } else {
-                TeamReactor.overwriteAssignments(readAssignments);
+            TeamReactor.overwriteAssignments(readAssignments);
 
-                // Get the ViewPager and set it's PagerAdapter so that it can display items
-                ViewPager viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
-                viewPager.setAdapter(new SectionsPagerAdapter(getFragmentManager()));
+            // Get the ViewPager and set it's PagerAdapter so that it can display items
+            ViewPager viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
+            viewPager.setAdapter(new SectionsPagerAdapter(getFragmentManager()));
 
-                // Give the TabLayout the ViewPager
-                TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.sliding_tabs);
-                tabLayout.setupWithViewPager(viewPager);
-            }
-
-
+            // Give the TabLayout the ViewPager
+            TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.sliding_tabs);
+            tabLayout.setupWithViewPager(viewPager);
         }
         return rootView;
     }

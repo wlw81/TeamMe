@@ -8,7 +8,7 @@ ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest
 		INJECTED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 	android:versionName
-		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:5:5-30
+		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:5:5-32
 		INJECTED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 	android:versionCode

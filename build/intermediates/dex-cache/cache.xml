@@ -1,3 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="D:\Programme\Android SDK\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\release\support-annotations-23.3.0_0319ffa8b3c93d795b258f4d10f0a842edccfc8e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-appindexing-8.1.0_6ad0d372569681e2760459a9856eda1a73fd636a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\libs\internal_impl-23.3.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\release\internal_impl-23.3.0_f3070906d94c9f354c8b400d163c82287b7a6393.jar" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\release\com.google.android.gms-play-services-basement-8.1.0_8190ad464f4cae1d188706b42e84f6114f54e0ae.jar" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="debf30ce0a7560396b6235edef77e447006454c2">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\release\com.android.support-recyclerview-v7-23.3.0_a3e5eddf55d7c95f7287276b24f709a58c43e571.jar" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\libs\achartengine-1.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="9932e3fb9fbe54e80873e77f72a99f79e33b3250">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\release\achartengine-1.1.0_69356a44986ba65fab47eb5c232cd5eb230e71af.jar" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\release\com.android.support-support-vector-drawable-23.3.0_0f6741a30571579ba31d52d794e8b56743a2bd5c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\design\23.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="f0001e71cea6ae432a00021c6f727f5ef0f3d27e">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\release\com.android.support-design-23.3.0_bbfb1ccb8f99fdf47b6d63d5e9bd3c64663b0404.jar" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="82ce13fd19cdfde0e392f03c27edeba8d4333648">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\release\com.android.support-cardview-v7-23.3.0_950e223e9987444ae5ea0f887501fe22c8e64896.jar" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\release\com.android.support-support-v4-23.3.0_986c334bc39d4090d0b71c6ae8c2298aede61639.jar" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\release\com.android.support-appcompat-v7-23.3.0_939875071a68aaf6469f4bbe902edc3d2891eb80.jar" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\release\com.android.support-animated-vector-drawable-23.3.0_ff87bca9d3d99a779a011f3e29afb144cad149f9.jar" />
+    </item>
+
+</items>
