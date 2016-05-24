@@ -10,13 +10,16 @@ import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,7 +38,11 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import java.util.List;
+
 import de.pasligh.android.teamme.backend.BackendFacade;
+import de.pasligh.android.teamme.objects.GameRecord;
+import de.pasligh.android.teamme.objects.Score;
 import de.pasligh.android.teamme.tools.AnimationHelper;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.HoloCircleSeekBar;
@@ -96,28 +103,6 @@ public class GameCreatorActivity extends AppCompatActivity implements
         TTS_Tool.getInstance(this);
         setContentView(R.layout.activity_game_list);
 
-        TeamReactor.resetReactor();
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, getFacade()
-                .getSports());
-
-        AutoCompleteTextView playerNameTextView = (AutoCompleteTextView) findViewById(R.id.SportTextView);
-        playerNameTextView.setOnEditorActionListener(this);
-        playerNameTextView.setAdapter(adapter);
-
-        HoloCircleSeekBar seekbar = ((HoloCircleSeekBar) findViewById(R.id.PlayerPicker));
-        seekbar.setOnSeekBarChangeListener(this);
-        ((RadioGroup) findViewById(R.id.TeamsRadioGroup))
-                .setOnCheckedChangeListener(this);
-        ((RadioButton) findViewById(R.id.MoreTeamRadioButton))
-                .setOnClickListener(this);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.newGameFAB);
-        fab.setOnClickListener(this);
-
-        playerCount = 4;
-
         if (findViewById(R.id.game_statistics_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-large and
@@ -127,11 +112,38 @@ public class GameCreatorActivity extends AppCompatActivity implements
             GameStatisticsFragment fragment = new GameStatisticsFragment();
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.game_statistics_container, fragment).commit();
+        } else {
+            setContentView(R.layout.activity_game_creator);
         }
+
+
+        TeamReactor.resetReactor();
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, getFacade()
+                .getSports());
+
+        HoloCircleSeekBar seekbar = ((HoloCircleSeekBar) findViewById(R.id.PlayerPicker));
+        seekbar.setOnSeekBarChangeListener(this);
+        ((RadioGroup) findViewById(R.id.TeamsRadioGroup))
+                .setOnCheckedChangeListener(this);
+        ((RadioButton) findViewById(R.id.MoreTeamRadioButton))
+                .setOnClickListener(this);
+
+        final AutoCompleteTextView playerNameTextView = (AutoCompleteTextView) findViewById(R.id.SportTextView);
+        playerNameTextView.setOnEditorActionListener(this);
+        playerNameTextView.setAdapter(adapter);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.newGameFAB);
+        fab.setOnClickListener(this);
+
+        playerCount = 4;
+
 
         Typeface tf = Typeface.createFromAsset(getAssets(),
                 "fonts/Roboto-Condensed.ttf");
         ((TextView) findViewById(R.id.NewGameLabelTextView)).setTypeface(tf);
+
         initView();
         if (toolbar != null) {
             toolbar.setTitle(getString(R.string.app_name));
@@ -156,14 +168,49 @@ public class GameCreatorActivity extends AppCompatActivity implements
         };
 
         //Setting the actionbarToggle to drawer layout
-       mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
+        mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
 
         //calling sync state is necessay or else your hamburger icon wont show up
-       actionBarDrawerToggle.syncState();
+        actionBarDrawerToggle.syncState();
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                final GameRecord lastGameRecord = getFacade().getLastGamePlayed();
+                if (null != lastGameRecord) {
+                    try {
+                        int snackbarShowlenght = Snackbar.LENGTH_INDEFINITE;
+                        String caption = getString(R.string.log);
+                        List<Score> scoreList = getFacade().getScores(lastGameRecord.getId());
+                        if (scoreList != null && !scoreList.isEmpty()) {
+                            snackbarShowlenght = Snackbar.LENGTH_LONG;
+                            caption = getString(R.string.log_complete);
+                        }
+
+                        java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
+                        Snackbar
+                                .make(playerNameTextView, lastGameRecord.getSport() + " " + dateFormat.format(lastGameRecord.getStartedAt()), snackbarShowlenght)
+                                .setAction(caption, new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent reportScores = new Intent(getApplicationContext(),
+                                                ReportScoresActivity.class);
+                                        reportScores.putExtra(Flags.GAME_ID, lastGameRecord.getId());
+                                        startActivity(reportScores);
+                                    }
+                                })
+                                .show();
+                    } catch (Exception e) {
+                        Log.e(Flags.LOGTAG, "Snackbar error: " + e.getMessage());
+                    }
+                }
+            }
+        }, 2000);
     }
 
 

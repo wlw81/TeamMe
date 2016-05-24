@@ -30,6 +30,8 @@ import de.pasligh.android.teamme.tools.TeamReactor;
  * on handsets.
  */
 public class GameRecordDetailFragment extends Fragment {
+
+    SectionsPagerAdapter sadapter;
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
@@ -37,11 +39,13 @@ public class GameRecordDetailFragment extends Fragment {
     public static final String ARG_ITEM_ID = "item_id";
     private BackendFacade facade;
 
-    public void setApplicationContext(Context applicationContext) {
-        this.applicationContext = applicationContext;
+    public void setApplicationContext(Context p_context) {
+        if (p_context != null) {
+            this.applicationContext = p_context;
+        }
     }
 
-    private Context applicationContext;
+    private static Context applicationContext;
 
     public Context getApplicationContext() {
         return applicationContext;
@@ -86,7 +90,6 @@ public class GameRecordDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.gamerecord_detail, container, false);
 
 
-        // Show the dummy content as text in a TextView.
         if (mItem != null) {
 
             rootView.findViewById(R.id.gamerecordDetailFAB).setOnClickListener(new View.OnClickListener() {
@@ -109,11 +112,14 @@ public class GameRecordDetailFragment extends Fragment {
 
             // Get the ViewPager and set it's PagerAdapter so that it can display items
             ViewPager viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
-            viewPager.setAdapter(new SectionsPagerAdapter(getFragmentManager()));
+            if (sadapter == null) {
+                sadapter = new SectionsPagerAdapter(getFragmentManager());
+            }
+            viewPager.setAdapter(sadapter);
 
             // Give the TabLayout the ViewPager
             TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.sliding_tabs);
-            tabLayout.setupWithViewPager(viewPager);
+            tabLayout.removeAllTabs();
         }
         return rootView;
     }

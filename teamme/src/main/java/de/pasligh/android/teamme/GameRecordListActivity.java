@@ -189,6 +189,7 @@ public class GameRecordListActivity extends AppCompatActivity {
             arguments.putString(GameRecordDetailFragment.ARG_ITEM_ID, id);
             GameRecordDetailFragment fragment = new GameRecordDetailFragment();
             fragment.setArguments(arguments);
+            fragment.setApplicationContext(getApplicationContext());
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.gamerecord_detail_container, fragment)
                     .commit();

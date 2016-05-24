@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,43 +58,13 @@ public class GameCreatorFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return  inflater.inflate(R.layout.activity_game_creator, container);
+        View v = inflater.inflate(R.layout.activity_game_creator, container);
+        return  v;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                final GameRecord lastGameRecord = getFacade().getLastGamePlayed();
-                if (null != lastGameRecord) {
-                    int snackbarShowlenght = Snackbar.LENGTH_INDEFINITE;
-                    String caption = getString(R.string.log);
-                    if(!getFacade().getScores(lastGameRecord.getId()).isEmpty()){
-                        snackbarShowlenght = Snackbar.LENGTH_LONG;
-                         caption = getString(R.string.log_complete);
-                    }
-
-                    java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getContext());
-
-                    Snackbar
-                            .make(getView(), lastGameRecord.getSport() + " " + dateFormat.format(lastGameRecord.getStartedAt()), snackbarShowlenght)
-                            .setAction(caption, new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Intent reportScores = new Intent(getContext(),
-                                            ReportScoresActivity.class);
-                                    reportScores.putExtra(Flags.GAME_ID, lastGameRecord.getId());
-                                    startActivity(reportScores);
-                                }
-                            })
-                            .show();
-                }
-            }
-        }, 2000);
     }
 
     @Override

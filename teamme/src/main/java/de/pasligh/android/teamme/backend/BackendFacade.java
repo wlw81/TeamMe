@@ -67,7 +67,6 @@ public class BackendFacade {
         } catch (Exception e) {
             Log.e(Flags.LOGTAG, e.toString());
         }
-
         return value;
     }
 
@@ -80,23 +79,29 @@ public class BackendFacade {
     }
 
     public int getTeamCount(long p_lngGameID) {
+        Cursor query = null;
         try {
-            Cursor query = getObjDatabase().query(DatabaseHelper.TABLE_ASSIGNMENTS, new String[]{"MAX(team)"}, "game_id = ?1", new String[]{String.valueOf(p_lngGameID)}, null, null, null);
+            query = getObjDatabase().query(DatabaseHelper.TABLE_ASSIGNMENTS, new String[]{"MAX(team)"}, "game_id = ?1", new String[]{String.valueOf(p_lngGameID)}, null, null, null);
             query.moveToFirst();
             int i = query.getInt(0);
-            query.close();
             return i;
         } catch (Exception e) {
             Log.e(Flags.LOGTAG, e.toString());
             return -1;
+
+        } finally {
+            if (query != null) {
+                query.close();
+            }
         }
+
     }
 
     public List<GameRecord> getGames() {
         List<GameRecord> gameRecords = new ArrayList<GameRecord>();
-
+        Cursor query = null;
         try {
-            Cursor query = getObjDatabase().query(false,
+            query = getObjDatabase().query(false,
                     DatabaseHelper.TABLE_GAMES, new String[]{"_id", "category_ordinal", "sport", "created"},
                     null, null, null, null, "_id desc", "50");
 
@@ -108,20 +113,23 @@ public class BackendFacade {
                 gameRecordRead.setStartedAt(objDateFormat.parse(query.getString(3)));
                 gameRecords.add(gameRecordRead);
             }
-            query.close();
+
         } catch (Exception e) {
             Log.e(Flags.LOGTAG, e.toString());
             return null;
+        } finally {
+            if (query != null) {
+                query.close();
+            }
         }
-
         return gameRecords;
     }
 
     public List<GameRecord> getGames(String p_strSports) {
         List<GameRecord> gameRecords = new ArrayList<GameRecord>();
-
+        Cursor query = null;
         try {
-            Cursor query = getObjDatabase().query(false,
+            query = getObjDatabase().query(false,
                     DatabaseHelper.TABLE_GAMES, new String[]{"_id", "category_ordinal", "sport", "created"},
                     "sport = ?1", new String[]{p_strSports}, null, null, "_id", null);
 
@@ -133,20 +141,22 @@ public class BackendFacade {
                 gameRecordRead.setStartedAt(objDateFormat.parse(query.getString(3)));
                 gameRecords.add(gameRecordRead);
             }
-            query.close();
         } catch (Exception e) {
             Log.e(Flags.LOGTAG, e.toString());
             return null;
+        } finally {
+            if (query != null) {
+                query.close();
+            }
         }
-
         return gameRecords;
     }
 
     public List<Score> getScores(long p_lngGameID) {
         List<Score> scores = new ArrayList<Score>();
+        Cursor query = null;
 
         try {
-            Cursor query;
             if (p_lngGameID >= 0) {
                 query = getObjDatabase().query(false,
                         DatabaseHelper.TABLE_SCORES, new String[]{"TEAM", "game_id", "round", "scorecount"},
@@ -166,10 +176,13 @@ public class BackendFacade {
                         (query.getInt(3));
                 scores.add(scoreRead);
             }
-            query.close();
         } catch (Exception e) {
             Log.e(Flags.LOGTAG, e.toString());
             return null;
+        } finally {
+            if (query != null) {
+                query.close();
+            }
         }
 
         return scores;
@@ -206,15 +219,22 @@ public class BackendFacade {
     }
 
     public List<Player> getPlayers() {
+        Cursor query = null;
         try {
-            Cursor query = getObjDatabase().query(false,
+            query = getObjDatabase().query(false,
                     DatabaseHelper.TABLE_PLAYERS, new String[]{"NAME"},
                     null, null, null, null, "NAME", null);
             return moveQueryToPlayers(query);
         } catch (Exception e) {
             Log.e(Flags.LOGTAG, e.toString());
             return null;
+        } finally {
+            if (query != null) {
+                query.close();
+            }
         }
+
+
     }
 
     public String[] getSports() {
@@ -256,8 +276,9 @@ public class BackendFacade {
 
     public Date getLastTimePlayed() {
         Date lasttime = null;
+        Cursor query = null;
         try {
-            Cursor query = getObjDatabase().query(DatabaseHelper.TABLE_GAMES, new String[]{"created"},
+            query = getObjDatabase().query(DatabaseHelper.TABLE_GAMES, new String[]{"created"},
                     null, null, null, null, "created desc", "1");
             query.moveToFirst();
             lasttime = objDateFormat.parse(query.getString(0));
@@ -265,15 +286,20 @@ public class BackendFacade {
         } catch (Exception e) {
             Log.e(Flags.LOGTAG, e.toString());
             return null;
+        } finally {
+            if (query != null) {
+                query.close();
+            }
         }
 
         return lasttime;
     }
 
     public GameRecord getGame(int p_intID) {
+        Cursor query = null;
         GameRecord readGameRecord = null;
         try {
-            Cursor query = getObjDatabase().query(DatabaseHelper.TABLE_GAMES, new String[]{"_id", "category_ordinal", "sport", "created"},
+            query = getObjDatabase().query(DatabaseHelper.TABLE_GAMES, new String[]{"_id", "category_ordinal", "sport", "created"},
                     "_id = ?1", new String[]{String.valueOf(p_intID)}, null, null, "_id", "1");
             query.moveToFirst();
             readGameRecord = new GameRecord();
@@ -285,6 +311,10 @@ public class BackendFacade {
         } catch (Exception e) {
             Log.e(Flags.LOGTAG, e.toString());
             return null;
+        } finally {
+            if (query != null) {
+                query.close();
+            }
         }
 
         return readGameRecord;
@@ -292,8 +322,9 @@ public class BackendFacade {
 
     public GameRecord getLastGamePlayed() {
         GameRecord lastgame = null;
+        Cursor query = null;
         try {
-            Cursor query = getObjDatabase().query(DatabaseHelper.TABLE_GAMES, new String[]{"_id", "category_ordinal", "sport", "created"},
+            query = getObjDatabase().query(DatabaseHelper.TABLE_GAMES, new String[]{"_id", "category_ordinal", "sport", "created"},
                     null, null, null, null, "created desc", "1");
             query.moveToFirst();
             lastgame = new GameRecord();
@@ -305,20 +336,29 @@ public class BackendFacade {
         } catch (Exception e) {
             Log.e(Flags.LOGTAG, e.toString());
             return null;
+        } finally {
+            if (query != null) {
+                query.close();
+            }
         }
 
         return lastgame;
     }
 
     public List<PlayerAssignment> getAssignments(int p_intGameID) {
+        Cursor query = null;
         try {
-            Cursor query = getObjDatabase().query(false,
+            query = getObjDatabase().query(false,
                     DatabaseHelper.TABLE_ASSIGNMENTS, new String[]{"_id", "sequence", "team", "game_id", "player_id"},
                     "game_id = ?1", new String[]{String.valueOf(p_intGameID)}, null, null, "_id", null);
             return moveQueryToAssignments(query);
         } catch (Exception e) {
             Log.e(Flags.LOGTAG, e.toString());
             return null;
+        } finally {
+            if (query != null) {
+                query.close();
+            }
         }
     }
 
@@ -373,11 +413,11 @@ public class BackendFacade {
         } catch (Exception e) {
             Log.i(Flags.LOGTAG, e.getMessage());
         }
-
         return false;
     }
 
     public boolean deletePlayer(String p_strPlayername) {
+        Cursor query = null;
         try {
             // getObjDatabase().delete(DatabaseHelper.TABLE_ASSIGNMENTS, "player_id = ?1", new String[]{p_strPlayername}); don't do that - because it will mess all recorded data!!!
             int i = getObjDatabase().delete(DatabaseHelper.TABLE_PLAYERS, "name = ?1", new String[]{p_strPlayername});
@@ -385,7 +425,6 @@ public class BackendFacade {
         } catch (Exception e) {
             Log.i(Flags.LOGTAG, e.getMessage());
         }
-
         return false;
     }
 
