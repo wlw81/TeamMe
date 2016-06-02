@@ -8,6 +8,6 @@ public final class BuildConfig {
   public static final String APPLICATION_ID = "de.pasligh.android.teamme";
   public static final String BUILD_TYPE = "debug";
   public static final String FLAVOR = "";
-  public static final int VERSION_CODE = 47;
-  public static final String VERSION_NAME = "3.0.2";
+  public static final int VERSION_CODE = 48;
+  public static final String VERSION_NAME = "3.0.3";
 }

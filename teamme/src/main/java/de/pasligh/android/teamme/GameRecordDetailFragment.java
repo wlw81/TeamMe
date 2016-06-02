@@ -31,7 +31,6 @@ import de.pasligh.android.teamme.tools.TeamReactor;
  */
 public class GameRecordDetailFragment extends Fragment {
 
-    SectionsPagerAdapter sadapter;
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
@@ -88,8 +87,6 @@ public class GameRecordDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.gamerecord_detail, container, false);
-
-
         if (mItem != null) {
 
             rootView.findViewById(R.id.gamerecordDetailFAB).setOnClickListener(new View.OnClickListener() {
@@ -112,14 +109,14 @@ public class GameRecordDetailFragment extends Fragment {
 
             // Get the ViewPager and set it's PagerAdapter so that it can display items
             ViewPager viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
-            if (sadapter == null) {
-                sadapter = new SectionsPagerAdapter(getFragmentManager());
-            }
+            SectionsPagerAdapter sadapter
+                    = new SectionsPagerAdapter(getChildFragmentManager());
             viewPager.setAdapter(sadapter);
-
             // Give the TabLayout the ViewPager
             TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.sliding_tabs);
-            tabLayout.removeAllTabs();
+            tabLayout.setupWithViewPager(viewPager);
+
+
         }
         return rootView;
     }
