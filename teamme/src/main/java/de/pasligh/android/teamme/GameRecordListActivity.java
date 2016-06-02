@@ -24,6 +24,8 @@ import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.GameRecord;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.tools.Flags;
+import de.pasligh.android.teamme.tools.GameRecordRV_Adapter;
+import de.pasligh.android.teamme.tools.PlayerSelectionRV_Adapter;
 
 /**
  * An activity representing a list of Games. This activity
@@ -33,7 +35,7 @@ import de.pasligh.android.teamme.tools.Flags;
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class GameRecordListActivity extends AppCompatActivity {
+public class GameRecordListActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     /**
@@ -43,7 +45,7 @@ public class GameRecordListActivity extends AppCompatActivity {
     private boolean mTwoPane;
     private BackendFacade facade;
     private long gameId = -1;
-    private SimpleItemRecyclerViewAdapter myAdapter;
+    private GameRecordRV_Adapter myAdapter;
 
     public BackendFacade getFacade() {
         if (null == facade) {
@@ -52,6 +54,12 @@ public class GameRecordListActivity extends AppCompatActivity {
         return facade;
     }
 
+    @Override
+    public void onClick(View v) {
+        GameRecordRV_Adapter.GameRecordRV_Holder holder = ( GameRecordRV_Adapter.GameRecordRV_Holder) v.getTag();
+        String id = String.valueOf(holder.getId());
+        jump2Game(id);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +107,7 @@ public class GameRecordListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        myAdapter = new SimpleItemRecyclerViewAdapter(getFacade().getGames());
+        myAdapter = new GameRecordRV_Adapter(getApplicationContext(),this, getFacade().getGames());
         recyclerView.setAdapter(myAdapter);
 
     }
@@ -112,73 +120,6 @@ public class GameRecordListActivity extends AppCompatActivity {
             if (gameId >= 0) {
                 jump2Game(String.valueOf(gameId));
                 gameId = -1;
-            }
-        }
-    }
-
-    public class SimpleItemRecyclerViewAdapter
-            extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
-
-        private final List<GameRecord> mValues;
-        private final List<ViewHolder> mHolder;
-        java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
-
-        public SimpleItemRecyclerViewAdapter(List<GameRecord> items) {
-            mValues = items;
-            mHolder = new ArrayList<ViewHolder>();
-        }
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.gamerecord_list_content, parent, false);
-            return new ViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mItem = mValues.get(position);
-            holder.mIdView.setText(String.valueOf(holder.mItem.getId()));
-
-            List<PlayerAssignment> assignments = getFacade().getAssignments(holder.mItem.getId());
-
-            String caption = holder.mItem.getSport() + " " + dateFormat.format(holder.mItem.getStartedAt());
-            if (assignments != null) {
-                caption += " (" + getFacade().getAssignments(holder.mItem.getId()).size() + " " + getString(R.string.player) + ")";
-            }
-
-            holder.mContentView.setText(caption);
-
-            holder.mView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String id = String.valueOf(holder.mItem.getId());
-                    jump2Game(id);
-                }
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            return mValues.size();
-        }
-
-        public class ViewHolder extends RecyclerView.ViewHolder {
-            public final View mView;
-            public final TextView mIdView;
-            public final TextView mContentView;
-            public GameRecord mItem;
-
-            public ViewHolder(View view) {
-                super(view);
-                mView = view;
-                mIdView = (TextView) view.findViewById(R.id.id);
-                mContentView = (TextView) view.findViewById(R.id.content);
-            }
-
-            @Override
-            public String toString() {
-                return super.toString() + " '" + mContentView.getText() + "'";
             }
         }
     }

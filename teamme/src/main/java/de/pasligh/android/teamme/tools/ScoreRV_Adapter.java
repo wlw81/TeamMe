@@ -88,16 +88,7 @@ public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundR
         holder.getLayoutButtons().removeAllViews();
 
         List<Score> lisScore = getRoundResultMap().get(score.getRoundNr());
-        int intHighestScore = -1;
-        for (Score s : lisScore) {
-            if (s.getScoreCount() > intHighestScore) {
-                intHighestScore = s.getScoreCount();
-                holder.setIntWinnerTeam( s.getTeamNr());
-            } else if (intHighestScore >= 0 && s.getScoreCount() == intHighestScore) {
-                holder.setIntWinnerTeam(4200);
-            }
-        }
-
+        holder.setIntWinnerTeam(ShareHelper.getWinnerTeam(lisScore));
         if (holder.getIntWinnerTeam() >= 0 && holder.getIntWinnerTeam() < 4200) {
             holder.getResult().setText(ctxt.getString(R.string.team) + " " + TeamReactor.getAssignmentsByTeam(holder.getIntWinnerTeam()).get(0).getPlayer().getName() + " " + ctxt.getString(R.string.wins));
         } else {

@@ -43,7 +43,7 @@ public final class TeamReactor {
             for (PlayerAssignment pre : p_lisPreAssignments) {
                 if (pre.getTeam() > 0 || pre.getOrderNumber() > 0) {
                     if (transferAssignment(pre)) {
-                        if(conflicts.length() > 0){
+                        if (conflicts.length() > 0) {
                             conflicts.append("\n");
                         }
                         conflicts.append(pre.getPlayer());
@@ -178,6 +178,12 @@ public final class TeamReactor {
     }
 
     public static List<PlayerAssignment> getAssignmentsByTeam(int p_teamNr) {
+        ArrayList<PlayerAssignment> lisAssignments = new ArrayList<PlayerAssignment>();
+        lisAssignments.addAll(getAssignments());
+        return getAssignmentsByTeam(lisAssignments, p_teamNr);
+    }
+
+    public static List<PlayerAssignment> getAssignmentsByTeam(List<PlayerAssignment> p_assignments, int p_teamNr) {
         PlayerAssignment[] assignments = new PlayerAssignment[getAssignments().size()];
 
         for (PlayerAssignment p : getAssignments()) {
