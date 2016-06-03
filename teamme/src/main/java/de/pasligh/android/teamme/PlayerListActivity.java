@@ -1,50 +1,28 @@
 package de.pasligh.android.teamme;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.SparseBooleanArray;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import android.view.MenuItem;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
 import de.pasligh.android.teamme.backend.BackendFacade;
-import de.pasligh.android.teamme.objects.GameRecord;
-import de.pasligh.android.teamme.objects.PlayerAssignment;
-import de.pasligh.android.teamme.tools.Flags;
-import de.pasligh.android.teamme.tools.GameRecordRV_Adapter;
-import de.pasligh.android.teamme.tools.PlayerSelectionRV_Adapter;
+import de.pasligh.android.teamme.tools.PlayerRV_Adapter;
 
 /**
- * An activity representing a list of Games. This activity
+ * An activity representing a list of Players. This activity
  * has different presentations for handset and tablet-size devices. On
  * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link GameRecordDetailActivity} representing
+ * lead to a {@link PlayerDetailActivity} representing
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class GameRecordListActivity extends AppCompatActivity implements View.OnClickListener {
+public class PlayerListActivity extends AppCompatActivity implements View.OnClickListener {
 
-
-    /**
-     * Whether or not the activity is in two-pane mode, i.e. running on a tablet
-     * device.
-     */
-    private boolean mTwoPane;
-    private long gameId = -1;
-    private GameRecordRV_Adapter myAdapter;
+    private PlayerRV_Adapter myAdapter;
     private BackendFacade facade;
 
     public BackendFacade getFacade() {
@@ -54,35 +32,33 @@ public class GameRecordListActivity extends AppCompatActivity implements View.On
         return facade;
     }
 
-    @Override
-    public void onClick(View v) {
-        GameRecordRV_Adapter.GameRecordRV_Holder holder = ( GameRecordRV_Adapter.GameRecordRV_Holder) v.getTag();
-        String id = String.valueOf(holder.getId());
-        jump2Game(id);
-    }
+    /**
+     * Whether or not the activity is in two-pane mode, i.e. running on a tablet
+     * device.
+     */
+    private boolean mTwoPane;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gamerecord_list);
+        setContentView(R.layout.activity_player_list);
         // Show the Up button in the action bar.
-        ActionBar actionBar = getSupportActionBar();
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        View recyclerView = findViewById(R.id.gamerecord_list);
+        View recyclerView = findViewById(R.id.player_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
 
-        if (findViewById(R.id.gamerecord_detail_container) != null) {
+        if (findViewById(R.id.player_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w900dp).
             // If this view is present, then the
             // activity should be in two-pane mode.
             mTwoPane = true;
         }
-
     }
 
     @Override
@@ -99,7 +75,7 @@ public class GameRecordListActivity extends AppCompatActivity implements View.On
             Intent backHome = new Intent(getApplicationContext(),
                     GameCreatorActivity.class);
             startActivity(backHome);
-            navigateUpToFromChild(GameRecordListActivity.this
+            navigateUpToFromChild(PlayerListActivity.this
                     , backHome);
             return true;
         }
@@ -107,36 +83,35 @@ public class GameRecordListActivity extends AppCompatActivity implements View.On
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        myAdapter = new GameRecordRV_Adapter(getApplicationContext(),this, getFacade().getGames());
+        myAdapter = new PlayerRV_Adapter(this, getFacade().getPlayers());
         recyclerView.setAdapter(myAdapter);
-
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        if (null != getIntent().getExtras()) {
-            gameId = getIntent().getExtras().getLong(Flags.GAME_ID);
-            if (gameId >= 0) {
-                jump2Game(String.valueOf(gameId));
-                gameId = -1;
-            }
+    public void onClick(View v) {
+        if(v.getId() == R.id.player_detail_FAB){
+            // perhaps later
+        }else{
+            PlayerRV_Adapter.PlayerHolder
+                    holder = (PlayerRV_Adapter.PlayerHolder) v.getTag();
+            String id = String.valueOf(holder.getName().getText());
+            jump2Player(id);
         }
+
     }
 
-    private void jump2Game(String id) {
+    private void jump2Player(String id) {
         if (mTwoPane) {
             Bundle arguments = new Bundle();
-            arguments.putString(GameRecordDetailFragment.ARG_ITEM_ID, id);
-            GameRecordDetailFragment fragment = new GameRecordDetailFragment();
+            arguments.putString(PlayerDetailFragment.ARG_ITEM_ID, id);
+            PlayerDetailFragment fragment = new PlayerDetailFragment();
             fragment.setArguments(arguments);
-            fragment.setApplicationContext(getApplicationContext());
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.gamerecord_detail_container, fragment)
+                    .replace(R.id.player_detail_container, fragment)
                     .commit();
         } else {
-            Intent intent = new Intent(getApplicationContext(), GameRecordDetailActivity.class);
-            intent.putExtra(GameRecordDetailFragment.ARG_ITEM_ID, id);
+            Intent intent = new Intent(getApplicationContext(), PlayerDetailActivity.class);
+            intent.putExtra(PlayerDetailFragment.ARG_ITEM_ID, id);
 
             startActivity(intent);
         }

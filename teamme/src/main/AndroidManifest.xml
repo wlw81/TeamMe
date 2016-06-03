@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.pasligh.android.teamme"
-    android:versionCode="48"
-    android:versionName="3.0.3">
+    android:versionCode="49"
+    android:versionName="3.0.4">
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
@@ -18,6 +18,7 @@
             android:theme="@style/TeamMeNoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -81,6 +82,22 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.pasligh.android.teamme.GameRecordListActivity" />
+        </activity>
+        <activity
+            android:name=".PlayerListActivity"
+            android:label="@string/player"
+            android:parentActivityName=".GameCreatorActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.pasligh.android.teamme.GameCreatorActivity" />
+        </activity>
+        <activity
+            android:name=".PlayerDetailActivity"
+            android:label="@string/player"
+            android:parentActivityName=".PlayerListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.pasligh.android.teamme.PlayerListActivity" />
         </activity>
     </application>
 

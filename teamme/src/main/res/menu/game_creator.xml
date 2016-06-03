@@ -11,8 +11,13 @@
             android:title="@string/jump2game"
             android:visible="true"></item>
         <item
-            android:id="@+id/SettingsItem"
+            android:id="@+id/PlayerItem"
             android:orderInCategory="130"
+            android:title="@string/player"
+            android:visible="true"></item>
+        <item
+            android:id="@+id/SettingsItem"
+            android:orderInCategory="140"
             android:title="@string/title_activity_settings"
             android:visible="true"></item>
         <item

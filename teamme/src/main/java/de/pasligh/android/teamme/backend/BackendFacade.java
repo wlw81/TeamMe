@@ -320,6 +320,41 @@ public class BackendFacade {
         return readGameRecord;
     }
 
+    public GameRecord getLastGamePlayed_by_Player(String p_playername) {
+        GameRecord lastgame = null;
+        Cursor query = null;
+        try {
+
+            query = getObjDatabase().query(false,
+                    DatabaseHelper.TABLE_ASSIGNMENTS, new String[]{"_id", "sequence", "team", "game_id", "player_id"},
+                    "player_id = ?1", new String[]{p_playername}, null, null, "game_id desc", "1");
+            List<PlayerAssignment>  lis = moveQueryToAssignments(query);
+
+            if(!lis.isEmpty()){
+                query = getObjDatabase().query(DatabaseHelper.TABLE_GAMES, new String[]{"_id", "category_ordinal", "sport", "created"},
+                        "_id = ?1", new String[]{String.valueOf(lis.get(0).getGame())}, null, null, "created desc", "1");
+
+                query.moveToFirst();
+                lastgame = new GameRecord();
+                lastgame.setId(query.getInt(0));
+                //gameRead...
+                lastgame.setSport(query.getString(2));
+                lastgame.setStartedAt(objDateFormat.parse(query.getString(3)));
+                query.close();
+            }
+
+        } catch (Exception e) {
+            Log.e(Flags.LOGTAG, e.toString());
+            return null;
+        } finally {
+            if (query != null) {
+                query.close();
+            }
+        }
+
+        return lastgame;
+    }
+
     public GameRecord getLastGamePlayed() {
         GameRecord lastgame = null;
         Cursor query = null;

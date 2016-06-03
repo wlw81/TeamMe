@@ -71,8 +71,8 @@
     <string name="round">Round</string>
     <string name="maxplayers_reached">Maximum player count reached.</string>
     <string name="log_complete">Add</string>
-    <string name="jump2game">Browse gameRecord results</string>
-    <string name="selectGame">Select gameRecord</string>
+    <string name="jump2game">Browse game records</string>
+    <string name="selectGame">Select game</string>
     <string name="cancel">Cancel</string>
     <string name="promote">Promote</string>
     <string name="forceMove">had to be moved.</string>

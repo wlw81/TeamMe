@@ -254,7 +254,11 @@ public class GameCreatorActivity extends AppCompatActivity implements
                                                                                   GameRecordListActivity.class);
                                                                           startActivity(recordsActivity);
                                                                           return true;
-
+                                                                      case R.id.PlayerItem:
+                                                                          Intent playerActivity = new Intent(getApplicationContext(),
+                                                                                  PlayerListActivity.class);
+                                                                          startActivity(playerActivity);
+                                                                          return true;
                                                                       case R.id.SettingsItem:
 
                                                                           Intent settingsActivity = new Intent(getApplicationContext(),

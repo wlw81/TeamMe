@@ -36,6 +36,8 @@ public class GameRecordDetailFragment extends Fragment {
      * represents.
      */
     public static final String ARG_ITEM_ID = "item_id";
+    private static Context applicationContext;
+
     private BackendFacade facade;
 
     public void setApplicationContext(Context p_context) {
@@ -43,8 +45,6 @@ public class GameRecordDetailFragment extends Fragment {
             this.applicationContext = p_context;
         }
     }
-
-    private static Context applicationContext;
 
     public Context getApplicationContext() {
         return applicationContext;

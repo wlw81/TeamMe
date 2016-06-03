@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/player_detail_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <TextView
+            android:id="@+id/player_detail_nameTV"
+            style="?android:attr/textAppearanceLarge"
+            android:textSize="64sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textColor="@color/active"
+            android:textIsSelectable="true"
+            tools:context="de.pasligh.android.teamme.PlayerDetailFragment" />
+
+        <TextView
+            android:id="@+id/player_detail_lastTimePlayedTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:layout_alignParentLeft="true"
+            android:text="@string/gamedatetext"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/player_detail_lastTimeDateTV"
+            android:layout_width="wrap_content"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:layout_height="wrap_content"
+            android:text="@string/gameempty"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/active"
+            android:textIsSelectable="false" />
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/player_detail_FAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:src="@drawable/ic_action_delete"
+        app:elevation="6dp"
+        app:layout_anchor="@id/player_detail_layout"
+        app:layout_anchorGravity="bottom|right|end" />
+
+</android.support.design.widget.CoordinatorLayout>
