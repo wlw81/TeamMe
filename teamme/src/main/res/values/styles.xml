@@ -2,6 +2,7 @@
 
     <style name="AppBaseTheme" parent="Theme.AppCompat">
         <item name="colorButtonNormal">@color/accent_color</item>
+        <item name="colorPrimary">@color/active</item>
     </style>
 
 
