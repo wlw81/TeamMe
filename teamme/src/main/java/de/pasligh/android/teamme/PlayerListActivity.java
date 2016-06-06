@@ -1,6 +1,7 @@
 package de.pasligh.android.teamme;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.MenuItem;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
+import de.pasligh.android.teamme.databinding.ActivityPlayerListBinding;
 import de.pasligh.android.teamme.tools.PlayerRV_Adapter;
 
 /**
@@ -41,7 +43,8 @@ public class PlayerListActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player_list);
+        ActivityPlayerListBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_player_list);
+        //setContentView(R.layout.activity_player_list);
         // Show the Up button in the action bar.
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -51,6 +54,7 @@ public class PlayerListActivity extends AppCompatActivity implements View.OnClic
         View recyclerView = findViewById(R.id.player_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
+        binding.setPlayers(myAdapter.getPlayers());
 
         if (findViewById(R.id.player_detail_container) != null) {
             // The detail container view will be present only in the
@@ -89,9 +93,9 @@ public class PlayerListActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.player_detail_FAB){
+        if (v.getId() == R.id.player_detail_FAB) {
             // perhaps later
-        }else{
+        } else {
             PlayerRV_Adapter.PlayerHolder
                     holder = (PlayerRV_Adapter.PlayerHolder) v.getTag();
             String id = String.valueOf(holder.getName().getText());

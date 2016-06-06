@@ -27,15 +27,15 @@ public final class R {
 		public static final int common_signin_btn_text_light = 0x7f0c0062;
 	}
 	public static final class drawable {
-		public static final int common_full_open_on_phone = 0x7f020050;
-		public static final int common_ic_googleplayservices = 0x7f020051;
+		public static final int common_full_open_on_phone = 0x7f020053;
+		public static final int common_ic_googleplayservices = 0x7f020054;
 	}
 	public static final class id {
-		public static final int adjust_height = 0x7f0d0033;
-		public static final int adjust_width = 0x7f0d0034;
-		public static final int none = 0x7f0d0010;
-		public static final int normal = 0x7f0d000c;
-		public static final int wrap_content = 0x7f0d001a;
+		public static final int adjust_height = 0x7f0d0037;
+		public static final int adjust_width = 0x7f0d0038;
+		public static final int none = 0x7f0d0014;
+		public static final int normal = 0x7f0d0010;
+		public static final int wrap_content = 0x7f0d001e;
 	}
 	public static final class integer {
 		public static final int google_play_services_version = 0x7f0b0006;

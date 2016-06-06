@@ -2,6 +2,7 @@ package de.pasligh.android.teamme;
 
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
+import de.pasligh.android.teamme.databinding.ActivityGamerecordListBinding;
+import de.pasligh.android.teamme.databinding.ActivityPlayerListBinding;
 import de.pasligh.android.teamme.objects.GameRecord;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.tools.Flags;
@@ -64,7 +67,7 @@ public class GameRecordListActivity extends AppCompatActivity implements View.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gamerecord_list);
+        ActivityGamerecordListBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_gamerecord_list);
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -74,6 +77,7 @@ public class GameRecordListActivity extends AppCompatActivity implements View.On
         View recyclerView = findViewById(R.id.gamerecord_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
+        binding.setRecords(myAdapter.getGameRecords());
 
         if (findViewById(R.id.gamerecord_detail_container) != null) {
             // The detail container view will be present only in the

@@ -16,7 +16,7 @@
         <TextView
             android:id="@+id/player_detail_nameTV"
             style="?android:attr/textAppearanceLarge"
-            android:textSize="64sp"
+            android:textSize="@dimen/big_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp"

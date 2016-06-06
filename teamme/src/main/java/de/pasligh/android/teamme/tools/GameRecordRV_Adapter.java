@@ -18,7 +18,11 @@ import de.pasligh.android.teamme.objects.GameRecord;
  */
 public class GameRecordRV_Adapter extends RecyclerView.Adapter<GameRecordRV_Adapter.GameRecordRV_Holder> {
 
-    List<GameRecord> mValues;
+    public List<GameRecord> getGameRecords() {
+        return gameRecords;
+    }
+
+    List<GameRecord> gameRecords;
     java.text.DateFormat dateFormat;
     View.OnClickListener listener;
     Context context;
@@ -34,7 +38,7 @@ public class GameRecordRV_Adapter extends RecyclerView.Adapter<GameRecordRV_Adap
     }
 
     public GameRecordRV_Adapter(Context p_context, View.OnClickListener p_listener, List<GameRecord> p_Values) {
-        mValues = p_Values;
+        gameRecords = p_Values;
         context = p_context;
         dateFormat = android.text.format.DateFormat.getDateFormat(p_context);
         listener = p_listener;
@@ -49,7 +53,7 @@ public class GameRecordRV_Adapter extends RecyclerView.Adapter<GameRecordRV_Adap
 
     @Override
     public void onBindViewHolder(GameRecordRV_Holder holder, int position) {
-        GameRecord ci = mValues.get(position);
+        GameRecord ci = gameRecords.get(position);
         holder.sport.setText(ci.getSport());
         int winnerTeam = ShareHelper.getWinnerTeam(getFacade().getScores(ci.getId()));
 
@@ -65,7 +69,7 @@ public class GameRecordRV_Adapter extends RecyclerView.Adapter<GameRecordRV_Adap
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return gameRecords.size();
     }
 
 

@@ -17,6 +17,10 @@ import de.pasligh.android.teamme.objects.Player;
  */
 public class PlayerRV_Adapter extends RecyclerView.Adapter<PlayerRV_Adapter.PlayerHolder> {
 
+    public List<Player> getPlayers() {
+        return players;
+    }
+
     List<Player> players;
 
     View.OnClickListener listener;

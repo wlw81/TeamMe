@@ -4,25 +4,30 @@
             android:id="@+id/StatisticsItem"
             android:orderInCategory="110"
             android:title="@string/statistics"
+            android:icon="@drawable/images_rotate_left"
             android:visible="false"></item>
         <item
             android:id="@+id/Jump2GameItem"
             android:orderInCategory="120"
             android:title="@string/jump2game"
+            android:icon="@drawable/collections_view_as_list"
             android:visible="true"></item>
         <item
             android:id="@+id/PlayerItem"
             android:orderInCategory="130"
             android:title="@string/player"
+            android:icon="@drawable/social_person"
             android:visible="true"></item>
         <item
             android:id="@+id/SettingsItem"
             android:orderInCategory="140"
             android:title="@string/title_activity_settings"
+            android:icon="@drawable/action_settings"
             android:visible="true"></item>
         <item
             android:id="@+id/AboutItem"
             android:orderInCategory="200"
+            android:icon="@drawable/action_about"
             android:title="@string/about" />
     </group>
 </menu>
