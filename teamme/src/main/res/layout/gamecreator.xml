@@ -24,7 +24,7 @@
             android:layout_below="@+id/TeamsTextView"
             android:orientation="horizontal"
             android:paddingBottom="16dp"
-            android:paddingTop="16dp">
+            android:paddingTop="12dp">
 
             <RadioButton
                 android:id="@+id/TwoTeamRadioButton"
