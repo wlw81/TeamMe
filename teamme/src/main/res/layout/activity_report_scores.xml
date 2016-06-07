@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        app:pressedTranslationZ="16dp"
         android:src="@drawable/add" />
 
     <android.support.v7.widget.RecyclerView

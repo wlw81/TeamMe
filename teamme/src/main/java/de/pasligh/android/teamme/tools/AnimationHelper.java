@@ -16,14 +16,18 @@ public class AnimationHelper {
     public static Animator reveal(View myView) {
         Animator anim = null;// get the center for the clipping circle
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            myView.setVisibility(View.VISIBLE);
-            int cx = myView.getWidth() / 2;
-            int cy = myView.getHeight() / 2;
+            try{
+                myView.setVisibility(View.VISIBLE);
+                int cx = myView.getWidth() / 2;
+                int cy = myView.getHeight() / 2;
 
-            // get the final radius for the clipping circle
-            float finalRadius = (float) Math.hypot(cx, cy);
-            anim = ViewAnimationUtils.createCircularReveal(myView, cx, cy, 0, finalRadius);
-            anim.start();
+                // get the final radius for the clipping circle
+                float finalRadius = (float) Math.hypot(cx, cy);
+                anim = ViewAnimationUtils.createCircularReveal(myView, cx, cy, 0, finalRadius);
+                anim.start();
+            }catch(IllegalStateException e){
+                myView.setVisibility(View.VISIBLE);
+            }
         }
         return anim;
     }

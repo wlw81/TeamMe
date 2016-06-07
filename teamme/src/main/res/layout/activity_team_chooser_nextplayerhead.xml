@@ -22,6 +22,7 @@
         android:layout_alignParentEnd="true"
         android:layout_gravity="bottom|right"
         android:src="@drawable/next_white"
+        app:pressedTranslationZ="16dp"
         app:elevation="6dp" />
 
 

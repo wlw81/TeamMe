@@ -69,9 +69,9 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/inactive"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/header"
         app:itemTextColor="@color/state_list"
+        app:itemTextAppearance="?android:attr/textAppearanceMedium"
+        app:headerLayout="@layout/header"
         app:menu="@menu/game_creator" />
 </android.support.v4.widget.DrawerLayout>

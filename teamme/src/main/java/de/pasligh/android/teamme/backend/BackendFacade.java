@@ -397,6 +397,23 @@ public class BackendFacade {
         }
     }
 
+    public PlayerAssignment getCaptain(int p_intGameID, int p_team) {
+        Cursor query = null;
+        try {
+            query = getObjDatabase().query(false,
+                    DatabaseHelper.TABLE_ASSIGNMENTS, new String[]{"_id", "sequence", "team", "game_id", "player_id"},
+                    "game_id = ?1 and team = ?2", new String[]{String.valueOf(p_intGameID), String.valueOf(p_team)}, null, null, "sequence", "1");
+            return moveQueryToAssignments(query).get(0);
+        } catch (Exception e) {
+            Log.e(Flags.LOGTAG, e.toString());
+            return null;
+        } finally {
+            if (query != null) {
+                query.close();
+            }
+        }
+    }
+
     public List<PlayerAssignment> getAllAssignments() {
         try {
             Cursor query = getObjDatabase().query(false,

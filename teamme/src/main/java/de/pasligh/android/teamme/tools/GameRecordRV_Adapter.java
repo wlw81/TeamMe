@@ -58,7 +58,7 @@ public class GameRecordRV_Adapter extends RecyclerView.Adapter<GameRecordRV_Adap
         int winnerTeam = ShareHelper.getWinnerTeam(getFacade().getScores(ci.getId()));
 
         if (winnerTeam >= 0 && winnerTeam < 4200) {
-            holder.result.setText(context.getString(R.string.team) + " " + winnerTeam + " " + context.getString(R.string.wins));
+            holder.result.setText(context.getString(R.string.team) + " " + getFacade().getCaptain(ci.getId(), winnerTeam).getPlayer() + " " + context.getString(R.string.wins));
         } else {
             holder.result.setText(context.getString(R.string.draw));
         }

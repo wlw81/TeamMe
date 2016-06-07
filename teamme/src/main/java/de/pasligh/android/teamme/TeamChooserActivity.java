@@ -307,7 +307,7 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
         }
 
         String playername = ((AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView))
-                .getText().toString();
+                .getText().toString().trim();
 
         String teamHeaderText = playername + ", "
                 + getString(R.string.assignmenttext_part1) + " "

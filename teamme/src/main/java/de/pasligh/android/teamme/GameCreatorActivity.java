@@ -15,6 +15,8 @@ import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -50,6 +52,8 @@ import de.pasligh.android.teamme.tools.HoloCircleSeekBar.OnCircleSeekBarChangeLi
 import de.pasligh.android.teamme.tools.TTS_Tool;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
+import static de.pasligh.android.teamme.R.id.gameCreatorCL;
+
 /**
  * An activity representing a list of games. This activity has different
  * presentations for handset and tablet-size devices. On handsets, the activity
@@ -80,6 +84,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
     private NavigationView mNavigationView;
     private DrawerLayout mDrawerLayout;
     private Toolbar toolbar;
+    private Snackbar barDisplayed;
 
     private BackendFacade facade;
 
@@ -177,40 +182,6 @@ public class GameCreatorActivity extends AppCompatActivity implements
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                final GameRecord lastGameRecord = getFacade().getLastGamePlayed();
-                if (null != lastGameRecord) {
-                    try {
-                        int snackbarShowlenght = Snackbar.LENGTH_INDEFINITE;
-                        String caption = getString(R.string.log);
-                        List<Score> scoreList = getFacade().getScores(lastGameRecord.getId());
-                        if (scoreList != null && !scoreList.isEmpty()) {
-                            snackbarShowlenght = Snackbar.LENGTH_LONG;
-                            caption = getString(R.string.log_complete);
-                        }
-
-                        java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
-                        Snackbar
-                                .make(playerNameTextView, lastGameRecord.getSport() + " " + dateFormat.format(lastGameRecord.getStartedAt()), snackbarShowlenght)
-                                .setAction(caption, new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        Intent reportScores = new Intent(getApplicationContext(),
-                                                ReportScoresActivity.class);
-                                        reportScores.putExtra(Flags.GAME_ID, lastGameRecord.getId());
-                                        startActivity(reportScores);
-                                    }
-                                })
-                                .show();
-                    } catch (Exception e) {
-                        Log.e(Flags.LOGTAG, "Snackbar error: " + e.getMessage());
-                    }
-                }
-            }
-        }, 2000);
     }
 
 
@@ -282,12 +253,52 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        showSnackbar();
+        validateTeamMe_Start();
+    }
+
+
+
+    private void showSnackbar() {
+        barDisplayed = null;
+        final GameRecord lastGameRecord = getFacade().getLastGamePlayed();
+        if (null != lastGameRecord) {
+            try {
+                int snackbarShowlenght = Snackbar.LENGTH_LONG;
+                String caption = getString(R.string.log);
+                List<Score> scoreList = getFacade().getScores(lastGameRecord.getId());
+                if (scoreList != null && !scoreList.isEmpty()) {
+                    snackbarShowlenght = Snackbar.LENGTH_SHORT;
+                    caption = getString(R.string.log_complete);
+                }
+                java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
+                barDisplayed = Snackbar
+                        .make(findViewById(R.id.GameCreatorIncludeLayout), lastGameRecord.getSport() + " " + dateFormat.format(lastGameRecord.getStartedAt()), snackbarShowlenght)
+                        .setAction(caption, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent reportScores = new Intent(getApplicationContext(),
+                                        ReportScoresActivity.class);
+                                reportScores.putExtra(Flags.GAME_ID, lastGameRecord.getId());
+                                startActivity(reportScores);
+                            }
+                        });
+                barDisplayed.show();
+            } catch (Exception e) {
+                Log.e(Flags.LOGTAG, "Snackbar error: " + e.getMessage());
+            }
+        }
+    }
+
     private void teamMe() {
         if (validateTeamMe_Start()) {
             int teamCount = getTeamCount();
             String sport = ((AutoCompleteTextView) findViewById(R.id.SportTextView)).getText().toString().trim();
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-
+            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.newGameFAB);
             boolean preselection = sharedPref.getBoolean("preselection", true);
             if (getFacade().getPlayers().isEmpty() || !preselection) {
                 // get things started - because we know no players
@@ -297,7 +308,12 @@ public class GameCreatorActivity extends AppCompatActivity implements
                 callChooser.putExtra(Flags.SPORT, sport);
                 callChooser.putExtra(Flags.TEAMCOUNT, teamCount);
                 callChooser.putExtra(Flags.PLAYERCOUNT, playerCount);
-                startActivity(callChooser);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeScaleUpAnimation(fab,
+                        (int) fab.getX(),
+                        (int) fab.getY(),
+                        (int) fab.getWidth(),
+                        (int) fab.getHeight());
+                ActivityCompat.startActivity(this, callChooser, options.toBundle());
             } else {
                 // we already know some player names, let's offer a preselection!
                 Intent playerPreselection = new Intent(getApplicationContext(),
@@ -305,8 +321,15 @@ public class GameCreatorActivity extends AppCompatActivity implements
                 playerPreselection.putExtra(Flags.TEAMCOUNT, teamCount);
                 playerPreselection.putExtra(Flags.PLAYERCOUNT, playerCount);
                 playerPreselection.putExtra(Flags.SPORT, sport);
-                startActivity(playerPreselection);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeScaleUpAnimation(fab,
+                        (int) fab.getX(),
+                        (int) fab.getY(),
+                        (int) fab.getWidth(),
+                        (int) fab.getHeight());
+                ActivityCompat.startActivity(this, playerPreselection, options.toBundle());
             }
+
+
         }
     }
 
@@ -396,6 +419,10 @@ public class GameCreatorActivity extends AppCompatActivity implements
         RadioGroup group = ((RadioGroup) findViewById(R.id.TeamsRadioGroup));
         boolean valid = playerCount >= getTeamCount() && !sportTextView.getText().toString().trim().isEmpty() && group.getCheckedRadioButtonId() >= 0;
         if (valid) {
+
+            if(null != barDisplayed){
+                barDisplayed.dismiss();
+            }
 
             // previously invisible view
             View myView = findViewById(R.id.newGameFAB);
