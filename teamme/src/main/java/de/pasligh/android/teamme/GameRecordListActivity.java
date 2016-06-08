@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -103,8 +104,6 @@ public class GameRecordListActivity extends AppCompatActivity implements View.On
             Intent backHome = new Intent(getApplicationContext(),
                     GameCreatorActivity.class);
             startActivity(backHome);
-            navigateUpToFromChild(GameRecordListActivity.this
-                    , backHome);
             return true;
         }
         return super.onOptionsItemSelected(item);

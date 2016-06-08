@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.pasligh.android.teamme"
-    android:versionCode="52"
-    android:versionName="3.0.7" >
+    android:versionCode="53"
+    android:versionName="3.0.8" >
 
     <uses-sdk
         android:minSdkVersion="17"
@@ -58,10 +58,10 @@
         <activity
             android:name="de.pasligh.android.teamme.ReportScoresActivity"
             android:label="@string/title_activity_report_scores"
-            android:parentActivityName="de.pasligh.android.teamme.GameRecordDetailActivity" >
+            android:parentActivityName="de.pasligh.android.teamme.GameRecordListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".GameRecordDetailActivity" />
+                android:value=".GameRecordListActivity" />
         </activity>
         <activity
             android:name="de.pasligh.android.teamme.SettingsActivity"

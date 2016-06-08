@@ -111,7 +111,7 @@ ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest
 	android:label
 		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:56:13-65
 	android:parentActivityName
-		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:57:13-67
+		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:57:13-65
 	android:name
 		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:55:13-49
 activity#de.pasligh.android.teamme.SettingsActivity

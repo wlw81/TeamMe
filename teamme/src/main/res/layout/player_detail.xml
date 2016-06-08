@@ -5,44 +5,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/player_detail_layout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/player_detail_nameTV"
-            style="?android:attr/textAppearanceLarge"
-            android:textSize="@dimen/big_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/player_detail_layout"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:orientation="vertical"
             android:padding="16dp"
-            android:textColor="@color/active"
-            android:textIsSelectable="true"
-            tools:context="de.pasligh.android.teamme.PlayerDetailFragment" />
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            android:background="@color/active">
+
+            <TextView
+                android:id="@+id/player_detail_nameTV"
+                style="?android:attr/textAppearanceLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/abc_primary_text_material_dark"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/big_text"
+                tools:context="de.pasligh.android.teamme.PlayerDetailFragment" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/player_detail_lastTimePlayedTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:layout_alignParentLeft="true"
             android:text="@string/gamedatetext"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_below="@+id/player_detail_layout"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="32dp" />
 
         <TextView
             android:id="@+id/player_detail_lastTimeDateTV"
             android:layout_width="wrap_content"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
             android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
             android:text="@string/gameempty"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/active"
-            android:textIsSelectable="false" />
-    </LinearLayout>
+            android:textIsSelectable="false"
+            android:layout_below="@+id/player_detail_lastTimePlayedTV"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/player_detail_FAB"
@@ -50,10 +61,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-        app:pressedTranslationZ="16dp"
         android:src="@drawable/ic_action_delete"
         app:elevation="6dp"
         app:layout_anchor="@id/player_detail_layout"
-        app:layout_anchorGravity="bottom|right|end" />
-
+        app:layout_anchorGravity="bottom|right|end"
+        app:pressedTranslationZ="16dp" />
 </android.support.design.widget.CoordinatorLayout>

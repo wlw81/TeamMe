@@ -2,11 +2,123 @@
 <items version="2" >
 
     <item
+        jar="D:\Programme\Android SDK\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.3.0_0319ffa8b3c93d795b258f4d10f0a842edccfc8e\classes.dex" />
+    </item>
+    <item
+        jar="D:\Programme\AndroidStudio\gradle\m2repository\com\android\databinding\baseLibrary\2.1.2\baseLibrary-2.1.2.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="357d1307d303c4771283372a53fd7c45e0c19c89">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\baseLibrary-2.1.2_79edd6c59453a3b035c1d8be99e4bdf291a9e20a\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\libs\achartengine-1.1.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="9932e3fb9fbe54e80873e77f72a99f79e33b3250">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\2\achartengine-1.1.0_69356a44986ba65fab47eb5c232cd5eb230e71af\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\libs\internal_impl-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.3.0_f3070906d94c9f354c8b400d163c82287b7a6393\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.3.0_0f6741a30571579ba31d52d794e8b56743a2bd5c\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.3.0_939875071a68aaf6469f4bbe902edc3d2891eb80\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\design\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f0001e71cea6ae432a00021c6f727f5ef0f3d27e">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-23.3.0_bbfb1ccb8f99fdf47b6d63d5e9bd3c64663b0404\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="82ce13fd19cdfde0e392f03c27edeba8d4333648">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-23.3.0_950e223e9987444ae5ea0f887501fe22c8e64896\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.databinding\library\1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d985cdf99de8a63824b52d8a8efc309f9e5fbf01">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.databinding-library-1.1_1cf4903da7ccc9e887504546a7daa7a2a6b49a8c\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.3.0_ff87bca9d3d99a779a011f3e29afb144cad149f9\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appindexing-8.1.0_6ad0d372569681e2760459a9856eda1a73fd636a\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="bc75d2d869a683b421d9df3d99854a27c96fcb07">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_276fe779a14a9734ec8327b86772c6e51f48a1cb\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="debf30ce0a7560396b6235edef77e447006454c2">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-23.3.0_a3e5eddf55d7c95f7287276b24f709a58c43e571\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-8.1.0_8190ad464f4cae1d188706b42e84f6114f54e0ae\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.databinding\adapters\1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3cae403175958af8baa00bed0bd6e04187d69415">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.databinding-adapters-1.1_ccc1c9cfb5ce79f4d9cf5ff4478be5f9ded74394\classes.dex" />
+    </item>
+    <item
         jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="52b517570bacf7c6337159e0addb0c1ffcf1ff17">
+        sha1="b6941200f6e9ba4adb5251ad16b1c4291d36fdbb">
         <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_49e67123556d7f855b201cfe4d5e306679d22d43\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
+        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.3.0_986c334bc39d4090d0b71c6ae8c2298aede61639\classes.dex" />
     </item>
 
 </items>
