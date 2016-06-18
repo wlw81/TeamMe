@@ -2582,7 +2582,7 @@ containing a value of this type.
         public static final int write=0x7f020068;
     }
     public static final class id {
-        public static final int AboutItem=0x7f0d00e9;
+        public static final int AboutItem=0x7f0d00e8;
         public static final int AssignedPlayerLayout=0x7f0d0094;
         public static final int BumperLeftDrawable=0x7f0d0089;
         public static final int BumperLeftLayout=0x7f0d0088;
@@ -2590,7 +2590,7 @@ containing a value of this type.
         public static final int BumperRightDrawable=0x7f0d008d;
         public static final int BumperRightLayout=0x7f0d008b;
         public static final int BumperRightSpace=0x7f0d008c;
-        public static final int CancelItem=0x7f0d00ec;
+        public static final int CancelItem=0x7f0d00eb;
         public static final int ChartLayout=0x7f0d00b1;
         public static final int GameCountTextTextView=0x7f0d00b5;
         public static final int GameCountTextView=0x7f0d00b6;
@@ -2599,15 +2599,15 @@ containing a value of this type.
         public static final int GameDateTextView=0x7f0d00b8;
         public static final int GameProgressTextView=0x7f0d0092;
         public static final int InputPlayerIncludeLayout=0x7f0d0082;
-        public static final int Jump2GameItem=0x7f0d00e6;
+        public static final int Jump2GameItem=0x7f0d00e5;
         public static final int MoreTeamRadioButton=0x7f0d00c5;
         public static final int NewGameLabelTextView=0x7f0d00c9;
-        public static final int NextItem=0x7f0d00eb;
+        public static final int NextItem=0x7f0d00ea;
         public static final int NextPlayerButton=0x7f0d0093;
         public static final int NextPlayerIncludeLayout=0x7f0d0083;
         public static final int PlayerDetailIcon=0x7f0d00bb;
         public static final int PlayerDetailLayout=0x7f0d00b9;
-        public static final int PlayerItem=0x7f0d00e7;
+        public static final int PlayerItem=0x7f0d00e6;
         public static final int PlayerNameAutoCompleteTextView=0x7f0d0090;
         public static final int PlayerNameCaptionTextView=0x7f0d008f;
         public static final int PlayerNameTextView=0x7f0d00bc;
@@ -2621,13 +2621,13 @@ containing a value of this type.
         public static final int RoundResultResultTV=0x7f0d00a3;
         public static final int RoundResultTitleTV=0x7f0d00a6;
         public static final int RoundResult_TeamButtonsLayout=0x7f0d00a5;
-        public static final int ScoreShareContext=0x7f0d00ea;
+        public static final int ScoreShareContext=0x7f0d00e9;
         public static final int ScoreWinnerTV=0x7f0d007f;
-        public static final int SettingsItem=0x7f0d00e8;
+        public static final int SettingsItem=0x7f0d00e7;
         public static final int ShakeTextView=0x7f0d0087;
         public static final int SportTextView=0x7f0d00c7;
         public static final int StatisticValuesLayout=0x7f0d00b4;
-        public static final int StatisticsItem=0x7f0d00e5;
+        public static final int StatisticsItem=0x7f0d00e4;
         public static final int StatisticsLabelTextView=0x7f0d00b3;
         public static final int TeamCaptionTextView=0x7f0d0086;
         public static final int TeamChooserControlsLayout=0x7f0d0081;
@@ -2637,7 +2637,7 @@ containing a value of this type.
         public static final int TeamIntroductionTextView=0x7f0d0085;
         public static final int TeamNumberTextView=0x7f0d0084;
         public static final int TeamOverviewSectionLayout=0x7f0d00bd;
-        public static final int TeamOverviewShareContext=0x7f0d00ed;
+        public static final int TeamOverviewShareContext=0x7f0d00ec;
         public static final int TeamsRadioGroup=0x7f0d00c0;
         public static final int TeamsTextView=0x7f0d00c1;
         public static final int ThreeTeamRadioButton=0x7f0d00c4;
@@ -2756,10 +2756,9 @@ containing a value of this type.
         public static final int playerSelectionCV_Switch=0x7f0d009c;
         public static final int playerSelectionCV_TeamSpinner=0x7f0d009e;
         public static final int playerSelectionRV=0x7f0d007a;
-        public static final int player_detail_FAB=0x7f0d00e3;
+        public static final int player_detail_FAB=0x7f0d00e2;
+        public static final int player_detail_RV=0x7f0d00e1;
         public static final int player_detail_container=0x7f0d0078;
-        public static final int player_detail_lastTimeDateTV=0x7f0d00e2;
-        public static final int player_detail_lastTimePlayedTV=0x7f0d00e1;
         public static final int player_detail_layout=0x7f0d00df;
         public static final int player_detail_nameTV=0x7f0d00e0;
         public static final int player_list=0x7f0d0079;
@@ -2802,7 +2801,7 @@ containing a value of this type.
         public static final int status_bar_latest_event_content=0x7f0d00d4;
         public static final int submit_area=0x7f0d006b;
         public static final int tabMode=0x7f0d0011;
-        public static final int teamSpinnerTV=0x7f0d00e4;
+        public static final int teamSpinnerTV=0x7f0d00e3;
         public static final int text=0x7f0d00dc;
         public static final int text2=0x7f0d00da;
         public static final int textSpacerNoButtons=0x7f0d0053;

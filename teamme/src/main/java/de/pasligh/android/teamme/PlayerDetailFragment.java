@@ -7,6 +7,8 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,7 @@ import java.util.Map;
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.GameRecord;
 import de.pasligh.android.teamme.objects.Player;
+import de.pasligh.android.teamme.tools.GameRecordRV_Adapter;
 
 /**
  * A fragment representing a single Player detail screen.
@@ -86,14 +89,11 @@ public class PlayerDetailFragment extends android.support.v4.app.Fragment implem
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
             tv.setText(mItem.getName());
-
-            GameRecord record = getFacade().getLastGamePlayed_by_Player(mItem.getName());
-            if(null != record && record.getStartedAt() != null){
-                DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getActivity().getApplicationContext());
-                ((TextView) rootView.findViewById(R.id.player_detail_lastTimeDateTV)).setText(dateFormat.format(record.getStartedAt()));
-            }
-
-
+            GameRecordRV_Adapter adapter = new GameRecordRV_Adapter(getContext(), null, getFacade().getGamesByPlayer(mItem.getName()));
+            LinearLayoutManager llm = new LinearLayoutManager(getContext());
+            RecyclerView rv = ((RecyclerView) rootView.findViewById(R.id.player_detail_RV));
+            rv.setLayoutManager(llm);
+            rv.setAdapter(adapter);
         }
 
         return rootView;
@@ -121,7 +121,7 @@ public class PlayerDetailFragment extends android.support.v4.app.Fragment implem
                 builderSingle.setTitle(getString(R.string.mergeTo));
 
                 final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                      getActivity(),
+                        getActivity(),
                         android.R.layout.simple_selectable_list_item);
 
                 List<Player> allPlayers = getFacade().getPlayers();

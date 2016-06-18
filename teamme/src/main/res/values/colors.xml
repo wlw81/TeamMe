@@ -3,6 +3,6 @@
     <color name="active">#9c27b0</color>
     <color name="inactive">#BA68C8</color>
     <color name="font">#FFFFFF</color>
-    <color name="accent_color">#FF9100</color>
+    <color name="accent_color">#ff9100</color>
     <color name="card_color">@color/primary_material_dark</color>
 </resources>

@@ -125,6 +125,43 @@ public class BackendFacade {
         return gameRecords;
     }
 
+    public List<GameRecord> getGamesByPlayer(String p_playername) {
+        List<GameRecord> gameRecords = new ArrayList<GameRecord>();
+        Cursor query = null;
+        try {
+
+            query = getObjDatabase().query(false,
+                    DatabaseHelper.TABLE_ASSIGNMENTS, new String[]{"_id", "sequence", "team", "game_id", "player_id"},
+                    "player_id = ?1", new String[]{p_playername}, null, null, "game_id desc", "10");
+            List<PlayerAssignment>  lis = moveQueryToAssignments(query);
+
+            for(PlayerAssignment assignment : lis){
+                query = getObjDatabase().query(DatabaseHelper.TABLE_GAMES, new String[]{"_id", "category_ordinal", "sport", "created"},
+                        "_id = ?1", new String[]{String.valueOf(assignment.getGame())}, null, null, "created desc", "10");
+
+                while (query.moveToNext()) {
+                    GameRecord lastgame = new GameRecord();
+                    lastgame.setId(query.getInt(0));
+                    //gameRead...
+                    lastgame.setSport(query.getString(2));
+                    lastgame.setStartedAt(objDateFormat.parse(query.getString(3)));
+                    gameRecords.add(lastgame);
+                }
+                query.close();
+            }
+
+        } catch (Exception e) {
+            Log.e(Flags.LOGTAG, e.toString());
+            return null;
+        } finally {
+            if (query != null) {
+                query.close();
+            }
+        }
+
+        return gameRecords;
+    }
+
     public List<GameRecord> getGames(String p_strSports) {
         List<GameRecord> gameRecords = new ArrayList<GameRecord>();
         Cursor query = null;

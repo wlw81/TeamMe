@@ -27,7 +27,7 @@ public class ShareHelper {
             if (s.getScoreCount() > intHighestScore) {
                 intHighestScore = s.getScoreCount();
                 winnerTeam = s.getTeamNr();
-            } else if (intHighestScore >= 0 && s.getScoreCount() == intHighestScore) {
+            } else if (intHighestScore >= 0 && s.getScoreCount() == intHighestScore && s.getTeamNr() != winnerTeam) {
                 winnerTeam = 4200;
             }
         }
