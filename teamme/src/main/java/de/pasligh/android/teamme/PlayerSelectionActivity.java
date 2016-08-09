@@ -106,7 +106,7 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
         teamcount = getIntent().getIntExtra(Flags.TEAMCOUNT, -1);
         playercount = getIntent().getIntExtra(Flags.PLAYERCOUNT, -1);
 
-        // if too many player are listed, we try to suggest only one for this sport type
+        // if too many player are listed, we try to suggest only player for this sport type
         List<GameRecord> gameRecords = getFacade().getGames(sports);
         try {
             if (allPlayers.size() > Flags.MAXPLAYERS_PRESELECTION) {
