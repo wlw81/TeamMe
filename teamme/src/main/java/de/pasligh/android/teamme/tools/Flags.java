@@ -8,4 +8,5 @@ public class Flags {
     public final static String SPORT = "sport";
     public final static String GAME_ID = "gameId";
     public final static int MAXSTARS = 5;
+    public final static int MAXPLAYERS_PRESELECTION = 20;
 }

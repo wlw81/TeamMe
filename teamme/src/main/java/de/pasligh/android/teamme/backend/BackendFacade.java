@@ -171,9 +171,8 @@ public class BackendFacade {
                     "sport = ?1", new String[]{p_strSports}, null, null, "_id", null);
 
             while (query.moveToNext()) {
-                GameRecord gameRecordRead = new GameRecord();
+                GameRecord gameRecordRead = new GameRecord(getAssignments(query.getInt(0)));
                 gameRecordRead.setId(query.getInt(0));
-                //gameRecordRead...
                 gameRecordRead.setSport(query.getString(2));
                 gameRecordRead.setStartedAt(objDateFormat.parse(query.getString(3)));
                 gameRecords.add(gameRecordRead);
@@ -270,8 +269,6 @@ public class BackendFacade {
                 query.close();
             }
         }
-
-
     }
 
     public String[] getSports() {

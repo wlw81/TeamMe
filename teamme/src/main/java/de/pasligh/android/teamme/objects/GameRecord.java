@@ -44,9 +44,23 @@ public class GameRecord implements Serializable {
 
     public GameRecord(Set<PlayerAssignment> p_assignments) {
         super();
+        init();
+        Iterator<PlayerAssignment> iterator = p_assignments.iterator();
+        while (iterator.hasNext()) {
+            assignments.add(iterator.next());
+        }
+    }
+
+    private void init() {
         assignments = new ArrayList<PlayerAssignment>();
         startedAt = new Date();
         sport = "unknown";
+    }
+
+
+    public GameRecord(List<PlayerAssignment> p_assignments) {
+        super();
+        init();
         Iterator<PlayerAssignment> iterator = p_assignments.iterator();
         while (iterator.hasNext()) {
             assignments.add(iterator.next());

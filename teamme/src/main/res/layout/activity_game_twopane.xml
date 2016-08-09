@@ -72,6 +72,7 @@
         android:fitsSystemWindows="true"
         app:itemTextColor="@color/state_list"
         app:itemTextAppearance="?android:attr/textAppearanceMedium"
+        app:itemIconTint="@color/accent_color"
         app:headerLayout="@layout/header"
         app:menu="@menu/game_creator" />
 </android.support.v4.widget.DrawerLayout>

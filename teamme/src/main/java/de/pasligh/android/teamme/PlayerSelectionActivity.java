@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
@@ -20,8 +21,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.GameRecord;
@@ -99,14 +102,33 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
         List<PlayerAssignment> blankAssignments = new ArrayList<PlayerAssignment>();
         List<Player> allPlayers = getFacade().getPlayers();
 
-
         sports = getIntent().getStringExtra(Flags.SPORT);
         teamcount = getIntent().getIntExtra(Flags.TEAMCOUNT, -1);
         playercount = getIntent().getIntExtra(Flags.PLAYERCOUNT, -1);
 
+        // if too many player are listed, we try to suggest only one for this sport type
         List<GameRecord> gameRecords = getFacade().getGames(sports);
+        try {
+            if (allPlayers.size() > Flags.MAXPLAYERS_PRESELECTION) {
+                Set<Player> playersPerGame = new HashSet<Player>();
+                for (GameRecord gr : gameRecords) {
+                    for (PlayerAssignment assignment : gr.getAssignments()) {
+                        playersPerGame.add(assignment.getPlayer());
+                    }
+                }
+
+                if (!playersPerGame.isEmpty()) {
+                    allPlayers.clear();
+                    allPlayers.addAll(playersPerGame);
+                }
+            }
+        } catch (Exception e) {
+            Log.w(Flags.LOGTAG, "Could not optimize player list: " + e.getMessage());
+        }
+
         int overallScore = 0;
 
+        // let's see how the players are
         for (GameRecord g : gameRecords) {
             List<PlayerAssignment> assignemntsForGame = getFacade().getAssignments(g.getId());
 
@@ -127,6 +149,7 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
             }
         }
 
+        // we found some scores, let's calculate the strength
         if (overallScore > 0) {
             int maxScore = overallScore / mapPointsPerPlayer.size();
             int oneStar = maxScore / Flags.MAXSTARS;
@@ -134,7 +157,6 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
                 int scored = mapPointsPerPlayer.get(playername);
                 mapStarsPerPlayer.put(playername, Math.min(Flags.MAXSTARS, scored / oneStar));
             }
-
         }
 
         for (Player p : allPlayers) {

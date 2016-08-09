@@ -300,7 +300,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
             FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.newGameFAB);
             boolean preselection = sharedPref.getBoolean("preselection", true);
-            if (getFacade().getPlayers().isEmpty() || !preselection) {
+            if (!preselection || getFacade().getPlayers().isEmpty() ) {
                 // get things started - because we know no players
                 TeamReactor.decideTeams(teamCount, playerCount);
                 Intent callChooser = new Intent(getApplicationContext(),
