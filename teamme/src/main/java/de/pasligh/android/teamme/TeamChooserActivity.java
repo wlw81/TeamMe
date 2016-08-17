@@ -415,7 +415,7 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if (actionId == EditorInfo.IME_ACTION_DONE
-                || event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
             acceptPlayername();
             return true;
         }
