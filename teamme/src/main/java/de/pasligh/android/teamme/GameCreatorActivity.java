@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -142,6 +143,9 @@ public class GameCreatorActivity extends AppCompatActivity implements
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.newGameFAB);
         fab.setOnClickListener(this);
 
+        RadioButton rab = (RadioButton) findViewById(R.id.TwoTeamRadioButton);
+        rab.setChecked(true);
+
         playerCount = 4;
 
 
@@ -260,7 +264,22 @@ public class GameCreatorActivity extends AppCompatActivity implements
         validateTeamMe_Start();
     }
 
-
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        HoloCircleSeekBar seekbar = ((HoloCircleSeekBar) findViewById(R.id.PlayerPicker));
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_DPAD_UP:
+                seekbar.setProgress(playerCount++);
+                seekbar.requestFocus();
+                return true;
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                seekbar.setProgress(playerCount--);
+                seekbar.requestFocus();
+                return true;
+            default:
+                return super.onKeyUp(keyCode, event);
+        }
+    }
 
     private void showSnackbar() {
         barDisplayed = null;
@@ -300,7 +319,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
             FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.newGameFAB);
             boolean preselection = sharedPref.getBoolean("preselection", true);
-            if (!preselection || getFacade().getPlayers().isEmpty() ) {
+            if (!preselection || getFacade().getPlayers().isEmpty()) {
                 // get things started - because we know no players
                 TeamReactor.decideTeams(teamCount, playerCount);
                 Intent callChooser = new Intent(getApplicationContext(),
@@ -420,7 +439,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
         boolean valid = playerCount >= getTeamCount() && !sportTextView.getText().toString().trim().isEmpty() && group.getCheckedRadioButtonId() >= 0;
         if (valid) {
 
-            if(null != barDisplayed){
+            if (null != barDisplayed) {
                 barDisplayed.dismiss();
             }
 

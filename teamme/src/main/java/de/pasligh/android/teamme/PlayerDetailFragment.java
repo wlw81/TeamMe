@@ -89,7 +89,7 @@ public class PlayerDetailFragment extends android.support.v4.app.Fragment implem
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
             tv.setText(mItem.getName());
-            GameRecordRV_Adapter adapter = new GameRecordRV_Adapter(getContext(), null, getFacade().getGamesByPlayer(mItem.getName()));
+            GameRecordRV_Adapter adapter = new GameRecordRV_Adapter(getContext(), this, getFacade().getGamesByPlayer(mItem.getName()));
             LinearLayoutManager llm = new LinearLayoutManager(getContext());
             RecyclerView rv = ((RecyclerView) rootView.findViewById(R.id.player_detail_RV));
             rv.setLayoutManager(llm);
@@ -102,63 +102,73 @@ public class PlayerDetailFragment extends android.support.v4.app.Fragment implem
     @Override
     public void onClick(View v) {
 
-        // Use the Builder class for convenient dialog construction
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage(getString(R.string.playerDeleteDialog_question).replace("$1", mItem.getName()))
-                .setPositiveButton(R.string.delete,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,
-                                                int id) {
-                                if (getFacade().deletePlayer(mItem.getName())) {
+        if(v.getId() == R.id.player_detail_FAB){
+
+            // Use the Builder class for convenient dialog construction
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage(getString(R.string.playerDeleteDialog_question).replace("$1", mItem.getName()))
+                    .setPositiveButton(R.string.delete,
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,
+                                                    int id) {
+                                    if (getFacade().deletePlayer(mItem.getName())) {
+                                        Toast.makeText(getActivity().getApplicationContext(), getString(R.string.deleted) + ": " + mItem.getName(), Toast.LENGTH_SHORT).show();
+                                        restartListActivity();
+                                    }
+                                }
+                            }).setNeutralButton(R.string.merge, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    AlertDialog.Builder builderSingle = new AlertDialog.Builder(getActivity());
+                    builderSingle.setTitle(getString(R.string.mergeTo));
+
+                    final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                            getActivity(),
+                            android.R.layout.simple_selectable_list_item);
+
+                    List<Player> allPlayers = getFacade().getPlayers();
+                    final List<Player> players = new ArrayList<Player>();
+
+                    for (Player p : allPlayers) {
+                        if (!p.getName().equals(mItem.getName())) {
+                            arrayAdapter.add(p.getName());
+                            players.add(p);
+                        }
+                    }
+
+                    builderSingle.setNegativeButton(
+                            getString(R.string.cancel),
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+
+                    builderSingle.setAdapter(
+                            arrayAdapter,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    getFacade().mergePlayer(mItem.getName(), players.get(which).getName());
                                     Toast.makeText(getActivity().getApplicationContext(), getString(R.string.deleted) + ": " + mItem.getName(), Toast.LENGTH_SHORT).show();
                                     restartListActivity();
                                 }
-                            }
-                        }).setNeutralButton(R.string.merge, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                AlertDialog.Builder builderSingle = new AlertDialog.Builder(getActivity());
-                builderSingle.setTitle(getString(R.string.mergeTo));
+                            });
+                    builderSingle.show();
 
-                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                        getActivity(),
-                        android.R.layout.simple_selectable_list_item);
-
-                List<Player> allPlayers = getFacade().getPlayers();
-                final List<Player> players = new ArrayList<Player>();
-
-                for (Player p : allPlayers) {
-                    if (!p.getName().equals(mItem.getName())) {
-                        arrayAdapter.add(p.getName());
-                        players.add(p);
-                    }
                 }
+            });
+            // Create the AlertDialog object and return it
+            builder.create().show();
+        }else{
+            GameRecordRV_Adapter.GameRecordRV_Holder holder = ( GameRecordRV_Adapter.GameRecordRV_Holder) v.getTag();
+            String id = String.valueOf(holder.getId());
+            Intent intent = new Intent(getActivity().getApplicationContext(), GameRecordDetailActivity.class);
+            intent.putExtra(GameRecordDetailFragment.ARG_ITEM_ID, id);
+            startActivity(intent);
+        }
 
-                builderSingle.setNegativeButton(
-                        getString(R.string.cancel),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-
-                builderSingle.setAdapter(
-                        arrayAdapter,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                getFacade().mergePlayer(mItem.getName(), players.get(which).getName());
-                                Toast.makeText(getActivity().getApplicationContext(), getString(R.string.deleted) + ": " + mItem.getName(), Toast.LENGTH_SHORT).show();
-                                restartListActivity();
-                            }
-                        });
-                builderSingle.show();
-
-            }
-        });
-        // Create the AlertDialog object and return it
-        builder.create().show();
     }
 
     private void restartListActivity() {
