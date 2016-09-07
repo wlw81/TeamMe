@@ -54,6 +54,7 @@ import de.pasligh.android.teamme.tools.TTS_Tool;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
 import static de.pasligh.android.teamme.R.id.gameCreatorCL;
+import static de.pasligh.android.teamme.R.id.player_detail_FAB;
 
 /**
  * An activity representing a list of games. This activity has different
@@ -147,7 +148,6 @@ public class GameCreatorActivity extends AppCompatActivity implements
         rab.setChecked(true);
 
         playerCount = 4;
-
 
         Typeface tf = Typeface.createFromAsset(getAssets(),
                 "fonts/Roboto-Condensed.ttf");
@@ -268,14 +268,24 @@ public class GameCreatorActivity extends AppCompatActivity implements
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         HoloCircleSeekBar seekbar = ((HoloCircleSeekBar) findViewById(R.id.PlayerPicker));
         switch (keyCode) {
+            case KeyEvent.KEYCODE_ENTER:
+                if (findViewById(R.id.TwoTeamRadioButton).isFocused()) {
+                    findViewById(R.id.TwoTeamRadioButton).setSelected(true);
+                } else if (findViewById(R.id.ThreeTeamRadioButton).isFocused()) {
+                    findViewById(R.id.ThreeTeamRadioButton).setSelected(true);
+                }
             case KeyEvent.KEYCODE_DPAD_UP:
-                seekbar.setProgress(playerCount++);
-                seekbar.requestFocus();
-                return true;
+                if (seekbar.isFocused() && playerCount < seekbar.getMax()) {
+                    seekbar.setProgress(playerCount++);
+                    seekbar.requestFocus();
+                    return true;
+                }
             case KeyEvent.KEYCODE_DPAD_DOWN:
-                seekbar.setProgress(playerCount--);
-                seekbar.requestFocus();
-                return true;
+                if (seekbar.isFocused() && playerCount > 0) {
+                    seekbar.setProgress(playerCount--);
+                    seekbar.requestFocus();
+                    return true;
+                }
             default:
                 return super.onKeyUp(keyCode, event);
         }
