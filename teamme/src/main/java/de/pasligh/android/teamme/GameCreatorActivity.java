@@ -506,7 +506,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if (actionId == EditorInfo.IME_ACTION_DONE
-                || event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
             validateTeamMe_Start();
             return true;
         }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.pasligh.android.teamme"
-    android:versionCode="60"
-    android:versionName="3.1.6">
+    android:versionCode="61"
+    android:versionName="3.1.7">
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-feature android:name="there.isnt.a.vibrate.feature" android:required="false" />
