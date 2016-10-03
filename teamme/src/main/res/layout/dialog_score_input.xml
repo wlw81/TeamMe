@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/activity_horizontal_margin">
+
+        <EditText
+            android:id="@+id/ScoreInputTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/points"
+            android:layout_margin="@dimen/activity_bigger_margin"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:imeOptions="actionDone"
+            android:ems="10"
+            android:inputType="numberSigned" />
+
+</FrameLayout>

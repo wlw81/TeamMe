@@ -1,8 +1,10 @@
 package de.pasligh.android.teamme;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,12 +14,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.text.InputType;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -219,12 +227,12 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
                 winningTeam = team;
                 Log.i(Flags.LOGTAG, "Wins through roundpoints - team " + team + " round points:  " + roundPointsEachTeam[team]);
             } else if (roundPointsEachTeam[team] == maxRoundPoints) {
-                winningTeam = 4200;
+                winningTeam = Flags.DRAW_TEAM;
                 Log.i(Flags.LOGTAG, "Even through roundpoints - team " + team + " round points:  " + roundPointsEachTeam[team]);
             }
         }
 
-        if (winningTeam == 4200) {
+        if (winningTeam == Flags.DRAW_TEAM) {
             winningTeam = -1;
             int maxOverAllScore = 0;
             for (int team = 1; team < overAllScoreEachTeam.length; team++) {
@@ -234,14 +242,14 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
                     winningTeam = team;
                     Log.i(Flags.LOGTAG, "Wins through overall score - team " + team + " score:  " + compareScore);
                 } else if (compareScore == maxOverAllScore) {
-                    winningTeam = 4200;
+                    winningTeam = Flags.DRAW_TEAM;
                     Log.i(Flags.LOGTAG, "Even through overall score - team " + team + " score:  " + compareScore);
                 }
             }
         }
 
 
-        if (winningTeam != 4200) {
+        if (winningTeam != Flags.DRAW_TEAM) {
             ((TextView) findViewById(R.id.ScoreWinnerTV)).setText(getString(R.string.team) + " " + TeamReactor.getAssignmentsByTeam(winningTeam).get(0).getPlayer().getName() + " " + getString(R.string.wins) + "!");
         } else {
             ((TextView) findViewById(R.id.ScoreWinnerTV)).setText(getString(R.string.draw).toUpperCase() + "!");
@@ -287,7 +295,7 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
     }
 
     @Override
-    public void recieveHolder(ScoreRV_Adapter.RoundResultViewHolder p_holder, final List<Score> lisScore) {
+    public void recieveHolder(final ScoreRV_Adapter.RoundResultViewHolder p_holder, final List<Score> lisScore) {
         for (final Score s : lisScore) {
             Log.i(Flags.LOGTAG, "recieve holder for " + s);
             //Button buttonTeam = new Button(new ContextThemeWrapper(getApplication(), R.style.SpecialButton), null, R.style.SpecialButton);
@@ -298,34 +306,41 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
                 @Override
                 public void onClick(View v) {
                     if (null != s) {
-                        final NumberPicker np = new NumberPicker(getApplicationContext());
-                        np.setMinValue(0);
-                        np.setMaxValue(99999);
-                        np.setValue(s.getScoreCount());
-
-                        AlertDialog.Builder builder = new AlertDialog.Builder(ReportScoresActivity.this).setView(np);
+                        View viewInflated = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_score_input, (ViewGroup) findViewById(android.R.id.content), false);
+                        // Set up the input
+                        final EditText input = (EditText) viewInflated.findViewById(R.id.ScoreInputTV);
+                        if (s.getScoreCount() != 0) {
+                            input.setText(String.valueOf(s.getScoreCount()));
+                        }
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ReportScoresActivity.this).setView(viewInflated);
                         builder.setMessage(getString(R.string.team) + " " + TeamReactor.getAssignmentsByTeam(s.getTeamNr()).get(0).getPlayer().getName() + " - " + getString(R.string.points) + ": ").setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                for (Score sSave : lisScore) {
-                                    if (!sSave.equals(s)) {
-                                        getFacade().mergeScore(sSave);
+                                if (!input.getText().toString().trim().isEmpty()) {
+                                    for (Score sSave : lisScore) {
+                                        if (!sSave.equals(s)) {
+                                            getFacade().mergeScore(sSave);
+                                        }
                                     }
-                                }
-                                s.setScoreCount(np.getValue());
-                                getFacade().mergeScore(s);
-                                reload(getScores(), false);
-                                // previously invisible view
-                                View myView = findViewById(R.id.addScoreFAB);
-                                if (myView.getVisibility() != View.VISIBLE) {
-                                    if (AnimationHelper.reveal(myView) == null) {
-                                        myView.setVisibility(View.VISIBLE);
+                                    s.setScoreCount(Integer.parseInt(input.getText().toString()));
+                                    getFacade().mergeScore(s);
+                                    reload(getScores(), false);
+                                    // previously invisible view
+                                    View myView = findViewById(R.id.addScoreFAB);
+                                    if (myView.getVisibility() != View.VISIBLE) {
+                                        if (AnimationHelper.reveal(myView) == null) {
+                                            myView.setVisibility(View.VISIBLE);
+                                        }
                                     }
                                 }
                             }
                         });
-                        builder.show();
+                        AlertDialog alertToShow = builder.create();
+                        alertToShow.getWindow().setSoftInputMode(
+                                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                        alertToShow.show();
                     }
+
                 }
             });
             p_holder.getLayoutButtons().addView(buttonTeam);

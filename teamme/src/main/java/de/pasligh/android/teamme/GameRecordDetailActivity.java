@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Locale;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
+import de.pasligh.android.teamme.objects.GameRecord;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.tools.ShareHelper;
 import de.pasligh.android.teamme.tools.TeamReactor;
@@ -29,7 +30,16 @@ import de.pasligh.android.teamme.tools.TeamReactor;
  */
 public class GameRecordDetailActivity extends AppCompatActivity {
 
+    private BackendFacade facade;
     private static String currentId = null;
+
+    public BackendFacade getFacade() {
+        if (null == facade) {
+            facade = new BackendFacade(getApplicationContext());
+        }
+        return facade;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +69,7 @@ public class GameRecordDetailActivity extends AppCompatActivity {
             if (id != null) {
                 currentId = id;
             }
-            if(currentId != null){
+            if (currentId != null) {
                 arguments.putString(GameRecordDetailFragment.ARG_ITEM_ID,
                         currentId);
             }
@@ -111,23 +121,14 @@ public class GameRecordDetailActivity extends AppCompatActivity {
 
 
     private Intent createShareIntent() {
+        java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         StringBuilder shareText = new StringBuilder();
-        shareText.append(getString(R.string.shareIntent)).append(" ");
-        int teamNr = 1;
-        List<PlayerAssignment> assignments;
-        while (!(assignments = TeamReactor.getAssignmentsByTeam(teamNr))
-                .isEmpty()) {
-            shareText.append(getString(R.string.team).toUpperCase(Locale.getDefault())).append(" ")
-                    .append(assignments.get(0).getPlayer().getName().toUpperCase(Locale.getDefault()))
-                    .append(": ");
 
-            for (int i = 0; i < assignments.size(); i++) {
-                shareText.append((i + 1) + ". ").append(assignments.get(i).getPlayer().getName())
-                        .append(" ");
-            }
+        GameRecord gameRecord = getFacade().getGame(Integer.parseInt(currentId));
+        String title = gameRecord.getSport() + " " + dateFormat.format(gameRecord.getStartedAt());
 
-            teamNr++;
-        }
+        shareText.append("[").append(title).append("] ");
+        shareText.append(ShareHelper.createTeamDecided_ShareText(getString(R.string.shareIntent), getString(R.string.team)));
 
         // create app footer
         ShareHelper.appendFooter_Signature(shareText, getString(R.string.shareFooter));

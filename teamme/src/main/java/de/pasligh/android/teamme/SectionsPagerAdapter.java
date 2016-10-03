@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
 
 import java.util.HashSet;
@@ -22,7 +23,7 @@ import de.pasligh.android.teamme.tools.TeamReactor;
  * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-public class SectionsPagerAdapter extends FragmentPagerAdapter {
+public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
     public Set<PlayerAssignment> getAssignmentsPerTeam() {
         return assignmentsPerTeam;
@@ -64,7 +65,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             PlayerAssignment next = iterator.next();
             setTeamNr.add(next.getTeam());
         }
-        Log.d(Flags.LOGTAG, "Teamcount " + setTeamNr.size());
         return setTeamNr.size();
     }
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.GameRecord;
@@ -59,7 +61,7 @@ public class GameRecordDetailFragment extends Fragment {
 
 
     /**
-     * The dummy content this fragment is presenting.
+     * The record content this fragment is presenting.
      */
     private GameRecord mItem;
 
@@ -81,6 +83,12 @@ public class GameRecordDetailFragment extends Fragment {
             // to load content from a content provider.
             mItem = getFacade().getGame(Integer.parseInt(getArguments().getString(ARG_ITEM_ID)));
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i(Flags.LOGTAG, "onResume: "+mItem.toString());
     }
 
     @Override
