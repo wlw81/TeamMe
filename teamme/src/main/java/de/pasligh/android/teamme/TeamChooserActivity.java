@@ -87,7 +87,7 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
                 .getPlayersAsStringArray());
 
         AutoCompleteTextView playerNameTextView = (AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView);
-        playerNameTextView.setHint(getString(R.string.player)+" #"
+        playerNameTextView.setHint(getString(R.string.player) + " #"
                 + (TeamReactor.getAssignmentsRevealed() + 1));
         playerNameTextView.setOnEditorActionListener(this);
         playerNameTextView.setAdapter(adapter);
@@ -142,6 +142,11 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
     protected void onResume() {
         super.onResume();
         registerSensorListener();
+    }
+
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
         showSoftkeyboard_if_needed();
     }
 
@@ -480,8 +485,7 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
         if (playerNameTextView.isEnabled()) {
             playerNameTextView.requestFocus();
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.showSoftInput(playerNameTextView,
-                    InputMethodManager.SHOW_IMPLICIT);
+            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
             playerNameTextView.selectAll();
         }
     }

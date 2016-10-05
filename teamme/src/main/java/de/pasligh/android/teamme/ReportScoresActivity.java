@@ -298,7 +298,6 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
     public void recieveHolder(final ScoreRV_Adapter.RoundResultViewHolder p_holder, final List<Score> lisScore) {
         for (final Score s : lisScore) {
             Log.i(Flags.LOGTAG, "recieve holder for " + s);
-            //Button buttonTeam = new Button(new ContextThemeWrapper(getApplication(), R.style.SpecialButton), null, R.style.SpecialButton);
             Button buttonTeam = new Button(new ContextThemeWrapper(getApplication(), R.style.AppTheme));
             buttonTeam.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             buttonTeam.setText(getString(R.string.team) + " " + (TeamReactor.getAssignmentsByTeam(s.getTeamNr()).get(0).getPlayer().getName()) + ": " + s.getScoreCount() + " " + getString(R.string.points));
@@ -322,7 +321,14 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
                                             getFacade().mergeScore(sSave);
                                         }
                                     }
-                                    s.setScoreCount(Integer.parseInt(input.getText().toString()));
+
+                                    try {
+                                        s.setScoreCount(Integer.parseInt(input.getText().toString()));
+                                    } catch (NumberFormatException e) {
+                                        Log.e(Flags.LOGTAG, e.getMessage());
+                                        s.setScoreCount(0);
+                                    }
+
                                     getFacade().mergeScore(s);
                                     reload(getScores(), false);
                                     // previously invisible view
@@ -339,6 +345,8 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
                         alertToShow.getWindow().setSoftInputMode(
                                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                         alertToShow.show();
+                        input.requestFocus();
+                        input.selectAll();
                     }
 
                 }

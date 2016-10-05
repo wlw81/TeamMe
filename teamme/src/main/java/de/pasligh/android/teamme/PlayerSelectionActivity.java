@@ -126,9 +126,10 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
             Log.w(Flags.LOGTAG, "Could not optimize player list: " + e.getMessage());
         }
 
-        int overallScore = 0;
+        Integer maxScore = null;
+        Integer minScore = null;
 
-        // let's see how the players are
+        // let's figure out how the players performed
         for (GameRecord g : gameRecords) {
             List<PlayerAssignment> assignemntsForGame = getFacade().getAssignments(g.getId());
 
@@ -136,26 +137,33 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
                 for (PlayerAssignment assignment : assignemntsForGame) {
                     if (s.getTeamNr() == assignment.getTeam()) {
                         Integer pointsPerPlayer = mapPointsPerPlayer.get(assignment.getPlayer().getName());
-                        int newscore = s.getScoreCount() * 100;
-                        if (null != pointsPerPlayer) {
-                            mapPointsPerPlayer.put(assignment.getPlayer().getName(), pointsPerPlayer + newscore);
-                        } else {
-                            mapPointsPerPlayer.put(assignment.getPlayer().getName(), newscore);
+                        int newScore = s.getScoreCount();
+                        if (maxScore == null || newScore > maxScore) {
+                            maxScore = newScore;
+                        }
+                        if (minScore == null || newScore < minScore) {
+                            minScore = newScore;
                         }
 
-                        overallScore += newscore;
+                        if (null != pointsPerPlayer) {
+                            if (newScore > pointsPerPlayer) {
+                                mapPointsPerPlayer.put(assignment.getPlayer().getName(), (newScore + pointsPerPlayer) / 2);
+                            }
+                        } else {
+                            mapPointsPerPlayer.put(assignment.getPlayer().getName(), newScore);
+                        }
                     }
                 }
             }
         }
 
-        // we found some scores, let's calculate the strength
-        if (overallScore > 0) {
-            int maxScore = overallScore / mapPointsPerPlayer.size();
-            int oneStar = maxScore / Flags.MAXSTARS;
-            for (String playername : mapPointsPerPlayer.keySet()) {
-                int scored = mapPointsPerPlayer.get(playername);
-                mapStarsPerPlayer.put(playername, Math.min(Flags.MAXSTARS, scored / oneStar));
+        //now let's rate the players
+        if (minScore != null && maxScore != null) {
+            int oneStar = (maxScore - minScore) / Flags.MAXSTARS;
+            for (String playerName : mapPointsPerPlayer.keySet()) {
+                int scored = mapPointsPerPlayer.get(playerName);
+                scored -= minScore;
+                mapStarsPerPlayer.put(playerName, Math.min(Flags.MAXSTARS, scored / oneStar));
             }
         }
 
@@ -164,6 +172,8 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
             assignBlank.setPlayer(p);
             blankAssignments.add(assignBlank);
         }
+
+
         return blankAssignments;
     }
 
