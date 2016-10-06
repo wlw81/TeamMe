@@ -296,11 +296,11 @@ public class GameCreatorActivity extends AppCompatActivity implements
         final GameRecord lastGameRecord = getFacade().getLastGamePlayed();
         if (null != lastGameRecord) {
             try {
-                int snackbarShowlenght = Snackbar.LENGTH_LONG;
+                int snackbarShowlenght = Snackbar.LENGTH_INDEFINITE;
                 String caption = getString(R.string.log);
                 List<Score> scoreList = getFacade().getScores(lastGameRecord.getId());
                 if (scoreList != null && !scoreList.isEmpty()) {
-                    snackbarShowlenght = Snackbar.LENGTH_SHORT;
+                    snackbarShowlenght = Snackbar.LENGTH_LONG;
                     caption = getString(R.string.log_complete);
                 }
                 java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());

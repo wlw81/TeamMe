@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ShareCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -17,12 +18,14 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.InputType;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -149,12 +152,7 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
         // create app footer
         shareText.append(" ");
         ShareHelper.appendFooter_Signature(shareText, getString(R.string.shareFooter));
-
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_SUBJECT, ((TextView) (findViewById(R.id.ScoreWinnerTV))).getText().toString());
-        shareIntent.putExtra(Intent.EXTRA_TEXT, shareText.toString().trim());
-        return shareIntent;
+        return ShareCompat.IntentBuilder.from(this).setType("text/plain").setText(shareText.toString().trim()).setSubject(((TextView) (findViewById(R.id.ScoreWinnerTV))).getText().toString()).getIntent();
     }
 
     public void publishWinningTeam(List<Score> p_scoreList) {
@@ -341,12 +339,23 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
                                 }
                             }
                         });
-                        AlertDialog alertToShow = builder.create();
+                        final AlertDialog alertToShow = builder.create();
                         alertToShow.getWindow().setSoftInputMode(
                                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                         alertToShow.show();
                         input.requestFocus();
                         input.selectAll();
+                        input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                            @Override
+                            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                                if (actionId == EditorInfo.IME_ACTION_DONE
+                                        || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+                                    alertToShow.getButton(DialogInterface.BUTTON_POSITIVE).performClick();
+                                    return true;
+                                }
+                                return false;
+                            }
+                        });
                     }
 
                 }
