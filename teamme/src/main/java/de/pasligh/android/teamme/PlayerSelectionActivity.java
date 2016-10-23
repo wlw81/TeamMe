@@ -161,9 +161,13 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
         if (minScore != null && maxScore != null) {
             int oneStar = (maxScore - minScore) / Flags.MAXSTARS;
             for (String playerName : mapPointsPerPlayer.keySet()) {
-                int scored = mapPointsPerPlayer.get(playerName);
-                scored -= minScore;
-                mapStarsPerPlayer.put(playerName, Math.min(Flags.MAXSTARS, scored / oneStar));
+                if(oneStar != 0){
+                    int scored = mapPointsPerPlayer.get(playerName);
+                    scored -= minScore;
+                    mapStarsPerPlayer.put(playerName, Math.min(Flags.MAXSTARS, scored / oneStar));
+                }else{
+                    mapStarsPerPlayer.put(playerName, Flags.MAXSTARS / 2);
+                }
             }
         }
 
@@ -172,7 +176,6 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
             assignBlank.setPlayer(p);
             blankAssignments.add(assignBlank);
         }
-
 
         return blankAssignments;
     }
