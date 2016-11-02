@@ -4,15 +4,11 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.preference.PreferenceManager;
-import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -31,20 +27,24 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.GameRecord;
+import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.objects.Score;
 import de.pasligh.android.teamme.tools.AnimationHelper;
 import de.pasligh.android.teamme.tools.Flags;
@@ -53,8 +53,7 @@ import de.pasligh.android.teamme.tools.HoloCircleSeekBar.OnCircleSeekBarChangeLi
 import de.pasligh.android.teamme.tools.TTS_Tool;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
-import static de.pasligh.android.teamme.R.id.gameCreatorCL;
-import static de.pasligh.android.teamme.R.id.player_detail_FAB;
+import static de.pasligh.android.teamme.R.string.playercount;
 
 /**
  * An activity representing a list of games. This activity has different
@@ -87,6 +86,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
     private DrawerLayout mDrawerLayout;
     private Toolbar toolbar;
     private Snackbar barDisplayed;
+    private final List<PlayerAssignment> assignmentsDone = new ArrayList<>();
 
     private BackendFacade facade;
 
@@ -143,6 +143,9 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.newGameFAB);
         fab.setOnClickListener(this);
+
+        Button btn = (Button) findViewById(R.id.preSelectionButton);
+        btn.setOnClickListener(this);
 
         RadioButton rab = (RadioButton) findViewById(R.id.TwoTeamRadioButton);
         rab.setChecked(true);
@@ -261,30 +264,17 @@ public class GameCreatorActivity extends AppCompatActivity implements
     protected void onResume() {
         super.onResume();
         showSnackbar();
-        validateTeamMe_Start();
+        validateButtons();
     }
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        HoloCircleSeekBar seekbar = ((HoloCircleSeekBar) findViewById(R.id.PlayerPicker));
         switch (keyCode) {
             case KeyEvent.KEYCODE_ENTER:
                 if (findViewById(R.id.TwoTeamRadioButton).isFocused()) {
                     findViewById(R.id.TwoTeamRadioButton).setSelected(true);
                 } else if (findViewById(R.id.ThreeTeamRadioButton).isFocused()) {
                     findViewById(R.id.ThreeTeamRadioButton).setSelected(true);
-                }
-            case KeyEvent.KEYCODE_DPAD_UP:
-                if (seekbar.isFocused() && playerCount < seekbar.getMax()) {
-                    seekbar.setProgress(playerCount++);
-                    seekbar.requestFocus();
-                    return true;
-                }
-            case KeyEvent.KEYCODE_DPAD_DOWN:
-                if (seekbar.isFocused() && playerCount > 0) {
-                    seekbar.setProgress(playerCount--);
-                    seekbar.requestFocus();
-                    return true;
                 }
             default:
                 return super.onKeyUp(keyCode, event);
@@ -323,42 +313,75 @@ public class GameCreatorActivity extends AppCompatActivity implements
     }
 
     private void teamMe() {
-        if (validateTeamMe_Start()) {
+        if (validateButtons()) {
             int teamCount = getTeamCount();
             String sport = ((AutoCompleteTextView) findViewById(R.id.SportTextView)).getText().toString().trim();
-            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+            String conflicts = TeamReactor.decideTeams(teamCount, playerCount, assignmentsDone);
+            if (!conflicts.isEmpty()) {
+                Toast.makeText(getApplicationContext(), conflicts + "\n..." + getString(R.string.forceMove), Toast.LENGTH_LONG).show();
+            }
             FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.newGameFAB);
-            boolean preselection = sharedPref.getBoolean("preselection", true);
-            if (!preselection || getFacade().getPlayers().isEmpty()) {
-                // get things started - because we know no players
-                TeamReactor.decideTeams(teamCount, playerCount);
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeScaleUpAnimation(fab,
+                    (int) fab.getX(),
+                    (int) fab.getY(),
+                    (int) fab.getWidth(),
+                    (int) fab.getHeight());
+
+
+            if (assignmentsDone.size() < TeamReactor.getAssignments().size()) {
                 Intent callChooser = new Intent(getApplicationContext(),
                         TeamChooserActivity.class);
                 callChooser.putExtra(Flags.SPORT, sport);
                 callChooser.putExtra(Flags.TEAMCOUNT, teamCount);
-                callChooser.putExtra(Flags.PLAYERCOUNT, playerCount);
-                ActivityOptionsCompat options = ActivityOptionsCompat.makeScaleUpAnimation(fab,
-                        (int) fab.getX(),
-                        (int) fab.getY(),
-                        (int) fab.getWidth(),
-                        (int) fab.getHeight());
                 ActivityCompat.startActivity(this, callChooser, options.toBundle());
             } else {
-                // we already know some player names, let's offer a preselection!
-                Intent playerPreselection = new Intent(getApplicationContext(),
-                        PlayerSelectionActivity.class);
-                playerPreselection.putExtra(Flags.TEAMCOUNT, teamCount);
-                playerPreselection.putExtra(Flags.PLAYERCOUNT, playerCount);
-                playerPreselection.putExtra(Flags.SPORT, sport);
-                ActivityOptionsCompat options = ActivityOptionsCompat.makeScaleUpAnimation(fab,
-                        (int) fab.getX(),
-                        (int) fab.getY(),
-                        (int) fab.getWidth(),
-                        (int) fab.getHeight());
-                ActivityCompat.startActivity(this, playerPreselection, options.toBundle());
+                GameRecord saveGameRecord = new GameRecord(TeamReactor.getAssignments());
+                saveGameRecord.setSport(sport);
+                long id = getFacade().persistGame(saveGameRecord);
+                Intent callOverview = new Intent(getApplicationContext(),
+                        GameRecordListActivity.class);
+                callOverview.putExtra(Flags.GAME_ID, id);
+                callOverview.putExtra(Flags.TEAMCOUNT, teamCount);
+                ActivityCompat.startActivity(this, callOverview, options.toBundle());
             }
+        }
+    }
 
+    private void preselection() {
+        // we already know some player names, let's offer a preselection!
+        Intent playerPreselection = new Intent(getApplicationContext(),
+                PlayerSelectionActivity.class);
+        String sport = ((AutoCompleteTextView) findViewById(R.id.SportTextView)).getText().toString().trim();
+        playerPreselection.putExtra(Flags.TEAMCOUNT, teamCount);
+        playerPreselection.putExtra(Flags.PLAYERCOUNT, playerCount);
+        playerPreselection.putExtra(Flags.SPORT, sport);
+        startActivityForResult(playerPreselection, Flags.PRESELECTION_REQUEST);
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == Flags.PRESELECTION_REQUEST) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                assignmentsDone.clear();
+
+                for (String key : data.getExtras().keySet()) {
+                    Object value = data.getExtras().get(key);
+                    Log.d(Flags.LOGTAG, String.format("%s %s (%s)", key,
+                            value.toString(), value.getClass().getName()));
+                    assignmentsDone.add((PlayerAssignment) value);
+                }
+
+                playerCount = assignmentsDone.size();
+
+                Button btn = (Button) findViewById(R.id.preSelectionButton);
+                btn.setText(String.valueOf(playerCount));
+
+                HoloCircleSeekBar holoCircleSeekBar = (HoloCircleSeekBar) findViewById(R.id.PlayerPicker);
+                holoCircleSeekBar.setProgress(playerCount);
+                validateButtons();
+            }
         }
     }
 
@@ -387,7 +410,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
     public void onProgressChanged(HoloCircleSeekBar seekBar, int progress,
                                   boolean fromUser) {
         playerCount = progress;
-        validateTeamMe_Start();
+        validateButtons();
     }
 
     @Override
@@ -398,7 +421,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        validateTeamMe_Start();
+        validateButtons();
     }
 
     @Override
@@ -441,13 +464,21 @@ public class GameCreatorActivity extends AppCompatActivity implements
         client.disconnect();
     }
 
-    public boolean validateTeamMe_Start() {
+    /**
+     * Validate UI
+     *
+     * @return ready for decisions
+     */
+    public boolean validateButtons() {
         AutoCompleteTextView sportTextView = ((AutoCompleteTextView) findViewById(R.id.SportTextView));
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(sportTextView.getWindowToken(), 0);
         RadioGroup group = ((RadioGroup) findViewById(R.id.TeamsRadioGroup));
-        boolean valid = playerCount >= getTeamCount() && !sportTextView.getText().toString().trim().isEmpty() && group.getCheckedRadioButtonId() >= 0;
-        if (valid) {
+        boolean validPreSelection = !sportTextView.getText().toString().trim().isEmpty() && group.getCheckedRadioButtonId() >= 0;
+        findViewById(R.id.preSelectionButton).setEnabled(validPreSelection);
+
+        boolean validTeamMeStart = playerCount >= getTeamCount() && validPreSelection;
+        if (validTeamMeStart) {
 
             if (null != barDisplayed) {
                 barDisplayed.dismiss();
@@ -468,20 +499,22 @@ public class GameCreatorActivity extends AppCompatActivity implements
             }
         }
 
-        return valid;
+        return validTeamMeStart;
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == (R.id.newGameFAB)) {
             teamMe();
+        } else if (v.getId() == (R.id.preSelectionButton)) {
+            preselection();
         } else if (v.getId() == (R.id.MoreTeamRadioButton)) {
 
             if (teamCount <= 4) {
                 // more players? if selected start with 4 - getting everything prepared nice and smoothly
                 teamCount = 4;
                 ((RadioButton) findViewById(R.id.MoreTeamRadioButton)).setText(String.valueOf(teamCount));
-                validateTeamMe_Start();
+                validateButtons();
             }
 
             final NumberPicker np = new NumberPicker(getApplicationContext());
@@ -495,7 +528,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
                 public void onClick(DialogInterface dialog, int which) {
                     teamCount = np.getValue();
                     ((RadioButton) findViewById(R.id.MoreTeamRadioButton)).setText(String.valueOf(np.getValue()));
-                    validateTeamMe_Start();
+                    validateButtons();
                 }
             });
             builder.show();
@@ -505,9 +538,8 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-        if (actionId == EditorInfo.IME_ACTION_DONE
-                || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
-            validateTeamMe_Start();
+        if (v.getId() == R.id.SportTextView) {
+            validateButtons();
             return true;
         }
         return false;

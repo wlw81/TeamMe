@@ -20,8 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/TeamsTextView"
-            android:layout_alignRight="@+id/PlayerPicker"
             android:layout_below="@+id/TeamsTextView"
+            android:layout_toStartOf="@+id/preSelectionTV"
             android:orientation="horizontal"
             android:paddingBottom="16dp"
             android:paddingTop="12dp">
@@ -121,6 +121,25 @@
             android:layout_below="@+id/NewGameLabelTextView"
             android:text="@string/sport"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/preSelectionTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/preSelectionButton"
+            android:layout_alignParentEnd="true"
+            android:minWidth="100dp"
+            android:text="@string/player"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Button
+            android:id="@+id/preSelectionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/TeamsRadioGroup"
+            android:layout_toEndOf="@+id/TeamsRadioGroup"
+            android:enabled="false"
+            android:text="@string/gameempty" />
 
     </RelativeLayout>
 

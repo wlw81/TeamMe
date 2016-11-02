@@ -1,20 +1,20 @@
 -- Merging decision tree log ---
 manifest
 ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:2:1-113:12
-	xmlns:android
-		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:2:11-69
 	package
 		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:3:5-40
 		INJECTED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 	android:versionName
-		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:5:5-32
+		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:5:5-30
 		INJECTED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 	android:versionCode
 		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:4:5-29
 		INJECTED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.VIBRATE
 ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:7:5-66
 	android:name
@@ -35,32 +35,22 @@ supports-screens
 ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:13:5-17:56
 	android:largeScreens
 		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:15:9-36
-	android:anyDensity
-		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:14:9-34
-	android:normalScreens
-		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:16:9-37
 	android:smallScreens
 		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:17:9-36
+	android:normalScreens
+		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:16:9-37
+	android:anyDensity
+		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:14:9-34
 application
 ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:19:5-111:19
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-appindexing:8.1.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\AndroidManifest.xml:19:5-20
 MERGED from [com.google.android.gms:play-services-basement:8.1.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\design\23.3.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:appcompat-v7:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-vector-drawable:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-vector-drawable:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:cardview-v7:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.3.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
 	android:label
 		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:23:9-41
 	android:allowBackup
@@ -97,35 +87,35 @@ ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest
 		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:35:13-51
 meta-data#android.support.PARENT_ACTIVITY
 ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:37:13-39:56
-	android:name
-		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:38:17-63
 	android:value
 		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:39:17-53
+	android:name
+		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:38:17-63
 activity#de.pasligh.android.teamme.TeamChooserActivity
 ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:41:9-45:65
 	android:label
 		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:44:13-46
-	android:configChanges
-		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:43:13-74
 	android:parentActivityName
 		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:45:13-62
+	android:configChanges
+		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:43:13-74
 	android:name
 		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:42:13-48
 meta-data#com.google.android.gms.version
 ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:50:9-52:69
 MERGED from [com.google.android.gms:play-services-basement:8.1.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\AndroidManifest.xml:21:9-23:69
-	android:name
-		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:51:13-58
 	android:value
 		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:52:13-66
+	android:name
+		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:51:13-58
 activity#de.pasligh.android.teamme.PlayerSelectionActivity
 ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:54:9-62:20
 	android:label
 		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:56:13-68
-	android:theme
-		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:58:13-53
 	android:parentActivityName
 		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:57:13-62
+	android:theme
+		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:58:13-53
 	android:name
 		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:55:13-52
 activity#de.pasligh.android.teamme.ReportScoresActivity
@@ -178,34 +168,22 @@ ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest
 		ADDED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:104:13-49
 uses-sdk
 INJECTED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
 MERGED from [com.google.android.gms:play-services-appindexing:8.1.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\AndroidManifest.xml:18:5-42
 MERGED from [com.google.android.gms:play-services-basement:8.1.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:design:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\design\23.3.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:appcompat-v7:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:support-vector-drawable:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:5:5-43
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:animated-vector-drawable:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\AndroidManifest.xml:5:5-44
-MERGED from [com.android.support:support-vector-drawable:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:5:5-43
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:recyclerview-v7:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.3.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:cardview-v7:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.3.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:recyclerview-v7:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.3.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.databinding:library:1.1] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.databinding\library\1.1\AndroidManifest.xml:22:5-24:41
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.databinding:adapters:1.1] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.databinding\adapters\1.1\AndroidManifest.xml:22:5-24:41
-MERGED from [com.android.databinding:library:1.1] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.databinding\library\1.1\AndroidManifest.xml:22:5-24:41
-MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.databinding:adapters:1.2.1] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.databinding\adapters\1.2.1\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.databinding:library:1.2.1] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.databinding\library\1.2.1\AndroidManifest.xml:22:5-24:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:23:9-75
 	android:targetSdkVersion
 		INJECTED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 	android:minSdkVersion
 		INJECTED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Thomas\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
-	tools:overrideLibrary
-		ADDED from [com.android.support:appcompat-v7:23.3.0] C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:23:9-75

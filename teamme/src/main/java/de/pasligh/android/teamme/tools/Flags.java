@@ -11,4 +11,5 @@ public class Flags {
     public final static int MAXPLAYERS_PRESELECTION = 20;
     public final static String PLAYSTORE_LINK = "https://goo.gl/ysMda7";
     public static final int DRAW_TEAM = 4200;
+    public static final int PRESELECTION_REQUEST = 42;
 }

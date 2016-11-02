@@ -1,5 +1,6 @@
 package de.pasligh.android.teamme;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -161,11 +162,11 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
         if (minScore != null && maxScore != null) {
             int oneStar = (maxScore - minScore) / Flags.MAXSTARS;
             for (String playerName : mapPointsPerPlayer.keySet()) {
-                if(oneStar != 0){
+                if (oneStar != 0) {
                     int scored = mapPointsPerPlayer.get(playerName);
                     scored -= minScore;
                     mapStarsPerPlayer.put(playerName, Math.min(Flags.MAXSTARS, scored / oneStar));
-                }else{
+                } else {
                     mapStarsPerPlayer.put(playerName, Flags.MAXSTARS / 2);
                 }
             }
@@ -188,27 +189,17 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View v) {
-        List<PlayerAssignment> assignments = adapter.getAssignmentsDone();
-        String conflicts = TeamReactor.decideTeams(teamcount, playercount, assignments);
-        if (!conflicts.isEmpty()) {
-            Toast.makeText(getApplicationContext(), conflicts + "\n..." + getString(R.string.forceMove), Toast.LENGTH_LONG).show();
+        Intent data = new Intent();
+        for (PlayerAssignment p : adapter.getAssignmentsDone()) {
+            data.putExtra(p.getPlayer().getName(), p);
         }
-        if (assignments.size() < TeamReactor.getAssignments().size()) {
-            Intent callChooser = new Intent(getApplicationContext(),
-                    TeamChooserActivity.class);
-            callChooser.putExtra(Flags.SPORT, sports);
-            callChooser.putExtra(Flags.TEAMCOUNT, teamcount);
-            startActivity(callChooser);
+
+        if (getParent() == null) {
+            setResult(Activity.RESULT_OK, data);
         } else {
-            GameRecord saveGameRecord = new GameRecord(TeamReactor.getAssignments());
-            saveGameRecord.setSport(sports);
-            long id = getFacade().persistGame(saveGameRecord);
-            Intent callOverview = new Intent(getApplicationContext(),
-                    GameRecordListActivity.class);
-            callOverview.putExtra(Flags.GAME_ID, id);
-            callOverview.putExtra(Flags.TEAMCOUNT, teamcount);
-            startActivity(callOverview);
+            getParent().setResult(Activity.RESULT_OK, data);
         }
+        finish();
     }
 
     @Override
@@ -216,13 +207,8 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
         PlayerSelectionRV_Adapter.PlayerViewHolder pvh = (PlayerSelectionRV_Adapter.PlayerViewHolder) buttonView.getTag();
         PlayerAssignment pa = adapter.getAssignments().get(pvh.getAdapterPosition());
         if (isChecked && !pa.isRevealed()) {
-            if (adapter.getAssignmentsDone().size() < playercount) {
-                adapter.getAssignments().get(pvh.getAdapterPosition()).setRevealed(isChecked);
-                pvh.expandView();
-            } else {
-                buttonView.setChecked(false);
-                Toast.makeText(getApplicationContext(), getString(R.string.maxplayers_reached), Toast.LENGTH_SHORT).show();
-            }
+            adapter.getAssignments().get(pvh.getAdapterPosition()).setRevealed(isChecked);
+            pvh.expandView();
         } else if (!isChecked && pa.isRevealed()) {
             adapter.getAssignments().get(pvh.getAdapterPosition()).setRevealed(isChecked);
             pvh.collapseView();
