@@ -76,4 +76,5 @@
     <string name="merge">Unir</string>
     <string name="mergeTo">Combinar en</string>
     <string name="shareFooter">Creado con TeamMe</string>
+    <string name="preselection">Preselección</string>
 </resources>

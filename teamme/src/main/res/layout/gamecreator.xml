@@ -111,7 +111,8 @@
             android:layout_below="@+id/SportTextView"
             android:layout_marginTop="8dp"
             android:text="@string/teams"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_toStartOf="@+id/preSelectionTV" />
 
         <TextView
             android:id="@+id/textView"
@@ -126,20 +127,23 @@
             android:id="@+id/preSelectionTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/preSelectionButton"
-            android:layout_alignParentEnd="true"
             android:minWidth="100dp"
-            android:text="@string/player"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:text="@string/preselection"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_alignBaseline="@+id/TeamsTextView"
+            android:layout_alignBottom="@+id/TeamsTextView"
+            android:layout_alignParentEnd="true" />
 
         <Button
             android:id="@+id/preSelectionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/TeamsRadioGroup"
-            android:layout_toEndOf="@+id/TeamsRadioGroup"
             android:enabled="false"
-            android:text="@string/gameempty" />
+            android:text="@string/gameempty"
+            android:layout_alignBottom="@+id/TeamsRadioGroup"
+            android:layout_toEndOf="@+id/TeamsRadioGroup"
+            android:layout_below="@+id/TeamsTextView"
+            android:layout_margin="4dp" />
 
     </RelativeLayout>
 

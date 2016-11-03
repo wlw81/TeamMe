@@ -76,4 +76,5 @@
     <string name="merge">Zusammenführen</string>
     <string name="mergeTo">Zusammenführen zu</string>
     <string name="shareFooter">Erstellt mit TeamMe</string>
+    <string name="preselection">Vorauswahl</string>
 </resources>

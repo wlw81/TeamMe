@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -14,10 +15,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -28,6 +39,8 @@ import java.util.Map;
 import java.util.Set;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
+import de.pasligh.android.teamme.databinding.ActivityPlayerListBinding;
+import de.pasligh.android.teamme.databinding.ActivityPlayerSelectionBinding;
 import de.pasligh.android.teamme.objects.GameRecord;
 import de.pasligh.android.teamme.objects.Player;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
@@ -57,6 +70,7 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_selection);
+        ActivityPlayerSelectionBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_player_selection);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.playersAssignedFAB);
         fab.setOnClickListener(this);
@@ -94,6 +108,71 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        binding.setAssignments(adapter.getAssignments());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.player_selection, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.PlayerSelectionAddContext:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle(getString(R.string.addPlayer));
+
+                // Set up the input
+                ArrayAdapter<String> playerAdapter = new ArrayAdapter<String>(this,
+                        android.R.layout.simple_dropdown_item_1line, getFacade()
+                        .getPlayersAsStringArray());
+                final AutoCompleteTextView input = new AutoCompleteTextView(this);
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                input.setAdapter(playerAdapter);
+                builder.setView(input);
+
+                // Set up the buttons
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String m_Text = input.getText().toString().trim();
+                        if (!m_Text.isEmpty()) {
+                            PlayerAssignment assignmentNew = new PlayerAssignment();
+                            assignmentNew.setPlayer(new Player(m_Text));
+                            try {
+                                if (getFacade().persistPlayer(assignmentNew.getPlayer()) <= 0) {
+                                    adapter.getAssignments().add(assignmentNew);
+                                    adapter.notifyDataSetChanged();
+                                    findViewById(R.id.playerSelectionBlankTV).setVisibility(View.GONE);
+                                }
+                            } catch (Exception e) {
+                                Log.d(Flags.LOGTAG, assignmentNew.getPlayer() + " already known.");
+                            }
+
+                        }
+                    }
+                });
+
+                builder.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                final AlertDialog alertToShow = builder.create();
+                alertToShow.getWindow().setSoftInputMode(
+                        WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                alertToShow.show();
+                input.requestFocus();
+                input.selectAll();
+
+                break;
+        }
+        return true;
     }
 
     @NonNull

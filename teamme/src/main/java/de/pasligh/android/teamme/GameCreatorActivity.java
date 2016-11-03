@@ -366,11 +366,13 @@ public class GameCreatorActivity extends AppCompatActivity implements
             if (resultCode == RESULT_OK) {
                 assignmentsDone.clear();
 
-                for (String key : data.getExtras().keySet()) {
-                    Object value = data.getExtras().get(key);
-                    Log.d(Flags.LOGTAG, String.format("%s %s (%s)", key,
-                            value.toString(), value.getClass().getName()));
-                    assignmentsDone.add((PlayerAssignment) value);
+                if (null != data.getExtras()) {
+                    for (String key : data.getExtras().keySet()) {
+                        Object value = data.getExtras().get(key);
+                        Log.d(Flags.LOGTAG, String.format("%s %s (%s)", key,
+                                value.toString(), value.getClass().getName()));
+                        assignmentsDone.add((PlayerAssignment) value);
+                    }
                 }
 
                 playerCount = assignmentsDone.size();
