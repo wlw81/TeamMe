@@ -34,6 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,13 +53,14 @@ import de.pasligh.android.teamme.tools.PlayerSelectionRV_Adapter;
 import de.pasligh.android.teamme.tools.PlayerSelectionRV_Interface;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
+import static android.R.attr.data;
+import static de.pasligh.android.teamme.R.string.playercount;
+
 public class PlayerSelectionActivity extends AppCompatActivity implements View.OnClickListener, PlayerSelectionRV_Interface {
 
     private BackendFacade facade;
     PlayerSelectionRV_Adapter adapter;
 
-    private int teamcount;
-    private int playercount;
     private String sports;
 
     public BackendFacade getFacade() {
@@ -208,8 +210,6 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
         List<Player> allPlayers = getFacade().getPlayers();
 
         sports = getIntent().getStringExtra(Flags.SPORT);
-        teamcount = getIntent().getIntExtra(Flags.TEAMCOUNT, -1);
-        playercount = getIntent().getIntExtra(Flags.PLAYERCOUNT, -1);
 
         // if too many player are listed, we try to suggest only player for this sport type
         List<GameRecord> gameRecords = getFacade().getGames(sports);
@@ -223,6 +223,7 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
                 }
 
                 if (!playersPerGame.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), sports+" "+getString(R.string.player), Toast.LENGTH_SHORT).show();
                     allPlayers.clear();
                     allPlayers.addAll(playersPerGame);
                 }

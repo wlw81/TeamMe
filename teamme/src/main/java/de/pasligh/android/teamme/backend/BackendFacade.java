@@ -259,7 +259,7 @@ public class BackendFacade {
         try {
             query = getObjDatabase().query(false,
                     DatabaseHelper.TABLE_PLAYERS, new String[]{"NAME"},
-                    null, null, null, null, "NAME", null);
+                    null, null, null, null, "NAME asc", null);
             return moveQueryToPlayers(query);
         } catch (Exception e) {
             Log.e(Flags.LOGTAG, e.toString());
