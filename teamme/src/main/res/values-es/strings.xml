@@ -77,4 +77,5 @@
     <string name="mergeTo">Combinar en</string>
     <string name="shareFooter">Creado con TeamMe</string>
     <string name="preselection">Preselección</string>
+    <string name="ok_button">OK</string>
 </resources>
