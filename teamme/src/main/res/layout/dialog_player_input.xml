@@ -4,16 +4,17 @@
     android:layout_height="wrap_content"
     android:padding="@dimen/activity_horizontal_margin">
 
-        <EditText
-            android:id="@+id/ScoreInputTV"
+        <AutoCompleteTextView
+            android:id="@+id/PlayerInputTV"
             android:theme="@style/TeamMeNoActionBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/points"
+            android:hint="@string/playername"
             android:layout_margin="@dimen/activity_bigger_margin"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:imeOptions="actionDone"
+            android:inputType="textPersonName|textCapWords"
             android:ems="10"
-            android:inputType="numberSigned" />
+            />
 
 </FrameLayout>

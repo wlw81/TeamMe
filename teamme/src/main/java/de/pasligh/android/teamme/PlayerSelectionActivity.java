@@ -18,10 +18,12 @@ import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
@@ -122,20 +124,21 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.PlayerSelectionAddContext:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                View viewInflated = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_player_input, (ViewGroup) findViewById(android.R.id.content), false);
+                // Set up the input
+                final AutoCompleteTextView input = (AutoCompleteTextView) viewInflated.findViewById(R.id.PlayerInputTV);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(PlayerSelectionActivity.this).setView(viewInflated);
                 builder.setTitle(getString(R.string.addPlayer));
 
                 // Set up the input
                 ArrayAdapter<String> playerAdapter = new ArrayAdapter<String>(this,
                         android.R.layout.simple_dropdown_item_1line, getFacade()
                         .getPlayersAsStringArray());
-                final AutoCompleteTextView input = new AutoCompleteTextView(this);
-                input.setInputType(InputType.TYPE_CLASS_TEXT);
                 input.setAdapter(playerAdapter);
-                builder.setView(input);
 
                 // Set up the buttons
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String m_Text = input.getText().toString().trim();
@@ -143,20 +146,29 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
                             PlayerAssignment assignmentNew = new PlayerAssignment();
                             assignmentNew.setPlayer(new Player(m_Text));
                             try {
-                                if (getFacade().persistPlayer(assignmentNew.getPlayer()) <= 0) {
-                                    adapter.getAssignments().add(assignmentNew);
-                                    adapter.notifyDataSetChanged();
-                                    findViewById(R.id.playerSelectionBlankTV).setVisibility(View.GONE);
-                                }
+                                getFacade().persistPlayer(assignmentNew.getPlayer());
                             } catch (Exception e) {
                                 Log.d(Flags.LOGTAG, assignmentNew.getPlayer() + " already known.");
                             }
 
+                            boolean playerAlreadyListed = false;
+                            for (PlayerAssignment pa : adapter.getAssignments()) {
+                                if (pa.getPlayer().getName().equals(assignmentNew.getPlayer().getName())) {
+                                    playerAlreadyListed = true;
+                                    return;
+                                }
+                            }
+
+                            if (!playerAlreadyListed) {
+                                adapter.getAssignments().add(assignmentNew);
+                                adapter.notifyDataSetChanged();
+                                findViewById(R.id.playerSelectionBlankTV).setVisibility(View.GONE);
+                            }
                         }
                     }
                 });
 
-                builder.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
@@ -167,11 +179,24 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
                 alertToShow.getWindow().setSoftInputMode(
                         WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                 alertToShow.show();
-                input.requestFocus();
-                input.selectAll();
+                input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                    @Override
+                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                        if (actionId == EditorInfo.IME_ACTION_DONE
+                                || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+                            alertToShow.getButton(DialogInterface.BUTTON_POSITIVE).performClick();
+                            return true;
+                        }
+                        return false;
+                    }
+                });
 
                 break;
+            case android.R.id.home:
+                onBackPressed();
+                return true;
         }
+
         return true;
     }
 

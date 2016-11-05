@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.pasligh.android.teamme"
-    android:versionCode="67"
-    android:versionName="3.5.1" >
+    android:versionCode="68"
+    android:versionName="3.5.2" >
 
     <uses-sdk
         android:minSdkVersion="17"
@@ -62,11 +62,7 @@
         <activity
             android:name="de.pasligh.android.teamme.PlayerSelectionActivity"
             android:label="@string/title_activity_player_selection"
-            android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity"
             android:theme="@style/TeamMeNoActionBar" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.pasligh.android.teamme.GameCreatorActivity" />
         </activity>
         <activity
             android:name="de.pasligh.android.teamme.ReportScoresActivity"

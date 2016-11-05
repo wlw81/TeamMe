@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.pasligh.android.teamme"
-    android:versionCode="67"
-    android:versionName="3.5.1">
+    android:versionCode="68"
+    android:versionName="3.5.2">
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-feature android:name="there.isnt.a.vibrate.feature" android:required="false" />
@@ -54,11 +54,7 @@
         <activity
             android:name=".PlayerSelectionActivity"
             android:label="@string/title_activity_player_selection"
-            android:parentActivityName=".GameCreatorActivity"
             android:theme="@style/TeamMeNoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.pasligh.android.teamme.GameCreatorActivity" />
         </activity>
         <activity
             android:name=".ReportScoresActivity"

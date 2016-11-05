@@ -34,6 +34,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -144,7 +145,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.newGameFAB);
         fab.setOnClickListener(this);
 
-        Button btn = (Button) findViewById(R.id.preSelectionButton);
+        ToggleButton btn = (ToggleButton) findViewById(R.id.preSelectionButton);
         btn.setOnClickListener(this);
 
         RadioButton rab = (RadioButton) findViewById(R.id.TwoTeamRadioButton);
@@ -265,6 +266,8 @@ public class GameCreatorActivity extends AppCompatActivity implements
         super.onResume();
         showSnackbar();
         validateButtons();
+        ToggleButton btn = (ToggleButton) findViewById(R.id.preSelectionButton);
+        btn.setChecked(!assignmentsDone.isEmpty());
     }
 
     @Override
@@ -377,8 +380,9 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
                 playerCount = assignmentsDone.size();
 
-                Button btn = (Button) findViewById(R.id.preSelectionButton);
-                btn.setText(String.valueOf(playerCount));
+                ToggleButton btn = (ToggleButton) findViewById(R.id.preSelectionButton);
+                btn.setTextOn(String.valueOf(playerCount));
+                btn.setChecked(playerCount > 0);
 
                 HoloCircleSeekBar holoCircleSeekBar = (HoloCircleSeekBar) findViewById(R.id.PlayerPicker);
                 holoCircleSeekBar.setProgress(playerCount);

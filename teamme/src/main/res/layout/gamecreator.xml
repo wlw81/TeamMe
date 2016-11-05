@@ -134,16 +134,17 @@
             android:layout_alignBottom="@+id/TeamsTextView"
             android:layout_alignParentEnd="true" />
 
-        <Button
+        <ToggleButton
             android:id="@+id/preSelectionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:enabled="false"
+            android:checked="false"
+            android:background="@drawable/my_btn_tgl"
             android:text="@string/gameempty"
-            android:layout_alignBottom="@+id/TeamsRadioGroup"
-            android:layout_toEndOf="@+id/TeamsRadioGroup"
-            android:layout_below="@+id/TeamsTextView"
-            android:layout_margin="4dp" />
+            android:layout_margin="4dp"
+            android:layout_below="@+id/preSelectionTV"
+            android:layout_toEndOf="@+id/TeamsRadioGroup" />
 
     </RelativeLayout>
 
