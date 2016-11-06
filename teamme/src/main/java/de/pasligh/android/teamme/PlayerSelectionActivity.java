@@ -211,21 +211,23 @@ public class PlayerSelectionActivity extends AppCompatActivity implements View.O
 
         sports = getIntent().getStringExtra(Flags.SPORT);
 
-        // if too many player are listed, we try to suggest only player for this sport type
         List<GameRecord> gameRecords = getFacade().getGames(sports);
         try {
-            if (allPlayers.size() > Flags.MAXPLAYERS_PRESELECTION) {
-                Set<Player> playersPerGame = new HashSet<Player>();
+                // if too many player are listed, we try to suggest only player for this sport type
+                if (allPlayers.size() > Flags.MAXPLAYERS_PRESELECTION) {
+                Set<String> playersPerGame = new HashSet<String>();
                 for (GameRecord gr : gameRecords) {
                     for (PlayerAssignment assignment : gr.getAssignments()) {
-                        playersPerGame.add(assignment.getPlayer());
+                        playersPerGame.add(assignment.getPlayer().getName().trim());
                     }
                 }
 
                 if (!playersPerGame.isEmpty()) {
                     Toast.makeText(getApplicationContext(), sports+" "+getString(R.string.player), Toast.LENGTH_SHORT).show();
                     allPlayers.clear();
-                    allPlayers.addAll(playersPerGame);
+                    for(String name : playersPerGame){
+                        allPlayers.add(new Player(name));
+                    }
                 }
             }
         } catch (Exception e) {

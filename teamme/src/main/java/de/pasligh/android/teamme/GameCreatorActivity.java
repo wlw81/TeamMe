@@ -18,6 +18,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -54,6 +56,7 @@ import de.pasligh.android.teamme.tools.HoloCircleSeekBar.OnCircleSeekBarChangeLi
 import de.pasligh.android.teamme.tools.TTS_Tool;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
+import static de.pasligh.android.teamme.R.string.player;
 import static de.pasligh.android.teamme.R.string.playercount;
 
 /**
@@ -73,7 +76,7 @@ import static de.pasligh.android.teamme.R.string.playercount;
  * selections.
  */
 public class GameCreatorActivity extends AppCompatActivity implements
-        GameCreatorFragment.Callbacks, OnCircleSeekBarChangeListener, OnCheckedChangeListener, OnClickListener, TextView.OnEditorActionListener {
+        GameCreatorFragment.Callbacks, OnCircleSeekBarChangeListener, OnCheckedChangeListener, OnClickListener {
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -139,8 +142,37 @@ public class GameCreatorActivity extends AppCompatActivity implements
                 .setOnClickListener(this);
 
         final AutoCompleteTextView playerNameTextView = (AutoCompleteTextView) findViewById(R.id.SportTextView);
-        playerNameTextView.setOnEditorActionListener(this);
         playerNameTextView.setAdapter(adapter);
+        TextWatcher tw = new TextWatcher() {
+            public void afterTextChanged(Editable s) {
+
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // you can check for enter key here
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                validateButtons(false);
+            }
+        };
+
+        playerNameTextView.addTextChangedListener(tw);
+        playerNameTextView.setOnKeyListener(new View.OnKeyListener() {
+
+                                                @Override
+                                                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                                                    if ((event.getAction() == KeyEvent.ACTION_DOWN)
+                                                            && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                                                        validateButtons(true);
+                                                        playerNameTextView.clearFocus();
+                                                    }
+                                                    return false;
+                                                }
+                                            }
+
+        );
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.newGameFAB);
         fab.setOnClickListener(this);
@@ -155,10 +187,19 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
         Typeface tf = Typeface.createFromAsset(getAssets(),
                 "fonts/Roboto-Condensed.ttf");
-        ((TextView) findViewById(R.id.NewGameLabelTextView)).setTypeface(tf);
+        ((TextView)
+
+                findViewById(R.id.NewGameLabelTextView)
+
+        ).
+
+                setTypeface(tf);
 
         initView();
-        if (toolbar != null) {
+
+        if (toolbar != null)
+
+        {
             toolbar.setTitle(getString(R.string.app_name));
             setSupportActionBar(toolbar);
         }
@@ -188,7 +229,13 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        client = new GoogleApiClient.Builder(this).
+
+                addApi(AppIndex.API)
+
+                .
+
+                        build();
 
     }
 
@@ -265,7 +312,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
     protected void onResume() {
         super.onResume();
         showSnackbar();
-        validateButtons();
+        validateButtons(false);
         ToggleButton btn = (ToggleButton) findViewById(R.id.preSelectionButton);
         btn.setChecked(!assignmentsDone.isEmpty());
     }
@@ -316,7 +363,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
     }
 
     private void teamMe() {
-        if (validateButtons()) {
+        if (validateButtons(true)) {
             int teamCount = getTeamCount();
             String sport = ((AutoCompleteTextView) findViewById(R.id.SportTextView)).getText().toString().trim();
             String conflicts = TeamReactor.decideTeams(teamCount, playerCount, assignmentsDone);
@@ -386,7 +433,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
                 HoloCircleSeekBar holoCircleSeekBar = (HoloCircleSeekBar) findViewById(R.id.PlayerPicker);
                 holoCircleSeekBar.setProgress(playerCount);
-                validateButtons();
+                validateButtons(true);
             }
         }
     }
@@ -416,7 +463,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
     public void onProgressChanged(HoloCircleSeekBar seekBar, int progress,
                                   boolean fromUser) {
         playerCount = progress;
-        validateButtons();
+        validateButtons(true);
     }
 
     @Override
@@ -427,7 +474,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        validateButtons();
+        validateButtons(true);
     }
 
     @Override
@@ -475,10 +522,12 @@ public class GameCreatorActivity extends AppCompatActivity implements
      *
      * @return ready for decisions
      */
-    public boolean validateButtons() {
+    public boolean validateButtons(boolean p_hideKeyboard) {
         AutoCompleteTextView sportTextView = ((AutoCompleteTextView) findViewById(R.id.SportTextView));
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(sportTextView.getWindowToken(), 0);
+        if (p_hideKeyboard) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(sportTextView.getWindowToken(), 0);
+        }
         RadioGroup group = ((RadioGroup) findViewById(R.id.TeamsRadioGroup));
         boolean validPreSelection = !sportTextView.getText().toString().trim().isEmpty() && group.getCheckedRadioButtonId() >= 0;
         findViewById(R.id.preSelectionButton).setEnabled(validPreSelection);
@@ -520,7 +569,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
                 // more players? if selected start with 4 - getting everything prepared nice and smoothly
                 teamCount = 4;
                 ((RadioButton) findViewById(R.id.MoreTeamRadioButton)).setText(String.valueOf(teamCount));
-                validateButtons();
+                validateButtons(true);
             }
 
             final NumberPicker np = new NumberPicker(getApplicationContext());
@@ -534,20 +583,11 @@ public class GameCreatorActivity extends AppCompatActivity implements
                 public void onClick(DialogInterface dialog, int which) {
                     teamCount = np.getValue();
                     ((RadioButton) findViewById(R.id.MoreTeamRadioButton)).setText(String.valueOf(np.getValue()));
-                    validateButtons();
+                    validateButtons(true);
                 }
             });
             builder.show();
         }
     }
 
-
-    @Override
-    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-        if (v.getId() == R.id.SportTextView) {
-            validateButtons();
-            return true;
-        }
-        return false;
-    }
 }
