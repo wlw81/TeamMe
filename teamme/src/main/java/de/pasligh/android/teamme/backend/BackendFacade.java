@@ -188,6 +188,11 @@ public class BackendFacade {
         return gameRecords;
     }
 
+    public int getRoundCount(long p_lngGameID){
+            Cursor query = getObjDatabase().query(true, DatabaseHelper.TABLE_SCORES, new String[]{"round"}, "game_id = ?1", new String[]{String.valueOf(p_lngGameID)}, null, null, "round", null);
+            return query.getCount();
+    }
+
     public List<Score> getScores(long p_lngGameID) {
         List<Score> scores = new ArrayList<Score>();
         Cursor query = null;

@@ -1,10 +1,8 @@
 package de.pasligh.android.teamme;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,7 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.text.InputType;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.KeyEvent;
@@ -26,10 +23,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -47,7 +42,7 @@ import de.pasligh.android.teamme.tools.AnimationHelper;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.ScoreRV_Adapter;
 import de.pasligh.android.teamme.tools.ScoreRV_Interface;
-import de.pasligh.android.teamme.tools.ShareHelper;
+import de.pasligh.android.teamme.tools.TextHelper;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
 public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_Interface, View.OnClickListener {
@@ -151,110 +146,10 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
 
         // create app footer
         shareText.append(" ");
-        ShareHelper.appendFooter_Signature(shareText, getString(R.string.shareFooter));
+        TextHelper.appendFooter_Signature(shareText, getString(R.string.shareFooter));
         return ShareCompat.IntentBuilder.from(this).setType("text/plain").setText(shareText.toString().trim()).setSubject(((TextView) (findViewById(R.id.ScoreWinnerTV))).getText().toString()).getIntent();
     }
 
-    public void publishWinningTeam(List<Score> p_scoreList) {
-        Integer[][] wonRounds = new Integer[adapter.getItemCount()][teamCount + 1];
-        Integer[][] pointsEachRound = new Integer[adapter.getItemCount()][teamCount + 1];
-
-        for (int currentRoundNr = 0; currentRoundNr < pointsEachRound.length; currentRoundNr++) {
-            int highestScore = -1;
-            for (int currentTeam = 1; currentTeam < pointsEachRound[currentRoundNr].length; currentTeam++) {
-                // we're adding everything up to an 2dim array, so we can scroll through nicely
-                for (Score s : p_scoreList) {
-                    if (s.getRoundNr() == currentRoundNr && s.getTeamNr() == currentTeam) {
-                        if (pointsEachRound[currentRoundNr][currentTeam] == null) {
-                            pointsEachRound[currentRoundNr][currentTeam] = new Integer(0);
-                        }
-                        pointsEachRound[currentRoundNr][currentTeam] += s.getScoreCount();
-
-                        // let's measure the highest score!
-                        if (s.getScoreCount() >= highestScore) {
-                            highestScore = s.getScoreCount();
-                        }
-                    }
-                }
-            }
-
-
-            // let's see wich team gained the most points this round
-            for (int currentTeam = 1; currentTeam < pointsEachRound[currentRoundNr].length; currentTeam++) {
-                if (pointsEachRound[currentRoundNr][currentTeam] == highestScore) {
-                    if (wonRounds[currentRoundNr][currentTeam] == null) {
-                        wonRounds[currentRoundNr][currentTeam] = new Integer(0);
-                    }
-                    wonRounds[currentRoundNr][currentTeam] += 1; // team scored a round point!
-                }
-            }
-
-
-        }
-
-        Integer[] overAllScoreEachTeam = new Integer[teamCount + 1];
-        Integer[] roundPointsEachTeam = new Integer[teamCount + 1];
-
-        for (int round = 0; round < wonRounds.length; round++) {
-            for (int team = 1; team < wonRounds[round].length; team++) {
-
-                if (roundPointsEachTeam[team] == null) {
-                    roundPointsEachTeam[team] = new Integer(0);
-                }
-
-                if (overAllScoreEachTeam[team] == null) {
-                    overAllScoreEachTeam[team] = new Integer(0);
-                }
-
-                if (null != wonRounds[round][team]) {
-                    roundPointsEachTeam[team] += wonRounds[round][team];
-                }
-
-                if (null != pointsEachRound[round][team]) {
-                    overAllScoreEachTeam[team] += pointsEachRound[round][team];
-                }
-            }
-        }
-
-
-        int maxRoundPoints = 0;
-        int winningTeam = -1;
-        for (int team = 1; team < roundPointsEachTeam.length; team++) {
-            if (winningTeam == -1 || roundPointsEachTeam[team] > maxRoundPoints) {
-                maxRoundPoints = roundPointsEachTeam[team];
-                winningTeam = team;
-                Log.i(Flags.LOGTAG, "Wins through roundpoints - team " + team + " round points:  " + roundPointsEachTeam[team]);
-            } else if (roundPointsEachTeam[team] == maxRoundPoints) {
-                winningTeam = Flags.DRAW_TEAM;
-                Log.i(Flags.LOGTAG, "Even through roundpoints - team " + team + " round points:  " + roundPointsEachTeam[team]);
-            }
-        }
-
-        if (winningTeam == Flags.DRAW_TEAM) {
-            winningTeam = -1;
-            int maxOverAllScore = 0;
-            for (int team = 1; team < overAllScoreEachTeam.length; team++) {
-                int compareScore = overAllScoreEachTeam[team];
-                if (winningTeam == -1 || compareScore > maxOverAllScore) {
-                    maxOverAllScore = compareScore;
-                    winningTeam = team;
-                    Log.i(Flags.LOGTAG, "Wins through overall score - team " + team + " score:  " + compareScore);
-                } else if (compareScore == maxOverAllScore) {
-                    winningTeam = Flags.DRAW_TEAM;
-                    Log.i(Flags.LOGTAG, "Even through overall score - team " + team + " score:  " + compareScore);
-                }
-            }
-        }
-
-
-        if (winningTeam != Flags.DRAW_TEAM) {
-            ((TextView) findViewById(R.id.ScoreWinnerTV)).setText(getString(R.string.team) + " " + TeamReactor.getAssignmentsByTeam(winningTeam).get(0).getPlayer().getName() + " " + getString(R.string.wins) + "!");
-        } else {
-            ((TextView) findViewById(R.id.ScoreWinnerTV)).setText(getString(R.string.draw).toUpperCase() + "!");
-        }
-
-
-    }
 
     private List<Score> createDummyScores(int p_intRoundNr) {
         List<Score> scoreList = new ArrayList<>();
@@ -264,6 +159,15 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
             currentTeam++;
         }
         return scoreList;
+    }
+
+    public void publishWinningTeam(List<Score> p_scoreList){
+        int winningTeam = TextHelper.getWinnerTeam_by_RoundsOrScore(p_scoreList, adapter.getItemCount(), teamCount);
+        if (winningTeam != Flags.DRAW_TEAM) {
+            ((TextView) findViewById(R.id.ScoreWinnerTV)).setText(getString(R.string.team) + " " + TeamReactor.getAssignmentsByTeam(winningTeam).get(0).getPlayer().getName() + " " + getString(R.string.wins) + "!");
+        } else {
+            ((TextView) findViewById(R.id.ScoreWinnerTV)).setText(getString(R.string.draw).toUpperCase() + "!");
+        }
     }
 
     public void reload(List<Score> p_lisScores, boolean p_hideFAB) {

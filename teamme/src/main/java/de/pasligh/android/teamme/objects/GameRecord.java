@@ -57,7 +57,6 @@ public class GameRecord implements Serializable {
         sport = "unknown";
     }
 
-
     public GameRecord(List<PlayerAssignment> p_assignments) {
         super();
         init();

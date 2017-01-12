@@ -55,9 +55,9 @@ public class GameRecordRV_Adapter extends RecyclerView.Adapter<GameRecordRV_Adap
     public void onBindViewHolder(GameRecordRV_Holder holder, int position) {
         GameRecord ci = gameRecords.get(position);
         holder.sport.setText(ci.getSport());
-        int winnerTeam = ShareHelper.getWinnerTeam(getFacade().getScores(ci.getId()));
+        int winnerTeam = TextHelper.getWinnerTeam_by_RoundsOrScore(getFacade().getScores(ci.getId()), getFacade().getRoundCount(ci.getId()), getFacade().getTeamCount(ci.getId()));
 
-        if (winnerTeam >= 0 && winnerTeam < 4200) {
+        if (winnerTeam >= 0 && winnerTeam < Flags.DRAW_TEAM) {
             holder.result.setText(context.getString(R.string.team) + " " + getFacade().getCaptain(ci.getId(), winnerTeam).getPlayer() + " " + context.getString(R.string.wins));
         } else {
             holder.result.setText(context.getString(R.string.draw));

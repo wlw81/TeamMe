@@ -41,7 +41,7 @@
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         app:pressedTranslationZ="16dp"
-        android:src="@drawable/write"
+        android:src="@drawable/forward_white"
         app:layout_anchor="@id/viewpager"
         app:layout_anchorGravity="bottom|right|end" />
 

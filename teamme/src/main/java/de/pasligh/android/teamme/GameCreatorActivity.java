@@ -425,15 +425,18 @@ public class GameCreatorActivity extends AppCompatActivity implements
                     }
                 }
 
-                playerCount = assignmentsDone.size();
+                // otherwise it turns out to be confusing to take over the player count
+                if(assignmentsDone.size() > playerCount){
+                    playerCount = assignmentsDone.size();
 
-                ToggleButton btn = (ToggleButton) findViewById(R.id.preSelectionButton);
-                btn.setTextOn(String.valueOf(playerCount));
-                btn.setChecked(playerCount > 0);
+                    ToggleButton btn = (ToggleButton) findViewById(R.id.preSelectionButton);
+                    btn.setTextOn(String.valueOf(playerCount));
+                    btn.setChecked(playerCount > 0);
 
-                HoloCircleSeekBar holoCircleSeekBar = (HoloCircleSeekBar) findViewById(R.id.PlayerPicker);
-                holoCircleSeekBar.setProgress(playerCount);
-                validateButtons(true);
+                    HoloCircleSeekBar holoCircleSeekBar = (HoloCircleSeekBar) findViewById(R.id.PlayerPicker);
+                    holoCircleSeekBar.setProgress(playerCount);
+                    validateButtons(true);
+                }
             }
         }
     }

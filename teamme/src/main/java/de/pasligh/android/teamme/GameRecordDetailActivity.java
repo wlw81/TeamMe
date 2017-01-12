@@ -2,25 +2,16 @@ package de.pasligh.android.teamme;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.IntegerRes;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
-
-import java.util.List;
-import java.util.Locale;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.GameRecord;
-import de.pasligh.android.teamme.objects.PlayerAssignment;
-import de.pasligh.android.teamme.tools.ShareHelper;
-import de.pasligh.android.teamme.tools.TeamReactor;
+import de.pasligh.android.teamme.tools.TextHelper;
 
 /**
  * An activity representing a single GameRecord detail screen. This
@@ -128,10 +119,10 @@ public class GameRecordDetailActivity extends AppCompatActivity {
         String title = gameRecord.getSport() + " " + dateFormat.format(gameRecord.getStartedAt());
 
         shareText.append("[").append(title).append("] ");
-        shareText.append(ShareHelper.createTeamDecided_ShareText(getString(R.string.shareIntent), getString(R.string.team)));
+        shareText.append(TextHelper.createTeamDecided_ShareText(getString(R.string.shareIntent), getString(R.string.team)));
 
         // create app footer
-        ShareHelper.appendFooter_Signature(shareText, getString(R.string.shareFooter));
+        TextHelper.appendFooter_Signature(shareText, getString(R.string.shareFooter));
 
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
