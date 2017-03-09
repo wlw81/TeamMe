@@ -1,5 +1,6 @@
 package de.pasligh.android.teamme;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -34,6 +35,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
+
+import java.lang.ref.WeakReference;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.GameRecord;
@@ -142,13 +145,17 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
     protected void onResume() {
         super.onResume();
         registerSensorListener();
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+               showSoftkeyboard_if_needed();
+            }
+        }, 700);
+
     }
 
-    @Override
-    public void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        showSoftkeyboard_if_needed();
-    }
 
     private void registerSensorListener() {
         if (myAssignment == null) {
@@ -480,7 +487,7 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
         }
     }
 
-    public void showSoftkeyboard_if_needed() {
+    public  void showSoftkeyboard_if_needed() {
         AutoCompleteTextView playerNameTextView = (AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView);
         if (playerNameTextView.isEnabled()) {
             playerNameTextView.requestFocus();
