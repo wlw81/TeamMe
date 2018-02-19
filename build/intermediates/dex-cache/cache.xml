@@ -2,301 +2,157 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\jars\classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\thoma\.android\build-cache\0b63df92d6c0db06e5fe5c6726a2b1881debdf0a\output\jars\classes.jar"
+        jumboMode="true"
         optimize="true"
-        revision="23.0.2"
-        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.3.0_ff87bca9d3d99a779a011f3e29afb144cad149f9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
+        revision="25.0.0"
         sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-8.1.0_8190ad464f4cae1d188706b42e84f6114f54e0ae.jar" />
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c703e66e0f38ebb104594c6b109b122eebdc9604\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Thomas\.android\build-cache\89447dd596105e2c6c9d5150df7d37dc74e4a78a\output\jars\classes.jar"
+        jar="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="f0001e71cea6ae432a00021c6f727f5ef0f3d27e">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_426db10070befab586479e543be946942868a0bb\classes.dex" />
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_038614538dda550e74a216a0393147d6abc7e6ff\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Thomas\.android\build-cache\9b4565f02a3dc39ff41ca5536561a7583846626a\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ebcd84c784ec16ff001f7edada337cab5c8a5198\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.3.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="82ce13fd19cdfde0e392f03c27edeba8d4333648">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-23.3.0_950e223e9987444ae5ea0f887501fe22c8e64896.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\libs\internal_impl-23.3.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\debug\internal_impl-23.3.0_f3070906d94c9f354c8b400d163c82287b7a6393.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.3.0_0f6741a30571579ba31d52d794e8b56743a2bd5c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\design\23.3.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="f0001e71cea6ae432a00021c6f727f5ef0f3d27e">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\debug\com.android.support-design-23.3.0_bbfb1ccb8f99fdf47b6d63d5e9bd3c64663b0404.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Thomas\.android\build-cache\ab9d6b6157db532f96a244b15105165030070e36\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_915eb277210591b2794716eaeba117c97e483220\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Thomas\.android\build-cache\928d9a74732ed5f2db1bccc158e383f2e6dd42a1\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="68956f5ba1517b7a3d513ba540548e257741cbae">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c09e0205bff64e81867031fb243370e15c0eb3e4\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Thomas\.android\build-cache\a505185bdd5ddeca334a7bcdab12395cd434bb47\output\jars\classes.jar"
+        jar="C:\Users\thoma\.android\build-cache\bdacca5cc96647750d9e4843e629b34d15e5c2b5\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="7f2f348b830f292429db987f74ba3e67c6752322">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5923869578f5b05ccee42617b4aa5b53abfd19e4\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.databinding\adapters\1.2.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="c56d29136c2257f63f08c29c4e739efb03b06c7d">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\debug\com.android.databinding-adapters-1.2.1_eb41951f8d7e26caf78a11a33904c71d52afbee1.jar" />
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3cf74d4f4f8d6e3d003fe86b1b7b8e4966a4b1a9\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="D:\Programme\Android SDK\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
+        jar="C:\Users\thoma\.android\build-cache\1249bcbfc742bfc7f0fa7557f17b64848587dfa4\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.3.0_0319ffa8b3c93d795b258f4d10f0a842edccfc8e\classes.dex" />
+        sha1="f0001e71cea6ae432a00021c6f727f5ef0f3d27e">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_eaa5fbee69e79dadf8402e1026e23bf96679c4ef\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Thomas\.android\build-cache\5f8d81d23b498693798a0e34e029400710614ee8\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_6fce4be6168ae7387ff994732b83bcdaadaf4c6e\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Thomas\.android\build-cache\9b4565f02a3dc39ff41ca5536561a7583846626a\output\jars\libs\internal_impl-23.3.0.jar"
+        jar="C:\Users\thoma\.android\build-cache\dc8cf43c5e5f58fe234191d156cb738bdd1c6ce2\output\jars\libs\internal_impl-23.3.0.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.3.0_76d50f4872c2345ff39f6050e412754371b830a3\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.3.0_986c334bc39d4090d0b71c6ae8c2298aede61639.jar" />
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.3.0_31ea49a0703ea8abc7804e84b72d979c1e27d111\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="D:\Programme\AndroidStudio\gradle\m2repository\com\android\databinding\baseLibrary\2.3.0\baseLibrary-2.3.0.jar"
+        jar="C:\Users\thoma\.android\build-cache\dc8cf43c5e5f58fe234191d156cb738bdd1c6ce2\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="cf0b6ab1d94f770655f81657b93fce2ba4cd331d">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\baseLibrary-2.3.0_cfa9b5de7b61f1399cb4a96407aa459f22117af5\classes.dex" />
+        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_58c6bd5a62fefb6d461a858e3e7de152a93e1c21\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Thomas\.android\build-cache\a4a767fc8b117bfa086f524fe123d7ddf32a98e5\output\jars\classes.jar"
+        jar="C:\Users\thoma\.android\build-cache\224e8a264d5c95ad3af5412db99a8b0e69174d0a\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b9197aa88af7c5f3819ee769bcc7e42c4744e0a5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Program Files\Android\Android Studio\gradle\m2repository\com\android\databinding\baseLibrary\2.3.3\baseLibrary-2.3.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="eb3399988a52099b0127e27fb5bed666eca86ace">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\baseLibrary-2.3.3_cc3afaf91424e734a49c56928e36b4d96c0d272b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\thoma\.android\build-cache\5e16f7de7ab01bd7f5e8cc93abe4c8fc2695c67d\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7166bf20259e24a403c8c60c5b65628360ba0493\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\thoma\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.3.0_9581ce3ccbc8eb8af387f7bfb67520ecadfc3fc1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0c033c66ea7f892a688e62cdfe7bbbb7eb707801">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_10273291ebe9d20ed52a7c49071b5d7255c57cdc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\thoma\.android\build-cache\312fde5a5a8641d154b33c17a58919f18da48a81\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="82ce13fd19cdfde0e392f03c27edeba8d4333648">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b13c82134b42e99e6f0bd50e471fb1deba10d679\classes.dex" />
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8bf631e6d4dab02bbbf9ed45998dfa719460e445\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="D:\Programme\Android SDK\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.3.0_0319ffa8b3c93d795b258f4d10f0a842edccfc8e\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Programme\Android SDK\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\debug\support-annotations-23.3.0_0319ffa8b3c93d795b258f4d10f0a842edccfc8e.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Thomas\.android\build-cache\303016c04ff9b927365d6ad90c93cc9f726c93ea\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4cb876056b0ced1f5c7f116cf10eb55f0e8d03ea\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Thomas\.android\build-cache\2c6e2f1cbb9727fc7caec1f73f4e02c4503e5667\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_62e91ebcba7d9c6b0e08643f2bf237f3268a7e8b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Thomas\.android\build-cache\b57de72f56db8e75570157ed2ddc82edb1d9784e\output\jars\classes.jar"
+        jar="C:\Users\thoma\.android\build-cache\c0acc4c775898c1d02a68a33df8d654977497bd1\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="debf30ce0a7560396b6235edef77e447006454c2">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7c44f08c0477feed44d92467b6ad2cd7d6f463c5\classes.dex" />
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b6f53044b36561ae590ef9a31e2134ad35ba7625\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\libs\achartengine-1.1.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="9932e3fb9fbe54e80873e77f72a99f79e33b3250">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\2\achartengine-1.1.0_69356a44986ba65fab47eb5c232cd5eb230e71af\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\libs\achartengine-1.1.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="9932e3fb9fbe54e80873e77f72a99f79e33b3250">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\debug\achartengine-1.1.0_69356a44986ba65fab47eb5c232cd5eb230e71af.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\libs\achartengine-1.1.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="9932e3fb9fbe54e80873e77f72a99f79e33b3250">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\2\achartengine-1.1.0_69356a44986ba65fab47eb5c232cd5eb230e71af\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.3.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="debf30ce0a7560396b6235edef77e447006454c2">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.3.0_a3e5eddf55d7c95f7287276b24f709a58c43e571.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-appindexing-8.1.0_6ad0d372569681e2760459a9856eda1a73fd636a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.3.0_939875071a68aaf6469f4bbe902edc3d2891eb80.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="d6bd5efc491458beb01751f91fc03ac64a90a174">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_49e67123556d7f855b201cfe4d5e306679d22d43\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_276fe779a14a9734ec8327b86772c6e51f48a1cb\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Thomas\.android\build-cache\c931f22393300dada45376cb005e1154c8213ac1\output\jars\classes.jar"
+        jar="C:\Users\thoma\.android\build-cache\14ecc11d5c6dfa27b25687a7c1df8f7e43dacbc2\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_925484e31340cc41b6aeeb8dd09679dbde8c2aec\classes.dex" />
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_56ae6bb43e408ea8e7d34a9a981cb001e44c2904\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\exploded-aar\com.android.databinding\library\1.2.1\jars\classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\thoma\StudioProjects\TeamMe\teamme\libs\achartengine-1.1.0.jar"
+        jumboMode="true"
         optimize="true"
-        revision="23.0.2"
-        sha1="957dc30b1495f8689271e00d56ab09cc9192df02">
-        <dex dex="C:\Users\Thomas\StudioProjects\TeamMe\teamme\build\intermediates\pre-dexed\debug\com.android.databinding-library-1.2.1_d20a7522a57d2e42e3a513f16a909bfa25771d5b.jar" />
+        revision="25.0.0"
+        sha1="9932e3fb9fbe54e80873e77f72a99f79e33b3250">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\2\achartengine-1.1.0_4ed2840092f36b0436fef1a4d5a45d9bad137a86\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\thoma\.android\build-cache\de10a5dd4dbb634b99302a06230a866ac478192f\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1267c09bf818a185b776ff91c09af8a3c054ea16\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\thoma\.android\build-cache\192254e540b98e113635f2431f04aec9c46303b2\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="68956f5ba1517b7a3d513ba540548e257741cbae">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9cdf25ab0355d8b9271b034d824c3b9f14745295\classes.dex" />
     </item>
 
 </items>

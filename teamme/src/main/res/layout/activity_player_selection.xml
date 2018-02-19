@@ -5,13 +5,13 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <data>
-
         <import type="android.view.View" />
 
         <variable
             name="assignments"
             type="java.util.List" />
     </data>
+
 
 
     <android.support.design.widget.CoordinatorLayout

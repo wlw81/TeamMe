@@ -5,7 +5,10 @@
         <item name="colorPrimary">@color/active</item>
     </style>
 
-
+    <style name="NumberPickerText">
+        <item name="android:textSize">22dp</item>
+        <item name="android:textColorPrimary">@color/accent_color</item>
+    </style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">

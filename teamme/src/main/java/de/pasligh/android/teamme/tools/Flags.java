@@ -9,6 +9,7 @@ public class Flags {
     public final static String GAME_ID = "gameId";
     public final static int MAXSTARS = 5;
     public final static int MAXPLAYERS_PRESELECTION = 20;
+    public final static int MAXPLAYERS = 99;
     public final static String PLAYSTORE_LINK = "https://goo.gl/ysMda7";
     public static final int DRAW_TEAM = 4200;
     public static final int PRESELECTION_REQUEST = 42;
