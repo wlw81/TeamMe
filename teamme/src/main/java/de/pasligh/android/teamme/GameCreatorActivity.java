@@ -96,6 +96,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
     private int teamCount = 4;
     private ActionBarDrawerToggle drawerToggle;
     private NumberPicker playerCountNP;
+    private NumberPicker teamCountNP;
     private NavigationView mNavigationView;
     private DrawerLayout mDrawerLayout;
     private Toolbar toolbar;
@@ -133,11 +134,6 @@ public class GameCreatorActivity extends AppCompatActivity implements
                 android.R.layout.simple_dropdown_item_1line, getFacade()
                 .getSports());
 
-        ((RadioGroup) findViewById(R.id.TeamsRadioGroup))
-                .setOnCheckedChangeListener(this);
-        ((RadioButton) findViewById(R.id.MoreTeamRadioButton))
-                .setOnClickListener(this);
-
         final AutoCompleteTextView sportTV = (AutoCompleteTextView) findViewById(R.id.SportTextView);
         sportTV.setAdapter(adapterAutoComplete);
 
@@ -153,11 +149,23 @@ public class GameCreatorActivity extends AppCompatActivity implements
             }
         });
 
+
+        teamCountNP = findViewById(R.id.TeamCountNumberPicker);
+        teamCountNP.setMinValue(2);
+        teamCountNP.setMaxValue(Flags.MAXTEAMS);
+        teamCountNP.setWrapSelectorWheel(true);
+        teamCountNP.setValue(2);
+        teamCountNP.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                validateButtons();
+                repopulateTeamsSpinner();
+            }
+        });
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.newGameFAB);
         fab.setOnClickListener(this);
-
-        RadioButton rab = (RadioButton) findViewById(R.id.TwoTeamRadioButton);
-        rab.setChecked(true);
 
         teamsAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_dropdown_item, getTeamsList());
@@ -171,6 +179,10 @@ public class GameCreatorActivity extends AppCompatActivity implements
         playerSelectionRV_adapter = new PlayerSelectionRV_Adapter(getApplicationContext(), assemblePlayerAssignments(mapStarsPerPlayer), Typeface.createFromAsset(getAssets(),
                 "fonts/Roboto-Thin.ttf"), teamsAdapter, this, mapStarsPerPlayer);
         rv.setAdapter(playerSelectionRV_adapter);
+        binding.setPlayerAssignments(playerSelectionRV_adapter.getAssignments());
+        if(playerSelectionRV_adapter.getAssignments().isEmpty()){
+            findViewById(R.id.playerSelectionBlankTV2).setVisibility(View.VISIBLE);
+        }
 
         initView();
 
@@ -205,11 +217,6 @@ public class GameCreatorActivity extends AppCompatActivity implements
                                      public boolean onKey(View v, int keyCode, KeyEvent event) {
                                          if ((event.getAction() == KeyEvent.ACTION_DOWN)
                                                  && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                                             if (playerSelectionRV_adapter.getAssignments() != null) {
-                                                 playerSelectionRV_adapter.getAssignments().clear();
-                                                 playerSelectionRV_adapter.getAssignments().addAll(assemblePlayerAssignments(mapStarsPerPlayer));
-                                             }
-                                             sportTV.clearFocus();
                                              InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                                              imm.hideSoftInputFromWindow(sportTV.getWindowToken(), 0);
                                          }
@@ -238,14 +245,14 @@ public class GameCreatorActivity extends AppCompatActivity implements
                 .
 
                         build();
-        binding.setPlayerAssignments(playerSelectionRV_adapter.getAssignments());
+        displayPreselected();
     }
 
     @NonNull
     private List<String> getTeamsList() {
         List<String> list = new ArrayList<String>();
         list.add(getString(R.string.random));
-        for (int i = 1; i <= getTeamCount(); i++) {
+        for (int i = 1; i <= teamCountNP.getValue(); i++) {
             list.add(getString(R.string.team) + " " + i);
         }
         return list;
@@ -257,6 +264,12 @@ public class GameCreatorActivity extends AppCompatActivity implements
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.player_selection, menu);
         return true;
+    }
+
+
+    public void displayPreselected() {
+        String display = playerSelectionRV_adapter.getAssignmentsDone().size() + " " + getString(R.string.player) + " " + getString(R.string.preselected);
+        ((TextView) findViewById(R.id.PreSelectionTextView)).setText(display);
     }
 
     private void initView() {
@@ -368,7 +381,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
                             if (!playerAlreadyListed) {
                                 playerSelectionRV_adapter.getAssignments().add(assignmentNew);
                                 playerSelectionRV_adapter.notifyDataSetChanged();
-                                findViewById(R.id.playerSelectionBlankTV).setVisibility(View.GONE);
+                                findViewById(R.id.playerSelectionBlankTV2).setVisibility(View.GONE);
                             }
                         }
                     }
@@ -485,20 +498,6 @@ public class GameCreatorActivity extends AppCompatActivity implements
         validateButtons();
     }
 
-    @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_ENTER:
-                if (findViewById(R.id.TwoTeamRadioButton).isFocused()) {
-                    findViewById(R.id.TwoTeamRadioButton).setSelected(true);
-                } else if (findViewById(R.id.ThreeTeamRadioButton).isFocused()) {
-                    findViewById(R.id.ThreeTeamRadioButton).setSelected(true);
-                }
-            default:
-                return super.onKeyUp(keyCode, event);
-        }
-    }
-
     private void showSnackbar() {
         barDisplayed = null;
         final GameRecord lastGameRecord = getFacade().getLastGamePlayed();
@@ -532,7 +531,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
     private void teamMe() {
         if (validateButtons()) {
-            int teamCount = getTeamCount();
+            int teamCount = teamCountNP.getValue();
             String sport = ((AutoCompleteTextView) findViewById(R.id.SportTextView)).getText().toString().trim();
             if (sport.isEmpty()) {
                 sport = getString(R.string.sport);
@@ -567,16 +566,6 @@ public class GameCreatorActivity extends AppCompatActivity implements
                 ActivityCompat.startActivity(this, callOverview, options.toBundle());
             }
         }
-    }
-
-    private int getTeamCount() {
-        if (((RadioButton) findViewById(R.id.TwoTeamRadioButton)).isChecked()) {
-            teamCount = 2;
-        } else if (((RadioButton) findViewById(R.id.ThreeTeamRadioButton))
-                .isChecked()) {
-            teamCount = 3;
-        }
-        return teamCount;
     }
 
     @Override
@@ -650,10 +639,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
      * @return ready for decisions
      */
     public boolean validateButtons() {
-        RadioGroup group = ((RadioGroup) findViewById(R.id.TeamsRadioGroup));
-        boolean validPreSelection = group.getCheckedRadioButtonId() >= 0;
-
-        boolean validTeamMeStart = playerCountNP.getValue() >= getTeamCount() && validPreSelection;
+        boolean validTeamMeStart = playerCountNP.getValue() >= teamCountNP.getValue();
         if (validTeamMeStart) {
 
             if (null != barDisplayed) {
@@ -682,30 +668,6 @@ public class GameCreatorActivity extends AppCompatActivity implements
     public void onClick(View v) {
         if (v.getId() == (R.id.newGameFAB)) {
             teamMe();
-        } else if (v.getId() == (R.id.MoreTeamRadioButton)) {
-            if (teamCount <= 4) {
-                // more players? if selected start with 4 - getting everything prepared nice and smoothly
-                teamCount = 4;
-                ((RadioButton) findViewById(R.id.MoreTeamRadioButton)).setText(String.valueOf(teamCount));
-                validateButtons();
-            }
-
-            final NumberPicker np = new NumberPicker(getApplicationContext());
-            np.setMinValue(4);
-            //Specify the maximum value/number of NumberPicker
-            np.setMaxValue(10);
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(this).setView(np);
-            builder.setMessage(getString(R.string.title_dialog_teamcount)).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    teamCount = np.getValue();
-                    ((RadioButton) findViewById(R.id.MoreTeamRadioButton)).setText(String.valueOf(np.getValue()));
-                    validateButtons();
-                }
-            });
-            builder.show();
-            repopulateTeamsSpinner();
         }
 
     }
@@ -731,6 +693,8 @@ public class GameCreatorActivity extends AppCompatActivity implements
             playerCountNP.setValue(playerSelectionRV_adapter.getAssignmentsDone().size());
             validateButtons();
         }
+
+        displayPreselected();
     }
 
     @Override
