@@ -264,7 +264,7 @@ public class BackendFacade {
         try {
             query = getObjDatabase().query(false,
                     DatabaseHelper.TABLE_PLAYERS, new String[]{"NAME"},
-                    null, null, null, null, "NAME asc", null);
+                    null, null, null, null, "NAME COLLATE NOCASE", null);
             return moveQueryToPlayers(query);
         } catch (Exception e) {
             Log.e(Flags.LOGTAG, e.toString());
@@ -332,6 +332,17 @@ public class BackendFacade {
         }
 
         return lasttime;
+    }
+
+    public boolean deleteGame(int p_intGameID) {
+        Cursor query = null;
+        try {
+            int i = getObjDatabase().delete(DatabaseHelper.TABLE_GAMES, "_id = ?1", new String[]{String.valueOf(p_intGameID)});
+            return i > 0;
+        } catch (Exception e) {
+            Log.i(Flags.LOGTAG, e.getMessage());
+        }
+        return false;
     }
 
     public GameRecord getGame(int p_intID) {
@@ -417,6 +428,17 @@ public class BackendFacade {
         }
 
         return lastgame;
+    }
+
+    public boolean deleteAssignments(int p_intGameID) {
+        Cursor query = null;
+        try {
+            int i = getObjDatabase().delete(DatabaseHelper.TABLE_ASSIGNMENTS, "game_id = ?1", new String[]{String.valueOf(p_intGameID)});
+            return i > 0;
+        } catch (Exception e) {
+            Log.i(Flags.LOGTAG, e.getMessage());
+        }
+        return false;
     }
 
     public List<PlayerAssignment> getAssignments(int p_intGameID) {
@@ -510,7 +532,6 @@ public class BackendFacade {
     public boolean deletePlayer(String p_strPlayername) {
         Cursor query = null;
         try {
-            // getObjDatabase().delete(DatabaseHelper.TABLE_ASSIGNMENTS, "player_id = ?1", new String[]{p_strPlayername}); don't do that - because it will mess all recorded data!!!
             int i = getObjDatabase().delete(DatabaseHelper.TABLE_PLAYERS, "name = ?1", new String[]{p_strPlayername});
             return i > 0;
         } catch (Exception e) {

@@ -6,12 +6,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.tools.Flags;
-import de.pasligh.android.teamme.tools.PredicateLayout;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
 public class TeamSectionFragment extends Fragment {
@@ -30,7 +30,7 @@ public class TeamSectionFragment extends Fragment {
         Log.d(Flags.LOGTAG, "Create View "+sectionr);
         View rootView = inflater.inflate(R.layout.fragment_team_overview,
                 container, false);
-        PredicateLayout layout = (PredicateLayout) rootView
+        LinearLayout layout = (LinearLayout) rootView
                 .findViewById(R.id.TeamOverviewSectionLayout);
         for (PlayerAssignment assignmentToLayout : TeamReactor
                 .getAssignmentsByTeam(sectionr)) {

@@ -124,6 +124,10 @@ public class GameRecordListActivity extends AppCompatActivity implements View.On
                 jump2Game(String.valueOf(gameId));
                 gameId = -1;
             }
+        }else{
+            myAdapter.getGameRecords().clear();
+            myAdapter.getGameRecords().addAll(getFacade().getGames());
+            myAdapter.notifyDataSetChanged();
         }
     }
 

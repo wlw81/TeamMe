@@ -1,7 +1,9 @@
 package de.pasligh.android.teamme;
 
 import android.content.Intent;
+import android.media.SoundPool;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -9,8 +11,16 @@ import android.support.v7.widget.ShareActionProvider;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.List;
+import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.GameRecord;
+import de.pasligh.android.teamme.objects.PlayerAssignment;
+import de.pasligh.android.teamme.tools.TTS_Tool;
+import de.pasligh.android.teamme.tools.TeamReactor;
 import de.pasligh.android.teamme.tools.TextHelper;
 
 /**
@@ -23,6 +33,9 @@ public class GameRecordDetailActivity extends AppCompatActivity {
 
     private BackendFacade facade;
     private static String currentId = null;
+    private SoundPool soundPool;
+    private int spFanfare;
+    private int DURATION_MEDIA_FILE = 3000;
 
     public BackendFacade getFacade() {
         if (null == facade) {
@@ -42,6 +55,9 @@ public class GameRecordDetailActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+        soundPool = new SoundPool.Builder().build();
+        spFanfare = soundPool.load(this, R.raw.fanfare_short, 1);
 
         // savedInstanceState is non-null when there is fragment state
         // saved from previous configurations of this activity
@@ -74,6 +90,30 @@ public class GameRecordDetailActivity extends AppCompatActivity {
         }
     }
 
+    public StringBuilder createTeamDecided_AnnouncementText() {
+        StringBuilder shareText = new StringBuilder();
+        shareText.append(getString(R.string.shareIntent)).append(" ");
+        int teamNr = 1;
+        List<PlayerAssignment> assignments;
+        while (!(assignments = TeamReactor.getAssignmentsByTeam(teamNr))
+                .isEmpty()) {
+            shareText.append(getString(R.string.team)).append(" ")
+                    .append(assignments.get(0).getPlayer().getName())
+                    .append("... ");
+            for (int i = 0; i < assignments.size(); i++) {
+                shareText.append(getString(R.string.player)).append(" ").append(i + 1).append(":");
+                shareText.append(assignments.get(i).getPlayer().getName())
+                        .append(", ");
+            }
+            shareText.append(". ");
+
+            teamNr++;
+        }
+        shareText.append(getString(R.string.luck));
+        return shareText;
+    }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -86,6 +126,24 @@ public class GameRecordDetailActivity extends AppCompatActivity {
             //
             navigateUpTo(new Intent(this, GameRecordListActivity.class));
             return true;
+        } else if (id == R.id.TeamOverviewAnnounceMenuItem) {
+            soundPool.play(spFanfare, 1, 1, 1, 0, 1);
+            final String announcement = createTeamDecided_AnnouncementText().toString();
+
+            Timer myMediaTimer = new Timer();
+            myMediaTimer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    TTS_Tool.getInstance(GameRecordDetailActivity.this)
+                            .speak(announcement, TextToSpeech.QUEUE_FLUSH);
+                }
+
+            }, DURATION_MEDIA_FILE);
+        } else if (id == R.id.TeamOverviewDeleteMenuItem) {
+            if (getFacade().deleteAssignments(Integer.parseInt(currentId))) {
+                getFacade().deleteGame(Integer.parseInt(currentId));
+            }
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }

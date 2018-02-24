@@ -127,7 +127,7 @@ public final class TTS_Tool implements TextToSpeech.OnInitListener {
 		return tts.isSpeaking();
 	}
 
-	public int sprechen(String text, int QUEUE) {
+	public int speak(String text, int QUEUE) {
 		utteranceID++;
 		if (waitForInitLock.isLocked()) {
 			try {
@@ -139,7 +139,7 @@ public final class TTS_Tool implements TextToSpeech.OnInitListener {
 			waitForInitLock.unlock();
 		}
 
-		tts.speak(text, QUEUE, null);
+		tts.speak(text, QUEUE, null, null);
 		return utteranceID;
 	}
 }

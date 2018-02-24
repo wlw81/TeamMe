@@ -6,5 +6,14 @@
         app:actionProviderClass="android.support.v7.widget.ShareActionProvider"
         app:showAsAction="always"
         android:title="@string/share"></item>
+    <item
+        android:id="@+id/TeamOverviewAnnounceMenuItem"
+        android:icon="@android:drawable/ic_lock_silent_mode_off"
+        android:title="@string/announce"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/TeamOverviewDeleteMenuItem"
+        android:icon="@drawable/ic_action_delete"
+        android:title="@string/delete" />
 
 </menu>

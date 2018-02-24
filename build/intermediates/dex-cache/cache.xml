@@ -3,13 +3,13 @@
 
     <item
         is-multidex="false"
-        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.0.2.aar\3b41daa8b8c1f46ffcf1426f8c7bc5f0\jars\classes.jar"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.0.2.aar\e2b50e0b7757b8a3332c410695a995c9\jars\classes.jar"
         jumboMode="false"
-        min-sdk-version="17"
+        min-sdk-version="21"
         optimize="true"
         revision="26.0.2"
-        sha1="ed6560f31a6a40b5965f5879d8f2eab1f68def05">
-        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\18.jar" />
+        sha1="04cd0cacbedcb338f64665b88bad64d145325fbd">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\14.jar" />
     </item>
     <item
         is-multidex="false"
@@ -43,16 +43,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\play-services-tasks-10.0.0.aar\50c0e2cf1fd7bb218dca4c4ef5d2a497\jars\classes.jar"
-        jumboMode="false"
-        min-sdk-version="17"
-        optimize="true"
-        revision="26.0.2"
-        sha1="985be85104f6d0c5c5e51e7b7e60d8883a98ac64">
-        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\9.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\firebase-appindexing-10.0.0.aar\cf89ce8cd3e9fcb64e04cc93e6e6d837\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="17"
@@ -63,13 +53,23 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\69613d0bb6a952542819690e25ba4b4b\jars\classes.jar"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.0.2.aar\e345fd147686b8554f1289ec483bdf97\jars\classes.jar"
         jumboMode="false"
-        min-sdk-version="17"
+        min-sdk-version="21"
         optimize="true"
         revision="26.0.2"
-        sha1="618f75fe11febf263e3234c7da7dc892232a5608">
-        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\16.jar" />
+        sha1="14bfdbf5594d4d7c320de20831849050788ab1e3">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\12.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\firebase-appindexing-10.0.0.aar\cf89ce8cd3e9fcb64e04cc93e6e6d837\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="22031b047b12904b888549ba36c0c30d83b1aea1">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\6.jar" />
     </item>
     <item
         is-multidex="false"
@@ -93,6 +93,246 @@
     </item>
     <item
         is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.0.2.aar\6d97aa06996f07cdf3ce50409bdd1893\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="25c8cb628374f9a2d59ff9e1172753751e9a9f84">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\21.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Program Files\Android\Android Studio\gradle\m2repository\com\android\databinding\baseLibrary\3.0.1\baseLibrary-3.0.1.jar"
+        jumboMode="false"
+        min-sdk-version="17"
+        optimize="true"
+        revision="26.0.2"
+        sha1="915f7f0c560968a3d7bfac7456ad7a0d3a974b39">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\design-27.0.2.aar\316420eebc38d0fb05733eec63a66012\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="031cc16b7b6e77b3c050134ecab9fa5c2640a069">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\transition-27.0.2.aar\c4c4fddd8a648e9e9e09bc4b8fc157b7\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="17"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a5fa2e3704f51b30b7b47e12a3a2909728799583">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\15.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\support-v4-27.0.2.aar\990bc362cfd6f813d56709d39a4bb8e9\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="bcd0bcdef85b31a656af76e39c0c95ce70800772">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\11.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Program Files\Android\Android Studio\gradle\m2repository\com\android\databinding\baseLibrary\3.0.1\baseLibrary-3.0.1.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="915f7f0c560968a3d7bfac7456ad7a0d3a974b39">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\support-v4-27.0.2.aar\990bc362cfd6f813d56709d39a4bb8e9\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="17"
+        optimize="true"
+        revision="26.0.2"
+        sha1="bcd0bcdef85b31a656af76e39c0c95ce70800772">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\11.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\transition-27.0.2.aar\c4c4fddd8a648e9e9e09bc4b8fc157b7\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a5fa2e3704f51b30b7b47e12a3a2909728799583">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\15.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.0.2.aar\d232bdaa0db4dffc04ea6b36e84f84da\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="17"
+        optimize="true"
+        revision="26.0.2"
+        sha1="fe3916317a699975bcce0cba2d13fd2d8cf88922">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\17.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.0.2.aar\d232bdaa0db4dffc04ea6b36e84f84da\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="fe3916317a699975bcce0cba2d13fd2d8cf88922">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\17.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\modules-2\files-2.1\android.arch.core\common\1.0.0\a2d487452376193fc8c103dd2b9bd5f2b1b44563\common-1.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="17"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a2d487452376193fc8c103dd2b9bd5f2b1b44563">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\26.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\modules-2\files-2.1\android.arch.core\common\1.0.0\a2d487452376193fc8c103dd2b9bd5f2b1b44563\common-1.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a2d487452376193fc8c103dd2b9bd5f2b1b44563">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\26.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.0.2.aar\5d567f2adec116f162a23ace1ab89480\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="17"
+        optimize="true"
+        revision="26.0.2"
+        sha1="caa03787689212c10939f308a55a8dc8a3333ed2">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\20.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\StudioProjects\TeamMe\teamme\libs\achartengine-1.1.0.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="9932e3fb9fbe54e80873e77f72a99f79e33b3250">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.0.2.aar\5d567f2adec116f162a23ace1ab89480\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="caa03787689212c10939f308a55a8dc8a3333ed2">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\20.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\StudioProjects\TeamMe\teamme\libs\achartengine-1.1.0.jar"
+        jumboMode="false"
+        min-sdk-version="17"
+        optimize="true"
+        revision="26.0.2"
+        sha1="9932e3fb9fbe54e80873e77f72a99f79e33b3250">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.0.2.aar\3b41daa8b8c1f46ffcf1426f8c7bc5f0\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="17"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ed6560f31a6a40b5965f5879d8f2eab1f68def05">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\18.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\play-services-tasks-10.0.0.aar\50c0e2cf1fd7bb218dca4c4ef5d2a497\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="985be85104f6d0c5c5e51e7b7e60d8883a98ac64">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\play-services-tasks-10.0.0.aar\50c0e2cf1fd7bb218dca4c4ef5d2a497\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="17"
+        optimize="true"
+        revision="26.0.2"
+        sha1="985be85104f6d0c5c5e51e7b7e60d8883a98ac64">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\69613d0bb6a952542819690e25ba4b4b\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="618f75fe11febf263e3234c7da7dc892232a5608">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\16.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.0.2.aar\3b41daa8b8c1f46ffcf1426f8c7bc5f0\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ed6560f31a6a40b5965f5879d8f2eab1f68def05">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\18.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\support-fragment-27.0.2.aar\69613d0bb6a952542819690e25ba4b4b\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="17"
+        optimize="true"
+        revision="26.0.2"
+        sha1="618f75fe11febf263e3234c7da7dc892232a5608">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\16.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\adapters-1.3.1.aar\613ba2eeaaa90692579f6a2a0efd6541\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="68956f5ba1517b7a3d513ba540548e257741cbae">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\27.0.2\b9ef4342c934a1a8b107506273dc8061662a322\support-annotations-27.0.2.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="0b9ef4342c934a1a8b107506273dc8061662a322">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\23.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\adapters-1.3.1.aar\613ba2eeaaa90692579f6a2a0efd6541\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="17"
@@ -113,6 +353,16 @@
     </item>
     <item
         is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\play-services-basement-10.0.0.aar\d1f0d26f1cd0b272991e24e7e259139c\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="75dbc3537bc912d077b3db2f5ac72d5b43644b2c">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\10.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\library-1.3.1.aar\e8bca6c66bf58460a994952da7a07680\jars\classes.jar"
         jumboMode="false"
         min-sdk-version="17"
@@ -120,16 +370,6 @@
         revision="26.0.2"
         sha1="7f2f348b830f292429db987f74ba3e67c6752322">
         <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Program Files\Android\Android Studio\gradle\m2repository\com\android\databinding\baseLibrary\3.0.1\baseLibrary-3.0.1.jar"
-        jumboMode="false"
-        min-sdk-version="17"
-        optimize="true"
-        revision="26.0.2"
-        sha1="915f7f0c560968a3d7bfac7456ad7a0d3a974b39">
-        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\4.jar" />
     </item>
     <item
         is-multidex="false"
@@ -153,23 +393,33 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\transition-27.0.2.aar\c4c4fddd8a648e9e9e09bc4b8fc157b7\jars\classes.jar"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\library-1.3.1.aar\e8bca6c66bf58460a994952da7a07680\jars\classes.jar"
         jumboMode="false"
-        min-sdk-version="17"
+        min-sdk-version="21"
         optimize="true"
         revision="26.0.2"
-        sha1="a5fa2e3704f51b30b7b47e12a3a2909728799583">
-        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\15.jar" />
+        sha1="7f2f348b830f292429db987f74ba3e67c6752322">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\3.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\support-v4-27.0.2.aar\990bc362cfd6f813d56709d39a4bb8e9\jars\classes.jar"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\firebase-common-10.0.0.aar\568a881e019ce316d5d99e187d2d0169\jars\classes.jar"
         jumboMode="false"
-        min-sdk-version="17"
+        min-sdk-version="21"
         optimize="true"
         revision="26.0.2"
-        sha1="bcd0bcdef85b31a656af76e39c0c95ce70800772">
-        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\11.jar" />
+        sha1="2b410ae1fda134f470276365f4b7f846269e0d23">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.0.2.aar\cad45ed9cabb836fa5bd5e1e56c51d20\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ac2ce6027755bcf49442e70597bec0feb9064f68">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\19.jar" />
     </item>
     <item
         is-multidex="false"
@@ -195,6 +445,26 @@
         is-multidex="false"
         jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\support-compat-27.0.2.aar\5440c97021db3cae9e7c6f236c0a87fe\jars\classes.jar"
         jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b432e82447a3af781e927b9ba0bbb9fe2a496d4a">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\22.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\play-services-base-10.0.0.aar\5c7605485484d63a0f701634cc827322\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="21"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3347c3e7056fabc88bdbd8fdae65ddf2b674d977">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\support-compat-27.0.2.aar\5440c97021db3cae9e7c6f236c0a87fe\jars\classes.jar"
+        jumboMode="false"
         min-sdk-version="17"
         optimize="true"
         revision="26.0.2"
@@ -213,33 +483,33 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.0.2.aar\d232bdaa0db4dffc04ea6b36e84f84da\jars\classes.jar"
+        jar="C:\Users\thoma\.gradle\caches\modules-2\files-2.1\android.arch.lifecycle\common\1.0.3\7d7f60c4783872861222166f6164215f8951c7b1\common-1.0.3.jar"
         jumboMode="false"
-        min-sdk-version="17"
+        min-sdk-version="21"
         optimize="true"
         revision="26.0.2"
-        sha1="fe3916317a699975bcce0cba2d13fd2d8cf88922">
-        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\17.jar" />
+        sha1="7d7f60c4783872861222166f6164215f8951c7b1">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\25.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\thoma\.gradle\caches\modules-2\files-2.1\android.arch.core\common\1.0.0\a2d487452376193fc8c103dd2b9bd5f2b1b44563\common-1.0.0.jar"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.0.2.aar\ee25458216f972976809992dd4705920\jars\classes.jar"
         jumboMode="false"
-        min-sdk-version="17"
+        min-sdk-version="21"
         optimize="true"
         revision="26.0.2"
-        sha1="a2d487452376193fc8c103dd2b9bd5f2b1b44563">
-        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\26.jar" />
+        sha1="9296d6f092fcdba4fafb6ac26546a39babdab46a">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\13.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.0.2.aar\5d567f2adec116f162a23ace1ab89480\jars\classes.jar"
+        jar="C:\Users\thoma\.gradle\caches\transforms-1\files-1.1\runtime-1.0.3.aar\ed41e9d707510239ecdd14bcf44fb793\jars\classes.jar"
         jumboMode="false"
-        min-sdk-version="17"
+        min-sdk-version="21"
         optimize="true"
         revision="26.0.2"
-        sha1="caa03787689212c10939f308a55a8dc8a3333ed2">
-        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\20.jar" />
+        sha1="d7cc5473b9cf4ea159a263cd477fb3ecb2987b96">
+        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\24.jar" />
     </item>
     <item
         is-multidex="false"
@@ -250,16 +520,6 @@
         revision="26.0.2"
         sha1="7d7f60c4783872861222166f6164215f8951c7b1">
         <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\25.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\thoma\StudioProjects\TeamMe\teamme\libs\achartengine-1.1.0.jar"
-        jumboMode="false"
-        min-sdk-version="17"
-        optimize="true"
-        revision="26.0.2"
-        sha1="9932e3fb9fbe54e80873e77f72a99f79e33b3250">
-        <dex dex="C:\Users\thoma\StudioProjects\TeamMe\teamme\build\intermediates\transforms\preDex\release\1.jar" />
     </item>
 
 </items>

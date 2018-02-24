@@ -1,6 +1,5 @@
 package de.pasligh.android.teamme;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,7 +10,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
@@ -36,8 +35,6 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
-import java.lang.ref.WeakReference;
-
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.GameRecord;
 import de.pasligh.android.teamme.objects.Player;
@@ -57,8 +54,12 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
     private Animation animationSlideOutLeft;
     private Animation animationSlideOutRight;
     private Animation animationGlow;
-    private MediaPlayer mPlayerLeft;
-    private MediaPlayer mPlayerRight;
+
+    private int spLeft;
+    private int spRight;
+
+    private SoundPool soundPool;
+
     private PlayerAssignment myAssignment;
     private BackendFacade facade;
     private boolean autoShake = true;
@@ -82,9 +83,11 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
         animationSlideOutRight = AnimationUtils.loadAnimation(this,
                 R.anim.right);
 
+        soundPool = new SoundPool.Builder().build();
+        spLeft = soundPool.load(this, R.raw.left, 1);
+        spRight = soundPool.load(this, R.raw.right, 1);
+
         animationShake2.setAnimationListener(this);
-        mPlayerLeft = MediaPlayer.create(getApplicationContext(), R.raw.left);
-        mPlayerRight = MediaPlayer.create(getApplicationContext(), R.raw.right);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, getFacade()
                 .getPlayersAsStringArray());
@@ -191,11 +194,11 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
             if (x < 0) {
                 findViewById(R.id.BumperLeftDrawable).startAnimation(
                         animationShake1);
-                mPlayerLeft.start();
+                soundPool.play(spLeft, 1, 1, 1, 0, 1);
             } else {
                 findViewById(R.id.BumperRightDrawable).startAnimation(
                         animationShake2);
-                mPlayerRight.start();
+                soundPool.play(spRight, 1, 1, 1, 0, 1);
                 vibrate();
             }
             if (actualTime - lastUpdate < 200) {
@@ -231,14 +234,14 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
                 vibrate();
                 findViewById(R.id.BumperLeftDrawable).startAnimation(
                         animationShake1);
-                mPlayerLeft.start();
+                soundPool.play(spLeft, 1, 1, 1, 0, 1);
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     public void run() {
                         vibrate();
                         findViewById(R.id.BumperRightDrawable).startAnimation(
                                 animationShake2); // ending of animation 2 will automatically lead to #onAnimationEnd
-                        mPlayerRight.start();
+                        soundPool.play(spRight, 1, 1, 1, 0, 1);
                         stopShakeCall();
                     }
                 }, 200);
@@ -396,7 +399,7 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
         }
 
         TTS_Tool.getInstance(this)
-                .sprechen(speakText, TextToSpeech.QUEUE_FLUSH);
+                .speak(speakText, TextToSpeech.QUEUE_FLUSH);
         invalidateOptionsMenu();
     }
 

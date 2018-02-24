@@ -37,6 +37,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CompoundButton;
@@ -180,7 +181,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
                 "fonts/Roboto-Thin.ttf"), teamsAdapter, this, mapStarsPerPlayer);
         rv.setAdapter(playerSelectionRV_adapter);
         binding.setPlayerAssignments(playerSelectionRV_adapter.getAssignments());
-        if(playerSelectionRV_adapter.getAssignments().isEmpty()){
+        if (playerSelectionRV_adapter.getAssignments().isEmpty()) {
             findViewById(R.id.playerSelectionBlankTV2).setVisibility(View.VISIBLE);
         }
 
@@ -208,27 +209,35 @@ public class GameCreatorActivity extends AppCompatActivity implements
             }
         };
 
+        sportTV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-        sportTV.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View arg1, int pos,
+                                    long id) {
+                sportEntered(mapStarsPerPlayer);
+            }
+        });
 
-
-                                     @Override
-
-                                     public boolean onKey(View v, int keyCode, KeyEvent event) {
-                                         if ((event.getAction() == KeyEvent.ACTION_DOWN)
-                                                 && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                                             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                                             imm.hideSoftInputFromWindow(sportTV.getWindowToken(), 0);
-                                         }
-
-                                         return false;
-
-                                     }
-
-                                 }
+        sportTV.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
 
-        );
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                // Identifier of the action. This will be either the identifier you supplied,
+                // or EditorInfo.IME_NULL if being called due to the enter key being pressed.
+                if (actionId == EditorInfo.IME_ACTION_SEARCH
+                        || actionId == EditorInfo.IME_ACTION_DONE
+                        || event.getAction() == KeyEvent.ACTION_DOWN
+                        && event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                    sportEntered(mapStarsPerPlayer);
+                    return false;
+                }
+                // Return true if you have consumed the action, else false.
+                return false;
+            }
+
+
+        });
 
         //Setting the actionbarToggle to drawer layout
         mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -246,6 +255,15 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
                         build();
         displayPreselected();
+    }
+
+    private void sportEntered(Map<String, Integer> mapStarsPerPlayer) {
+        if (playerSelectionRV_adapter.getAssignments() != null) {
+            playerSelectionRV_adapter.getAssignments().clear();
+            mapStarsPerPlayer.clear();
+            playerSelectionRV_adapter.getAssignments().addAll(assemblePlayerAssignments(mapStarsPerPlayer));
+            playerSelectionRV_adapter.notifyDataSetChanged();
+        }
     }
 
     @NonNull
@@ -534,7 +552,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
             int teamCount = teamCountNP.getValue();
             String sport = ((AutoCompleteTextView) findViewById(R.id.SportTextView)).getText().toString().trim();
             if (sport.isEmpty()) {
-                sport = getString(R.string.sport);
+                sport = getString(R.string.unknown);
             }
 
             String conflicts = TeamReactor.decideTeams(teamCount, playerCountNP.getValue(), playerSelectionRV_adapter.getAssignmentsDone());

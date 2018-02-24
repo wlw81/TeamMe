@@ -46,7 +46,6 @@ public class TextHelper {
         return shareText;
     }
 
-
     public static int getWinnerTeam_by_OverallScore(List<Score> p_lisScores) {
         int intHighestScore = -1;
         int winnerTeam = -1;

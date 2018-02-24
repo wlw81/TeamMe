@@ -79,4 +79,7 @@
     <string name="preselection">Présélection</string>
     <string name="ok_button">OK</string>
     <string name="preselected">présélectionné</string>
+    <string name="unknown">inconnu</string>
+    <string name="announce">Signaler</string>
+    <string name="luck">Bonne chance!</string>
 </resources>

@@ -81,18 +81,17 @@
                     android:paddingRight="@dimen/text_margin"
                     android:paddingTop="@dimen/small_text_margin">
 
-                    <AutoCompleteTextView
-                        android:id="@+id/SportTextView"
+                    <TextView
+                        android:id="@+id/KindOfSportTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
-                        android:layout_alignParentEnd="true"
+                        android:layout_alignBottom="@+id/SportTextView"
                         android:layout_alignParentStart="true"
-                        android:layout_below="@+id/KindOfSportTV"
-                        android:ems="10"
-                        android:hint="@string/sport_example"
-                        android:inputType="textCapWords"
-                        android:lines="1" />
+                        android:layout_alignParentTop="true"
+                        android:gravity="center_vertical"
+                        android:paddingRight="@dimen/small_text_margin"
+                        android:text="@string/sport"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <TextView
                         android:id="@+id/PreSelectionTextView"
@@ -103,33 +102,28 @@
                         android:text="@string/preselection"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                    <TextView
-                        android:id="@+id/KindOfSportTV"
+                    <AutoCompleteTextView
+                        android:id="@+id/SportTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
+                        android:imeOptions="actionDone"
+                        android:layout_alignParentEnd="true"
                         android:layout_alignParentTop="true"
-                        android:text="@string/sport"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:layout_toEndOf="@+id/KindOfSportTV"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="@string/sport_example"
+                        android:inputType="textCapWords"
+                        android:lines="1" />
 
                     <LinearLayout
                         android:id="@+id/PlayerTeamSelectionLinearLayout"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/selection"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/SportTextView"
-                        android:gravity="center_vertical"
+                        android:layout_below="@id/KindOfSportTV"
+                        android:gravity="center_vertical|center_horizontal"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/TeamsTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:paddingRight="@dimen/small_text_margin"
-                            android:text="@string/teams"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <NumberPicker
                             android:id="@+id/TeamCountNumberPicker"
@@ -140,14 +134,12 @@
                             android:layout_weight="1" />
 
                         <TextView
-                            android:id="@+id/additionalPlayerCountTextView"
+                            android:id="@+id/TeamsTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
                             android:layout_weight="1"
-                            android:gravity="right"
-                            android:paddingRight="@dimen/small_text_margin"
-                            android:text="@string/player"
+                            android:paddingLeft="@dimen/small_text_margin"
+                            android:text="@string/teams"
                             android:textAppearance="?android:attr/textAppearanceMedium" />
 
                         <NumberPicker
@@ -157,6 +149,16 @@
                             android:layout_alignParentEnd="true"
                             android:layout_below="@+id/additionalPlayerCountTextView"
                             android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/additionalPlayerCountTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_weight="1"
+                            android:paddingLeft="@dimen/small_text_margin"
+                            android:text="@string/player"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
                     </LinearLayout>
 
                 </RelativeLayout>
