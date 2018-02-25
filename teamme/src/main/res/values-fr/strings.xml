@@ -48,7 +48,7 @@
     <string name="more">plus</string>
     <string name="title_dialog_teamcount">sélectionnez le nombre d\'équipes</string>
     <string name="random">chance</string>
-    <string name="sport">discipline</string>
+    <string name="sport">Discipline</string>
     <string name="sport_example">Football, handball, tennis de table ...</string>
     <string name="points">points</string>
     <string name="title_activity_player_selection">Présélection Joueur</string>

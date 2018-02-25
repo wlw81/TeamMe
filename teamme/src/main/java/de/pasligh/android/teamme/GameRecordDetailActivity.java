@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import java.util.TimerTask;
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.GameRecord;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
+import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.TTS_Tool;
 import de.pasligh.android.teamme.tools.TeamReactor;
 import de.pasligh.android.teamme.tools.TextHelper;
@@ -90,6 +92,14 @@ public class GameRecordDetailActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (currentId == null || getFacade().getGame(Integer.parseInt(currentId)) == null) {
+            finish();
+        }
+    }
+
     public StringBuilder createTeamDecided_AnnouncementText() {
         StringBuilder shareText = new StringBuilder();
         shareText.append(getString(R.string.shareIntent)).append(" ");
@@ -143,7 +153,8 @@ public class GameRecordDetailActivity extends AppCompatActivity {
             if (getFacade().deleteAssignments(Integer.parseInt(currentId))) {
                 getFacade().deleteGame(Integer.parseInt(currentId));
             }
-            finish();
+
+            onBackPressed();
         }
         return super.onOptionsItemSelected(item);
     }

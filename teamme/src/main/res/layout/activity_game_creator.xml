@@ -79,48 +79,38 @@
                     android:paddingBottom="@dimen/small_text_margin"
                     android:paddingLeft="@dimen/text_margin"
                     android:paddingRight="@dimen/text_margin"
-                    android:paddingTop="@dimen/small_text_margin">
-
-                    <TextView
-                        android:id="@+id/KindOfSportTV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/SportTextView"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:gravity="center_vertical"
-                        android:paddingRight="@dimen/small_text_margin"
-                        android:text="@string/sport"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:paddingTop="@dimen/smaller_margin">
 
                     <TextView
                         android:id="@+id/PreSelectionTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
+                        android:paddingTop="@dimen/small_text_margin"
+                        android:gravity="center"
                         android:layout_below="@+id/PlayerTeamSelectionLinearLayout"
                         android:text="@string/preselection"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <AutoCompleteTextView
                         android:id="@+id/SportTextView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:imeOptions="actionDone"
-                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        android:layout_toEndOf="@+id/KindOfSportTV"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="@string/sport_example"
+                        android:hint="@string/sport"
+                        android:imeOptions="actionDone"
                         android:inputType="textCapWords"
                         android:lines="1" />
 
                     <LinearLayout
                         android:id="@+id/PlayerTeamSelectionLinearLayout"
                         android:layout_width="match_parent"
+                        android:layout_marginLeft="@dimen/small_text_margin"
                         android:layout_height="@dimen/selection"
-                        android:layout_below="@id/KindOfSportTV"
+                        android:layout_below="@id/SportTextView"
                         android:gravity="center_vertical|center_horizontal"
                         android:orientation="horizontal">
 

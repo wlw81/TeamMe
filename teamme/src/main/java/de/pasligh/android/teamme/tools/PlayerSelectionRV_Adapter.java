@@ -62,6 +62,17 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
         ctxt = p_ctxt;
         assignments.clear();
         assignments.addAll(p_playerAssignments);
+        for (PlayerAssignment assignmentFromReactor : TeamReactor.getAssignments()) {
+            if(null != assignmentFromReactor.getPlayer()){
+                String name = assignmentFromReactor.getPlayer().getName();
+                for (PlayerAssignment assignmentLocal : assignments) {
+                    if (assignmentLocal.getPlayer().getName().equals(name)) {
+                        assignmentLocal.setRevealed(true);
+                        Log.i(Flags.LOGTAG, "Restore: " +assignmentLocal.toString());
+                    }
+                }
+            }
+        }
         tf = p_tf;
         spinnerAdapter = p_spinnerAdapter;
         mapStarsPerPlayer = p_mapStarsPerPlayer;
@@ -95,11 +106,9 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
     public void onBindViewHolder(PlayerViewHolder holder, int position) {
         String name = assignments.get(position).getPlayer().getName();
         holder.playerName.setText(name);
-
-        if(assignments.get(position).isRevealed()){
+        holder.switchPlayer.setChecked(assignments.get(position).isRevealed());
+        if(holder.switchPlayer.isChecked()){
             holder.expandView();
-        }else{
-            holder.collapseView();
         }
 
         if (mapStarsPerPlayer.containsKey(name)) {
@@ -140,7 +149,7 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
 
         public void collapseView() {
             showControls(false);
-            if(cv.getLayoutParams().height == maxHeight){
+            if (cv.getLayoutParams().height == maxHeight) {
                 ValueAnimator anim = ValueAnimator.ofInt(cv.getMeasuredHeightAndState(),
                         minHeight);
                 anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -159,20 +168,22 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
 
         public void expandView() {
             showControls(true);
-            if(cv.getLayoutParams().height == minHeight){{
-                ValueAnimator anim = ValueAnimator.ofInt(cv.getMeasuredHeightAndState(), maxHeight
-                );
-                anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                    @Override
-                    public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                        int val = (Integer) valueAnimator.getAnimatedValue();
-                        ViewGroup.LayoutParams layoutParams = cv.getLayoutParams();
-                        layoutParams.height = val;
-                        cv.setLayoutParams(layoutParams);
-                    }
-                });
-                anim.start();
-            }}
+            if (cv.getLayoutParams().height == minHeight) {
+                {
+                    ValueAnimator anim = ValueAnimator.ofInt(cv.getMeasuredHeightAndState(), maxHeight
+                    );
+                    anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                        @Override
+                        public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                            int val = (Integer) valueAnimator.getAnimatedValue();
+                            ViewGroup.LayoutParams layoutParams = cv.getLayoutParams();
+                            layoutParams.height = val;
+                            cv.setLayoutParams(layoutParams);
+                        }
+                    });
+                    anim.start();
+                }
+            }
         }
 
         PlayerViewHolder(View itemView) {
@@ -196,7 +207,7 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
                 public boolean onPreDraw() {
                     cv.getViewTreeObserver().removeOnPreDrawListener(this);
                     minHeight = cv.getHeight();
-                    maxHeight = (int) (minHeight * 1.5);
+                    maxHeight = (int) (minHeight * 2);
                     ViewGroup.LayoutParams layoutParams = cv.getLayoutParams();
                     layoutParams.height = minHeight;
                     cv.setLayoutParams(layoutParams);
@@ -205,6 +216,7 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
             });
         }
     }
+
     @Override
     public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
         PlayerViewHolder pvh = (PlayerViewHolder) arg0.getTag();
@@ -220,10 +232,10 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         PlayerViewHolder pvh = (PlayerViewHolder) buttonView.getTag();
-        if(isChecked){
+        if (isChecked) {
             getAssignments().get(pvh.getAdapterPosition()).setOrderNumber(1);
             Log.i(Flags.LOGTAG, "Team change: " + getAssignments().get(pvh.getAdapterPosition()).getPlayer() + " is now el capitano!");
-        }else{
+        } else {
             getAssignments().get(pvh.getAdapterPosition()).setOrderNumber(-1);
             Log.i(Flags.LOGTAG, "Team change: " + getAssignments().get(pvh.getAdapterPosition()).getPlayer() + " is not the captain anymore");
         }

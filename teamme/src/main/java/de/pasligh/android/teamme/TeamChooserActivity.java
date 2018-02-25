@@ -116,9 +116,10 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,
                                                 int id) {
-                                Intent backHomne = new Intent(getApplicationContext(),
+                                Intent backHome = new Intent(getApplicationContext(),
                                         GameCreatorActivity.class);
-                                startActivity(backHomne);
+                                backHome.putExtra(Flags.SPORT, getIntent().getStringExtra(Flags.SPORT));
+                                startActivity(backHome);
                             }
                         })
                 .setNegativeButton(R.string.cancelDialog_negative,

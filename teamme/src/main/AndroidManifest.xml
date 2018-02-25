@@ -51,11 +51,6 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".PlayerSelectionActivity"
-            android:label="@string/title_activity_player_selection"
-            android:theme="@style/TeamMeNoActionBar">
-        </activity>
-        <activity
             android:name=".ReportScoresActivity"
             android:label="@string/title_activity_report_scores"
             android:parentActivityName=".GameRecordListActivity">

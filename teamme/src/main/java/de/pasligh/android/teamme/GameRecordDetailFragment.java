@@ -83,7 +83,6 @@ public class GameRecordDetailFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.i(Flags.LOGTAG, "onResume: "+mItem.toString());
     }
 
     @Override

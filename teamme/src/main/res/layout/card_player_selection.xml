@@ -15,60 +15,58 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp"
-       >
+        android:padding="@dimen/smaller_margin">
 
         <TextView
             android:id="@+id/playerSelectionCV_NameTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/playername"
-            android:textSize="30sp"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-          />
+            android:layout_toEndOf="@+id/playerSelectionCV_Switch"
+            android:text="@string/playername"
+            android:textSize="30sp" />
 
         <Switch
             android:id="@+id/playerSelectionCV_Switch"
+            android:paddingTop="@dimen/margin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" />
 
         <RatingBar
             android:id="@+id/playerSelectionCV_RatingBar"
+            style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="?android:attr/ratingBarStyleSmall"
-            android:rating="1"
-            android:isIndicator="true"
-            android:max="5"
-            android:stepSize="0.01"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/playerSelectionCV_NameTV"
-            android:layout_margin="8dp" />
+            android:isIndicator="true"
+            android:max="5"
+            android:paddingLeft="@dimen/small_text_margin"
+            android:paddingTop="@dimen/small_text_margin"
+            android:rating="1"
+            android:stepSize="0.01" />
 
         <Spinner
             android:id="@+id/playerSelectionCV_TeamSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="32dp"
-            android:spinnerMode="dropdown"
+            android:layout_alignEnd="@+id/playerSelectionCV_RatingBar"
             android:layout_below="@+id/playerSelectionCV_NameTV"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/playerSelectionCV_CaptainToggle"
-            android:layout_alignBottom="@+id/playerSelectionCV_CaptainToggle" />
+            android:layout_toEndOf="@+id/playerSelectionCV_CaptainToggle"
+            android:spinnerMode="dropdown" />
 
         <ToggleButton
+            android:id="@+id/playerSelectionCV_CaptainToggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAllCaps="true"
-            android:textOn="@string/captain"
-            android:id="@+id/playerSelectionCV_CaptainToggle"
-            android:textOff="@string/promote"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/playerSelectionCV_NameTV"
             android:checked="false"
-            android:layout_below="@+id/playerSelectionCV_Switch"
-            android:layout_alignParentEnd="true" />
+            android:textAllCaps="true"
+            android:textOff="@string/promote"
+            android:textOn="@string/captain" />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

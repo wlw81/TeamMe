@@ -55,6 +55,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
@@ -128,8 +129,6 @@ public class GameCreatorActivity extends AppCompatActivity implements
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         ActivityGameCreatorBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_game_creator);
         setContentView(R.layout.activity_game_creator);
-
-        TeamReactor.resetReactor();
 
         final ArrayAdapter<String> adapterAutoComplete = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, getFacade()
@@ -255,13 +254,18 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
                         build();
         displayPreselected();
+        TeamReactor.resetReactor();
+        if (null != getIntent().getExtras()) {
+            sportTV.setText(getIntent().getStringExtra(Flags.SPORT));
+        }
     }
 
     private void sportEntered(Map<String, Integer> mapStarsPerPlayer) {
         if (playerSelectionRV_adapter.getAssignments() != null) {
-            playerSelectionRV_adapter.getAssignments().clear();
             mapStarsPerPlayer.clear();
-            playerSelectionRV_adapter.getAssignments().addAll(assemblePlayerAssignments(mapStarsPerPlayer));
+            playerSelectionRV_adapter.getMapStarsPerPlayer().clear();
+            assemblePlayerAssignments(mapStarsPerPlayer);
+            playerSelectionRV_adapter.getMapStarsPerPlayer().putAll(mapStarsPerPlayer);
             playerSelectionRV_adapter.notifyDataSetChanged();
         }
     }
@@ -287,7 +291,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
     public void displayPreselected() {
         String display = playerSelectionRV_adapter.getAssignmentsDone().size() + " " + getString(R.string.player) + " " + getString(R.string.preselected);
-        ((TextView) findViewById(R.id.PreSelectionTextView)).setText(display);
+        ((TextView) findViewById(R.id.PreSelectionTextView)).setText(display.toUpperCase(Locale.getDefault()));
     }
 
     private void initView() {
@@ -336,7 +340,6 @@ public class GameCreatorActivity extends AppCompatActivity implements
                                                                           startActivity(playerActivity);
                                                                           return true;
                                                                       case R.id.SettingsItem:
-
                                                                           Intent settingsActivity = new Intent(getApplicationContext(),
                                                                                   SettingsActivity.class);
                                                                           startActivity(settingsActivity);
