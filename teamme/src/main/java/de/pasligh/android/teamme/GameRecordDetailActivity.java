@@ -166,38 +166,5 @@ public class GameRecordDetailActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.team_overview, menu);
-        // Locate MenuItem with ShareActionProvider
-        MenuItem item = menu.findItem(R.id.TeamOverviewShareContext);
-
-        // Fetch and store ShareActionProvider
-        ShareActionProvider mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
-        mShareActionProvider.setShareIntent(createShareIntent());
-        return true;
-    }
-
-
-    private Intent createShareIntent() {
-        java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
-        StringBuilder shareText = new StringBuilder();
-
-        GameRecord gameRecord = getFacade().getGame(Integer.parseInt(currentId));
-        String title = gameRecord.getSport() + " " + dateFormat.format(gameRecord.getStartedAt());
-
-        shareText.append("[").append(title).append("] ");
-        shareText.append(TextHelper.createTeamDecided_ShareText(getString(R.string.shareIntent), getString(R.string.team)));
-
-        // create app footer
-        TextHelper.appendFooter_Signature(shareText, getString(R.string.shareFooter));
-
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_SUBJECT, R.string.decisiontext);
-        shareIntent.putExtra(Intent.EXTRA_TEXT, shareText.toString().trim());
-        return shareIntent;
-    }
 
 }

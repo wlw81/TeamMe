@@ -176,7 +176,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         rv.setLayoutManager(llm);
 
-        playerSelectionRV_adapter = new PlayerSelectionRV_Adapter(getApplicationContext(), assemblePlayerAssignments(mapStarsPerPlayer), Typeface.createFromAsset(getAssets(),
+        playerSelectionRV_adapter = new PlayerSelectionRV_Adapter(assemblePlayerAssignments(mapStarsPerPlayer), Typeface.createFromAsset(getAssets(),
                 "fonts/Roboto-Thin.ttf"), teamsAdapter, this, mapStarsPerPlayer);
         rv.setAdapter(playerSelectionRV_adapter);
         binding.setPlayerAssignments(playerSelectionRV_adapter.getAssignments());

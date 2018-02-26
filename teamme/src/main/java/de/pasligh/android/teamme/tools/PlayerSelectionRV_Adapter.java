@@ -48,27 +48,25 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
     }
 
     private final static List<PlayerAssignment> assignments = new ArrayList<PlayerAssignment>();
-    PlayerSelectionRV_Interface checkedChangeListener;
-    Typeface tf;
-    ArrayAdapter spinnerAdapter;
-    Map<String, Integer> mapStarsPerPlayer;
-    Context ctxt;
+    private PlayerSelectionRV_Interface checkedChangeListener;
+    private Typeface tf;
+    private ArrayAdapter spinnerAdapter;
+    private Map<String, Integer> mapStarsPerPlayer;
 
     public Map<String, Integer> getMapStarsPerPlayer() {
         return mapStarsPerPlayer;
     }
 
-    public PlayerSelectionRV_Adapter(Context p_ctxt, List<PlayerAssignment> p_playerAssignments, Typeface p_tf, ArrayAdapter p_spinnerAdapter, PlayerSelectionRV_Interface p_checkedChangeListener, Map<String, Integer> p_mapStarsPerPlayer) {
-        ctxt = p_ctxt;
+    public PlayerSelectionRV_Adapter(List<PlayerAssignment> p_playerAssignments, Typeface p_tf, ArrayAdapter p_spinnerAdapter, PlayerSelectionRV_Interface p_checkedChangeListener, Map<String, Integer> p_mapStarsPerPlayer) {
         assignments.clear();
         assignments.addAll(p_playerAssignments);
         for (PlayerAssignment assignmentFromReactor : TeamReactor.getAssignments()) {
-            if(null != assignmentFromReactor.getPlayer()){
+            if (null != assignmentFromReactor.getPlayer()) {
                 String name = assignmentFromReactor.getPlayer().getName();
                 for (PlayerAssignment assignmentLocal : assignments) {
                     if (assignmentLocal.getPlayer().getName().equals(name)) {
                         assignmentLocal.setRevealed(true);
-                        Log.i(Flags.LOGTAG, "Restore: " +assignmentLocal.toString());
+                        Log.i(Flags.LOGTAG, "Restore: " + assignmentLocal.toString());
                     }
                 }
             }
@@ -107,9 +105,6 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
         String name = assignments.get(position).getPlayer().getName();
         holder.playerName.setText(name);
         holder.switchPlayer.setChecked(assignments.get(position).isRevealed());
-        if(holder.switchPlayer.isChecked()){
-            holder.expandView();
-        }
 
         if (mapStarsPerPlayer.containsKey(name)) {
             int stars = mapStarsPerPlayer.get(assignments.get(position).getPlayer().getName());
@@ -149,7 +144,7 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
 
         public void collapseView() {
             showControls(false);
-            if (cv.getLayoutParams().height == maxHeight) {
+            if (cv.getLayoutParams().height >= maxHeight) {
                 ValueAnimator anim = ValueAnimator.ofInt(cv.getMeasuredHeightAndState(),
                         minHeight);
                 anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {

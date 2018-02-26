@@ -19,7 +19,6 @@
         <item name="colorAccent">@color/accent_color</item>
         <item name="colorButtonNormal">@color/accent_color</item>
         <item name="background">@color/active</item>
-        <item name="logo">@drawable/actionbar</item>
         <item name="android:colorPrimaryDark">@color/inactive</item>
     </style>
 
