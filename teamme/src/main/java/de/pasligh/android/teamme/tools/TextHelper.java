@@ -1,12 +1,10 @@
 package de.pasligh.android.teamme.tools;
 
 import android.util.Log;
-import android.widget.TextView;
 
 import java.util.List;
 import java.util.Locale;
 
-import de.pasligh.android.teamme.R;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.objects.Score;
 

@@ -6,9 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-
 import android.view.MenuItem;
+import android.view.View;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.databinding.ActivityPlayerListBinding;
@@ -49,6 +48,8 @@ public class PlayerListActivity extends AppCompatActivity implements View.OnClic
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setTitle(R.string.player);
         }
 
         View recyclerView = findViewById(R.id.player_list);

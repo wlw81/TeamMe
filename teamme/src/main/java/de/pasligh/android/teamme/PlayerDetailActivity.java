@@ -2,8 +2,6 @@ package de.pasligh.android.teamme;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
-import android.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 

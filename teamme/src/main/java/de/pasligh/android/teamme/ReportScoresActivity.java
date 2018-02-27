@@ -42,8 +42,8 @@ import de.pasligh.android.teamme.tools.AnimationHelper;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.ScoreRV_Adapter;
 import de.pasligh.android.teamme.tools.ScoreRV_Interface;
-import de.pasligh.android.teamme.tools.TextHelper;
 import de.pasligh.android.teamme.tools.TeamReactor;
+import de.pasligh.android.teamme.tools.TextHelper;
 
 public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_Interface, View.OnClickListener {
     private BackendFacade facade;

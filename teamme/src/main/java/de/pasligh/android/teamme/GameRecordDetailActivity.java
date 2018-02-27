@@ -4,26 +4,18 @@ import android.content.Intent;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ShareActionProvider;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
-import de.pasligh.android.teamme.objects.GameRecord;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
-import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.TTS_Tool;
 import de.pasligh.android.teamme.tools.TeamReactor;
-import de.pasligh.android.teamme.tools.TextHelper;
 
 /**
  * An activity representing a single GameRecord detail screen. This

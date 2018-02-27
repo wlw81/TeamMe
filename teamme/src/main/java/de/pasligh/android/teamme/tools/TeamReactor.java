@@ -1,18 +1,15 @@
 package de.pasligh.android.teamme.tools;
 
-import java.lang.reflect.Array;
+import android.content.Context;
+import android.util.Log;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import android.content.Context;
-import android.util.Log;
-
 import de.pasligh.android.teamme.R;
-import de.pasligh.android.teamme.objects.Player;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 
 public final class TeamReactor {

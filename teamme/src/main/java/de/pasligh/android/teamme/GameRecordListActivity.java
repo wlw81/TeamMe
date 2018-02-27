@@ -1,35 +1,19 @@
 package de.pasligh.android.teamme;
 
-import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.util.SparseBooleanArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
 import android.view.MenuItem;
-
-
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.databinding.ActivityGamerecordListBinding;
-import de.pasligh.android.teamme.databinding.ActivityPlayerListBinding;
-import de.pasligh.android.teamme.objects.GameRecord;
-import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.GameRecordRV_Adapter;
-import de.pasligh.android.teamme.tools.PlayerSelectionRV_Adapter;
 
 /**
  * An activity representing a list of Games. This activity
@@ -73,6 +57,8 @@ public class GameRecordListActivity extends AppCompatActivity implements View.On
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setTitle(R.string.selectGame);
         }
 
         View recyclerView = findViewById(R.id.gamerecord_list);

@@ -1,7 +1,6 @@
 package de.pasligh.android.teamme;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -23,8 +22,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -36,13 +33,11 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CompoundButton;
 import android.widget.NumberPicker;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
@@ -320,7 +315,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
                                                                           }
 
                                                                           alertDialog.setTitle(getString(R.string.app_name) + " " + version);
-                                                                          alertDialog.setMessage("by Thomas Pasligh");
+                                                                          alertDialog.setMessage("created by Thomas Pasligh.\nSoftware tested by Mingo.");
                                                                           alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
                                                                                   new DialogInterface.OnClickListener() {
                                                                                       public void onClick(DialogInterface dialog, int which) {
@@ -699,15 +694,13 @@ public class GameCreatorActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+    public void onCheckedChanged(final CompoundButton buttonView, boolean isChecked) {
         PlayerSelectionRV_Adapter.PlayerViewHolder pvh = (PlayerSelectionRV_Adapter.PlayerViewHolder) buttonView.getTag();
         PlayerAssignment pa = playerSelectionRV_adapter.getAssignments().get(pvh.getAdapterPosition());
         if (isChecked && !pa.isRevealed()) {
-            playerSelectionRV_adapter.getAssignments().get(pvh.getAdapterPosition()).setRevealed(isChecked);
-            pvh.expandView();
+            PlayerSelectionRV_Adapter.expandView(pvh);
         } else if (!isChecked && pa.isRevealed()) {
-            playerSelectionRV_adapter.getAssignments().get(pvh.getAdapterPosition()).setRevealed(isChecked);
-            pvh.collapseView();
+            PlayerSelectionRV_Adapter.collapseView(pvh);
         }
         // otherwise it turns out to be confusing to take over the player count
         if (playerSelectionRV_adapter.getAssignmentsDone().size() > playerCountNP.getValue()) {

@@ -37,6 +37,8 @@
         <RatingBar
             android:id="@+id/playerSelectionCV_RatingBar"
             style="?android:attr/ratingBarStyleSmall"
+            android:progressTint="@color/inactive"
+            android:secondaryProgressTint="@color/active"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -50,9 +52,8 @@
 
         <Spinner
             android:id="@+id/playerSelectionCV_TeamSpinner"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/spinner_width"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/playerSelectionCV_RatingBar"
             android:layout_below="@+id/playerSelectionCV_NameTV"
             android:layout_toEndOf="@+id/playerSelectionCV_CaptainToggle"
             android:spinnerMode="dropdown" />

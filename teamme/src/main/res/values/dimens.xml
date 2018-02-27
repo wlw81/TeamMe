@@ -11,6 +11,7 @@
     <dimen name="bumperMargin">-300dp</dimen>
     <dimen name="bumperHeight">300dp</dimen>
     <dimen name="item_width">200dp</dimen>
+    <dimen name="spinner_width">150dp</dimen>
     <dimen name="big_text">64sp</dimen>
     <dimen name="np_text">22dp</dimen>
     <dimen name="small_text">16sp</dimen>

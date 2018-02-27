@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="active">#9c27b0</color>
-    <color name="inactive">#BA68C8</color>
+    <color name="active">#455A64</color>
+    <color name="inactive">#607D8B</color>
     <color name="font">#FFFFFF</color>
-    <color name="accent_color">#ff9100</color>
-    <color name="card_color">@color/primary_material_dark</color>
+    <color name="accent_color">#9c27b0</color>
+    <color name="card_color">#37474f</color>
 </resources>

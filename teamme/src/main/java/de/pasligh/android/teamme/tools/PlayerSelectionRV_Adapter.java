@@ -1,7 +1,6 @@
 package de.pasligh.android.teamme.tools;
 
 import android.animation.ValueAnimator;
-import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -30,6 +29,9 @@ import de.pasligh.android.teamme.objects.PlayerAssignment;
  * Created by Thomas on 06.02.2016.
  */
 public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelectionRV_Adapter.PlayerViewHolder> implements AdapterView.OnItemSelectedListener, CompoundButton.OnCheckedChangeListener {
+
+    private static int minHeight = -1;
+    private static int maxHeight = -1;
 
     public List<PlayerAssignment> getAssignmentsDone() {
 
@@ -105,6 +107,11 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
         String name = assignments.get(position).getPlayer().getName();
         holder.playerName.setText(name);
         holder.switchPlayer.setChecked(assignments.get(position).isRevealed());
+        if (!holder.switchPlayer.isChecked()) {
+            collapseView(holder);
+        } else {
+            expandView(holder);
+        }
 
         if (mapStarsPerPlayer.containsKey(name)) {
             int stars = mapStarsPerPlayer.get(assignments.get(position).getPlayer().getName());
@@ -120,19 +127,56 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
         super.onAttachedToRecyclerView(recyclerView);
     }
 
-    public static class PlayerViewHolder extends RecyclerView.ViewHolder {
-        CardView cv;
-        TextView playerName;
-        Spinner spinner;
-        RatingBar rating;
-        Switch switchPlayer;
-        View item;
-        ToggleButton captainToggle;
-        int minHeight = 0;
-        int maxHeight = 0;
+    public static void collapseView(final PlayerViewHolder p_pvh) {
+        p_pvh.showControls(false);
+        if (p_pvh.cv.getLayoutParams().height >= maxHeight) {
+            ValueAnimator anim = ValueAnimator.ofInt(p_pvh.cv.getMeasuredHeightAndState(),
+                    minHeight);
+            anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                    int val = (Integer) valueAnimator.getAnimatedValue();
+                    ViewGroup.LayoutParams layoutParams = p_pvh.cv.getLayoutParams();
+                    layoutParams.height = val;
+                    p_pvh.cv.setLayoutParams(layoutParams);
+
+                }
+            });
+            anim.start();
+        }
+    }
+
+    public static void expandView(final PlayerViewHolder p_pvh) {
+        p_pvh.showControls(true);
+        if (p_pvh.cv.getLayoutParams().height == minHeight) {
+            {
+                ValueAnimator anim = ValueAnimator.ofInt(p_pvh.cv.getMeasuredHeightAndState(), maxHeight
+                );
+                anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                        int val = (Integer) valueAnimator.getAnimatedValue();
+                        ViewGroup.LayoutParams layoutParams = p_pvh.cv.getLayoutParams();
+                        layoutParams.height = val;
+                        p_pvh.cv.setLayoutParams(layoutParams);
+                    }
+                });
+                anim.start();
+            }
+        }
+    }
+
+    public class PlayerViewHolder extends RecyclerView.ViewHolder {
+        private final CardView cv;
+        private TextView playerName;
+        private Spinner spinner;
+        private RatingBar rating;
+        private Switch switchPlayer;
+        private ToggleButton captainToggle;
+        private String debugId;
 
         public void showControls(boolean checked) {
-            switchPlayer.setChecked(checked);
+            getAssignments().get(getAdapterPosition()).setRevealed(checked);
             if (checked) {
                 spinner.setVisibility(View.VISIBLE);
                 captainToggle.setVisibility(View.VISIBLE);
@@ -142,55 +186,14 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
             }
         }
 
-        public void collapseView() {
-            showControls(false);
-            if (cv.getLayoutParams().height >= maxHeight) {
-                ValueAnimator anim = ValueAnimator.ofInt(cv.getMeasuredHeightAndState(),
-                        minHeight);
-                anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                    @Override
-                    public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                        int val = (Integer) valueAnimator.getAnimatedValue();
-                        ViewGroup.LayoutParams layoutParams = cv.getLayoutParams();
-                        layoutParams.height = val;
-                        cv.setLayoutParams(layoutParams);
-
-                    }
-                });
-                anim.start();
-            }
-        }
-
-        public void expandView() {
-            showControls(true);
-            if (cv.getLayoutParams().height == minHeight) {
-                {
-                    ValueAnimator anim = ValueAnimator.ofInt(cv.getMeasuredHeightAndState(), maxHeight
-                    );
-                    anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                        @Override
-                        public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                            int val = (Integer) valueAnimator.getAnimatedValue();
-                            ViewGroup.LayoutParams layoutParams = cv.getLayoutParams();
-                            layoutParams.height = val;
-                            cv.setLayoutParams(layoutParams);
-                        }
-                    });
-                    anim.start();
-                }
-            }
-        }
-
         PlayerViewHolder(View itemView) {
             super(itemView);
-            item = itemView;
             cv = (CardView) itemView.findViewById(R.id.playerSelectionCV);
             playerName = (TextView) itemView.findViewById(R.id.playerSelectionCV_NameTV);
             spinner = ((Spinner) itemView.findViewById(R.id.playerSelectionCV_TeamSpinner));
             rating = ((RatingBar) itemView.findViewById(R.id.playerSelectionCV_RatingBar));
             switchPlayer = ((Switch) itemView.findViewById(R.id.playerSelectionCV_Switch));
             captainToggle = ((ToggleButton) itemView.findViewById(R.id.playerSelectionCV_CaptainToggle));
-
             cv.setTag(this);
             captainToggle.setTag(this);
             switchPlayer.setTag(this);
@@ -201,11 +204,16 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
                 @Override
                 public boolean onPreDraw() {
                     cv.getViewTreeObserver().removeOnPreDrawListener(this);
-                    minHeight = cv.getHeight();
-                    maxHeight = (int) (minHeight * 2);
+                    if (minHeight < 0) {
+                        minHeight = cv.getHeight();
+                    }
+                    if (maxHeight < 0) {
+                        maxHeight = (int) (minHeight * 2);
+                    }
                     ViewGroup.LayoutParams layoutParams = cv.getLayoutParams();
                     layoutParams.height = minHeight;
                     cv.setLayoutParams(layoutParams);
+                    debugId = playerName.getText().toString();
                     return true;
                 }
             });
@@ -217,6 +225,7 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
         PlayerViewHolder pvh = (PlayerViewHolder) arg0.getTag();
         getAssignments().get(pvh.getAdapterPosition()).setTeam(arg2);
         Log.i(Flags.LOGTAG, "Team change: " + getAssignments().get(pvh.getAdapterPosition()) + " now in Team " + arg2);
+        Log.d(Flags.LOGTAG, Log.getStackTraceString(new Exception()));
     }
 
     @Override

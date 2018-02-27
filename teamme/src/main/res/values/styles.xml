@@ -1,48 +1,27 @@
 <resources>
 
-    <style name="AppBaseTheme" parent="Theme.AppCompat">
-        <item name="colorButtonNormal">@color/accent_color</item>
-        <item name="colorPrimary">@color/active</item>
-    </style>
+    <style name="AppTheme" parent="Theme.AppCompat">
 
-    <style name="NumberPickerText">
-        <item name="android:textSize">@dimen/np_text</item>
-    </style>
-
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <item name="actionBarStyle">@style/TeamMeActionBar</item>
-        <item name="android:progressBarStyleHorizontal">@style/TeamMeProgressBar</item>
+        <item name="actionBarStyle">@style/TeamMeNoActionBar</item>
         <item name="colorAccent">@color/accent_color</item>
+        <item name="android:colorPrimary">@color/active</item>
+        <item name="android:colorPrimaryDark">@color/inactive</item>
+        <item name="android:windowContentTransitions">true</item>
+        <!-- enable overlapping of exiting and entering activities -->
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:colorButtonNormal">@color/accent_color</item>
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-    </style>
 
-    <style name="TeamMeActionBar" parent="@style/Widget.AppCompat.ActionBar">
-        <item name="background">@color/active</item>
-        <item name="displayOptions">useLogo|showHome|showTitle</item>
-        <item name="elevation">0dp</item>
-    </style>
-
-    <style name="TeamMeProgressBar" parent="@android:style/Widget.Holo.ProgressBar.Horizontal">
-        <!--
-	Leider gibt es noch keine Möglichkeit den ColorFilter für die Progessbar
-	via XML zu setzen ... hier können wir zukünftig den programatischen Weg ablösen.
-        -->
-
-    </style>
-
-    <style name="SpecialButton" parent="Widget.AppCompat.Button.Colored">
-        <item name="colorButtonNormal">@color/accent_color</item>
     </style>
 
     <style name="TeamMeNoActionBar" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:progressBarStyleHorizontal">@style/TeamMeProgressBar</item>
+        <item name="android:colorPrimary">@color/active</item>
         <item name="colorAccent">@color/accent_color</item>
         <item name="colorButtonNormal">@color/accent_color</item>
         <item name="background">@color/active</item>
+        <item name="android:colorPrimaryDark">@color/inactive</item>
     </style>
-
-
 
 
 </resources>

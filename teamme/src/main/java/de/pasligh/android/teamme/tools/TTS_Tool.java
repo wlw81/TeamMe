@@ -1,15 +1,16 @@
 package de.pasligh.android.teamme.tools;
 
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
+
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantLock;
+
 import de.pasligh.android.teamme.R;
 
 public final class TTS_Tool implements TextToSpeech.OnInitListener {

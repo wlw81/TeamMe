@@ -1,22 +1,16 @@
 package de.pasligh.android.teamme;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.util.Log;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.logging.Logger;
 
-import de.pasligh.android.teamme.R;
-import de.pasligh.android.teamme.TeamSectionFragment;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
-import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
 /**

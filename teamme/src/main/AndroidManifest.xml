@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.pasligh.android.teamme"
-    >
+    package="de.pasligh.android.teamme">
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-feature android:name="there.isnt.a.vibrate.feature" android:required="false" />
 
-    <uses-feature android:name="android.hardware.touchscreen"
+    <uses-feature
+        android:name="there.isnt.a.vibrate.feature"
+        android:required="false" />
+
+    <uses-feature
+        android:name="android.hardware.touchscreen"
         android:required="false" />
 
     <supports-screens
@@ -84,7 +87,7 @@
         </activity>
         <activity
             android:name=".PlayerListActivity"
-            android:label="@string/player"
+            android:label="@string/player">
             android:parentActivityName=".GameCreatorActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

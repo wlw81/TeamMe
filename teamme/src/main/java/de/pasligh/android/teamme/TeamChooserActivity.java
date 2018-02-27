@@ -16,6 +16,7 @@ import android.os.Handler;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -99,6 +100,13 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
         playerNameTextView.setAdapter(adapter);
 
         findViewById(R.id.NextPlayerButton).setOnClickListener(this);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setTitle(R.string.app_name);
+        }
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         autoShake = sharedPref.getBoolean("autoshake", true);

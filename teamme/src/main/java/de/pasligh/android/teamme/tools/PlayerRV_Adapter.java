@@ -9,7 +9,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import de.pasligh.android.teamme.R;
-import de.pasligh.android.teamme.objects.GameRecord;
 import de.pasligh.android.teamme.objects.Player;
 
 /**

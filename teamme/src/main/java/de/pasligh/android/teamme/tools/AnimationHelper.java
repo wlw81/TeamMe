@@ -2,7 +2,6 @@ package de.pasligh.android.teamme.tools;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
 import android.os.Build;
 import android.util.Log;
 import android.view.View;

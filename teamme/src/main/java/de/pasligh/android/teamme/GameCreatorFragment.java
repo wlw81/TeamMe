@@ -1,19 +1,13 @@
 package de.pasligh.android.teamme;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
-import de.pasligh.android.teamme.objects.GameRecord;
-import de.pasligh.android.teamme.tools.Flags;
 
 /**
  * A list fragment representing a list of games. This fragment also supports
