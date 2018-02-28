@@ -82,4 +82,5 @@
     <string name="unknown">unbekannt</string>
     <string name="announce">Ankündigen</string>
     <string name="luck">Viel Glück!</string>
+    <string name="reset">Zurücksetzen</string>
 </resources>

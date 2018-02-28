@@ -1,10 +1,12 @@
 package de.pasligh.android.teamme;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
@@ -13,6 +15,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
+import de.pasligh.android.teamme.objects.GameRecord;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.tools.TTS_Tool;
 import de.pasligh.android.teamme.tools.TeamReactor;
@@ -142,11 +145,23 @@ public class GameRecordDetailActivity extends AppCompatActivity {
 
             }, DURATION_MEDIA_FILE);
         } else if (id == R.id.TeamOverviewDeleteMenuItem) {
-            if (getFacade().deleteAssignments(Integer.parseInt(currentId))) {
-                getFacade().deleteGame(Integer.parseInt(currentId));
-            }
+            GameRecord gr = getFacade().getGame(Integer.parseInt(currentId));
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(getString(R.string.playerDeleteDialog_question).replace("$1", gr.getSport())).setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            if (getFacade().deleteAssignments(Integer.parseInt(currentId))) {
+                                getFacade().deleteGame(Integer.parseInt(currentId));
+                            }
 
-            onBackPressed();
+                            onBackPressed();
+                        }
+                    }
+
+            );
+            builder.setNegativeButton(R.string.cancel, null);
+            builder.show();
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -156,7 +171,6 @@ public class GameRecordDetailActivity extends AppCompatActivity {
         super.onBackPressed();
         navigateUpTo(new Intent(this, GameCreatorActivity.class));
     }
-
 
 
 }

@@ -280,6 +280,8 @@ public class GameCreatorActivity extends AppCompatActivity implements
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.player_selection, menu);
+        MenuItem item = menu.findItem(R.id.PlayerSelectionDeleteSelection);
+        item.setVisible(!playerSelectionRV_adapter.getAssignmentsDone().isEmpty());
         return true;
     }
 
@@ -287,6 +289,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
     public void displayPreselected() {
         String display = playerSelectionRV_adapter.getAssignmentsDone().size() + " " + getString(R.string.player) + " " + getString(R.string.preselected);
         ((TextView) findViewById(R.id.PreSelectionTextView)).setText(display.toUpperCase(Locale.getDefault()));
+        invalidateOptionsMenu();
     }
 
     private void initView() {
@@ -358,6 +361,13 @@ public class GameCreatorActivity extends AppCompatActivity implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.PlayerSelectionDeleteSelection:
+                for (PlayerAssignment pa : playerSelectionRV_adapter.getAssignmentsDone()) {
+                    pa.setRevealed(false);
+                }
+                playerSelectionRV_adapter.notifyDataSetChanged();
+                invalidateOptionsMenu();
+                break;
             case R.id.PlayerSelectionAddContext:
                 View viewInflated = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_player_input, (ViewGroup) findViewById(android.R.id.content), false);
                 // Set up the input
@@ -380,6 +390,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
                         if (!m_Text.isEmpty()) {
                             PlayerAssignment assignmentNew = new PlayerAssignment();
                             assignmentNew.setPlayer(new Player(m_Text));
+                            assignmentNew.setRevealed(true);
                             try {
                                 getFacade().persistPlayer(assignmentNew.getPlayer());
                             } catch (Exception e) {
@@ -395,7 +406,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
                             }
 
                             if (!playerAlreadyListed) {
-                                playerSelectionRV_adapter.getAssignments().add(assignmentNew);
+                                playerSelectionRV_adapter.getAssignments().add(0, assignmentNew);
                                 playerSelectionRV_adapter.notifyDataSetChanged();
                                 findViewById(R.id.playerSelectionBlankTV2).setVisibility(View.GONE);
                             }
