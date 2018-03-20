@@ -11,6 +11,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
@@ -108,8 +109,9 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
             actionBar.setTitle(R.string.app_name);
         }
 
+        Log.i(Flags.LOGTAG, "MANUFACTURER: "+ Build.MANUFACTURER.toUpperCase());
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        autoShake = sharedPref.getBoolean("autoshake", true);
+        autoShake = sharedPref.getBoolean("autoshake", Build.MANUFACTURER.toUpperCase().startsWith("MOTO"));
         playerNameTextView.requestFocus();
     }
 
@@ -162,7 +164,7 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-               showSoftkeyboard_if_needed();
+                showSoftkeyboard_if_needed();
             }
         }, 700);
 
@@ -499,7 +501,7 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
         }
     }
 
-    public  void showSoftkeyboard_if_needed() {
+    public void showSoftkeyboard_if_needed() {
         AutoCompleteTextView playerNameTextView = (AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView);
         if (playerNameTextView.isEnabled()) {
             playerNameTextView.requestFocus();

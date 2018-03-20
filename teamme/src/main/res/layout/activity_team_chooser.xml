@@ -16,7 +16,8 @@
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:visibility="visible">
 
         <include
             android:id="@+id/InputPlayerIncludeLayout"
@@ -70,23 +71,6 @@
     </RelativeLayout>
 
 
-    <TextView
-        android:id="@+id/ShakeTextView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:gravity="center"
-        android:shadowColor="@color/active"
-        android:shadowDx="0.0"
-        android:shadowDy="0.0"
-        android:shadowRadius="8"
-        android:text="@string/shake"
-        android:textColor="#FFFFFF"
-        android:textSize="32sp"
-        android:visibility="invisible" />
-
     <LinearLayout
         android:id="@+id/BumperLeftLayout"
         android:layout_width="fill_parent"
@@ -116,7 +100,6 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:orientation="horizontal" />
-        />
 
     </LinearLayout>
 
@@ -136,7 +119,6 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:orientation="horizontal" />
-        />
 
         <LinearLayout
             android:id="@+id/BumperRightDrawable"
@@ -149,11 +131,30 @@
             android:adjustViewBounds="true"
             android:background="@drawable/bumper2"
             android:contentDescription="@string/shake"
-            android:orientation="horizontal" />
+            android:orientation="horizontal" >
+        </LinearLayout>
 
 
 
 
     </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/ShakeTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/text_margin"
+        android:gravity="center"
+        android:shadowColor="@color/active"
+        android:shadowDx="0.0"
+        android:shadowDy="0.0"
+        android:shadowRadius="8"
+        android:text="@string/shake"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        android:visibility="invisible" />
 
 </RelativeLayout>
