@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.pasligh.android.teamme">
-
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <uses-feature
@@ -49,10 +48,7 @@
              ATTENTION: This was auto-generated to add Google Play services to your project for
              App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
         -->
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-
+        <meta-data android:name="com.google.android.gms.version" />
         <activity
             android:name=".ReportScoresActivity"
             android:label="@string/title_activity_report_scores"
@@ -87,7 +83,7 @@
         </activity>
         <activity
             android:name=".PlayerListActivity"
-            android:label="@string/player">
+            android:label="@string/player"
             android:parentActivityName=".GameCreatorActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

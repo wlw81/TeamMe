@@ -54,7 +54,7 @@ public class GameRecordDetailActivity extends AppCompatActivity {
         }
 
         soundPool = new SoundPool.Builder().build();
-        spFanfare = soundPool.load(this, R.raw.fanfare_short, 1);
+        spFanfare = soundPool.load(this, R.raw.beep, 1);
 
         // savedInstanceState is non-null when there is fragment state
         // saved from previous configurations of this activity

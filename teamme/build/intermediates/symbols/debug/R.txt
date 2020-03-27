@@ -1286,10 +1286,9 @@ int menu report_scores 0x7f0b0002
 int menu team_chooser 0x7f0b0003
 int menu team_overview 0x7f0b0004
 int raw beep 0x7f0c0000
-int raw fanfare_short 0x7f0c0001
-int raw left 0x7f0c0002
-int raw right 0x7f0c0003
-int raw shutter 0x7f0c0004
+int raw left 0x7f0c0001
+int raw right 0x7f0c0002
+int raw shutter 0x7f0c0003
 int string abc_action_bar_home_description 0x7f0d0000
 int string abc_action_bar_up_description 0x7f0d0001
 int string abc_action_menu_overflow_description 0x7f0d0002
