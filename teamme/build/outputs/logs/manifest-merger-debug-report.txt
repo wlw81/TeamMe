@@ -1,287 +1,290 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:2:1-102:12
-INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:2:1-102:12
-INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:2:1-102:12
-INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:2:1-102:12
-MERGED from [com.android.databinding:adapters:3.5.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/6b561128688a701f5eed9b5e7e7d2ca5/adapters-3.5.2/AndroidManifest.xml:17:1-24:12
-MERGED from [com.android.databinding:library:3.5.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/305df657602ad2cb8ccd00fb3f591499/library-3.5.2/AndroidManifest.xml:17:1-24:12
-MERGED from [com.android.support:design:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/b8700c6f9deb64e04d8b511410e972c8/design-27.0.2/AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.firebase:firebase-appindexing:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/7effff3698578b22cd7247449649ea93/firebase-appindexing-11.8.0/AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.android.gms:play-services-base:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/25cfe1faf1b4803890b0d27181f6c711/play-services-base-11.8.0/AndroidManifest.xml:17:1-29:12
-MERGED from [com.google.firebase:firebase-common:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/ac5a4ea07b12d1198588a918d5bdc189/firebase-common-11.8.0/AndroidManifest.xml:2:1-15:12
-MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/cdc91c68a64c282b640e8ef57a5868a1/play-services-tasks-11.8.0/AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.android.gms:play-services-basement:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/dcd686ef375730137c807b39ce48110d/play-services-basement-11.8.0/AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:support-v4:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/837d37ed317b9dade88e848b207abb6d/support-v4-27.0.2/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:cardview-v7:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/f44d97c18a23250009a37378dded324f/cardview-v7-27.0.2/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:recyclerview-v7:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/aaaf30aacecb06a81b2ad7c2787117d5/recyclerview-v7-27.0.2/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:appcompat-v7:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/8a1bafd3a6784dc29e2a0f1f4e2f437b/appcompat-v7-27.0.2/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-fragment:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/f3ab528f82c1c1ec4b0a54f9bee567ea/support-fragment-27.0.2/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-utils:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/fda5b9117db595323eba2bcdbe8eabe1/support-core-utils-27.0.2/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-media-compat:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/f6991f10ae5ddcec02bf65d7d29eb785/support-media-compat-27.0.2/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:animated-vector-drawable:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/7a426a23ff8f9f9a49c8cb89cbdc301c/animated-vector-drawable-27.0.2/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-ui:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/ad2586c63e1296267cad7fd6a8d318b9/support-core-ui-27.0.2/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:transition:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/8021db531c8ea03a3663dbda1f7456b8/transition-27.0.2/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-vector-drawable:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/7fc65963524651aea2aee0756d485e7d/support-vector-drawable-27.0.2/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-compat:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/b10d974ba8b444faf866fc4a658ef006/support-compat-27.0.2/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:runtime:1.0.3] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/36057acd24d8ef41985ac98e7416eb82/runtime-1.0.3/AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.firebase:firebase-appindexing-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/b3422bee29bf6b3b76f8b4a716b422c1/firebase-appindexing-license-11.8.0/AndroidManifest.xml:2:1-6:12
-MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/b753aaf0f300cee492636a3586a06b06/play-services-base-license-11.8.0/AndroidManifest.xml:2:1-6:12
-MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/474f73c1d7a52b1957ce554d58d03210/play-services-basement-license-11.8.0/AndroidManifest.xml:2:1-6:12
-MERGED from [com.google.firebase:firebase-common-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/a26e104619e807b75d117139654bd103/firebase-common-license-11.8.0/AndroidManifest.xml:2:1-6:12
-MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/5379c3967805c1bd9724662765f88a03/play-services-tasks-license-11.8.0/AndroidManifest.xml:2:1-6:12
-INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:2:1-102:12
-INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:2:1-102:12
-INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:2:1-102:12
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:2:1-102:12
+INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:2:1-102:12
+INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:2:1-102:12
+INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:2:1-102:12
+MERGED from [com.android.databinding:adapters:3.6.1] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\0added471ba0fdf50a141c7630ea9252\adapters-3.6.1\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.databinding:library:3.6.1] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\aab7bbbba3bd7af7cd61516de5e54d43\library-3.6.1\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\7c87dcd853c93e3173a9e16963621823\design-27.0.2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-appindexing:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\5b276a667b718a14b3d9d6e7cd08d325\firebase-appindexing-11.8.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\c06a5280b5c91ac4b89a890c2c6c2d44\play-services-base-11.8.0\AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.firebase:firebase-common:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\916b9a69ed03cc83d459cdb7d80e5078\firebase-common-11.8.0\AndroidManifest.xml:2:1-15:12
+MERGED from [com.google.android.gms:play-services-tasks:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\608ab9d1ff2199c8fb3c186fce24f07d\play-services-tasks-11.8.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\d25551a7c1ae3b818a70206a53af61b3\play-services-basement-11.8.0\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\869afe334d2087dc2d819b9f4e53c378\support-v4-27.0.2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\3587f69fe6adb7402ea4d84d3dc126de\cardview-v7-27.0.2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\def190490579517c1cf3f3b579e92ff1\recyclerview-v7-27.0.2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.databinding:viewbinding:3.6.1] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\0fdf8afac221c4002f472e4986fee5e1\viewbinding-3.6.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\c97b4913ede2b5f800c80f94c7dda1cb\appcompat-v7-27.0.2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\ba4516772dc54537256c009dd5b1cd3a\support-fragment-27.0.2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\4cbf916c30cf84f07833b1e11f396bdf\support-core-utils-27.0.2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\544c753003f924e04554aea6ed9b157d\support-media-compat-27.0.2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\efde66eb0724127bb8c4c8c8635ceae5\animated-vector-drawable-27.0.2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\ddeebb175c3916b17e7e6a9ffa613180\support-core-ui-27.0.2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\8018e7dc79dc12361615ac4890dffe64\transition-27.0.2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\8887b9b1a5e876f4f58137a2286571cc\support-vector-drawable-27.0.2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\9bd1b73a68d36ce4e0fada02fb4c4ca4\support-compat-27.0.2\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\249c574d29481fa426f9af8f58df3560\runtime-1.0.3\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.firebase:firebase-appindexing-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\2d85cc8a86497cda1abc16f09be4d737\firebase-appindexing-license-11.8.0\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-base-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\bc1628d6c8156c633c35cbb841ed8ac9\play-services-base-license-11.8.0\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\be553847a06e59308614b4c6544f4143\play-services-basement-license-11.8.0\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.firebase:firebase-common-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\02a690c336ba8a6717dc463148411c4b\firebase-common-license-11.8.0\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\aea2a3c0b4e501335af9f9471cf769fb\play-services-tasks-license-11.8.0\AndroidManifest.xml:2:1-6:12
+INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:2:1-102:12
+INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:2:1-102:12
+INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:2:1-102:12
 	package
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:3:5-40
-		INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml
-		INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:3:5-40
+		INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:2:1-102:12
-		INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:2:1-102:12
+		INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:2:1-102:12
-		INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:2:1-102:12
+		INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.VIBRATE
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:4:5-66
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:4:5-66
 	android:name
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:4:22-63
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:4:22-63
 uses-feature#there.isnt.a.vibrate.feature
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:6:5-8:36
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:6:5-8:36
 	android:required
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:8:9-33
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:8:9-33
 	android:name
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:7:9-52
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:7:9-52
 uses-feature#android.hardware.touchscreen
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:10:5-12:36
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:10:5-12:36
 	android:required
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:12:9-33
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:12:9-33
 	android:name
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:11:9-52
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:11:9-52
 supports-screens
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:14:5-18:56
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:14:5-18:56
 	android:largeScreens
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:16:9-36
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:16:9-36
 	android:smallScreens
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:18:9-36
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:18:9-36
 	android:normalScreens
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:17:9-37
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:17:9-37
 	android:anyDensity
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:15:9-34
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:15:9-34
 application
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:20:5-100:19
-MERGED from [com.google.firebase:firebase-appindexing:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/7effff3698578b22cd7247449649ea93/firebase-appindexing-11.8.0/AndroidManifest.xml:22:5-20
-MERGED from [com.google.firebase:firebase-appindexing:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/7effff3698578b22cd7247449649ea93/firebase-appindexing-11.8.0/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-base:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/25cfe1faf1b4803890b0d27181f6c711/play-services-base-11.8.0/AndroidManifest.xml:22:5-27:19
-MERGED from [com.google.android.gms:play-services-base:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/25cfe1faf1b4803890b0d27181f6c711/play-services-base-11.8.0/AndroidManifest.xml:22:5-27:19
-MERGED from [com.google.firebase:firebase-common:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/ac5a4ea07b12d1198588a918d5bdc189/firebase-common-11.8.0/AndroidManifest.xml:7:5-13:19
-MERGED from [com.google.firebase:firebase-common:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/ac5a4ea07b12d1198588a918d5bdc189/firebase-common-11.8.0/AndroidManifest.xml:7:5-13:19
-MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/cdc91c68a64c282b640e8ef57a5868a1/play-services-tasks-11.8.0/AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/cdc91c68a64c282b640e8ef57a5868a1/play-services-tasks-11.8.0/AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-basement:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/dcd686ef375730137c807b39ce48110d/play-services-basement-11.8.0/AndroidManifest.xml:22:5-26:19
-MERGED from [com.google.android.gms:play-services-basement:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/dcd686ef375730137c807b39ce48110d/play-services-basement-11.8.0/AndroidManifest.xml:22:5-26:19
-MERGED from [com.google.firebase:firebase-appindexing-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/b3422bee29bf6b3b76f8b4a716b422c1/firebase-appindexing-license-11.8.0/AndroidManifest.xml:5:5-20
-MERGED from [com.google.firebase:firebase-appindexing-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/b3422bee29bf6b3b76f8b4a716b422c1/firebase-appindexing-license-11.8.0/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/b753aaf0f300cee492636a3586a06b06/play-services-base-license-11.8.0/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/b753aaf0f300cee492636a3586a06b06/play-services-base-license-11.8.0/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/474f73c1d7a52b1957ce554d58d03210/play-services-basement-license-11.8.0/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/474f73c1d7a52b1957ce554d58d03210/play-services-basement-license-11.8.0/AndroidManifest.xml:5:5-20
-MERGED from [com.google.firebase:firebase-common-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/a26e104619e807b75d117139654bd103/firebase-common-license-11.8.0/AndroidManifest.xml:5:5-20
-MERGED from [com.google.firebase:firebase-common-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/a26e104619e807b75d117139654bd103/firebase-common-license-11.8.0/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/5379c3967805c1bd9724662765f88a03/play-services-tasks-license-11.8.0/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/5379c3967805c1bd9724662765f88a03/play-services-tasks-license-11.8.0/AndroidManifest.xml:5:5-20
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:20:5-100:19
+MERGED from [com.google.firebase:firebase-appindexing:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\5b276a667b718a14b3d9d6e7cd08d325\firebase-appindexing-11.8.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.firebase:firebase-appindexing:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\5b276a667b718a14b3d9d6e7cd08d325\firebase-appindexing-11.8.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\c06a5280b5c91ac4b89a890c2c6c2d44\play-services-base-11.8.0\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\c06a5280b5c91ac4b89a890c2c6c2d44\play-services-base-11.8.0\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.firebase:firebase-common:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\916b9a69ed03cc83d459cdb7d80e5078\firebase-common-11.8.0\AndroidManifest.xml:7:5-13:19
+MERGED from [com.google.firebase:firebase-common:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\916b9a69ed03cc83d459cdb7d80e5078\firebase-common-11.8.0\AndroidManifest.xml:7:5-13:19
+MERGED from [com.google.android.gms:play-services-tasks:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\608ab9d1ff2199c8fb3c186fce24f07d\play-services-tasks-11.8.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\608ab9d1ff2199c8fb3c186fce24f07d\play-services-tasks-11.8.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\d25551a7c1ae3b818a70206a53af61b3\play-services-basement-11.8.0\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\d25551a7c1ae3b818a70206a53af61b3\play-services-basement-11.8.0\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.firebase:firebase-appindexing-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\2d85cc8a86497cda1abc16f09be4d737\firebase-appindexing-license-11.8.0\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-appindexing-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\2d85cc8a86497cda1abc16f09be4d737\firebase-appindexing-license-11.8.0\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-base-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\bc1628d6c8156c633c35cbb841ed8ac9\play-services-base-license-11.8.0\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-base-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\bc1628d6c8156c633c35cbb841ed8ac9\play-services-base-license-11.8.0\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\be553847a06e59308614b4c6544f4143\play-services-basement-license-11.8.0\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\be553847a06e59308614b4c6544f4143\play-services-basement-license-11.8.0\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-common-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\02a690c336ba8a6717dc463148411c4b\firebase-common-license-11.8.0\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-common-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\02a690c336ba8a6717dc463148411c4b\firebase-common-license-11.8.0\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\aea2a3c0b4e501335af9f9471cf769fb\play-services-tasks-license-11.8.0\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\aea2a3c0b4e501335af9f9471cf769fb\play-services-tasks-license-11.8.0\AndroidManifest.xml:5:5-20
 	android:label
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:24:9-41
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:24:9-41
 	android:icon
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:23:9-45
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:23:9-45
 	android:allowBackup
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:22:9-35
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:22:9-35
 	android:theme
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:25:9-40
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:25:9-40
 	android:name
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:21:9-47
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:21:9-47
 activity#de.pasligh.android.teamme.GameCreatorActivity
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:26:9-34:20
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:26:9-34:20
 	android:label
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:28:13-45
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:28:13-45
 	android:theme
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:29:13-53
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:29:13-53
 	android:name
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:27:13-48
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:27:13-48
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:30:13-33:29
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:30:13-33:29
 action#android.intent.action.MAIN
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:31:17-69
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:31:17-69
 	android:name
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:31:25-66
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:31:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:32:17-77
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:32:17-77
 	android:name
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:32:27-74
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:32:27-74
 activity#de.pasligh.android.teamme.GameStatisticsActivity
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:35:9-41:20
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:35:9-41:20
 	android:parentActivityName
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:37:13-62
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:37:13-62
 	android:name
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:36:13-51
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:36:13-51
 meta-data#android.support.PARENT_ACTIVITY
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:38:13-40:56
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:38:13-40:56
 	android:value
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:40:17-53
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:40:17-53
 	android:name
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:39:17-63
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:39:17-63
 activity#de.pasligh.android.teamme.TeamChooserActivity
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:42:9-46:65
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:42:9-46:65
 	android:parentActivityName
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:46:13-62
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:46:13-62
 	android:label
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:45:13-46
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:45:13-46
 	android:configChanges
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:44:13-74
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:44:13-74
 	android:name
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:43:13-48
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:43:13-48
 meta-data#com.google.android.gms.version
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:51:9-68
-MERGED from [com.google.android.gms:play-services-basement:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/dcd686ef375730137c807b39ce48110d/play-services-basement-11.8.0/AndroidManifest.xml:23:9-25:69
-MERGED from [com.google.android.gms:play-services-basement:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/dcd686ef375730137c807b39ce48110d/play-services-basement-11.8.0/AndroidManifest.xml:23:9-25:69
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:51:9-68
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\d25551a7c1ae3b818a70206a53af61b3\play-services-basement-11.8.0\AndroidManifest.xml:23:9-25:69
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\d25551a7c1ae3b818a70206a53af61b3\play-services-basement-11.8.0\AndroidManifest.xml:23:9-25:69
 	android:value
-		ADDED from [com.google.android.gms:play-services-basement:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/dcd686ef375730137c807b39ce48110d/play-services-basement-11.8.0/AndroidManifest.xml:25:13-66
+		ADDED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\d25551a7c1ae3b818a70206a53af61b3\play-services-basement-11.8.0\AndroidManifest.xml:25:13-66
 	android:name
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:51:20-65
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:51:20-65
 activity#de.pasligh.android.teamme.ReportScoresActivity
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:52:9-59:20
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:52:9-59:20
 	android:parentActivityName
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:55:13-65
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:55:13-65
 	android:label
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:54:13-65
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:54:13-65
 	android:name
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:53:13-49
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:53:13-49
 activity#de.pasligh.android.teamme.SettingsActivity
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:60:9-67:20
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:60:9-67:20
 	android:parentActivityName
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:63:13-62
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:63:13-62
 	android:label
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:62:13-60
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:62:13-60
 	android:name
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:61:13-45
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:61:13-45
 activity#de.pasligh.android.teamme.GameRecordListActivity
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:68:9-75:20
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:68:9-75:20
 	android:parentActivityName
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:71:13-62
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:71:13-62
 	android:label
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:70:13-46
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:70:13-46
 	android:name
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:69:13-51
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:69:13-51
 activity#de.pasligh.android.teamme.GameRecordDetailActivity
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:76:9-83:20
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:76:9-83:20
 	android:parentActivityName
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:79:13-65
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:79:13-65
 	android:label
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:78:13-45
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:78:13-45
 	android:name
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:77:13-53
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:77:13-53
 activity#de.pasligh.android.teamme.PlayerListActivity
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:84:9-91:20
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:84:9-91:20
 	android:parentActivityName
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:87:13-62
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:87:13-62
 	android:label
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:86:13-43
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:86:13-43
 	android:name
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:85:13-47
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:85:13-47
 activity#de.pasligh.android.teamme.PlayerDetailActivity
-ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:92:9-99:20
+ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:92:9-99:20
 	android:parentActivityName
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:95:13-61
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:95:13-61
 	android:label
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:94:13-43
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:94:13-43
 	android:name
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml:93:13-49
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:93:13-49
 uses-sdk
-INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml
-INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml
-MERGED from [com.android.databinding:adapters:3.5.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/6b561128688a701f5eed9b5e7e7d2ca5/adapters-3.5.2/AndroidManifest.xml:22:5-44
-MERGED from [com.android.databinding:adapters:3.5.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/6b561128688a701f5eed9b5e7e7d2ca5/adapters-3.5.2/AndroidManifest.xml:22:5-44
-MERGED from [com.android.databinding:library:3.5.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/305df657602ad2cb8ccd00fb3f591499/library-3.5.2/AndroidManifest.xml:22:5-44
-MERGED from [com.android.databinding:library:3.5.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/305df657602ad2cb8ccd00fb3f591499/library-3.5.2/AndroidManifest.xml:22:5-44
-MERGED from [com.android.support:design:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/b8700c6f9deb64e04d8b511410e972c8/design-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:design:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/b8700c6f9deb64e04d8b511410e972c8/design-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-appindexing:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/7effff3698578b22cd7247449649ea93/firebase-appindexing-11.8.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-appindexing:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/7effff3698578b22cd7247449649ea93/firebase-appindexing-11.8.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-base:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/25cfe1faf1b4803890b0d27181f6c711/play-services-base-11.8.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-base:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/25cfe1faf1b4803890b0d27181f6c711/play-services-base-11.8.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-common:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/ac5a4ea07b12d1198588a918d5bdc189/firebase-common-11.8.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-common:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/ac5a4ea07b12d1198588a918d5bdc189/firebase-common-11.8.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/cdc91c68a64c282b640e8ef57a5868a1/play-services-tasks-11.8.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/cdc91c68a64c282b640e8ef57a5868a1/play-services-tasks-11.8.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-basement:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/dcd686ef375730137c807b39ce48110d/play-services-basement-11.8.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-basement:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/dcd686ef375730137c807b39ce48110d/play-services-basement-11.8.0/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/837d37ed317b9dade88e848b207abb6d/support-v4-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/837d37ed317b9dade88e848b207abb6d/support-v4-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/f44d97c18a23250009a37378dded324f/cardview-v7-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/f44d97c18a23250009a37378dded324f/cardview-v7-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/aaaf30aacecb06a81b2ad7c2787117d5/recyclerview-v7-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/aaaf30aacecb06a81b2ad7c2787117d5/recyclerview-v7-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/8a1bafd3a6784dc29e2a0f1f4e2f437b/appcompat-v7-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/8a1bafd3a6784dc29e2a0f1f4e2f437b/appcompat-v7-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/f3ab528f82c1c1ec4b0a54f9bee567ea/support-fragment-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/f3ab528f82c1c1ec4b0a54f9bee567ea/support-fragment-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/fda5b9117db595323eba2bcdbe8eabe1/support-core-utils-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/fda5b9117db595323eba2bcdbe8eabe1/support-core-utils-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/f6991f10ae5ddcec02bf65d7d29eb785/support-media-compat-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/f6991f10ae5ddcec02bf65d7d29eb785/support-media-compat-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/7a426a23ff8f9f9a49c8cb89cbdc301c/animated-vector-drawable-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/7a426a23ff8f9f9a49c8cb89cbdc301c/animated-vector-drawable-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/ad2586c63e1296267cad7fd6a8d318b9/support-core-ui-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/ad2586c63e1296267cad7fd6a8d318b9/support-core-ui-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/8021db531c8ea03a3663dbda1f7456b8/transition-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/8021db531c8ea03a3663dbda1f7456b8/transition-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/7fc65963524651aea2aee0756d485e7d/support-vector-drawable-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/7fc65963524651aea2aee0756d485e7d/support-vector-drawable-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/b10d974ba8b444faf866fc4a658ef006/support-compat-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.0.2] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/b10d974ba8b444faf866fc4a658ef006/support-compat-27.0.2/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.0.3] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/36057acd24d8ef41985ac98e7416eb82/runtime-1.0.3/AndroidManifest.xml:20:5-22:41
-MERGED from [android.arch.lifecycle:runtime:1.0.3] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/36057acd24d8ef41985ac98e7416eb82/runtime-1.0.3/AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.firebase:firebase-appindexing-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/b3422bee29bf6b3b76f8b4a716b422c1/firebase-appindexing-license-11.8.0/AndroidManifest.xml:4:5-43
-MERGED from [com.google.firebase:firebase-appindexing-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/b3422bee29bf6b3b76f8b4a716b422c1/firebase-appindexing-license-11.8.0/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/b753aaf0f300cee492636a3586a06b06/play-services-base-license-11.8.0/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/b753aaf0f300cee492636a3586a06b06/play-services-base-license-11.8.0/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/474f73c1d7a52b1957ce554d58d03210/play-services-basement-license-11.8.0/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/474f73c1d7a52b1957ce554d58d03210/play-services-basement-license-11.8.0/AndroidManifest.xml:4:5-43
-MERGED from [com.google.firebase:firebase-common-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/a26e104619e807b75d117139654bd103/firebase-common-license-11.8.0/AndroidManifest.xml:4:5-43
-MERGED from [com.google.firebase:firebase-common-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/a26e104619e807b75d117139654bd103/firebase-common-license-11.8.0/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/5379c3967805c1bd9724662765f88a03/play-services-tasks-license-11.8.0/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/5379c3967805c1bd9724662765f88a03/play-services-tasks-license-11.8.0/AndroidManifest.xml:4:5-43
-INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml
-INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml
+INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
+INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
+MERGED from [com.android.databinding:adapters:3.6.1] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\0added471ba0fdf50a141c7630ea9252\adapters-3.6.1\AndroidManifest.xml:22:5-44
+MERGED from [com.android.databinding:adapters:3.6.1] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\0added471ba0fdf50a141c7630ea9252\adapters-3.6.1\AndroidManifest.xml:22:5-44
+MERGED from [com.android.databinding:library:3.6.1] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\aab7bbbba3bd7af7cd61516de5e54d43\library-3.6.1\AndroidManifest.xml:22:5-44
+MERGED from [com.android.databinding:library:3.6.1] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\aab7bbbba3bd7af7cd61516de5e54d43\library-3.6.1\AndroidManifest.xml:22:5-44
+MERGED from [com.android.support:design:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\7c87dcd853c93e3173a9e16963621823\design-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\7c87dcd853c93e3173a9e16963621823\design-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-appindexing:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\5b276a667b718a14b3d9d6e7cd08d325\firebase-appindexing-11.8.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-appindexing:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\5b276a667b718a14b3d9d6e7cd08d325\firebase-appindexing-11.8.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\c06a5280b5c91ac4b89a890c2c6c2d44\play-services-base-11.8.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\c06a5280b5c91ac4b89a890c2c6c2d44\play-services-base-11.8.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-common:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\916b9a69ed03cc83d459cdb7d80e5078\firebase-common-11.8.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-common:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\916b9a69ed03cc83d459cdb7d80e5078\firebase-common-11.8.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\608ab9d1ff2199c8fb3c186fce24f07d\play-services-tasks-11.8.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\608ab9d1ff2199c8fb3c186fce24f07d\play-services-tasks-11.8.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\d25551a7c1ae3b818a70206a53af61b3\play-services-basement-11.8.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\d25551a7c1ae3b818a70206a53af61b3\play-services-basement-11.8.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\869afe334d2087dc2d819b9f4e53c378\support-v4-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\869afe334d2087dc2d819b9f4e53c378\support-v4-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\3587f69fe6adb7402ea4d84d3dc126de\cardview-v7-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\3587f69fe6adb7402ea4d84d3dc126de\cardview-v7-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\def190490579517c1cf3f3b579e92ff1\recyclerview-v7-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\def190490579517c1cf3f3b579e92ff1\recyclerview-v7-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.databinding:viewbinding:3.6.1] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\0fdf8afac221c4002f472e4986fee5e1\viewbinding-3.6.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.databinding:viewbinding:3.6.1] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\0fdf8afac221c4002f472e4986fee5e1\viewbinding-3.6.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\c97b4913ede2b5f800c80f94c7dda1cb\appcompat-v7-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\c97b4913ede2b5f800c80f94c7dda1cb\appcompat-v7-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\ba4516772dc54537256c009dd5b1cd3a\support-fragment-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\ba4516772dc54537256c009dd5b1cd3a\support-fragment-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\4cbf916c30cf84f07833b1e11f396bdf\support-core-utils-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\4cbf916c30cf84f07833b1e11f396bdf\support-core-utils-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\544c753003f924e04554aea6ed9b157d\support-media-compat-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\544c753003f924e04554aea6ed9b157d\support-media-compat-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\efde66eb0724127bb8c4c8c8635ceae5\animated-vector-drawable-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\efde66eb0724127bb8c4c8c8635ceae5\animated-vector-drawable-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\ddeebb175c3916b17e7e6a9ffa613180\support-core-ui-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\ddeebb175c3916b17e7e6a9ffa613180\support-core-ui-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\8018e7dc79dc12361615ac4890dffe64\transition-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\8018e7dc79dc12361615ac4890dffe64\transition-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\8887b9b1a5e876f4f58137a2286571cc\support-vector-drawable-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\8887b9b1a5e876f4f58137a2286571cc\support-vector-drawable-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\9bd1b73a68d36ce4e0fada02fb4c4ca4\support-compat-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.0.2] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\9bd1b73a68d36ce4e0fada02fb4c4ca4\support-compat-27.0.2\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\249c574d29481fa426f9af8f58df3560\runtime-1.0.3\AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\249c574d29481fa426f9af8f58df3560\runtime-1.0.3\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-appindexing-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\2d85cc8a86497cda1abc16f09be4d737\firebase-appindexing-license-11.8.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-appindexing-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\2d85cc8a86497cda1abc16f09be4d737\firebase-appindexing-license-11.8.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-base-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\bc1628d6c8156c633c35cbb841ed8ac9\play-services-base-license-11.8.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-base-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\bc1628d6c8156c633c35cbb841ed8ac9\play-services-base-license-11.8.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\be553847a06e59308614b4c6544f4143\play-services-basement-license-11.8.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\be553847a06e59308614b4c6544f4143\play-services-basement-license-11.8.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-common-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\02a690c336ba8a6717dc463148411c4b\firebase-common-license-11.8.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-common-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\02a690c336ba8a6717dc463148411c4b\firebase-common-license-11.8.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\aea2a3c0b4e501335af9f9471cf769fb\play-services-tasks-license-11.8.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\aea2a3c0b4e501335af9f9471cf769fb\play-services-tasks-license-11.8.0\AndroidManifest.xml:4:5-43
+INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
+INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml
-		INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml
-		ADDED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml
-		INJECTED from /home/thomaspasligh/TeamMe/teamme/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
+		ADDED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 activity#com.google.android.gms.common.api.GoogleApiActivity
-ADDED from [com.google.android.gms:play-services-base:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/25cfe1faf1b4803890b0d27181f6c711/play-services-base-11.8.0/AndroidManifest.xml:23:9-26:75
+ADDED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\c06a5280b5c91ac4b89a890c2c6c2d44\play-services-base-11.8.0\AndroidManifest.xml:23:9-26:75
 	android:exported
-		ADDED from [com.google.android.gms:play-services-base:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/25cfe1faf1b4803890b0d27181f6c711/play-services-base-11.8.0/AndroidManifest.xml:25:13-37
+		ADDED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\c06a5280b5c91ac4b89a890c2c6c2d44\play-services-base-11.8.0\AndroidManifest.xml:25:13-37
 	android:theme
-		ADDED from [com.google.android.gms:play-services-base:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/25cfe1faf1b4803890b0d27181f6c711/play-services-base-11.8.0/AndroidManifest.xml:26:13-72
+		ADDED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\c06a5280b5c91ac4b89a890c2c6c2d44\play-services-base-11.8.0\AndroidManifest.xml:26:13-72
 	android:name
-		ADDED from [com.google.android.gms:play-services-base:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/25cfe1faf1b4803890b0d27181f6c711/play-services-base-11.8.0/AndroidManifest.xml:24:13-79
+		ADDED from [com.google.android.gms:play-services-base:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\c06a5280b5c91ac4b89a890c2c6c2d44\play-services-base-11.8.0\AndroidManifest.xml:24:13-79
 provider#com.google.firebase.provider.FirebaseInitProvider
-ADDED from [com.google.firebase:firebase-common:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/ac5a4ea07b12d1198588a918d5bdc189/firebase-common-11.8.0/AndroidManifest.xml:8:9-12:39
+ADDED from [com.google.firebase:firebase-common:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\916b9a69ed03cc83d459cdb7d80e5078\firebase-common-11.8.0\AndroidManifest.xml:8:9-12:39
 	android:authorities
-		ADDED from [com.google.firebase:firebase-common:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/ac5a4ea07b12d1198588a918d5bdc189/firebase-common-11.8.0/AndroidManifest.xml:10:13-72
+		ADDED from [com.google.firebase:firebase-common:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\916b9a69ed03cc83d459cdb7d80e5078\firebase-common-11.8.0\AndroidManifest.xml:10:13-72
 	android:exported
-		ADDED from [com.google.firebase:firebase-common:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/ac5a4ea07b12d1198588a918d5bdc189/firebase-common-11.8.0/AndroidManifest.xml:11:13-37
+		ADDED from [com.google.firebase:firebase-common:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\916b9a69ed03cc83d459cdb7d80e5078\firebase-common-11.8.0\AndroidManifest.xml:11:13-37
 	android:initOrder
-		ADDED from [com.google.firebase:firebase-common:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/ac5a4ea07b12d1198588a918d5bdc189/firebase-common-11.8.0/AndroidManifest.xml:12:13-36
+		ADDED from [com.google.firebase:firebase-common:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\916b9a69ed03cc83d459cdb7d80e5078\firebase-common-11.8.0\AndroidManifest.xml:12:13-36
 	android:name
-		ADDED from [com.google.firebase:firebase-common:11.8.0] /home/thomaspasligh/.gradle/caches/transforms-2/files-2.1/ac5a4ea07b12d1198588a918d5bdc189/firebase-common-11.8.0/AndroidManifest.xml:9:13-77
+		ADDED from [com.google.firebase:firebase-common:11.8.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\916b9a69ed03cc83d459cdb7d80e5078\firebase-common-11.8.0\AndroidManifest.xml:9:13-77

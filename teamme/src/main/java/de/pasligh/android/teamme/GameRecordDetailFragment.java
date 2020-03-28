@@ -127,7 +127,6 @@ public class GameRecordDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.gamerecord_detail, container, false);
         if (mItem != null) {
-
             rootView.findViewById(R.id.gamerecordDetailFAB).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -147,15 +146,13 @@ public class GameRecordDetailFragment extends Fragment {
             TeamReactor.overwriteAssignments(readAssignments);
 
             // Get the ViewPager and set it's PagerAdapter so that it can display items
-            ViewPager viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
+            ViewPager viewPager = (ViewPager) rootView.findViewById(R.id.gamerecordDetailVP);
             SectionsPagerAdapter sadapter
                     = new SectionsPagerAdapter(getChildFragmentManager());
             viewPager.setAdapter(sadapter);
             // Give the TabLayout the ViewPager
             TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.sliding_tabs);
             tabLayout.setupWithViewPager(viewPager);
-
-
         }
         return rootView;
     }

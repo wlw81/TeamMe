@@ -600,7 +600,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
         try {
             TTS_Tool.getInstance(this).shutdown();
         } catch (Exception e) {
-            // TODO: handle exception
+            Log.i(Flags.LOGTAG, e.getLocalizedMessage());
         }
         getFacade().getObjDB_API().close();
         super.onDestroy();
@@ -608,8 +608,6 @@ public class GameCreatorActivity extends AppCompatActivity implements
 
     @Override
     public void onItemSelected(String id) {
-        // TODO Auto-generated method stub
-
     }
 
     @Override
