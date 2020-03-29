@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    card_view:cardBackgroundColor="@color/card_color">
+    card_view:cardBackgroundColor="@color/primary">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                 android:textAllCaps="true"
                 android:text="TEAM _ GEWINNT!"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/inactive"
+                android:textColor="@color/primary_light"
                 android:layout_alignBaseline="@+id/RoundResultNumberTV"
                 android:layout_alignBottom="@+id/RoundResultNumberTV"
                 android:layout_centerHorizontal="true"
@@ -54,7 +54,7 @@
             android:layout_alignBottom="@+id/linearLayout2"
             android:id="@+id/linearLayout"
             android:gravity="center"
-            android:background="@color/active"
+            android:background="@color/primary"
             android:layout_alignTop="@+id/linearLayout2"
             android:padding="8dp">
 

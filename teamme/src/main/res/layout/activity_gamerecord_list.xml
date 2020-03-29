@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:text="@string/gameempty"
-            android:textColor="@color/active"
+            android:textColor="@color/primary_text"
             android:textSize="@dimen/big_text"
             android:visibility="@{records.size() > 0 ? View.GONE : View.VISIBLE}" />
 

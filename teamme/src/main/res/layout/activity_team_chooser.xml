@@ -43,7 +43,7 @@
             android:lineSpacingExtra="0dp"
             android:lines="1"
             android:singleLine="true"
-            android:textColor="@color/active"
+            android:textColor="@color/primary_text"
             android:textSize="64sp"
             android:visibility="invisible" />
 
@@ -148,7 +148,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/text_margin"
         android:gravity="center"
-        android:shadowColor="@color/active"
+        android:shadowColor="@color/primary"
         android:shadowDx="0.0"
         android:shadowDy="0.0"
         android:shadowRadius="8"

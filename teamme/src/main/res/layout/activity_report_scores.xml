@@ -31,7 +31,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/inactive"
+        android:textColor="@color/primary_light"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text 213"
         android:id="@+id/ScoreWinnerTV"

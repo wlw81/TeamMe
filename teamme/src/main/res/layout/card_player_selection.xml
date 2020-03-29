@@ -4,71 +4,55 @@
     android:id="@+id/playerSelectionCV"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    card_view:cardBackgroundColor="@color/card_color"
-    android:focusable="true"
+    android:layout_margin="@dimen/smaller_margin"
     android:clickable="true"
+    android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:longClickable="true"
-   >
+    card_view:cardBackgroundColor="@color/primary_dark">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/smaller_margin">
+        >
 
-        <TextView
-            android:id="@+id/playerSelectionCV_NameTV"
-            android:paddingLeft="@dimen/small_text_margin"
+        <CheckBox
+            android:id="@+id/playerSelectionCB_Switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/playerSelectionCV_Switch"
-            android:text="@string/playername"
-            android:textSize="30sp" />
-
-        <Switch
-            android:id="@+id/playerSelectionCV_Switch"
-            android:paddingTop="@dimen/margin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true" />
-
-        <RatingBar
-            android:id="@+id/playerSelectionCV_RatingBar"
-            style="?android:attr/ratingBarStyleSmall"
-            android:progressTint="@color/inactive"
-            android:secondaryProgressTint="@color/active"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/playerSelectionCV_NameTV"
-            android:isIndicator="true"
-            android:max="5"
-            android:paddingLeft="@dimen/small_text_margin"
-            android:paddingTop="@dimen/small_text_margin"
-            android:rating="1"
-            android:stepSize="0.01" />
-
-        <Spinner
-            android:id="@+id/playerSelectionCV_TeamSpinner"
-            android:layout_width="@dimen/spinner_width"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/playerSelectionCV_NameTV"
-            android:layout_toEndOf="@+id/playerSelectionCV_CaptainToggle"
-            android:spinnerMode="dropdown" />
+            android:paddingTop="@dimen/margin" />
 
         <ToggleButton
             android:id="@+id/playerSelectionCV_CaptainToggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/playerSelectionCV_NameTV"
             android:checked="false"
             android:textAllCaps="true"
             android:textOff="@string/promote"
             android:textOn="@string/captain" />
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/playerSelectionCV_NameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/small_text_margin"
+            android:text="@string/playername"
+            android:textSize="30sp" />
+
+        <RatingBar
+            android:id="@+id/playerSelectionCV_RatingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isIndicator="true"
+            android:max="5"
+            android:paddingLeft="@dimen/small_text_margin"
+            android:paddingTop="@dimen/small_text_margin"
+            android:progressTint="@color/primary_light"
+            android:rating="1"
+            android:secondaryProgressTint="@color/primary_dark"
+            android:stepSize="0.01" />
+
+    </LinearLayout>
+
 </android.support.v7.widget.CardView>

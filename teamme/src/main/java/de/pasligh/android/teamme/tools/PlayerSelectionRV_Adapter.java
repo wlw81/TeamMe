@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RatingBar;
 import android.widget.Spinner;
@@ -29,9 +30,6 @@ import de.pasligh.android.teamme.objects.PlayerAssignment;
  * Created by Thomas on 06.02.2016.
  */
 public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelectionRV_Adapter.PlayerViewHolder> implements AdapterView.OnItemSelectedListener, CompoundButton.OnCheckedChangeListener {
-
-    private static int minHeight = -1;
-    private static int maxHeight = -1;
 
     public List<PlayerAssignment> getAssignmentsDone() {
 
@@ -85,13 +83,10 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
         final PlayerViewHolder pvh = new PlayerViewHolder(v);
 
         pvh.playerName.setTypeface(tf);
-        pvh.spinner.setSelection(0);
-        pvh.spinner.setVisibility(View.GONE);
         pvh.rating.setEnabled(false);
         pvh.captainToggle.setVisibility(View.GONE);
         pvh.captainToggle.setOnCheckedChangeListener(PlayerSelectionRV_Adapter.this);
         pvh.switchPlayer.setOnCheckedChangeListener(checkedChangeListener);
-        pvh.spinner.setOnItemSelectedListener(PlayerSelectionRV_Adapter.this);
         pvh.cv.setOnLongClickListener(checkedChangeListener);
 
         return pvh;
@@ -119,7 +114,6 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
                 holder.rating.setRating(stars);
             }
         }
-        holder.spinner.setAdapter(spinnerAdapter);
     }
 
     @Override
@@ -129,59 +123,25 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
 
     public static void collapseView(final PlayerViewHolder p_pvh) {
         p_pvh.showControls(false);
-        if (p_pvh.cv.getLayoutParams().height >= maxHeight) {
-            ValueAnimator anim = ValueAnimator.ofInt(p_pvh.cv.getMeasuredHeightAndState(),
-                    minHeight);
-            anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                    int val = (Integer) valueAnimator.getAnimatedValue();
-                    ViewGroup.LayoutParams layoutParams = p_pvh.cv.getLayoutParams();
-                    layoutParams.height = val;
-                    p_pvh.cv.setLayoutParams(layoutParams);
-
-                }
-            });
-            anim.start();
-        }
     }
 
     public static void expandView(final PlayerViewHolder p_pvh) {
         p_pvh.showControls(true);
-        if (p_pvh.cv.getLayoutParams().height == minHeight) {
-            {
-                ValueAnimator anim = ValueAnimator.ofInt(p_pvh.cv.getMeasuredHeightAndState(), maxHeight
-                );
-                anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                    @Override
-                    public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                        int val = (Integer) valueAnimator.getAnimatedValue();
-                        ViewGroup.LayoutParams layoutParams = p_pvh.cv.getLayoutParams();
-                        layoutParams.height = val;
-                        p_pvh.cv.setLayoutParams(layoutParams);
-                    }
-                });
-                anim.start();
-            }
-        }
     }
 
     public class PlayerViewHolder extends RecyclerView.ViewHolder {
         private final CardView cv;
         private TextView playerName;
-        private Spinner spinner;
         private RatingBar rating;
-        private Switch switchPlayer;
+        private CheckBox switchPlayer;
         private ToggleButton captainToggle;
         private String debugId;
 
         public void showControls(boolean checked) {
             getAssignments().get(getAdapterPosition()).setRevealed(checked);
             if (checked) {
-                spinner.setVisibility(View.VISIBLE);
                 captainToggle.setVisibility(View.VISIBLE);
             } else {
-                spinner.setVisibility(View.GONE);
                 captainToggle.setVisibility(View.GONE);
             }
         }
@@ -190,33 +150,12 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
             super(itemView);
             cv = (CardView) itemView.findViewById(R.id.playerSelectionCV);
             playerName = (TextView) itemView.findViewById(R.id.playerSelectionCV_NameTV);
-            spinner = ((Spinner) itemView.findViewById(R.id.playerSelectionCV_TeamSpinner));
             rating = ((RatingBar) itemView.findViewById(R.id.playerSelectionCV_RatingBar));
-            switchPlayer = ((Switch) itemView.findViewById(R.id.playerSelectionCV_Switch));
+            switchPlayer = ((CheckBox) itemView.findViewById(R.id.playerSelectionCB_Switch));
             captainToggle = ((ToggleButton) itemView.findViewById(R.id.playerSelectionCV_CaptainToggle));
             cv.setTag(this);
             captainToggle.setTag(this);
             switchPlayer.setTag(this);
-            spinner.setTag(this);
-
-            cv.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-
-                @Override
-                public boolean onPreDraw() {
-                    cv.getViewTreeObserver().removeOnPreDrawListener(this);
-                    if (minHeight < 0) {
-                        minHeight = cv.getHeight();
-                    }
-                    if (maxHeight < 0) {
-                        maxHeight = (int) (minHeight * 2);
-                    }
-                    ViewGroup.LayoutParams layoutParams = cv.getLayoutParams();
-                    layoutParams.height = minHeight;
-                    cv.setLayoutParams(layoutParams);
-                    debugId = playerName.getText().toString();
-                    return true;
-                }
-            });
         }
     }
 
@@ -224,7 +163,7 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
     public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
         PlayerViewHolder pvh = (PlayerViewHolder) arg0.getTag();
         getAssignments().get(pvh.getAdapterPosition()).setTeam(arg2);
-        Log.i(Flags.LOGTAG, "Team change: " + getAssignments().get(pvh.getAdapterPosition()) + " now in Team " + arg2);
+        Log.i(Flags.LOGTAG, "Team change: " + getAssignments().get(pvh.getAdapterPosition()) + " now in Team " + arg2); //todo needs new implementation!
         Log.d(Flags.LOGTAG, Log.getStackTraceString(new Exception()));
     }
 

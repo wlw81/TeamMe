@@ -32,7 +32,7 @@
                 android:layout_gravity="bottom|center_horizontal"
                 android:layout_marginBottom="@dimen/activity_bigger_margin"
                 android:text="@string/gameempty"
-                android:textColor="@color/active"
+                android:textColor="@color/primary"
                 android:textSize="@dimen/big_text"
                 android:visibility="gone" />
 
@@ -63,7 +63,7 @@
                 android:id="@+id/gameCreatorAB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/active"
+                android:background="@color/primary"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
                 <android.support.v7.widget.Toolbar
@@ -86,7 +86,7 @@
                         android:layout_alignParentStart="true"
                         android:paddingTop="@dimen/small_text_margin"
                         android:gravity="center"
-                        android:textColor="@color/inactive"
+                        android:textColor="@color/primary_light"
                         android:layout_below="@+id/PlayerTeamSelectionLinearLayout"
                         android:text="@string/preselection"
                         android:textAppearance="?android:attr/textAppearanceSmall" />

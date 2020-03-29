@@ -33,7 +33,7 @@
         android:text="@string/statistics"
         android:textAllCaps="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/inactive"
+        android:textColor="@color/primary_light"
         android:textSize="18sp" />
 
     <RelativeLayout
@@ -63,7 +63,7 @@
             android:layout_alignParentTop="true"
             android:text="@string/number"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/active"
+            android:textColor="@color/primary"
             android:textIsSelectable="false" />
 
         <TextView
@@ -84,7 +84,7 @@
             android:paddingLeft="4dp"
             android:text="@string/gameempty"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/active"
+            android:textColor="@color/primary_text"
             android:textIsSelectable="false" />
     </RelativeLayout>
 

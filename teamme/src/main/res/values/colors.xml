@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
-    <color name="active">#455A64</color>
-    <color name="inactive">#607D8B</color>
-    <color name="font">#FFFFFF</color>
-    <color name="accent_color">#9c27b0</color>
-    <color name="card_color">#37474f</color>
+    <color name="primary">#607D8B</color>
+    <color name="primary_dark">#455A64</color>
+    <color name="primary_light">#CFD8DC</color>
+    <color name="accent">#E040FB</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
 </resources>

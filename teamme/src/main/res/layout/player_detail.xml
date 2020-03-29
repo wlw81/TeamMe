@@ -14,7 +14,7 @@
             android:id="@+id/player_detail_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/active"
+            android:background="@color/primary"
             android:orientation="vertical"
             android:padding="16dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark">
