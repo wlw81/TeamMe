@@ -3,13 +3,16 @@ package de.pasligh.android.teamme;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -185,6 +188,11 @@ public class GameCreatorActivity extends AppCompatActivity implements
             toolbar.setTitle(getString(R.string.app_name));
             setSupportActionBar(toolbar);
         }
+
+        Log.i(Flags.LOGTAG, "MANUFACTURER: " + Build.MANUFACTURER.toUpperCase());
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        Flags.AUTOSHAKE = sharedPref.getBoolean(Flags.AUTOSHAKE_PREFERENCES, Build.MANUFACTURER.toUpperCase().startsWith(Flags.MOTOROLA));
+        sharedPref.edit().putBoolean(Flags.AUTOSHAKE_PREFERENCES, Flags.AUTOSHAKE);
 
         // Initializing Drawer Layout and ActionBarToggle
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.about, R.string.action_settings) {
@@ -521,8 +529,8 @@ public class GameCreatorActivity extends AppCompatActivity implements
     protected void onResume() {
         super.onResume();
         playerSelectionRV_adapter.notifyDataSetChanged();
-        showSnackbar();
         validateButtons();
+        showSnackbar(); // must be executed at the end of this method
     }
 
     private void showSnackbar() {

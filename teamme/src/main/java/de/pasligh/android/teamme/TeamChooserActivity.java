@@ -64,7 +64,6 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
 
     private PlayerAssignment myAssignment;
     private BackendFacade facade;
-    private boolean autoShake = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,9 +108,6 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
             actionBar.setTitle(R.string.app_name);
         }
 
-        Log.i(Flags.LOGTAG, "MANUFACTURER: "+ Build.MANUFACTURER.toUpperCase());
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        autoShake = sharedPref.getBoolean("autoshake", Build.MANUFACTURER.toUpperCase().startsWith("MOTO"));
         playerNameTextView.requestFocus();
     }
 
@@ -238,7 +234,7 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
         AutoCompleteTextView playerNameTextview = ((AutoCompleteTextView) findViewById(R.id.PlayerNameAutoCompleteTextView));
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(playerNameTextview.getWindowToken(), 0);
-        if (autoShake) {
+        if (Flags.AUTOSHAKE) {
             if (playerNameTextview.getText().toString().length() > 0
                     && !checkIfAlreadyAssigned()) {
                 // auto shake - directly start animations and sound effects

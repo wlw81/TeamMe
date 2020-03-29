@@ -116,7 +116,7 @@ public class GameStatisticsFragment extends Fragment {
 				container, false);
 
 		Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),
-				"fonts/Roboto-Condensed.ttf");
+				"fonts/Roboto-Condensed-Regular.ttf");
 		((TextView) rootView.findViewById(R.id.StatisticsLabelTextView))
 				.setTypeface(tf);
 

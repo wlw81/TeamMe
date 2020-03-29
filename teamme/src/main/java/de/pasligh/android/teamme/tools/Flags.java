@@ -12,6 +12,9 @@ public class Flags {
     public final static int MAXPLAYERS = 99;
     public final static int MAXTEAMS = 9;
     public final static String PLAYSTORE_LINK = "https://goo.gl/ysMda7";
+    public final static String MOTOROLA = "MOTO";
+    public final static String AUTOSHAKE_PREFERENCES = "autoshake";
     public static final int DRAW_TEAM = 4200;
     public static final int PRESELECTION_REQUEST = 42;
+    public static boolean AUTOSHAKE = false;
 }
