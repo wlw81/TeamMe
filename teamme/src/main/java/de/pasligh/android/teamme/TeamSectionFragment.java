@@ -71,7 +71,7 @@ public class TeamSectionFragment extends Fragment implements View.OnClickListene
     @Override
     public void onClick(View v) {
         if (v instanceof ImageButton) {
-            View viewInflated = LayoutInflater.from(getContext()).inflate(R.layout.dialog_assignment_change, (ViewGroup) v.getParent(), false);
+            View viewInflated = LayoutInflater.from(getContext()).inflate(R.layout.dialog_player_input, (ViewGroup) v.getParent(), false);
             PlayerAssignment pa = assignments.get(layout.indexOfChild(((View) v.getParent())));
 
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext()).setView(viewInflated);
