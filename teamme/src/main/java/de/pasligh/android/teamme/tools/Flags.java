@@ -17,4 +17,5 @@ public class Flags {
     public static final int DRAW_TEAM = 4200;
     public static final int PRESELECTION_REQUEST = 42;
     public static boolean AUTOSHAKE = false;
+    public static final int DURATION_MEDIA_FILE = 3000;
 }

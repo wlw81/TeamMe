@@ -17,6 +17,7 @@ import java.util.TimerTask;
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.GameRecord;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
+import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.TTS_Tool;
 import de.pasligh.android.teamme.tools.TeamReactor;
 
@@ -32,7 +33,6 @@ public class GameRecordDetailActivity extends AppCompatActivity {
     private static String currentId = null;
     private SoundPool soundPool;
     private int spFanfare;
-    private int DURATION_MEDIA_FILE = 3000;
 
     public BackendFacade getFacade() {
         if (null == facade) {
@@ -143,7 +143,7 @@ public class GameRecordDetailActivity extends AppCompatActivity {
                             .speak(announcement, TextToSpeech.QUEUE_FLUSH);
                 }
 
-            }, DURATION_MEDIA_FILE);
+            }, Flags.DURATION_MEDIA_FILE);
         } else if (id == R.id.TeamOverviewDeleteMenuItem) {
             GameRecord gr = getFacade().getGame(Integer.parseInt(currentId));
             AlertDialog.Builder builder = new AlertDialog.Builder(this);

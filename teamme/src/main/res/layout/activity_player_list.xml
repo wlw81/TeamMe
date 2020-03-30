@@ -21,7 +21,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/gameempty"
-            android:textColor="@color/primary_text"
             android:textSize="@dimen/big_text"
             android:visibility="@{players.size() > 0 ? View.GONE : View.VISIBLE}"
             android:layout_gravity="center" />

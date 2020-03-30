@@ -17,4 +17,7 @@
     <dimen name="small_text">16sp</dimen>
     <dimen name="selection">90dp</dimen>
 
+    <dimen name="card_marginTop">3dp</dimen>
+    <dimen name="card_cornerRadius">4dp</dimen>
+
 </resources>

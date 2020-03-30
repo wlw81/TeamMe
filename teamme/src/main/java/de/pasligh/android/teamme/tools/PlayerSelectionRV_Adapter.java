@@ -1,6 +1,5 @@
 package de.pasligh.android.teamme.tools;
 
-import android.animation.ValueAnimator;
 import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -8,14 +7,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RatingBar;
-import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -29,7 +25,7 @@ import de.pasligh.android.teamme.objects.PlayerAssignment;
 /**
  * Created by Thomas on 06.02.2016.
  */
-public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelectionRV_Adapter.PlayerViewHolder> implements AdapterView.OnItemSelectedListener, CompoundButton.OnCheckedChangeListener {
+public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelectionRV_Adapter.PlayerViewHolder> implements AdapterView.OnItemSelectedListener {
 
     public List<PlayerAssignment> getAssignmentsDone() {
 
@@ -84,8 +80,6 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
 
         pvh.playerName.setTypeface(tf);
         pvh.rating.setEnabled(false);
-        pvh.captainToggle.setVisibility(View.GONE);
-        pvh.captainToggle.setOnCheckedChangeListener(PlayerSelectionRV_Adapter.this);
         pvh.switchPlayer.setOnCheckedChangeListener(checkedChangeListener);
         pvh.cv.setOnLongClickListener(checkedChangeListener);
 
@@ -134,16 +128,10 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
         private TextView playerName;
         private RatingBar rating;
         private CheckBox switchPlayer;
-        private ToggleButton captainToggle;
         private String debugId;
 
         public void showControls(boolean checked) {
             getAssignments().get(getAdapterPosition()).setRevealed(checked);
-            if (checked) {
-                captainToggle.setVisibility(View.VISIBLE);
-            } else {
-                captainToggle.setVisibility(View.GONE);
-            }
         }
 
         PlayerViewHolder(View itemView) {
@@ -152,9 +140,7 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
             playerName = (TextView) itemView.findViewById(R.id.playerSelectionCV_NameTV);
             rating = ((RatingBar) itemView.findViewById(R.id.playerSelectionCV_RatingBar));
             switchPlayer = ((CheckBox) itemView.findViewById(R.id.playerSelectionCB_Switch));
-            captainToggle = ((ToggleButton) itemView.findViewById(R.id.playerSelectionCV_CaptainToggle));
             cv.setTag(this);
-            captainToggle.setTag(this);
             switchPlayer.setTag(this);
         }
     }
@@ -169,19 +155,6 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
 
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
-
-    }
-
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        PlayerViewHolder pvh = (PlayerViewHolder) buttonView.getTag();
-        if (isChecked) {
-            getAssignments().get(pvh.getAdapterPosition()).setOrderNumber(1);
-            Log.i(Flags.LOGTAG, "Team change: " + getAssignments().get(pvh.getAdapterPosition()).getPlayer() + " is now el capitano!");
-        } else {
-            getAssignments().get(pvh.getAdapterPosition()).setOrderNumber(-1);
-            Log.i(Flags.LOGTAG, "Team change: " + getAssignments().get(pvh.getAdapterPosition()).getPlayer() + " is not the captain anymore");
-        }
 
     }
 }

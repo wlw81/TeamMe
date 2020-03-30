@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="128dp"
         android:background="@drawable/header"
-        android:padding="16dp"
+        android:padding="@dimen/text_margin"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
         android:orientation="vertical"
         android:id="@+id/headerLL"
@@ -18,14 +18,15 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/headerTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/headerLL"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/icons"
+        android:paddingLeft="@dimen/smaller_margin"
         android:text="@string/app_name"
-        android:textSize="@dimen/big_text"
-        android:id="@+id/headerTV"
-        android:paddingLeft="4dp" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/big_text" />
 
 </RelativeLayout>
 

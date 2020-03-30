@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:background="@color/primary"
             android:orientation="vertical"
-            android:padding="16dp"
+            android:padding="@dimen/text_margin"
             android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
             <TextView

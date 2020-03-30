@@ -37,7 +37,6 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
         return POSITION_NONE;
     }
 
-
     @Override
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
