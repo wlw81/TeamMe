@@ -326,6 +326,15 @@ public class BackendFacade {
         return count;
     }
 
+
+    public int getNextOrderNo(int p_gameID, int p_teamNo) {
+        Cursor mCount = getObjDatabase().rawQuery("select count(*) from " + DatabaseHelper.TABLE_ASSIGNMENTS + " where game_id = $1 and team = $2", new String[]{String.valueOf(p_gameID), String.valueOf(p_teamNo)});
+        mCount.moveToFirst();
+        int count = mCount.getInt(0);
+        mCount.close();
+        return count + 1;
+    }
+
     public Date getLastTimePlayed() {
         Date lasttime = null;
         Cursor query = null;
@@ -360,12 +369,11 @@ public class BackendFacade {
 
     public GameRecord getGame(int p_intID) {
         Cursor query = null;
-        GameRecord readGameRecord = null;
+        GameRecord readGameRecord = new GameRecord(getAssignments(p_intID));
         try {
             query = getObjDatabase().query(DatabaseHelper.TABLE_GAMES, new String[]{"_id", "category_ordinal", "sport", "created"},
                     "_id = ?1", new String[]{String.valueOf(p_intID)}, null, null, "_id", "1");
             query.moveToFirst();
-            readGameRecord = new GameRecord();
             readGameRecord.setId(query.getInt(0));
             //gameRead...
             readGameRecord.setSport(query.getString(2));
@@ -379,7 +387,6 @@ public class BackendFacade {
                 query.close();
             }
         }
-
         return readGameRecord;
     }
 

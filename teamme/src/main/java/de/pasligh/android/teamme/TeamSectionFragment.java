@@ -92,11 +92,12 @@ public class TeamSectionFragment extends Fragment implements View.OnClickListene
             btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    // todo
                     if (isChecked) {
                         pa.setOrderNumber(1);
                         Log.i(Flags.LOGTAG, "Team change: " + pa.getPlayer() + " is now el capitano!");
                     } else {
-                        pa.setOrderNumber(-1);
+                        pa.setOrderNumber(getFacade().getNextOrderNo(pa.getGame(), pa.getTeam()));
                         Log.i(Flags.LOGTAG, "Team change: " + pa.getPlayer() + " is not the captain anymore");
                     }
                 }

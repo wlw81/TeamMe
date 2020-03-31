@@ -25,7 +25,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 
 import java.util.HashSet;
-import java.util.Set;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.GameRecord;
@@ -73,7 +72,7 @@ public class GameRecordDetailFragment extends Fragment {
     /**
      * The record content this fragment is presenting.
      */
-    private GameRecord mItem;
+    private GameRecord gameRecord;
 
 
     /**
@@ -100,7 +99,7 @@ public class GameRecordDetailFragment extends Fragment {
     private Intent createShareIntent() {
         java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         StringBuilder shareText = new StringBuilder();
-        String title = mItem.getSport() + " " + dateFormat.format(mItem.getStartedAt());
+        String title = gameRecord.getSport() + " " + dateFormat.format(gameRecord.getStartedAt());
 
         shareText.append("[").append(title).append("] ");
         shareText.append(TextHelper.createTeamDecided_ShareText(getString(R.string.shareIntent), getString(R.string.team)));
@@ -123,7 +122,7 @@ public class GameRecordDetailFragment extends Fragment {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            mItem = getFacade().getGame(Integer.parseInt(getArguments().getString(ARG_GAME_ID)));
+            gameRecord = getFacade().getGame(Integer.parseInt(getArguments().getString(ARG_GAME_ID)));
         }
     }
 
@@ -137,14 +136,13 @@ public class GameRecordDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.gamerecord_detail, container, false);
 
-        if (mItem != null) {
-            final Set<PlayerAssignment> readAssignments = new HashSet<>();
-            for (PlayerAssignment p : getFacade().getAssignments((int) mItem.getId())) {
+        if (gameRecord != null) {
+
+            for (PlayerAssignment p : gameRecord.getAssignments()) {
                 p.setRevealed(true);
-                readAssignments.add(p);
             }
 
-            TeamReactor.overwriteAssignments(readAssignments);
+            TeamReactor.overwriteAssignments(new HashSet<PlayerAssignment>(gameRecord.getAssignments()));
 
             // Get the ViewPager and set it's PagerAdapter so that it can display items
             final ViewPager viewPager = (ViewPager) rootView.findViewById(R.id.gamerecordDetailVP);
@@ -158,7 +156,7 @@ public class GameRecordDetailFragment extends Fragment {
                 public void onClick(View v) {
                     Intent reportScores = new Intent(getApplicationContext(),
                             ReportScoresActivity.class);
-                    reportScores.putExtra(Flags.GAME_ID, mItem.getId());
+                    reportScores.putExtra(Flags.GAME_ID, gameRecord.getId());
                     startActivity(reportScores);
                 }
             });
@@ -186,29 +184,23 @@ public class GameRecordDetailFragment extends Fragment {
                             String m_Text = input.getText().toString().trim();
                             if (!m_Text.isEmpty()) {
                                 PlayerAssignment assignmentNew = new PlayerAssignment();
-                                assignmentNew.setGame(mItem.getId());
-                                assignmentNew.setTeam(tabLayout.getSelectedTabPosition()); // todo check here
+                                assignmentNew.setGame(gameRecord.getId());
+                                assignmentNew.setTeam(tabLayout.getSelectedTabPosition()+1);
                                 assignmentNew.setPlayer(new Player(m_Text));
                                 assignmentNew.setRevealed(true);
+                                assignmentNew.setOrderNumber(getFacade().getNextOrderNo(assignmentNew.getGame(), assignmentNew.getTeam()));
                                 try {
                                     getFacade().persistPlayer(assignmentNew.getPlayer());
                                 } catch (Exception e) {
                                     Log.d(Flags.LOGTAG, assignmentNew.getPlayer() + " already known.");
                                 }
 
-                                for (PlayerAssignment pa : readAssignments) {
-                                    if (pa.getPlayer().getName().equals(assignmentNew.getPlayer().getName())) {
-                                        readAssignments.remove(pa);
-                                        return;
-                                    }
-                                }
-
-                                /**
-                                 * todo Needs to be coded
-                                 */
+                                // we make sure that the new player hasn't been assigned to another team, yet
+                                getFacade().deleteAssignment(assignmentNew.getGame(), assignmentNew.getPlayer().getName());
 
                                 getFacade().addPlayerAssignment(assignmentNew);
-                                mItem.getAssignments().add(assignmentNew);
+                                TeamReactor.overwriteAssignments(new HashSet<PlayerAssignment>(getFacade().getAssignments(assignmentNew.getGame())));
+                                viewPager.getAdapter().notifyDataSetChanged();
                             }
                         }
                     });

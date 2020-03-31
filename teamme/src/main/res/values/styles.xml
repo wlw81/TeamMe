@@ -1,7 +1,6 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
-        <item name="actionBarStyle">@style/TeamMeNoActionBar</item>
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <item name="android:windowContentTransitions">true</item>
         <!-- enable overlapping of exiting and entering activities -->
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
@@ -11,19 +10,17 @@
         <item name="android:colorPrimaryDark">@color/primary_dark</item>
         <item name="android:colorPrimary">@color/primary</item>
         <item name="android:textColor">@color/primary_text</item>
-        <item name="android:textColorSecondary">@color/secondary_text</item>
         <item name="colorAccent">@color/accent</item>
+        <item name="android:divider">@color/divider</item>
+        <item name="android:icon">@color/icons</item>
+        <item name="android:textColorSecondary">@color/secondary_text</item>
+        <item name="actionBarStyle">@style/TeamMeNoActionBar</item>
     </style>
 
     <style name="TeamMeNoActionBar" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="colorAccent">@color/accent</item>
         <item name="android:colorPrimaryDark">@color/primary_dark</item>
         <item name="android:colorPrimary">@color/primary</item>
-        <item name="android:titleTextStyle">@style/MyTheme.ActionBar.TitleTextStyle</item>
-    </style>
-
-    <style name="MyTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
-        <item name="android:textColor">@color/icons</item>
     </style>
 
 </resources>
