@@ -120,7 +120,7 @@ public class GameRecordListActivity extends AppCompatActivity implements View.On
     private void jump2Game(String id) {
         if (mTwoPane) {
             Bundle arguments = new Bundle();
-            arguments.putString(GameRecordDetailFragment.ARG_ITEM_ID, id);
+            arguments.putString(GameRecordDetailFragment.ARG_GAME_ID, id);
             GameRecordDetailFragment fragment = new GameRecordDetailFragment();
             fragment.setArguments(arguments);
             fragment.setApplicationContext(getApplicationContext());
@@ -129,7 +129,7 @@ public class GameRecordListActivity extends AppCompatActivity implements View.On
                     .commit();
         } else {
             Intent intent = new Intent(getApplicationContext(), GameRecordDetailActivity.class);
-            intent.putExtra(GameRecordDetailFragment.ARG_ITEM_ID, id);
+            intent.putExtra(GameRecordDetailFragment.ARG_GAME_ID, id);
 
             startActivity(intent);
         }

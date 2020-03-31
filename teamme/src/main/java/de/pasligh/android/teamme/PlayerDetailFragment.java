@@ -159,7 +159,7 @@ public class PlayerDetailFragment extends android.support.v4.app.Fragment implem
             GameRecordRV_Adapter.GameRecordRV_Holder holder = ( GameRecordRV_Adapter.GameRecordRV_Holder) v.getTag();
             String id = String.valueOf(holder.getId());
             Intent intent = new Intent(getActivity().getApplicationContext(), GameRecordDetailActivity.class);
-            intent.putExtra(GameRecordDetailFragment.ARG_ITEM_ID, id);
+            intent.putExtra(GameRecordDetailFragment.ARG_GAME_ID, id);
             startActivity(intent);
         }
 

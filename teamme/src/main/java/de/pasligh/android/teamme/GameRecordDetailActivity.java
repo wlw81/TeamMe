@@ -30,7 +30,7 @@ import de.pasligh.android.teamme.tools.TeamReactor;
 public class GameRecordDetailActivity extends AppCompatActivity {
 
     private BackendFacade facade;
-    private static String currentId = null;
+    private static String currentGameID = null;
     private SoundPool soundPool;
     private int spFanfare;
 
@@ -69,13 +69,13 @@ public class GameRecordDetailActivity extends AppCompatActivity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            String id = getIntent().getStringExtra(GameRecordDetailFragment.ARG_ITEM_ID);
+            String id = getIntent().getStringExtra(GameRecordDetailFragment.ARG_GAME_ID);
             if (id != null) {
-                currentId = id;
+                currentGameID = id;
             }
-            if (currentId != null) {
-                arguments.putString(GameRecordDetailFragment.ARG_ITEM_ID,
-                        currentId);
+            if (currentGameID != null) {
+                arguments.putString(GameRecordDetailFragment.ARG_GAME_ID,
+                        currentGameID);
             }
             GameRecordDetailFragment fragment = new GameRecordDetailFragment();
             fragment.setApplicationContext(getApplicationContext());
@@ -90,7 +90,7 @@ public class GameRecordDetailActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (currentId == null || getFacade().getGame(Integer.parseInt(currentId)) == null) {
+        if (currentGameID == null || getFacade().getGame(Integer.parseInt(currentGameID)) == null) {
             finish();
         }
     }
@@ -145,13 +145,13 @@ public class GameRecordDetailActivity extends AppCompatActivity {
 
             }, Flags.DURATION_MEDIA_FILE);
         } else if (id == R.id.TeamOverviewDeleteMenuItem) {
-            GameRecord gr = getFacade().getGame(Integer.parseInt(currentId));
+            GameRecord gr = getFacade().getGame(Integer.parseInt(currentGameID));
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(getString(R.string.playerDeleteDialog_question).replace("$1", gr.getSport())).setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            if (getFacade().deleteAssignments(Integer.parseInt(currentId))) {
-                                getFacade().deleteGame(Integer.parseInt(currentId));
+                            if (getFacade().deleteAssignments(Integer.parseInt(currentGameID))) {
+                                getFacade().deleteGame(Integer.parseInt(currentGameID));
                             }
 
                             onBackPressed();

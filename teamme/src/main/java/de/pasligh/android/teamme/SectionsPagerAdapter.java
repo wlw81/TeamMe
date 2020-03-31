@@ -19,15 +19,6 @@ import de.pasligh.android.teamme.tools.TeamReactor;
  */
 public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
-    public Set<PlayerAssignment> getAssignmentsPerTeam() {
-        return assignmentsPerTeam;
-    }
-
-    public void setAssignmentsPerTeam(Set<PlayerAssignment> assignmentsPerTeam) {
-        this.assignmentsPerTeam = assignmentsPerTeam;
-    }
-
-    private Set<PlayerAssignment> assignmentsPerTeam;
 
     public SectionsPagerAdapter(FragmentManager fm) {
         super(fm);

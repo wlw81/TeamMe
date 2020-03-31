@@ -1,25 +1,35 @@
 package de.pasligh.android.teamme;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.ShareActionProvider;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.TextView;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.GameRecord;
+import de.pasligh.android.teamme.objects.Player;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.TeamReactor;
@@ -37,7 +47,7 @@ public class GameRecordDetailFragment extends Fragment {
      * The fragment argument representing the item ID that this fragment
      * represents.
      */
-    public static final String ARG_ITEM_ID = "item_id";
+    public static final String ARG_GAME_ID = "item_id";
     private static Context applicationContext;
 
     private BackendFacade facade;
@@ -109,11 +119,11 @@ public class GameRecordDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        if (getArguments().containsKey(ARG_ITEM_ID)) {
+        if (getArguments().containsKey(ARG_GAME_ID)) {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            mItem = getFacade().getGame(Integer.parseInt(getArguments().getString(ARG_ITEM_ID)));
+            mItem = getFacade().getGame(Integer.parseInt(getArguments().getString(ARG_GAME_ID)));
         }
     }
 
@@ -125,8 +135,24 @@ public class GameRecordDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.gamerecord_detail, container, false);
+        final View rootView = inflater.inflate(R.layout.gamerecord_detail, container, false);
+
         if (mItem != null) {
+            final Set<PlayerAssignment> readAssignments = new HashSet<>();
+            for (PlayerAssignment p : getFacade().getAssignments((int) mItem.getId())) {
+                p.setRevealed(true);
+                readAssignments.add(p);
+            }
+
+            TeamReactor.overwriteAssignments(readAssignments);
+
+            // Get the ViewPager and set it's PagerAdapter so that it can display items
+            final ViewPager viewPager = (ViewPager) rootView.findViewById(R.id.gamerecordDetailVP);
+            viewPager.setAdapter(new SectionsPagerAdapter(getChildFragmentManager()));
+            // Give the TabLayout the ViewPager
+            final TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.sliding_tabs);
+            tabLayout.setupWithViewPager(viewPager);
+
             rootView.findViewById(R.id.gamerecordDetailFAB).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -136,23 +162,84 @@ public class GameRecordDetailFragment extends Fragment {
                     startActivity(reportScores);
                 }
             });
+            rootView.findViewById(R.id.gamerecordDetailAddPlayerFAB).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-            Set<PlayerAssignment> readAssignments = new HashSet<>();
-            for (PlayerAssignment p : getFacade().getAssignments((int) mItem.getId())) {
-                p.setRevealed(true);
-                readAssignments.add(p);
-            }
+                    View viewInflated = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_player_input, (ViewGroup) rootView, false);
+                    // Set up the input
+                    final AutoCompleteTextView input = (AutoCompleteTextView) viewInflated.findViewById(R.id.PlayerInputTV);
 
-            TeamReactor.overwriteAssignments(readAssignments);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext()).setView(viewInflated);
+                    builder.setTitle(getString(R.string.addPlayer));
 
-            // Get the ViewPager and set it's PagerAdapter so that it can display items
-            ViewPager viewPager = (ViewPager) rootView.findViewById(R.id.gamerecordDetailVP);
-            SectionsPagerAdapter sadapter
-                    = new SectionsPagerAdapter(getChildFragmentManager());
-            viewPager.setAdapter(sadapter);
-            // Give the TabLayout the ViewPager
-            TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.sliding_tabs);
-            tabLayout.setupWithViewPager(viewPager);
+                    // Set up the input
+                    ArrayAdapter<String> playerAdapter = new ArrayAdapter<String>(getContext(),
+                            android.R.layout.simple_dropdown_item_1line, getFacade()
+                            .getPlayersAsStringArray());
+                    input.setAdapter(playerAdapter);
+
+                    // Set up the buttons
+                    builder.setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            String m_Text = input.getText().toString().trim();
+                            if (!m_Text.isEmpty()) {
+                                PlayerAssignment assignmentNew = new PlayerAssignment();
+                                assignmentNew.setGame(mItem.getId());
+                                assignmentNew.setTeam(tabLayout.getSelectedTabPosition()); // todo check here
+                                assignmentNew.setPlayer(new Player(m_Text));
+                                assignmentNew.setRevealed(true);
+                                try {
+                                    getFacade().persistPlayer(assignmentNew.getPlayer());
+                                } catch (Exception e) {
+                                    Log.d(Flags.LOGTAG, assignmentNew.getPlayer() + " already known.");
+                                }
+
+                                for (PlayerAssignment pa : readAssignments) {
+                                    if (pa.getPlayer().getName().equals(assignmentNew.getPlayer().getName())) {
+                                        readAssignments.remove(pa);
+                                        return;
+                                    }
+                                }
+
+                                /**
+                                 * todo Needs to be coded
+                                 */
+
+                                getFacade().addPlayerAssignment(assignmentNew);
+                                mItem.getAssignments().add(assignmentNew);
+                            }
+                        }
+                    });
+
+                    builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    final AlertDialog alertToShow = builder.create();
+                    alertToShow.getWindow().setSoftInputMode(
+                            WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                    alertToShow.show();
+                    input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                        @Override
+                        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                            if (actionId == EditorInfo.IME_ACTION_DONE
+                                    || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+                                alertToShow.getButton(DialogInterface.BUTTON_POSITIVE).performClick();
+                                return true;
+                            }
+                            return false;
+                        }
+                    });
+
+
+                }
+            });
+
         }
         return rootView;
     }

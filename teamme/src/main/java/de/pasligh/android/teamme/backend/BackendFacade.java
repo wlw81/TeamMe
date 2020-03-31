@@ -70,6 +70,19 @@ public class BackendFacade {
         return value;
     }
 
+    public long addPlayerAssignment(PlayerAssignment p_playerAssignment) {
+        long value = -1;
+
+        try {
+            value = getObjDatabase().insert(DatabaseHelper.TABLE_ASSIGNMENTS, null, createAssignment_Values(p_playerAssignment));
+        } catch (Exception e) {
+            Log.e(Flags.LOGTAG, e.toString());
+        }
+
+        return value;
+
+    }
+
     public long persistPlayer(Player p_playerNew) {
         ContentValues values = new ContentValues();
         values.put("name", p_playerNew.getName());
@@ -133,9 +146,9 @@ public class BackendFacade {
             query = getObjDatabase().query(false,
                     DatabaseHelper.TABLE_ASSIGNMENTS, new String[]{"_id", "sequence", "team", "game_id", "player_id"},
                     "player_id = ?1", new String[]{p_playername}, null, null, "game_id desc", "10");
-            List<PlayerAssignment>  lis = moveQueryToAssignments(query);
+            List<PlayerAssignment> lis = moveQueryToAssignments(query);
 
-            for(PlayerAssignment assignment : lis){
+            for (PlayerAssignment assignment : lis) {
                 query = getObjDatabase().query(DatabaseHelper.TABLE_GAMES, new String[]{"_id", "category_ordinal", "sport", "created"},
                         "_id = ?1", new String[]{String.valueOf(assignment.getGame())}, null, null, "created desc", "10");
 
@@ -188,9 +201,9 @@ public class BackendFacade {
         return gameRecords;
     }
 
-    public int getRoundCount(long p_lngGameID){
-            Cursor query = getObjDatabase().query(true, DatabaseHelper.TABLE_SCORES, new String[]{"round"}, "game_id = ?1", new String[]{String.valueOf(p_lngGameID)}, null, null, "round", null);
-            return query.getCount();
+    public int getRoundCount(long p_lngGameID) {
+        Cursor query = getObjDatabase().query(true, DatabaseHelper.TABLE_SCORES, new String[]{"round"}, "game_id = ?1", new String[]{String.valueOf(p_lngGameID)}, null, null, "round", null);
+        return query.getCount();
     }
 
     public List<Score> getScores(long p_lngGameID) {
@@ -378,9 +391,9 @@ public class BackendFacade {
             query = getObjDatabase().query(false,
                     DatabaseHelper.TABLE_ASSIGNMENTS, new String[]{"_id", "sequence", "team", "game_id", "player_id"},
                     "player_id = ?1", new String[]{p_playername}, null, null, "game_id desc", "1");
-            List<PlayerAssignment>  lis = moveQueryToAssignments(query);
+            List<PlayerAssignment> lis = moveQueryToAssignments(query);
 
-            if(!lis.isEmpty()){
+            if (!lis.isEmpty()) {
                 query = getObjDatabase().query(DatabaseHelper.TABLE_GAMES, new String[]{"_id", "category_ordinal", "sport", "created"},
                         "_id = ?1", new String[]{String.valueOf(lis.get(0).getGame())}, null, null, "created desc", "1");
 
@@ -429,6 +442,18 @@ public class BackendFacade {
 
         return lastgame;
     }
+
+    public boolean deleteAssignment(int p_gameID, String p_playerID) {
+        Cursor query = null;
+        try {
+            int i = getObjDatabase().delete(DatabaseHelper.TABLE_ASSIGNMENTS, "game_id = ?1 and player_id = ?2", new String[]{String.valueOf(p_gameID), String.valueOf(p_playerID)});
+            return i > 0;
+        } catch (Exception e) {
+            Log.i(Flags.LOGTAG, e.getMessage());
+        }
+        return false;
+    }
+
 
     public boolean deleteAssignments(int p_intGameID) {
         Cursor query = null;
@@ -505,7 +530,6 @@ public class BackendFacade {
     public void mergeScore(Score p_score) {
         int id = -1;
         try {
-            // getObjDatabase().update(DatabaseHelper.TABLE_SCORES, createScore_Values(p_score, true), "game_id = ?1 and round = ?2 and team = ?3", new String[]{String.valueOf(p_score.getGameId()), String.valueOf(p_score.getRoundNr()), String.valueOf(p_score.getTeamNr())});
             id = getObjDatabase().update(DatabaseHelper.TABLE_SCORES, createScore_Values(p_score, true), "game_id = " + p_score.getGameId() + " and round = " + p_score.getRoundNr() + " and team = " + p_score.getTeamNr(), null);
         } catch (Exception e) {
             Log.i(Flags.LOGTAG, e.getMessage());
