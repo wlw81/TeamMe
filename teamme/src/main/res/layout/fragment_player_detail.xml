@@ -13,6 +13,7 @@
         android:layout_alignTop="@+id/PlayerDetailIcon"
         android:layout_toRightOf="@+id/PlayerDetailIcon"
         android:text="@string/playerposition"
+        android:layout_marginLeft="@dimen/text_margin"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
@@ -20,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/PlayerPositionTextView"
+        android:layout_marginLeft="@dimen/text_margin"
         android:layout_toRightOf="@+id/PlayerDetailIcon"
         android:text="@string/playername"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -30,8 +32,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:background="@null"
         android:contentDescription="@string/player"
-        android:src="@drawable/player" />
+        android:background="@drawable/roundedbutton"
+        android:padding="@dimen/small_text_margin"
+        android:src="@drawable/baseline_person_black_18dp" />
 
 </RelativeLayout>

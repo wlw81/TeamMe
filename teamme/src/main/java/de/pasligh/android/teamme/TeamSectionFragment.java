@@ -17,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -32,6 +34,7 @@ public class TeamSectionFragment extends Fragment implements View.OnClickListene
     private List<PlayerAssignment> assignments;
     private LinearLayout layout;
     private BackendFacade facade;
+    private int sectionr;
 
 
     public TeamSectionFragment() {
@@ -49,7 +52,7 @@ public class TeamSectionFragment extends Fragment implements View.OnClickListene
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        int sectionr = (getArguments().getInt(ARG_SECTION_NUMBER));
+        sectionr = (getArguments().getInt(ARG_SECTION_NUMBER));
         Log.d(Flags.LOGTAG, "Create View " + sectionr);
         View rootView = inflater.inflate(R.layout.fragment_team_overview,
                 container, false);
@@ -92,14 +95,37 @@ public class TeamSectionFragment extends Fragment implements View.OnClickListene
             btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    // todo
+                    List<PlayerAssignment> assignmentsReOrdered = TeamReactor
+                            .getAssignmentsByTeam(sectionr);
+                    PlayerAssignment paReOrder = findAssignment(assignmentsReOrdered, pa.getId());
+
+                    // rearrange
                     if (isChecked) {
-                        pa.setOrderNumber(1);
-                        Log.i(Flags.LOGTAG, "Team change: " + pa.getPlayer() + " is now el capitano!");
+                        PlayerAssignment paOldCaptain = assignmentsReOrdered.remove(0);
+                        paOldCaptain.setOrderNumber(paReOrder.getOrderNumber());
+                        TeamReactor.getAssignmentsByTeam(sectionr).add(paOldCaptain);
+
+                        paReOrder.setOrderNumber(1);
+                        Log.i(Flags.LOGTAG, "Team change: " + paReOrder.getPlayer() + " is now el capitano!");
                     } else {
-                        pa.setOrderNumber(getFacade().getNextOrderNo(pa.getGame(), pa.getTeam()));
-                        Log.i(Flags.LOGTAG, "Team change: " + pa.getPlayer() + " is not the captain anymore");
+                        paReOrder.setOrderNumber(getFacade().getNextOrderNo(pa.getGame(), paReOrder.getTeam()));
+                        Log.i(Flags.LOGTAG, "Team change: " + paReOrder.getPlayer() + " is not the captain anymore");
                     }
+
+                    // clean up to database
+                    int orderNo = 1;
+                    for (PlayerAssignment t : assignmentsReOrdered) {
+                        if (orderNo != t.getOrderNumber()) {
+                            getFacade().deleteAssignment(t.getOrderNumber(), t.getPlayer().getName());
+                            t.setOrderNumber(orderNo);
+                            t.setRevealed(true);
+                            getFacade().addPlayerAssignment(t);
+                        }
+                        orderNo++;
+                    }
+
+                    // and move this to the team reactor
+                    TeamReactor.overwriteAssignments(new HashSet<PlayerAssignment>(getFacade().getAssignments(pa.getGame())));
                 }
             });
             btn.setChecked(pa.getOrderNumber() == 1);
@@ -121,6 +147,14 @@ public class TeamSectionFragment extends Fragment implements View.OnClickListene
 
         } else {
             ((ImageButton) v.findViewById(R.id.PlayerDetailIcon)).performClick();
+        }
+    }
+
+    private PlayerAssignment findAssignment(List<PlayerAssignment> assignmentsReOrdered, int id) {
+        for (PlayerAssignment t : assignmentsReOrdered) {
+            if (t.getId() == id) {
+                return t;
+            }
         }
     }
 
