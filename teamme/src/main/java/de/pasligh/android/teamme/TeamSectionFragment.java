@@ -133,7 +133,9 @@ public class TeamSectionFragment extends Fragment implements View.OnClickListene
 
                     // and move this to the team reactor & backend
                     if (getFacade().deleteAssignments(pa.getGame(), pa.getTeam())) {
-                        for (PlayerAssignment playerAssignment : TeamReactor.getAssignmentsByTeam(pa.getTeam())) {
+                        int orderNo = 1;
+                        for (PlayerAssignment playerAssignment : assignmentsReOrdered) {
+                            playerAssignment.setOrderNumber(orderNo++);
                             getFacade().addPlayerAssignment(playerAssignment);
                             Log.i(Flags.LOGTAG, "Replaced: " + pa.getPlayer());
                         }

@@ -23,6 +23,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashSet;
 
@@ -41,7 +42,7 @@ import de.pasligh.android.teamme.tools.TextHelper;
  * in two-pane mode (on tablets) or a {@link GameRecordDetailActivity}
  * on handsets.
  */
-public class GameRecordDetailFragment extends Fragment  {
+public class GameRecordDetailFragment extends Fragment {
 
     /**
      * The fragment argument representing the item ID that this fragment
@@ -182,12 +183,12 @@ public class GameRecordDetailFragment extends Fragment  {
                     builder.setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            String m_Text = input.getText().toString().trim();
-                            if (!m_Text.isEmpty()) {
+                            String newPlayerName = input.getText().toString().trim();
+                            if (!newPlayerName.isEmpty()) {
                                 PlayerAssignment assignmentNew = new PlayerAssignment();
                                 assignmentNew.setGame(gameRecord.getId());
-                                assignmentNew.setTeam(tabLayout.getSelectedTabPosition()+1);
-                                assignmentNew.setPlayer(new Player(m_Text));
+                                assignmentNew.setTeam(tabLayout.getSelectedTabPosition() + 1);
+                                assignmentNew.setPlayer(new Player(newPlayerName));
                                 assignmentNew.setRevealed(true);
                                 assignmentNew.setOrderNumber(getFacade().getNextOrderNo(assignmentNew.getGame(), assignmentNew.getTeam()));
                                 try {
@@ -197,11 +198,14 @@ public class GameRecordDetailFragment extends Fragment  {
                                 }
 
                                 // we make sure that the new player hasn't been assigned to another team, yet
-                                getFacade().deleteAssignment(assignmentNew.getGame(), assignmentNew.getPlayer().getName());
-
-                                getFacade().addPlayerAssignment(assignmentNew);
-                                TeamReactor.overwriteAssignments(new HashSet<PlayerAssignment>(getFacade().getAssignments(assignmentNew.getGame())));
+                                if (getFacade().getAssignments(gameRecord.getId(), newPlayerName).isEmpty()) {
+                                    getFacade().addPlayerAssignment(assignmentNew);
+                                    TeamReactor.overwriteAssignments(new HashSet<PlayerAssignment>(getFacade().getAssignments(assignmentNew.getGame())));
+                                } else {
+                                    Toast.makeText(getContext(), newPlayerName + ": " + getString(R.string.playerAlreadyAssigned), Toast.LENGTH_LONG).show();
+                                }
                                 viewPager.getAdapter().notifyDataSetChanged();
+
                             }
                         }
                     });
