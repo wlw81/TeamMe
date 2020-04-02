@@ -428,9 +428,8 @@ public class TeamChooserActivity extends AppCompatActivity implements SensorEven
         long id = getFacade().persistGame(saveGameRecord);
         Intent callOverview = new Intent(getApplicationContext(),
                 GameRecordListActivity.class);
-        int teamcount = getIntent().getIntExtra(Flags.TEAMCOUNT, -1);
         callOverview.putExtra(Flags.GAME_ID, id);
-        callOverview.putExtra(Flags.TEAMCOUNT, teamcount);
+        callOverview.putExtra(Flags.TEAMCOUNT,  getIntent().getIntExtra(Flags.TEAMCOUNT, -1));
         startActivity(callOverview);
     }
 

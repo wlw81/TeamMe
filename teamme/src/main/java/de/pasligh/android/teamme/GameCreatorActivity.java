@@ -22,6 +22,7 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -95,6 +96,20 @@ public class GameCreatorActivity extends AppCompatActivity implements
     private boolean mTwoPane;
     private int teamCount = 4;
     private ActionBarDrawerToggle drawerToggle;
+
+    public SharedPreferences.OnSharedPreferenceChangeListener getPreferenceChangeListener() {
+        if (preferenceChangeListener == null) {
+            preferenceChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+                @Override
+                public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                    switchToDarkMode(sharedPreferences, true);
+                }
+            };
+        }
+        return preferenceChangeListener;
+    }
+
+    private SharedPreferences.OnSharedPreferenceChangeListener preferenceChangeListener;
     private NumberPicker playerCountNP;
     private NumberPicker teamCountNP;
     private NavigationView mNavigationView;
@@ -193,6 +208,9 @@ public class GameCreatorActivity extends AppCompatActivity implements
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         Flags.AUTOSHAKE = sharedPref.getBoolean(Flags.AUTOSHAKE_PREFERENCES, Build.MANUFACTURER.toUpperCase().startsWith(Flags.MOTOROLA));
         sharedPref.edit().putBoolean(Flags.AUTOSHAKE_PREFERENCES, Flags.AUTOSHAKE);
+        switchToDarkMode(sharedPref, false);
+
+        sharedPref.registerOnSharedPreferenceChangeListener(getPreferenceChangeListener());
 
         // Initializing Drawer Layout and ActionBarToggle
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.about, R.string.action_settings) {
@@ -260,6 +278,25 @@ public class GameCreatorActivity extends AppCompatActivity implements
         TeamReactor.resetReactor();
         if (null != getIntent().getExtras()) {
             sportTV.setText(getIntent().getStringExtra(Flags.SPORT));
+        }
+    }
+
+    private void switchToDarkMode(SharedPreferences sharedPref, boolean bolRecreate) {
+        final boolean before = Flags.DARKMODE_FORCE;
+        Flags.DARKMODE_FORCE = sharedPref.getBoolean(Flags.DARKMODE_PREFERENCES, false);
+
+        if (before != Flags.DARKMODE_FORCE) {
+            if (Flags.DARKMODE_FORCE) {
+                getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            } else {
+                getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+            }
+
+            Log.w(Flags.LOGTAG, "Darkmode Force is " + Flags.DARKMODE_FORCE);
+            if (bolRecreate) {
+                getDelegate().applyDayNight();
+                recreate();
+            }
         }
     }
 

@@ -3,6 +3,7 @@ package de.pasligh.android.teamme;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -26,6 +27,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
+
+import de.pasligh.android.teamme.tools.Flags;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -331,7 +334,6 @@ public class SettingsActivity extends PreferenceActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        getDelegate().onConfigurationChanged(newConfig);
     }
 
     @Override
