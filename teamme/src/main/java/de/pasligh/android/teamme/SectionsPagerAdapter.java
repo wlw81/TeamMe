@@ -12,12 +12,13 @@ import java.util.Set;
 
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.tools.TeamReactor;
+import de.pasligh.android.teamme.tools.TeamView_Interface;
 
 /**
  * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
+public class SectionsPagerAdapter extends FragmentStatePagerAdapter implements TeamView_Interface {
 
 
     public SectionsPagerAdapter(FragmentManager fm) {
@@ -33,10 +34,11 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
         // getItem is called to instantiate the fragment for the given page.
         // Return a TeamSectionFragment (defined as a static inner class
         // below) with the page number as its lone argument.
-        Fragment fragment = new TeamSectionFragment();
+        TeamSectionFragment fragment = new TeamSectionFragment();
         Bundle args = new Bundle();
         args.putInt(TeamSectionFragment.ARG_SECTION_NUMBER, (position + 1));
         fragment.setArguments(args);
+        fragment.getListener().add(this);
         return fragment;
     }
 
@@ -55,5 +57,10 @@ public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         return "Team" + " " + TeamReactor.getAssignmentsByTeam(position + 1).get(0).getPlayer().getName();
+    }
+
+    @Override
+    public void notifyAdapter() {
+        notifyDataSetChanged();
     }
 }

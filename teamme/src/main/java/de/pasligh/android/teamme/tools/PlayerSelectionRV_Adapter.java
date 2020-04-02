@@ -10,10 +10,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,10 +74,9 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
 
     @Override
     public PlayerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_player_selection, parent, false);
+        final View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.player_selection_item, parent, false);
         final PlayerViewHolder pvh = new PlayerViewHolder(v);
 
-        pvh.playerName.setTypeface(tf);
         pvh.rating.setEnabled(false);
         pvh.switchPlayer.setOnCheckedChangeListener(checkedChangeListener);
         pvh.cv.setOnLongClickListener(checkedChangeListener);
@@ -124,7 +122,7 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
     }
 
     public class PlayerViewHolder extends RecyclerView.ViewHolder {
-        private final CardView cv;
+        private final LinearLayout cv;
         private TextView playerName;
         private RatingBar rating;
         private CheckBox switchPlayer;
@@ -136,7 +134,7 @@ public class PlayerSelectionRV_Adapter extends RecyclerView.Adapter<PlayerSelect
 
         PlayerViewHolder(View itemView) {
             super(itemView);
-            cv = (CardView) itemView.findViewById(R.id.playerSelectionCV);
+            cv = (LinearLayout) itemView.findViewById(R.id.playerSelectionLL);
             playerName = (TextView) itemView.findViewById(R.id.playerSelectionCV_NameTV);
             rating = ((RatingBar) itemView.findViewById(R.id.playerSelectionCV_RatingBar));
             switchPlayer = ((CheckBox) itemView.findViewById(R.id.playerSelectionCB_Switch));

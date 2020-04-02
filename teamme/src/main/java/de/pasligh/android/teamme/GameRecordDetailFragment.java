@@ -32,6 +32,7 @@ import de.pasligh.android.teamme.objects.Player;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.TeamReactor;
+import de.pasligh.android.teamme.tools.TeamView_Interface;
 import de.pasligh.android.teamme.tools.TextHelper;
 
 /**
@@ -40,7 +41,7 @@ import de.pasligh.android.teamme.tools.TextHelper;
  * in two-pane mode (on tablets) or a {@link GameRecordDetailActivity}
  * on handsets.
  */
-public class GameRecordDetailFragment extends Fragment {
+public class GameRecordDetailFragment extends Fragment  {
 
     /**
      * The fragment argument representing the item ID that this fragment

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/playerSelectionLL"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/smaller_margin">
+
+    <CheckBox
+        android:id="@+id/playerSelectionCB_Switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/margin" />
+
+    <TextView
+        android:id="@+id/playerSelectionCV_NameTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/smaller_margin"
+        android:text="@string/playername"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <RatingBar
+        android:id="@+id/playerSelectionCV_RatingBar"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:isIndicator="true"
+        android:max="5"
+        android:paddingLeft="@dimen/small_text_margin"
+        android:paddingTop="@dimen/small_text_margin"
+        android:rating="1"
+        android:stepSize="0.01" />
+
+
+</LinearLayout>

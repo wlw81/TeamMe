@@ -473,6 +473,17 @@ public class BackendFacade {
         return false;
     }
 
+    public boolean deleteAssignments(int p_gameID, int p_teamId) {
+        Cursor query = null;
+        try {
+            int i = getObjDatabase().delete(DatabaseHelper.TABLE_ASSIGNMENTS, "game_id = ?1 and team = ?2", new String[]{String.valueOf(p_gameID), String.valueOf(p_teamId)});
+            return i > 0;
+        } catch (Exception e) {
+            Log.i(Flags.LOGTAG, e.getMessage());
+        }
+        return false;
+    }
+
     public List<PlayerAssignment> getAssignments(int p_intGameID) {
         Cursor query = null;
         try {

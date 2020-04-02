@@ -133,16 +133,18 @@ public class TeamSectionFragment extends Fragment implements View.OnClickListene
 
                     // and move this to the team reactor & backend
                     if (getFacade().deleteAssignments(pa.getGame(), pa.getTeam())) {
-                        TeamReactor.overwriteAssignments(new HashSet<PlayerAssignment>(assignmentsReOrdered));
                         for (PlayerAssignment playerAssignment : TeamReactor.getAssignmentsByTeam(pa.getTeam())) {
                             getFacade().addPlayerAssignment(playerAssignment);
                             Log.i(Flags.LOGTAG, "Replaced: " + pa.getPlayer());
                         }
                     }
+
+                    TeamReactor.overwriteAssignments(new HashSet<PlayerAssignment>(getFacade().getAssignments(pa.getGame())));
+
+                    notifyListener();
                     if (alertToShow != null) {
                         alertToShow.dismiss();
                     }
-                    notifyListener();
                 }
             });
             btn.setChecked(pa.getOrderNumber() == 1);
@@ -154,6 +156,7 @@ public class TeamSectionFragment extends Fragment implements View.OnClickListene
                 public void onClick(View v) {
                     TeamReactor.getAssignments().remove(pa);
                     getFacade().deleteAssignment(pa.getGame(), pa.getPlayer().getName());
+                    notifyListener();
                     alertToShow.dismiss();
                 }
             });
