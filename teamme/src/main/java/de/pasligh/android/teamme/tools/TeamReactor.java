@@ -180,7 +180,7 @@ public final class TeamReactor {
         return getAssignmentsByTeam(lisAssignments, p_teamNr);
     }
 
-    public static List<PlayerAssignment> getAssignmentsByTeam(List<PlayerAssignment> p_assignments, int p_teamNr) {
+    private static List<PlayerAssignment> getAssignmentsByTeam(List<PlayerAssignment> p_assignments, int p_teamNr) {
         PlayerAssignment[] assignments = new PlayerAssignment[getAssignments().size()];
 
         for (PlayerAssignment p : getAssignments()) {

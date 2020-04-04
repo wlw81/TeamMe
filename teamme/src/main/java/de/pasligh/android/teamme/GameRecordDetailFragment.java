@@ -139,104 +139,110 @@ public class GameRecordDetailFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.gamerecord_detail, container, false);
 
         if (gameRecord != null) {
+            try {
 
-            for (PlayerAssignment p : gameRecord.getAssignments()) {
-                p.setRevealed(true);
+                for (PlayerAssignment p : gameRecord.getAssignments()) {
+                    p.setRevealed(true);
+                }
+
+                TeamReactor.overwriteAssignments(new HashSet<PlayerAssignment>(gameRecord.getAssignments()));
+
+                // Get the ViewPager and set it's PagerAdapter so that it can display items
+                final ViewPager viewPager = (ViewPager) rootView.findViewById(R.id.gamerecordDetailVP);
+                viewPager.setAdapter(new SectionsPagerAdapter(getChildFragmentManager()));
+                // Give the TabLayout the ViewPager
+                final TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.sliding_tabs);
+                tabLayout.setupWithViewPager(viewPager);
+
+                rootView.findViewById(R.id.gamerecordDetailFAB).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent reportScores = new Intent(getApplicationContext(),
+                                ReportScoresActivity.class);
+                        reportScores.putExtra(Flags.GAME_ID, gameRecord.getId());
+                        startActivity(reportScores);
+                    }
+                });
+                rootView.findViewById(R.id.gamerecordDetailAddPlayerFAB).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        View viewInflated = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_player_input, (ViewGroup) rootView, false);
+                        // Set up the input
+                        final AutoCompleteTextView input = (AutoCompleteTextView) viewInflated.findViewById(R.id.PlayerInputTV);
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext()).setView(viewInflated);
+                        builder.setTitle(getString(R.string.addPlayer));
+
+                        // Set up the input
+                        ArrayAdapter<String> playerAdapter = new ArrayAdapter<String>(getContext(),
+                                android.R.layout.simple_dropdown_item_1line, getFacade()
+                                .getPlayersAsStringArray());
+                        input.setAdapter(playerAdapter);
+
+                        // Set up the buttons
+                        builder.setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String newPlayerName = input.getText().toString().trim();
+                                if (!newPlayerName.isEmpty()) {
+                                    PlayerAssignment assignmentNew = new PlayerAssignment();
+                                    assignmentNew.setGame(gameRecord.getId());
+                                    assignmentNew.setTeam(tabLayout.getSelectedTabPosition() + 1);
+                                    assignmentNew.setPlayer(new Player(newPlayerName));
+                                    assignmentNew.setRevealed(true);
+                                    assignmentNew.setOrderNumber(getFacade().getNextOrderNo(assignmentNew.getGame(), assignmentNew.getTeam()));
+                                    try {
+                                        getFacade().persistPlayer(assignmentNew.getPlayer());
+                                    } catch (Exception e) {
+                                        Log.d(Flags.LOGTAG, assignmentNew.getPlayer() + " already known.");
+                                    }
+
+                                    // we make sure that the new player hasn't been assigned to another team, yet
+                                    if (getFacade().getAssignments(gameRecord.getId(), newPlayerName).isEmpty()) {
+                                        getFacade().addPlayerAssignment(assignmentNew);
+                                        TeamReactor.overwriteAssignments(new HashSet<PlayerAssignment>(getFacade().getAssignments(assignmentNew.getGame())));
+                                    } else {
+                                        Toast.makeText(getContext(), newPlayerName + ": " + getString(R.string.playerAlreadyAssigned), Toast.LENGTH_LONG).show();
+                                    }
+                                    viewPager.getAdapter().notifyDataSetChanged();
+
+                                }
+                            }
+                        });
+
+                        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+                        final AlertDialog alertToShow = builder.create();
+                        alertToShow.getWindow().setSoftInputMode(
+                                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                        alertToShow.show();
+                        input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                            @Override
+                            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                                if (actionId == EditorInfo.IME_ACTION_DONE
+                                        || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+                                    alertToShow.getButton(DialogInterface.BUTTON_POSITIVE).performClick();
+                                    return true;
+                                }
+                                return false;
+                            }
+                        });
+
+
+                    }
+                });
+
+            } catch (Exception e) {
+                Log.e(Flags.LOGTAG, "Gamerecord manipulated: " + gameRecord);
+                getFacade().deleteGame(gameRecord.getId());
+                Toast.makeText(getApplicationContext(), ""+  gameRecord+" " +getString(R.string.deleted), Toast.LENGTH_LONG).show();
             }
-
-            TeamReactor.overwriteAssignments(new HashSet<PlayerAssignment>(gameRecord.getAssignments()));
-
-            // Get the ViewPager and set it's PagerAdapter so that it can display items
-            final ViewPager viewPager = (ViewPager) rootView.findViewById(R.id.gamerecordDetailVP);
-            viewPager.setAdapter(new SectionsPagerAdapter(getChildFragmentManager()));
-            // Give the TabLayout the ViewPager
-            final TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.sliding_tabs);
-            tabLayout.setupWithViewPager(viewPager);
-
-            rootView.findViewById(R.id.gamerecordDetailFAB).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent reportScores = new Intent(getApplicationContext(),
-                            ReportScoresActivity.class);
-                    reportScores.putExtra(Flags.GAME_ID, gameRecord.getId());
-                    startActivity(reportScores);
-                }
-            });
-            rootView.findViewById(R.id.gamerecordDetailAddPlayerFAB).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    View viewInflated = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_player_input, (ViewGroup) rootView, false);
-                    // Set up the input
-                    final AutoCompleteTextView input = (AutoCompleteTextView) viewInflated.findViewById(R.id.PlayerInputTV);
-
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext()).setView(viewInflated);
-                    builder.setTitle(getString(R.string.addPlayer));
-
-                    // Set up the input
-                    ArrayAdapter<String> playerAdapter = new ArrayAdapter<String>(getContext(),
-                            android.R.layout.simple_dropdown_item_1line, getFacade()
-                            .getPlayersAsStringArray());
-                    input.setAdapter(playerAdapter);
-
-                    // Set up the buttons
-                    builder.setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            String newPlayerName = input.getText().toString().trim();
-                            if (!newPlayerName.isEmpty()) {
-                                PlayerAssignment assignmentNew = new PlayerAssignment();
-                                assignmentNew.setGame(gameRecord.getId());
-                                assignmentNew.setTeam(tabLayout.getSelectedTabPosition() + 1);
-                                assignmentNew.setPlayer(new Player(newPlayerName));
-                                assignmentNew.setRevealed(true);
-                                assignmentNew.setOrderNumber(getFacade().getNextOrderNo(assignmentNew.getGame(), assignmentNew.getTeam()));
-                                try {
-                                    getFacade().persistPlayer(assignmentNew.getPlayer());
-                                } catch (Exception e) {
-                                    Log.d(Flags.LOGTAG, assignmentNew.getPlayer() + " already known.");
-                                }
-
-                                // we make sure that the new player hasn't been assigned to another team, yet
-                                if (getFacade().getAssignments(gameRecord.getId(), newPlayerName).isEmpty()) {
-                                    getFacade().addPlayerAssignment(assignmentNew);
-                                    TeamReactor.overwriteAssignments(new HashSet<PlayerAssignment>(getFacade().getAssignments(assignmentNew.getGame())));
-                                } else {
-                                    Toast.makeText(getContext(), newPlayerName + ": " + getString(R.string.playerAlreadyAssigned), Toast.LENGTH_LONG).show();
-                                }
-                                viewPager.getAdapter().notifyDataSetChanged();
-
-                            }
-                        }
-                    });
-
-                    builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
-
-                    final AlertDialog alertToShow = builder.create();
-                    alertToShow.getWindow().setSoftInputMode(
-                            WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-                    alertToShow.show();
-                    input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-                        @Override
-                        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                            if (actionId == EditorInfo.IME_ACTION_DONE
-                                    || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
-                                alertToShow.getButton(DialogInterface.BUTTON_POSITIVE).performClick();
-                                return true;
-                            }
-                            return false;
-                        }
-                    });
-
-
-                }
-            });
-
         }
         return rootView;
     }

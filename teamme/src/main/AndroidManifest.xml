@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.pasligh.android.teamme">
-    <uses-permission android:name="android.permission.VIBRATE" />
-
-    <uses-feature
-        android:name="there.isnt.a.vibrate.feature"
-        android:required="false" />
-
-    <uses-feature
-        android:name="android.hardware.touchscreen"
-        android:required="false" />
-
-    <supports-screens
-        android:anyDensity="true"
-        android:largeScreens="true"
-        android:normalScreens="true"
-        android:smallScreens="true"></supports-screens>
 
     <application
         android:name="android.app.Application"
@@ -44,14 +29,6 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/addPlayer"
             android:parentActivityName=".GameCreatorActivity" />
-        <!--
-             ATTENTION: This was auto-generated to add Google Play services to your project for
-             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
-        -->
-        <meta-data android:name="com.google.android.gms.version" />
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name=".ReportScoresActivity"
@@ -61,6 +38,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".GameRecordListActivity" />
         </activity>
+
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
@@ -101,6 +79,25 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.pasligh.android.teamme.PlayerListActivity" />
         </activity>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"></supports-screens>
+
+    <uses-feature
+        android:name="there.isnt.a.vibrate.feature"
+        android:required="false" />
+
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
 
 </manifest>

@@ -1,5 +1,7 @@
 package de.pasligh.android.teamme.objects;
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -55,6 +57,12 @@ public class GameRecord implements Serializable {
         assignments = new ArrayList<PlayerAssignment>();
         startedAt = new Date();
         sport = "unknown";
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "#" + getId() + " " + getSport() + " " + getStartedAt();
     }
 
     public GameRecord(List<PlayerAssignment> p_assignments) {
