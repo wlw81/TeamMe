@@ -24,6 +24,7 @@
                 style="?android:attr/textAppearanceLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_thin"
                 android:textColor="@color/abc_primary_text_material_dark"
                 android:textIsSelectable="true"
                 android:textSize="@dimen/big_text"
@@ -42,17 +43,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:orientation="vertical"></android.support.v7.widget.RecyclerView>
         </LinearLayout>
 
 
     </RelativeLayout>
 
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/player_detail_rename_FAB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/selection"
+        android:clickable="true"
+        app:elevation="6dp"
+        app:fabSize="mini"
+        app:layout_anchor="@id/player_detail_FAB"
+        app:layout_anchorGravity="center|left|start"
+        app:pressedTranslationZ="16dp"
+        app:srcCompat="@drawable/write" />
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/player_detail_FAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:src="@drawable/ic_action_delete"
         app:elevation="6dp"

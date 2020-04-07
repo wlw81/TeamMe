@@ -7,6 +7,9 @@
     <TextView
         android:id="@+id/PlayerNameCaptionTextView"
         android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -15,14 +18,15 @@
 
     <AutoCompleteTextView
         android:id="@+id/PlayerNameAutoCompleteTextView"
+        android:hint="@string/player"
+        android:inputType="textPersonName|textCapWords"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/PlayerNameCaptionTextView"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_below="@+id/PlayerNameCaptionTextView"
         android:ems="10"
-        android:hint="@string/player"
-        android:inputType="textPersonName|textCapWords"
         android:lines="1"
         android:paddingTop="16dp" />
 

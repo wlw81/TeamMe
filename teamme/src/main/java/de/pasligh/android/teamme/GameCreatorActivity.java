@@ -48,6 +48,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -274,7 +276,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
                 getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
             }
 
-            Log.w(Flags.LOGTAG, "Darkmode Force is " + Flags.DARKMODE_FORCE);
+            Log.i(Flags.LOGTAG, "Darkmode Force is " + Flags.DARKMODE_FORCE);
             if (bolRecreate) {
                 getDelegate().applyDayNight();
                 recreate();
@@ -320,7 +322,6 @@ public class GameCreatorActivity extends AppCompatActivity implements
     }
 
     private void initView() {
-
         toolbar = (Toolbar) findViewById(R.id.gameCreatorTB);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.gameCreatorDL);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
@@ -393,7 +394,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
                     pa.setRevealed(false);
                 }
                 playerSelectionRV_adapter.notifyDataSetChanged();
-                invalidateOptionsMenu();
+                displayPreselected();
                 break;
             case android.R.id.home:
                 onBackPressed();
@@ -487,6 +488,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
         final GameRecord lastGameRecord = getFacade().getLastGamePlayed();
         if (null != lastGameRecord) {
             try {
+                ((TextView) findViewById(R.id.SportTextView)).setText(getFacade().getLastGamePlayed().getSport().trim());
                 int snackbarShowlenght = Snackbar.LENGTH_INDEFINITE;
                 String caption = getString(R.string.log);
                 List<Score> scoreList = getFacade().getScores(lastGameRecord.getId());
@@ -509,6 +511,8 @@ public class GameCreatorActivity extends AppCompatActivity implements
                 barDisplayed.show();
             } catch (Exception e) {
                 Log.e(Flags.LOGTAG, "Snackbar error: " + e.getMessage());
+            }finally {
+                ((TextView) findViewById(R.id.SportTextView)).requestFocus();
             }
         }
     }
@@ -653,70 +657,9 @@ public class GameCreatorActivity extends AppCompatActivity implements
         PlayerSelectionRV_Adapter.PlayerViewHolder pvh = (PlayerSelectionRV_Adapter.PlayerViewHolder) v.getTag();
         int position = pvh.getAdapterPosition();
         final PlayerAssignment contact = playerSelectionRV_adapter.getAssignments().get(position);
-        // Use the Builder class for convenient dialog construction
-        AlertDialog.Builder builder = new AlertDialog.Builder(
-                GameCreatorActivity.this);
-        builder.setMessage(getString(R.string.playerDeleteDialog_question).replace("$1", contact.getPlayer().getName()))
-                .setPositiveButton(R.string.delete,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,
-                                                int id) {
-                                if (getFacade().deletePlayer(contact.getPlayer().getName())) {
-                                    Toast.makeText(getApplicationContext(), getString(R.string.deleted) + ": " + contact.getPlayer().getName(), Toast.LENGTH_SHORT).show();
-                                    playerSelectionRV_adapter.getAssignments().remove(contact);
-                                    playerSelectionRV_adapter.notifyDataSetChanged();
-                                }
-                            }
-                        }).setNeutralButton(R.string.merge, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                AlertDialog.Builder builderSingle = new AlertDialog.Builder(GameCreatorActivity.this);
-                builderSingle.setTitle(getString(R.string.mergeTo));
-
-                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                        GameCreatorActivity.this,
-                        android.R.layout.simple_selectable_list_item);
-
-                List<Player> allPlayers = getFacade().getPlayers();
-                final List<Player> players = new ArrayList<Player>();
-
-                for (Player p : allPlayers) {
-                    if (!p.getName().equals(contact.getPlayer().getName())) {
-                        arrayAdapter.add(p.getName());
-                        players.add(p);
-                    }
-                }
-
-                builderSingle.setNegativeButton(
-                        getString(R.string.cancel),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-
-                builderSingle.setAdapter(
-                        arrayAdapter,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                getFacade().mergePlayer(contact.getPlayer().getName(), players.get(which).getName());
-                                Toast.makeText(getApplicationContext(), getString(R.string.deleted) + ": " + contact.getPlayer().getName(), Toast.LENGTH_SHORT).show();
-                                playerSelectionRV_adapter.getAssignments().remove(contact);
-                                Map<String, Integer> mapStarsPerPlayer = new HashMap<String, Integer>();
-                                assemblePlayerAssignments(mapStarsPerPlayer);
-                                playerSelectionRV_adapter.getMapStarsPerPlayer().clear();
-                                playerSelectionRV_adapter.getMapStarsPerPlayer().putAll(mapStarsPerPlayer);
-                                playerSelectionRV_adapter.notifyDataSetChanged();
-                            }
-                        });
-                builderSingle.show();
-
-            }
-        });
-        // Create the AlertDialog object and return it
-        builder.create().show();
-        return false;
+        Intent intent = new Intent(getApplicationContext(), PlayerDetailActivity.class);
+        intent.putExtra(PlayerDetailFragment.ARG_ITEM_ID, contact.getPlayer().getName());
+        startActivity(intent);
+        return true;
     }
 }

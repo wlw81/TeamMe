@@ -191,7 +191,6 @@ public class GameRecordDetailFragment extends Fragment {
                                     assignmentNew.setTeam(tabLayout.getSelectedTabPosition() + 1);
                                     assignmentNew.setPlayer(new Player(newPlayerName));
                                     assignmentNew.setRevealed(true);
-                                    assignmentNew.setOrderNumber(getFacade().getNextOrderNo(assignmentNew.getGame(), assignmentNew.getTeam()));
                                     try {
                                         getFacade().persistPlayer(assignmentNew.getPlayer());
                                     } catch (Exception e) {

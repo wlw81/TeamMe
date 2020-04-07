@@ -4,10 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ReportScoresActivity">
 
     <android.support.design.widget.FloatingActionButton
@@ -17,6 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         app:pressedTranslationZ="16dp"
         android:src="@drawable/add" />
 
@@ -26,6 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_below="@+id/ScoreWinnerTV" />
 
     <TextView
@@ -34,6 +34,10 @@
         android:textColor="@color/primary"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text 213"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:fontFamily="@font/roboto_thin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:id="@+id/ScoreWinnerTV"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true" />

@@ -79,6 +79,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.pasligh.android.teamme.PlayerListActivity" />
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

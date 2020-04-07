@@ -1,6 +1,7 @@
 package de.pasligh.android.teamme;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -133,9 +134,7 @@ public class TeamSectionFragment extends Fragment implements View.OnClickListene
 
                     // and move this to the team reactor & backend
                     if (getFacade().deleteAssignments(pa.getGame(), pa.getTeam())) {
-                        int orderNo = 1;
                         for (PlayerAssignment playerAssignment : assignmentsReOrdered) {
-                            playerAssignment.setOrderNumber(orderNo++);
                             getFacade().addPlayerAssignment(playerAssignment);
                             Log.i(Flags.LOGTAG, "Replaced: " + pa.getPlayer());
                         }
@@ -157,15 +156,28 @@ public class TeamSectionFragment extends Fragment implements View.OnClickListene
                 @Override
                 public void onClick(View v) {
                     TeamReactor.getAssignments().remove(pa);
-                    getFacade().deleteAssignment(pa.getGame(), pa.getPlayer().getName());
+                    getFacade().removePlayerFromAssignments(pa.getGame(), pa.getPlayer().getName());
+                    TeamReactor.overwriteAssignments(new HashSet<PlayerAssignment>(getFacade().getAssignments(pa.getGame())));
                     notifyListener();
                     alertToShow.dismiss();
                 }
             });
 
+            Button btnInfo = viewInflated.findViewById(R.id.assignmentInfoBT);
+            btnInfo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), PlayerDetailActivity.class);
+                    intent.putExtra(PlayerDetailFragment.ARG_ITEM_ID, pa.getPlayer().getName());
+
+                    startActivity(intent);
+                    alertToShow.dismiss();
+                }
+            });
+
+
             alertToShow = builder.create();
             alertToShow.show();
-
         } else {
             ((ImageButton) v.findViewById(R.id.PlayerDetailIcon)).performClick();
         }

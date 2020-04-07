@@ -70,17 +70,18 @@ public class BackendFacade {
         return value;
     }
 
+    // creates also a new order no for player
     public long addPlayerAssignment(PlayerAssignment p_playerAssignment) {
         long value = -1;
 
         try {
+            p_playerAssignment.setOrderNumber(getNextOrderNo(p_playerAssignment.getGame(), p_playerAssignment.getTeam()));
             value = getObjDatabase().insert(DatabaseHelper.TABLE_ASSIGNMENTS, null, createAssignment_Values(p_playerAssignment));
         } catch (Exception e) {
             Log.e(Flags.LOGTAG, e.toString());
         }
 
         return value;
-
     }
 
     public long persistPlayer(Player p_playerNew) {
@@ -327,7 +328,7 @@ public class BackendFacade {
     }
 
 
-    public int getNextOrderNo(int p_gameID, int p_teamNo) {
+    private int getNextOrderNo(int p_gameID, int p_teamNo) {
         Cursor mCount = getObjDatabase().rawQuery("select count(*) from " + DatabaseHelper.TABLE_ASSIGNMENTS + " where game_id = $1 and team = $2", new String[]{String.valueOf(p_gameID), String.valueOf(p_teamNo)});
         mCount.moveToFirst();
         int count = mCount.getInt(0);
@@ -449,18 +450,6 @@ public class BackendFacade {
 
         return lastgame;
     }
-
-    public boolean deleteAssignment(int p_gameID, String p_playerID) {
-        Cursor query = null;
-        try {
-            int i = getObjDatabase().delete(DatabaseHelper.TABLE_ASSIGNMENTS, "game_id = ?1 and player_id = ?2", new String[]{String.valueOf(p_gameID), String.valueOf(p_playerID)});
-            return i > 0;
-        } catch (Exception e) {
-            Log.i(Flags.LOGTAG, e.getMessage());
-        }
-        return false;
-    }
-
 
     public boolean deleteAssignments(int p_intGameID) {
         Cursor query = null;
@@ -589,15 +578,35 @@ public class BackendFacade {
         return false;
     }
 
-    public boolean deletePlayer(String p_strPlayername) {
+    public boolean deletePlayer(String p_playername) {
         Cursor query = null;
         try {
-            int i = getObjDatabase().delete(DatabaseHelper.TABLE_PLAYERS, "name = ?1", new String[]{p_strPlayername});
-            return i > 0;
-        } catch (Exception e) {
+            int i = getObjDatabase().delete(DatabaseHelper.TABLE_PLAYERS, "name = ?1", new String[]{p_playername});
+            if (i > 0) {
+                removePlayerFromAssignments(p_playername);
+                return true;
+            }
+        } catch (
+                Exception e) {
             Log.i(Flags.LOGTAG, e.getMessage());
         }
         return false;
+    }
+
+    public void removePlayerFromAssignments(String p_playername) {
+        for (GameRecord game : getGamesByPlayer(p_playername)) {
+            removePlayerFromAssignments(game.getId(), p_playername);
+        }
+    }
+
+    public void removePlayerFromAssignments(int p_gameID, String p_playername) {
+        List<PlayerAssignment> assignments = getAssignments(p_gameID);
+        deleteAssignments(p_gameID);
+        for (PlayerAssignment pa : assignments) {
+            if (!pa.getPlayer().getName().equals(p_playername)) {
+                addPlayerAssignment(pa);
+            }
+        }
     }
 
 
