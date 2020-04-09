@@ -95,12 +95,8 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
             scoreList.addAll(createDummyScores(0));
             findViewById(R.id.addScoreFAB).setVisibility(View.INVISIBLE);
         }
-        Typeface tf = Typeface.createFromAsset(getAssets(),
-                "fonts/Roboto-Thin.ttf");
 
-        ((TextView) findViewById(R.id.ScoreWinnerTV)).setTypeface(tf);
-
-        adapter = new ScoreRV_Adapter(getApplicationContext(), scoreList, tf, this);
+        adapter = new ScoreRV_Adapter(getApplicationContext(), scoreList, this);
         rv.setAdapter(adapter);
         java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         ((FloatingActionButton) findViewById(R.id.addScoreFAB)).setOnClickListener(this);
@@ -161,7 +157,7 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
         return scoreList;
     }
 
-    public void publishWinningTeam(List<Score> p_scoreList){
+    public void publishWinningTeam(List<Score> p_scoreList) {
         int winningTeam = TextHelper.getWinnerTeam_by_RoundsOrScore(p_scoreList, adapter.getItemCount(), teamCount);
         if (winningTeam != Flags.DRAW_TEAM) {
             ((TextView) findViewById(R.id.ScoreWinnerTV)).setText(getString(R.string.team) + " " + TeamReactor.getAssignmentsByTeam(winningTeam).get(0).getPlayer().getName() + " " + getString(R.string.wins) + "!");
@@ -200,14 +196,14 @@ public class ReportScoresActivity extends AppCompatActivity implements ScoreRV_I
     public void recieveHolder(final ScoreRV_Adapter.RoundResultViewHolder p_holder, final List<Score> lisScore) {
         for (final Score s : lisScore) {
             Log.i(Flags.LOGTAG, "recieve holder for " + s);
-            Button buttonTeam = new Button(new ContextThemeWrapper(getApplication(), R.style.AppTheme));
+            final Button buttonTeam = new Button(getApplicationContext());
             buttonTeam.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             buttonTeam.setText(getString(R.string.team) + " " + (TeamReactor.getAssignmentsByTeam(s.getTeamNr()).get(0).getPlayer().getName()) + ": " + s.getScoreCount() + " " + getString(R.string.points));
             buttonTeam.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (null != s) {
-                        View viewInflated = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_score_input, (ViewGroup) findViewById(android.R.id.content), false);
+                        View viewInflated = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_score_input, (ViewGroup) findViewById(R.id.gameRecordCV), false);
                         // Set up the input
                         final EditText input = (EditText) viewInflated.findViewById(R.id.ScoreInputTV);
                         if (s.getScoreCount() != 0) {

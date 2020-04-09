@@ -158,13 +158,14 @@ public class PlayerDetailFragment extends android.support.v4.app.Fragment implem
 
 
         } else if (v.getId() == R.id.player_detail_rename_FAB) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),  R.style.AlertDialogCustom);
             builder.setTitle(R.string.playerinputtext);
 
             // Set up the input
             final EditText input = new EditText(getContext());
             input.setText(player.getName(), TextView.BufferType.EDITABLE);
             input.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+            input.setSingleLine();
             builder.setView(input);
 
             // Set up the buttons

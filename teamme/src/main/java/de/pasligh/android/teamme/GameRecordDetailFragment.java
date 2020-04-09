@@ -3,6 +3,8 @@ package de.pasligh.android.teamme;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -10,6 +12,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.ShareActionProvider;
+import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -33,7 +36,6 @@ import de.pasligh.android.teamme.objects.Player;
 import de.pasligh.android.teamme.objects.PlayerAssignment;
 import de.pasligh.android.teamme.tools.Flags;
 import de.pasligh.android.teamme.tools.TeamReactor;
-import de.pasligh.android.teamme.tools.TeamView_Interface;
 import de.pasligh.android.teamme.tools.TextHelper;
 
 /**
@@ -163,22 +165,26 @@ public class GameRecordDetailFragment extends Fragment {
                         startActivity(reportScores);
                     }
                 });
+
                 rootView.findViewById(R.id.gamerecordDetailAddPlayerFAB).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-                        View viewInflated = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_player_input, (ViewGroup) rootView, false);
                         // Set up the input
-                        final AutoCompleteTextView input = (AutoCompleteTextView) viewInflated.findViewById(R.id.PlayerInputTV);
-
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext()).setView(viewInflated);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),  R.style.AlertDialogCustom);
                         builder.setTitle(getString(R.string.addPlayer));
 
                         // Set up the input
+                        final AutoCompleteTextView input = new AutoCompleteTextView(getApplicationContext());
                         ArrayAdapter<String> playerAdapter = new ArrayAdapter<String>(getContext(),
                                 android.R.layout.simple_dropdown_item_1line, getFacade()
                                 .getPlayersAsStringArray());
                         input.setAdapter(playerAdapter);
+                        input.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+                        input.setHint(R.string.playername);
+                        input.setSingleLine();
+                        input.setBackgroundTintList(ColorStateList.valueOf(getContext().getColor(R.color.accent)));
+                        input.setTextColor(getContext().getColor(R.color.primary_light));
+                        builder.setView(input);
 
                         // Set up the buttons
                         builder.setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
@@ -240,7 +246,7 @@ public class GameRecordDetailFragment extends Fragment {
             } catch (Exception e) {
                 Log.e(Flags.LOGTAG, "Gamerecord manipulated: " + gameRecord);
                 getFacade().deleteGame(gameRecord.getId());
-                Toast.makeText(getApplicationContext(), ""+  gameRecord+" " +getString(R.string.deleted), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "" + gameRecord + " " + getString(R.string.deleted), Toast.LENGTH_LONG).show();
             }
         }
         return rootView;

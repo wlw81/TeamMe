@@ -31,11 +31,9 @@ public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundR
     ScoreRV_Interface listener;
 
     Context ctxt;
-    Typeface tf;
 
-    public ScoreRV_Adapter(Context p_context, List<Score> p_scores, Typeface p_tf, ScoreRV_Interface p_listener) {
+    public ScoreRV_Adapter(Context p_context, List<Score> p_scores, ScoreRV_Interface p_listener) {
         ctxt = p_context;
-        tf = p_tf;
         listener = p_listener;
         updateScores(p_scores, false);
     }
@@ -73,8 +71,6 @@ public class ScoreRV_Adapter extends RecyclerView.Adapter<ScoreRV_Adapter.RoundR
         Score score = null;
         score = (Score) roundResultMap.get(position).get(0);
         holder.playerName.setText(String.valueOf(score.getRoundNr() + 1));
-        holder.playerName.setTypeface(tf);
-        holder.round.setTypeface(tf);
         holder.getLayoutButtons().removeAllViews();
 
         List<Score> lisScore = getRoundResultMap().get(score.getRoundNr());

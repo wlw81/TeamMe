@@ -41,4 +41,5 @@
 
     </android.support.v4.view.ViewPager>
 
+    <include layout="@layout/dialog_assignment_change" />
 </android.support.design.widget.CoordinatorLayout>

@@ -270,6 +270,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
         Flags.DARKMODE_FORCE = sharedPref.getBoolean(Flags.DARKMODE_PREFERENCES, false);
 
         if (before != Flags.DARKMODE_FORCE) {
+
             if (Flags.DARKMODE_FORCE) {
                 getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             } else {
@@ -511,7 +512,7 @@ public class GameCreatorActivity extends AppCompatActivity implements
                 barDisplayed.show();
             } catch (Exception e) {
                 Log.e(Flags.LOGTAG, "Snackbar error: " + e.getMessage());
-            }finally {
+            } finally {
                 ((TextView) findViewById(R.id.SportTextView)).requestFocus();
             }
         }
