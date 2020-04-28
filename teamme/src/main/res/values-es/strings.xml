@@ -84,6 +84,6 @@
     <string name="luck">¡Buena suerte!</string>
     <string name="reset">Restablecer</string>
     <string name="remove">Quitar</string>
-    <string name="pref_description_darkmode">Siempre forzar el modo oscuro.</string>
+    <string name="pref_description_darkmode">Siempre forzar el modo oscuro.\nPuede requerir un reinicio.</string>
     <string name="pref_darkmode">Dark Mode</string>
 </resources>

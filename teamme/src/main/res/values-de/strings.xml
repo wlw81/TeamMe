@@ -85,5 +85,5 @@
     <string name="reset">Zurücksetzen</string>
     <string name="remove">Entfernen</string>
     <string name="pref_darkmode">Dark Mode</string>
-    <string name="pref_description_darkmode">Dark Mode immer anwenden.</string>
+    <string name="pref_description_darkmode">Dark Mode immer anwenden.\nErfordert möglicherweise einen Neustart.</string>
 </resources>
