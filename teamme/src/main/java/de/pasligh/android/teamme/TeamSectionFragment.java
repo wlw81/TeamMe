@@ -101,6 +101,9 @@ public class TeamSectionFragment extends Fragment implements View.OnClickListene
                     .getName());
             playerDetail.setOnClickListener(TeamSectionFragment.this);
             ((ImageButton) playerDetail.findViewById(R.id.PlayerDetailIcon)).setOnClickListener(TeamSectionFragment.this);
+            ((TextView) playerDetail.findViewById(R.id.PlayerPositionTextView)).setOnClickListener(TeamSectionFragment.this);
+            ((TextView) playerDetail.findViewById(R.id.PlayerNameTextView)).setOnClickListener(TeamSectionFragment.this);
+
             layout.addView(playerDetail);
         }
 
@@ -109,72 +112,77 @@ public class TeamSectionFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        if (v instanceof ImageButton) {
+        try {
+            if ((v.getId() == R.id.PlayerDetailIcon) || (v.getId() == R.id.PlayerPositionTextView) || (v.getId() == R.id.PlayerNameTextView)) {
 
-            final PlayerAssignment pa = assignments.get(layout.indexOfChild(((View) v.getParent())));
-            final List<PlayerAssignment> assignmentsReOrdered = getAssignmentsByTeam(sectionNr);
+                final PlayerAssignment pa = assignments.get(layout.indexOfChild(((View) v.getParent())));
+                final List<PlayerAssignment> assignmentsReOrdered = getAssignmentsByTeam(sectionNr);
 
-            final Button btn = bottom_sheet.findViewById(R.id.assignmentPromoteBT);
-            TextView tv = bottom_sheet.findViewById(R.id.assignmentNameTV);
-            tv.setText(pa.getPlayer().getName());
-            btn.setEnabled(assignmentsReOrdered.size() > 1);
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // rearrange
-                    String oldCaptainName = assignmentsReOrdered.get(0).getPlayer().getName();
-                    String newCaptainName = pa.getPlayer().getName();
+                final Button btn = bottom_sheet.findViewById(R.id.assignmentPromoteBT);
+                TextView tv = bottom_sheet.findViewById(R.id.assignmentNameTV);
+                tv.setText(pa.getPlayer().getName());
+                btn.setEnabled(assignmentsReOrdered.size() > 1);
+                btn.setOnClickListener(new View.OnClickListener() {
+                                           @Override
+                                           public void onClick(View v) {
+                                               // rearrange
+                                               String oldCaptainName = assignmentsReOrdered.get(0).getPlayer().getName();
+                                               String newCaptainName = pa.getPlayer().getName();
 
-                    assignmentsReOrdered.get(0).getPlayer().setName(newCaptainName);
-                    assignmentsReOrdered.get(pa.getOrderNumber() - 1).getPlayer().setName(oldCaptainName);
+                                               assignmentsReOrdered.get(0).getPlayer().setName(newCaptainName);
+                                               assignmentsReOrdered.get(pa.getOrderNumber() - 1).getPlayer().setName(oldCaptainName);
 
-                    // and move this to the team reactor & backend
-                    if (getFacade().deleteAssignments(pa.getGame(), pa.getTeam())) {
-                        for (PlayerAssignment playerAssignment : assignmentsReOrdered) {
-                            getFacade().addPlayerAssignment(playerAssignment);
-                            Log.i(Flags.LOGTAG, "New: " + playerAssignment);
-                        }
+                                               // and move this to the team reactor & backend
+                                               if (getFacade().deleteAssignments(pa.getGame(), pa.getTeam())) {
+                                                   for (PlayerAssignment playerAssignment : assignmentsReOrdered) {
+                                                       getFacade().addPlayerAssignment(playerAssignment);
+                                                       Log.i(Flags.LOGTAG, "New: " + playerAssignment);
+                                                   }
+                                               }
+
+                                               Log.i(Flags.LOGTAG, "Team change: " + newCaptainName + " is now el capitano!");
+                                               TeamReactor.overwriteAssignments(new HashSet<PlayerAssignment>(getFacade().getAssignments(pa.getGame())));
+
+                                               notifyListener();
+                                           }
+                                       }
+                );
+
+                if (pa.getOrderNumber() == 1) {
+                    btn.setVisibility(View.GONE);
+                } else {
+                    btn.setVisibility(View.VISIBLE);
+                }
+
+                Button btnKick = bottom_sheet.findViewById(R.id.assignmentKillBT);
+                btnKick.setEnabled(assignmentsReOrdered.size() > 1);
+                btnKick.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        TeamReactor.getAssignments().remove(pa);
+                        getFacade().removePlayerFromAssignments(pa.getGame(), pa.getPlayer().getName());
+                        TeamReactor.overwriteAssignments(new HashSet<PlayerAssignment>(getFacade().getAssignments(pa.getGame())));
+                        notifyListener();
                     }
+                });
 
-                    Log.i(Flags.LOGTAG, "Team change: " + newCaptainName + " is now el capitano!");
-                    TeamReactor.overwriteAssignments(new HashSet<PlayerAssignment>(getFacade().getAssignments(pa.getGame())));
+                Button btnInfo = bottom_sheet.findViewById(R.id.assignmentInfoBT);
+                btnInfo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getContext(), PlayerDetailActivity.class);
+                        intent.putExtra(PlayerDetailFragment.ARG_ITEM_ID, pa.getPlayer().getName());
 
-                    notifyListener();
-                }
-            });
+                        startActivity(intent);
+                    }
+                });
 
-            if (pa.getOrderNumber() == 1) {
-                btn.setVisibility(View.GONE);
-            } else {
-                btn.setVisibility(View.VISIBLE);
+                sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                Animation bounce = (Animation) AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
+                ((View) v.getParent()).findViewById(R.id.PlayerDetailIcon).startAnimation(bounce);
             }
-
-            Button btnKick = bottom_sheet.findViewById(R.id.assignmentKillBT);
-            btnKick.setEnabled(assignmentsReOrdered.size() > 1);
-            btnKick.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    TeamReactor.getAssignments().remove(pa);
-                    getFacade().removePlayerFromAssignments(pa.getGame(), pa.getPlayer().getName());
-                    TeamReactor.overwriteAssignments(new HashSet<PlayerAssignment>(getFacade().getAssignments(pa.getGame())));
-                    notifyListener();
-                }
-            });
-
-            Button btnInfo = bottom_sheet.findViewById(R.id.assignmentInfoBT);
-            btnInfo.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getContext(), PlayerDetailActivity.class);
-                    intent.putExtra(PlayerDetailFragment.ARG_ITEM_ID, pa.getPlayer().getName());
-
-                    startActivity(intent);
-                }
-            });
-
-            sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-            Animation bounce = (Animation) AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
-            v.startAnimation(bounce);
+        } catch (Exception e) {
+            Log.e(Flags.LOGTAG, "Problem with on click event: " + e.getLocalizedMessage());
         }
     }
 
