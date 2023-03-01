@@ -30,7 +30,7 @@
         <item name="android:background">@color/primary_light</item>
     </style>
 
-    <style name="bottom_sheet_item" parent="Widget.MaterialComponents.Button.TextButton">
+    <style name="bottom_sheet_item" parent="Widget.AppCompat.Button">
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
     </style>
 
