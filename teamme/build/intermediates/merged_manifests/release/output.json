@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "applicationId": "de.pasligh.android.teamme",
+  "variantType": "BASE_APK",
+  "elements": [
+    {
+      "outputType": {
+        "type": "MERGED_MANIFESTS"
+      },
+      "apkData": {
+        "type": "MAIN",
+        "splits": [],
+        "versionCode": 95,
+        "versionName": "5.0.8",
+        "outputFile": "teamme-release.apk",
+        "fullName": "release",
+        "baseName": "release",
+        "dirName": ""
+      },
+      "path": "AndroidManifest.xml",
+      "properties": {
+        "packageId": "de.pasligh.android.teamme",
+        "split": "",
+        "minSdkVersion": "23"
+      }
+    }
+  ]
+}

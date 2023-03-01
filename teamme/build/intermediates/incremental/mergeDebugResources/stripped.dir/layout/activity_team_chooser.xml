@@ -1,0 +1,158 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/TeamChooserFormularLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_alignParentBottom="true"
+    android:gravity="center"
+    tools:context=".TeamChooserActivity">
+
+    <RelativeLayout
+        android:id="@+id/TeamChooserControlsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:visibility="visible">
+
+        <include
+            android:id="@+id/InputPlayerIncludeLayout"
+            layout="@layout/activity_team_chooser_inputhead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <include
+            android:id="@+id/NextPlayerIncludeLayout"
+            layout="@layout/activity_team_chooser_nextplayerhead"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/TeamNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TeamIntroductionTextView"
+            android:layout_toEndOf="@+id/TeamCaptionTextView"
+            android:gravity="bottom|right"
+            android:lineSpacingExtra="0dp"
+            android:lines="1"
+            android:singleLine="true"
+            android:textColor="@color/primary_text"
+            android:textSize="64sp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/TeamCaptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:text="@string/team"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="64sp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/TeamIntroductionTextView"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/TeamCaptionTextView"
+            android:layout_alignEnd="@+id/NextPlayerIncludeLayout"
+            android:layout_alignParentLeft="true"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/BumperLeftLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/bumperHeight"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/BumperLeftDrawable"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="@dimen/bumperMargin"
+            android:layout_marginLeft="@dimen/bumperMargin"
+            android:layout_weight="4"
+            android:adjustViewBounds="true"
+            android:background="@drawable/bumper"
+            android:contentDescription="@string/shake"
+            android:orientation="horizontal" />
+
+        <LinearLayout
+            android:id="@+id/BumperLeftSpace"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:orientation="horizontal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/BumperRightLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/bumperHeight"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/BumperRightSpace"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:orientation="horizontal" />
+
+        <LinearLayout
+            android:id="@+id/BumperRightDrawable"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/bumperMargin"
+            android:layout_marginRight="@dimen/bumperMargin"
+            android:layout_weight="4"
+            android:adjustViewBounds="true"
+            android:background="@drawable/bumper2"
+            android:contentDescription="@string/shake"
+            android:orientation="horizontal" >
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/ShakeTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/text_margin"
+        android:gravity="center"
+        android:shadowColor="@color/primary"
+        android:shadowDx="0.0"
+        android:shadowDy="0.0"
+        android:shadowRadius="8"
+        android:text="@string/shake"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        android:visibility="invisible" />
+
+</RelativeLayout>

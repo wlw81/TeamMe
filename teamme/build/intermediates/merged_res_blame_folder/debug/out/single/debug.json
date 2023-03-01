@@ -1,0 +1,402 @@
+[
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\menu_report_scores.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\menu\\report_scores.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_info_black_24dp.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-hdpi\\ic_info_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\anim_shake1.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\anim\\shake1.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_activity_team_chooser_nextplayerhead.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\activity_team_chooser_nextplayerhead.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable_add.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable\\add.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\menu_team_overview.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\menu\\team_overview.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable_forward_white.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable\\forward_white.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_sync_black_24dp.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-hdpi\\ic_sync_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\raw_right.wav.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\raw\\right.wav"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable_roundedbutton.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable\\roundedbutton.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_activity_player_detail.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\activity_player_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_notifications_black_24dp.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-hdpi\\ic_notifications_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout-w900dp_activity_gamerecord_list.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout-w900dp\\activity_gamerecord_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\xml_pref_notification.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\xml\\pref_notification.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable_roundedbuttonselected.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable\\roundedbuttonselected.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable_my_btn_tgl.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable\\my_btn_tgl.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable_check.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable\\check.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\anim_bounce.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\anim\\bounce.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_notifications_black_24dp.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-xxxhdpi\\ic_notifications_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_activity_team_chooser.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\activity_team_chooser.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable_images_rotate_left.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable\\images_rotate_left.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\raw_shutter.wav.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\raw\\shutter.wav"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_bumper2.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-xhdpi\\bumper2.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_sync_black_24dp.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-xxxhdpi\\ic_sync_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_dialog_assignment_change.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\dialog_assignment_change.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_header.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\header.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_player_detail.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\player_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_baseline_person_black_18dp.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-hdpi\\baseline_person_black_18dp.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\font_roboto_thin.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\font\\roboto_thin.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_activity_gamerecord_detail.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\activity_gamerecord_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_team.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-xhdpi\\team.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_info_black_24dp.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-mdpi\\ic_info_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_collection.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-xhdpi\\collection.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\font_roboto_black.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\font\\roboto_black.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_gamerecord_detail.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\gamerecord_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_fragment_team_overview.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\fragment_team_overview.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_activity_gamerecord_list.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\activity_gamerecord_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\raw_beep.wav.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\raw\\beep.wav"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable_header.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable\\header.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\menu_game_creator.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\menu\\game_creator.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\color_state_list.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\color\\state_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable_action_about.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable\\action_about.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout-w900dp_activity_player_list.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout-w900dp\\activity_player_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable_action_settings.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable\\action_settings.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_notifications_black_24dp.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-xhdpi\\ic_notifications_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_card_roundresult.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\card_roundresult.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_actionbar.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-xxhdpi\\actionbar.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_next.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-xhdpi\\next.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable_roundedcorner.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable\\roundedcorner.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable_ic_action_delete.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable\\ic_action_delete.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable_write.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable\\write.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable_bumper.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable\\bumper.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-v21_ic_notifications_black_24dp.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-v21\\ic_notifications_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_player_list_content.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\player_list_content.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\anim_enter_from_right.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\anim\\enter_from_right.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_card_game_record.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\card_game_record.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_team_spinner_item.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\team_spinner_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\anim_glow.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\anim\\glow.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-v21_ic_info_black_24dp.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-v21\\ic_info_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_player.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-xhdpi\\player.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_info_black_24dp.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-xhdpi\\ic_info_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-v21_ic_sync_black_24dp.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-v21\\ic_sync_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_dialog_score_input.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\dialog_score_input.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_activity_game_creator.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\activity_game_creator.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable_collections_view_as_list.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable\\collections_view_as_list.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable_progressbar.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable\\progressbar.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_activity_game_list.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\activity_game_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_notifications_black_24dp.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-xxhdpi\\ic_notifications_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_info_black_24dp.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-xxhdpi\\ic_info_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_player_selection_item.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\player_selection_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\menu_player_selection.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\menu\\player_selection.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_activity_team_chooser_inputhead.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\activity_team_chooser_inputhead.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\anim_left.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\anim\\left.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_notifications_black_24dp.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-mdpi\\ic_notifications_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_sync_black_24dp.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-xxhdpi\\ic_sync_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_info_black_24dp.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-xxxhdpi\\ic_info_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_sync_black_24dp.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-mdpi\\ic_sync_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_gamerecord_list_content.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\gamerecord_list_content.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\anim_fadein.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\anim\\fadein.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\raw_fanfare_short.wav.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\raw\\fanfare_short.wav"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\anim_shake2.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\anim\\shake2.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\xml_pref_general.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\xml\\pref_general.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\xml_pref_data_sync.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\xml\\pref_data_sync.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\raw_left.wav.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\raw\\left.wav"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable_list_numbered_white.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable\\list_numbered_white.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_sync_black_24dp.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-xhdpi\\ic_sync_black_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_fragment_game_statistics.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\fragment_game_statistics.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\menu_team_chooser.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\menu\\team_chooser.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\xml_pref_headers.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\xml\\pref_headers.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_card_player.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\card_player.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_fragment_player_detail.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\fragment_player_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\anim_right.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\anim\\right.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable_social_person.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable\\social_person.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\anim_fadeout.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\anim\\fadeout.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_activity_report_scores.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\activity_report_scores.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_next_white.png.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\drawable-xhdpi\\next_white.png"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_activity_game_statistics.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\activity_game_statistics.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\res\\merged\\debug\\layout_activity_player_list.xml.flat",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\activity_player_list.xml"
+    }
+]

@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "artifactType": {
+    "type": "PROCESSED_RES",
+    "kind": "Directory"
+  },
+  "applicationId": "de.pasligh.android.teamme",
+  "variantName": "processDebugResources",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "versionCode": 95,
+      "versionName": "5.0.8",
+      "outputFile": "resources-debug.ap_"
+    }
+  ]
+}

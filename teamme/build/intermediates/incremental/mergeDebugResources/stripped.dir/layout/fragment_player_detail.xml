@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/PlayerDetailLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/PlayerPositionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/PlayerDetailIcon"
+        android:layout_toRightOf="@+id/PlayerDetailIcon"
+        android:text="@string/playerposition"
+        android:layout_marginLeft="@dimen/text_margin"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/PlayerNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/PlayerPositionTextView"
+        android:layout_marginLeft="@dimen/text_margin"
+        android:layout_toRightOf="@+id/PlayerDetailIcon"
+        android:text="@string/playername"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <android.support.v7.widget.AppCompatImageButton
+        android:id="@+id/PlayerDetailIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/player"
+        android:background="@drawable/roundedbutton"
+        android:padding="@dimen/small_text_margin"
+        android:src="@drawable/baseline_person_black_18dp" />
+
+</RelativeLayout>

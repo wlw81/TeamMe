@@ -1,0 +1,7 @@
+#Wed Mar 01 19:46:47 CET 2023
+base.0=C\:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+path.1=classes.dex
+renamed.1=classes2.dex
+path.0=classes.dex
+renamed.0=classes.dex
+base.1=C\:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\classes.dex

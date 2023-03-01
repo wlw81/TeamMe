@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_player_list.xml",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\activity_player_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_gamerecord_list.xml",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\activity_gamerecord_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_game_creator.xml",
+        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout\\activity_game_creator.xml"
+    }
+]

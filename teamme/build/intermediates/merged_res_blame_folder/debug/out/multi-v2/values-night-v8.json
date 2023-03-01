@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\thoma\\.gradle\\caches\\transforms-3\\a035362feec9e4b3d27217cfd4c85e83\\transformed\\appcompat-v7-28.0.0\\res\\values-night-v8\\values-night-v8.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,125,209,293,389,491,593",
+                        "endColumns": "69,83,83,95,101,101,93",
+                        "endOffsets": "120,204,288,384,486,588,682"
+                    },
+                    "to": {
+                        "startLines": "10,11,12,13,14,15,16",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "409,479,563,647,743,845,947",
+                        "endColumns": "69,83,83,95,101,101,93",
+                        "endOffsets": "474,558,642,738,840,942,1036"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\values-night\\colors.xml",
+                    "from": {
+                        "startLines": "6,10,9,3,4,5,7,8",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "199,378,337,59,102,150,241,287",
+                        "endColumns": "40,41,39,41,46,47,44,48",
+                        "endOffsets": "235,415,372,96,144,193,281,331"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,96,138,178,220,267,315,360",
+                        "endColumns": "40,41,39,41,46,47,44,48",
+                        "endOffsets": "91,133,173,215,262,310,355,404"
+                    }
+                }
+            ]
+        }
+    ]
+}

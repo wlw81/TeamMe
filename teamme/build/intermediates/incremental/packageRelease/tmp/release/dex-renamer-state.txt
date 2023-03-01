@@ -1,0 +1,4 @@
+#Thu Sep 10 17:51:08 CEST 2020
+base.0=C\:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

@@ -1,0 +1,173 @@
+
+                                                       
+                                                   
+
+    
+
+                                           
+
+                 
+                                    
+                                    
+           
+
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/gameCreatorDL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".GameCreatorActivity" android:tag="layout/activity_game_creator_0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+
+        <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/gameCreatorCL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/playerSelectionBlankTV2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="@dimen/activity_bigger_margin"
+                android:text="@string/gameempty"
+                android:textColor="@color/primary"
+                android:textSize="@dimen/big_text"
+                android:visibility="gone" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/playerSelectionRV2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/newGameFAB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:src="@drawable/actionbar"
+                app:elevation="6dp"
+                app:layout_anchor="@id/playerSelectionRV2"
+                app:layout_behavior="de.pasligh.android.teamme.tools.FABfloat"
+                app:layout_anchorGravity="bottom|right|end"
+                app:pressedTranslationZ="@dimen/text_margin" />
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/gameCreatorAB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/gameCreatorTB"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/small_text_margin"
+                    android:paddingTop="@dimen/smaller_margin">
+
+                    <TextView
+                        android:id="@+id/PreSelectionTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:paddingTop="@dimen/small_text_margin"
+                        android:gravity="center"
+                        android:textColor="@color/primary_light"
+                        android:layout_below="@+id/PlayerTeamSelectionLinearLayout"
+                        android:text="@string/preselection"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/SportTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:ems="10"
+                        android:hint="@string/sport"
+                        android:imeOptions="actionDone"
+                        android:inputType="textCapWords"
+                        android:lines="1" />
+
+                    <LinearLayout
+                        android:id="@+id/PlayerTeamSelectionLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:layout_height="@dimen/selection"
+                        android:layout_below="@id/SportTextView"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+
+                        <NumberPicker
+                            android:id="@+id/TeamCountNumberPicker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/TeamsTextView"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/TeamsTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingLeft="@dimen/small_text_margin"
+                            android:text="@string/teams"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <NumberPicker
+                            android:id="@+id/PlayerCountNumberPicker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_below="@+id/additionalPlayerCountTextView"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/additionalPlayerCountTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_weight="1"
+                            android:paddingLeft="@dimen/small_text_margin"
+                            android:text="@string/playercount"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </android.support.design.widget.AppBarLayout>
+
+        </android.support.design.widget.CoordinatorLayout>
+
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/navigation_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/header"
+            app:itemTextAppearance="?android:attr/textAppearanceMedium"
+            app:menu="@menu/game_creator" />
+
+    </android.support.v4.widget.DrawerLayout>
+         

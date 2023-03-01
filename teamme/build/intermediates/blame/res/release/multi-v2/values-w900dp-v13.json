@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-w900dp-v13\\values-w900dp-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\values-w900dp\\dimens.xml",
+                    "from": {
+                        "startLines": "8,6,9,7",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "308,206,364,265",
+                        "endColumns": "54,57,44,41",
+                        "endOffsets": "358,259,404,302"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,110,168,213",
+                        "endColumns": "54,57,44,41",
+                        "endOffsets": "105,163,208,250"
+                    }
+                }
+            ]
+        }
+    ]
+}

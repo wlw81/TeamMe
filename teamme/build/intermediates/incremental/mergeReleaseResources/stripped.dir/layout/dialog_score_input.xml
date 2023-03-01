@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:theme="@style/AppTheme">
+
+        <EditText
+            android:id="@+id/ScoreInputTV"
+            android:textColor="@color/primary_light"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_bigger_margin"
+            android:ems="10"
+            android:hint="@string/points"
+            android:imeOptions="actionDone"
+            android:inputType="numberSigned"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+             />
+
+</FrameLayout>

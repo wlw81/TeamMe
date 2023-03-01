@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Zur Startseite"</string>
+    <string msgid="1594238315039666878" name="abc_action_bar_up_description">"Nach oben"</string>
+    <string msgid="3588849162933574182" name="abc_action_menu_overflow_description">"Weitere Optionen"</string>
+    <string msgid="4076576682505996667" name="abc_action_mode_done">"Fertig"</string>
+    <string msgid="7468859129482906941" name="abc_activity_chooser_view_see_all">"Alle ansehen"</string>
+    <string msgid="2031811694353399454" name="abc_activitychooserview_choose_application">"App auswählen"</string>
+    <string msgid="121134116657445385" name="abc_capital_off">"Aus"</string>
+    <string msgid="3405795526292276155" name="abc_capital_on">"An"</string>
+    <string msgid="1302280443949172191" name="abc_menu_alt_shortcut_label">"Alt +"</string>
+    <string msgid="1324831542140195728" name="abc_menu_ctrl_shortcut_label">"Strg +"</string>
+    <string msgid="8362206064229013510" name="abc_menu_delete_shortcut_label">"Löschen"</string>
+    <string msgid="8341180395196749340" name="abc_menu_enter_shortcut_label">"Eingabetaste"</string>
+    <string msgid="4792426091847145555" name="abc_menu_function_shortcut_label">"Funktionstaste +"</string>
+    <string msgid="7643535737296831317" name="abc_menu_meta_shortcut_label">"Meta-Taste +"</string>
+    <string msgid="8126296154200614004" name="abc_menu_shift_shortcut_label">"Umschalttaste +"</string>
+    <string msgid="2378550843553983978" name="abc_menu_space_shortcut_label">"Leertaste +"</string>
+    <string msgid="9002602288060866689" name="abc_menu_sym_shortcut_label">"Sym-Taste +"</string>
+    <string msgid="1351762916121158029" name="abc_prepend_shortcut_label">"Menütaste +"</string>
+    <string msgid="7723749260725869598" name="abc_search_hint">"Suchen…"</string>
+    <string msgid="3691816814315814921" name="abc_searchview_description_clear">"Suchanfrage löschen"</string>
+    <string msgid="2550479030709304392" name="abc_searchview_description_query">"Suchanfrage"</string>
+    <string msgid="8264924765203268293" name="abc_searchview_description_search">"Suchen"</string>
+    <string msgid="8928215447528550784" name="abc_searchview_description_submit">"Suchanfrage senden"</string>
+    <string msgid="893419373245838918" name="abc_searchview_description_voice">"Sprachsuche"</string>
+    <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Freigeben für"</string>
+    <string msgid="3300176832234831527" name="abc_shareactionprovider_share_with_application">"Mit <ns1:g id="APPLICATION_NAME">%s</ns1:g> teilen"</string>
+    <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Minimieren"</string>
+    <string name="about">Über</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="addPlayer">Neuer Spieler</string>
+    <string name="announce">Ankündigen</string>
+    <string name="app_name">TeamMe</string>
+    <string name="assignmenttext_captain">du bist der Anführer von</string>
+    <string name="assignmenttext_part1">du bist Nummer</string>
+    <string name="assignmenttext_part2">im</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="cancelDialog_negative">Weitermachen</string>
+    <string name="cancelDialog_positive">Neu beginnen</string>
+    <string name="cancelDialog_question">Alle Team Zuteilungen verwerfen und ganz von vorne beginnen?</string>
+    <string name="captain">Kapitän</string>
+    <string name="decisiontext">Die Teams stehen fest!</string>
+    <string name="delete">Löschen</string>
+    <string name="deleted">Gelöscht</string>
+    <string name="draw">Unentschieden</string>
+    <string name="finish">Fertig</string>
+    <string name="forceMove">wurde umgesetzt.</string>
+    <string name="four">4</string>
+    <string name="gamecounttext">Spiele gespielt bisher</string>
+    <string name="gamedatetext">Letztes Mal gespielt</string>
+    <string name="gameempty">Keine</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="jump2game">Spielausgänge ansehen</string>
+    <string name="log">Eintragen</string>
+    <string name="log_complete">Hinzufügen</string>
+    <string name="luck">Viel Glück!</string>
+    <string name="maxplayers_reached">Maximale Spieleranzahl erreicht.</string>
+    <string name="merge">Zusammenführen</string>
+    <string name="mergeTo">Zusammenführen zu</string>
+    <string name="more">mehr</string>
+    <string name="mostactiveplayers">Die aktivsten Spieler</string>
+    <string name="newGameText">Neues Spiel beginnen</string>
+    <string name="number">Nummer</string>
+    <string name="ok_button">OK</string>
+    <string name="overview">Überblick</string>
+    <string name="player">Spieler</string>
+    <string name="playerAlreadyAssigned">Der Spielername ist bereits vergeben.</string>
+    <string name="playerDeleteDialog_question">$1 unwiderruflich löschen?</string>
+    <string name="playercount">Spieler (gesamt)</string>
+    <string name="playerinputtext">Mein Name lautet</string>
+    <string name="playername">Spielername</string>
+    <string name="playernext">Nächster</string>
+    <string name="playerposition">Spielerposition</string>
+    <string name="playersleftwithoutteam"> Spieler noch ohne Team.</string>
+    <string name="points">Punkte</string>
+    <string name="pref_autoshake">Automatisch schütteln</string>
+    <string name="pref_darkmode">Dark Mode</string>
+    <string name="pref_description_autoshake">Wenn Sie diese Option deaktivieren, muss der Spieler das Gerät schütteln um zugeteilt zu werden.</string>
+    <string name="pref_description_darkmode">Dark Mode immer anwenden.\nErfordert möglicherweise einen Neustart.</string>
+    <string name="pref_description_preselection">Zeigt einen Bildschirm zur Vorauswahl von Spielern.</string>
+    <string name="pref_header_general">Allgemein</string>
+    <string name="pref_preselection">Spieler Vorauswahl</string>
+    <string name="preselected">vorausgewählt</string>
+    <string name="preselection">Vorauswahl</string>
+    <string name="promote">Befördern</string>
+    <string name="random">Zufall</string>
+    <string name="remove">Entfernen</string>
+    <string name="reset">Zurücksetzen</string>
+    <string name="round">Runde</string>
+    <string msgid="146198913615257606" name="search_menu_title">"Suchen"</string>
+    <string name="selectGame">Spiel auswählen</string>
+    <string name="shake">&lt;&lt;&lt; Schütteln! >>></string>
+    <string name="share">Teilen</string>
+    <string name="shareFooter">Erstellt mit TeamMe</string>
+    <string name="shareIntent">Die Teams stehen fest!</string>
+    <string name="sport">Sportart</string>
+    <string name="sport_example">Fußball, Handball, Tischtennis...</string>
+    <string name="start">Teams zusammenstellen!</string>
+    <string name="statistics">Statistiken</string>
+    <string msgid="7988687684186075107" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="team">Team</string>
+    <string name="teams">Teams</string>
+    <string name="three">3</string>
+    <string name="title_activity_game_creator">CreatorActivity</string>
+    <string name="title_activity_player_selection">Spieler vorauswählen</string>
+    <string name="title_activity_report_scores">Punktestand</string>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="title_activity_team_chooser">TeamChooser</string>
+    <string name="title_activity_team_overview">TeamOverview</string>
+    <string name="title_dialog_teamcount">Team Anzahl wählen</string>
+    <string name="title_game_detail">gameRecord Detail</string>
+    <string name="ttsmissing">Es fehlen einige Sprachdateien. Lass uns versuchen das nun zu ändern!</string>
+    <string name="two">2</string>
+    <string name="unknown">unbekannt</string>
+    <string name="wins">gewinnt</string>
+</resources>
