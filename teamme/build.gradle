@@ -22,6 +22,7 @@ android {
     dataBinding {
         enabled = true
     }
+    namespace 'de.pasligh.android.teamme'
 }
 
 dependencies {
