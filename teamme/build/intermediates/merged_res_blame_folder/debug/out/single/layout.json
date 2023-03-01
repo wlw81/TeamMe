@@ -1,14 +1,18 @@
 [
     {
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-mergeDebugResources-4:\\layout\\activity_player_list.xml",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\activity_player_list.xml"
+    },
+    {
         "merged": "de.pasligh.android.teamme-mergeDebugResources-4:/layout/activity_game_creator.xml",
         "source": "de.pasligh.android.teamme-main-7:/layout/activity_game_creator.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-mergeDebugResources-4:/layout/activity_player_list.xml",
-        "source": "de.pasligh.android.teamme-main-7:/layout/activity_player_list.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-mergeDebugResources-4:\\layout\\activity_game_creator.xml",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\activity_game_creator.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-mergeDebugResources-4:/layout/activity_gamerecord_list.xml",
-        "source": "de.pasligh.android.teamme-main-7:/layout/activity_gamerecord_list.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-mergeDebugResources-4:\\layout\\activity_gamerecord_list.xml",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\activity_gamerecord_list.xml"
     }
 ]

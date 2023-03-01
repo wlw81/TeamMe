@@ -1,402 +1,406 @@
 [
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/anim_fadein.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/anim/fadein.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_activity_report_scores.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\activity_report_scores.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/font_roboto_black.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/font/roboto_black.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable_write.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable\\write.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/xml_pref_notification.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/xml/pref_notification.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-xhdpi_ic_info_black_24dp.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-xhdpi\\ic_info_black_24dp.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/raw_beep.wav.flat",
-        "source": "de.pasligh.android.teamme-main-7:/raw/beep.wav"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\anim_fadeout.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\anim\\fadeout.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_activity_game_list.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/activity_game_list.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-xhdpi_ic_sync_black_24dp.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-xhdpi\\ic_sync_black_24dp.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/raw_fanfare_short.wav.flat",
-        "source": "de.pasligh.android.teamme-main-7:/raw/fanfare_short.wav"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_header.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\header.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_player_detail.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/player_detail.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_player_selection_item.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\player_selection_item.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/anim_shake2.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/anim/shake2.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-mdpi_ic_info_black_24dp.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-mdpi\\ic_info_black_24dp.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/anim_fadeout.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/anim/fadeout.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-hdpi_ic_sync_black_24dp.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-hdpi\\ic_sync_black_24dp.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/anim_left.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/anim/left.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\color_state_list.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\color\\state_list.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-v21_ic_notifications_black_24dp.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-v21/ic_notifications_black_24dp.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable_ic_action_delete.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable\\ic_action_delete.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-xhdpi_ic_sync_black_24dp.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-xhdpi/ic_sync_black_24dp.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_card_roundresult.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\card_roundresult.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable_my_btn_tgl.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable/my_btn_tgl.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_card_player.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\card_player.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/color_state_list.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/color/state_list.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-mdpi_ic_sync_black_24dp.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-mdpi\\ic_sync_black_24dp.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/menu_team_chooser.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/menu/team_chooser.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable_my_btn_tgl.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable\\my_btn_tgl.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable_action_settings.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable/action_settings.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable_roundedcorner.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable\\roundedcorner.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable_add.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable/add.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\xml_pref_data_sync.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\xml\\pref_data_sync.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-xhdpi_ic_notifications_black_24dp.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-xhdpi/ic_notifications_black_24dp.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-hdpi_ic_info_black_24dp.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-hdpi\\ic_info_black_24dp.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-mdpi_ic_sync_black_24dp.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-mdpi/ic_sync_black_24dp.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_activity_game_creator.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\activity_game_creator.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/raw_shutter.wav.flat",
-        "source": "de.pasligh.android.teamme-main-7:/raw/shutter.wav"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_activity_player_detail.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\activity_player_detail.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_activity_team_chooser.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/activity_team_chooser.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_activity_team_chooser_inputhead.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\activity_team_chooser_inputhead.xml"
+    },
+    {
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-xhdpi_next_white.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-xhdpi\\next_white.png"
+    },
+    {
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_dialog_assignment_change.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\dialog_assignment_change.xml"
+    },
+    {
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_fragment_team_overview.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\fragment_team_overview.xml"
     },
     {
         "merged": "de.pasligh.android.teamme-merged_res-5:/layout_activity_game_creator.xml.flat",
         "source": "de.pasligh.android.teamme-main-7:/layout/activity_game_creator.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-v21_ic_info_black_24dp.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-v21/ic_info_black_24dp.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_dialog_score_input.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\dialog_score_input.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_player_selection_item.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/player_selection_item.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-hdpi_ic_notifications_black_24dp.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-hdpi\\ic_notifications_black_24dp.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_fragment_team_overview.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/fragment_team_overview.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-xhdpi_bumper2.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-xhdpi\\bumper2.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_gamerecord_list_content.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/gamerecord_list_content.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-v21_ic_sync_black_24dp.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-v21\\ic_sync_black_24dp.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/anim_bounce.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/anim/bounce.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_activity_gamerecord_detail.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\activity_gamerecord_detail.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable_list_numbered_white.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable/list_numbered_white.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-xxhdpi_ic_notifications_black_24dp.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-xxhdpi\\ic_notifications_black_24dp.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable_social_person.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable/social_person.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-xxxhdpi_ic_sync_black_24dp.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-xxxhdpi\\ic_sync_black_24dp.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_gamerecord_detail.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/gamerecord_detail.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\raw_shutter.wav.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\raw\\shutter.wav"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_card_game_record.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/card_game_record.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\anim_bounce.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\anim\\bounce.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-xxhdpi_actionbar.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-xxhdpi/actionbar.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_activity_gamerecord_list.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\activity_gamerecord_list.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable_bumper.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable/bumper.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\anim_fadein.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\anim\\fadein.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_card_player.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/card_player.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable_add.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable\\add.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/anim_enter_from_right.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/anim/enter_from_right.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable_action_settings.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable\\action_settings.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_dialog_score_input.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/dialog_score_input.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\menu_game_creator.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\menu\\game_creator.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_player_list_content.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/player_list_content.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\raw_right.wav.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\raw\\right.wav"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-xhdpi_ic_launcher.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-xhdpi/ic_launcher.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable_images_rotate_left.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable\\images_rotate_left.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/anim_glow.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/anim/glow.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\font_roboto_black.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\font\\roboto_black.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-xhdpi_ic_info_black_24dp.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-xhdpi/ic_info_black_24dp.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\xml_pref_notification.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\xml\\pref_notification.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_card_roundresult.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/card_roundresult.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-xhdpi_ic_notifications_black_24dp.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-xhdpi\\ic_notifications_black_24dp.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-mdpi_ic_notifications_black_24dp.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-mdpi/ic_notifications_black_24dp.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_player_list_content.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\player_list_content.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable_collections_view_as_list.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable/collections_view_as_list.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-xhdpi_ic_launcher.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_activity_player_list.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/activity_player_list.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_gamerecord_detail.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\gamerecord_detail.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable_ic_action_delete.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable/ic_action_delete.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_activity_player_list.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\activity_player_list.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-xxxhdpi_ic_info_black_24dp.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-xxxhdpi/ic_info_black_24dp.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-xxhdpi_ic_info_black_24dp.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-xxhdpi\\ic_info_black_24dp.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-xhdpi_bumper2.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-xhdpi/bumper2.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\menu_team_overview.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\menu\\team_overview.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable_forward_white.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable/forward_white.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\anim_glow.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\anim\\glow.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-xhdpi_team.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-xhdpi/team.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-xxhdpi_ic_sync_black_24dp.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-xxhdpi\\ic_sync_black_24dp.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-xxxhdpi_ic_sync_black_24dp.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-xxxhdpi/ic_sync_black_24dp.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\anim_enter_from_right.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\anim\\enter_from_right.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-hdpi_ic_info_black_24dp.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-hdpi/ic_info_black_24dp.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\menu_report_scores.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\menu\\report_scores.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout-w900dp_activity_gamerecord_list.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout-w900dp/activity_gamerecord_list.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\raw_left.wav.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\raw\\left.wav"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_fragment_game_statistics.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/fragment_game_statistics.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-xxhdpi_actionbar.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-xxhdpi\\actionbar.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable_roundedbutton.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable/roundedbutton.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_card_game_record.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\card_game_record.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-hdpi_ic_sync_black_24dp.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-hdpi/ic_sync_black_24dp.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout-w900dp_activity_player_list.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout-w900dp\\activity_player_list.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/xml_pref_data_sync.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/xml/pref_data_sync.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_activity_game_list.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\activity_game_list.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-xhdpi_player.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-xhdpi/player.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-xhdpi_player.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-xhdpi\\player.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/raw_left.wav.flat",
-        "source": "de.pasligh.android.teamme-main-7:/raw/left.wav"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_gamerecord_list_content.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\gamerecord_list_content.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout-w900dp_activity_player_list.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout-w900dp/activity_player_list.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\xml_pref_headers.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\xml\\pref_headers.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_activity_gamerecord_detail.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/activity_gamerecord_detail.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable_header.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable\\header.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable_progressbar.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable/progressbar.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable_list_numbered_white.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable\\list_numbered_white.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_activity_game_statistics.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/activity_game_statistics.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-xhdpi_team.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-xhdpi\\team.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable_write.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable/write.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\font_roboto_thin.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\font\\roboto_thin.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/anim_right.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/anim/right.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\anim_shake2.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\anim\\shake2.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-xxhdpi_ic_info_black_24dp.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-xxhdpi/ic_info_black_24dp.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_player_detail.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\player_detail.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_activity_team_chooser_nextplayerhead.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/activity_team_chooser_nextplayerhead.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-xxxhdpi_ic_notifications_black_24dp.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-xxxhdpi\\ic_notifications_black_24dp.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable_roundedcorner.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable/roundedcorner.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_activity_team_chooser_nextplayerhead.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\activity_team_chooser_nextplayerhead.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/menu_game_creator.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/menu/game_creator.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_activity_team_chooser.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\activity_team_chooser.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_team_spinner_item.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/team_spinner_item.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-v21_ic_notifications_black_24dp.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-v21\\ic_notifications_black_24dp.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-xhdpi_next.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-xhdpi/next.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\xml_pref_general.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\xml\\pref_general.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/xml_pref_general.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/xml/pref_general.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable_forward_white.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable\\forward_white.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-xxxhdpi_ic_notifications_black_24dp.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-xxxhdpi/ic_notifications_black_24dp.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable_roundedbuttonselected.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable\\roundedbuttonselected.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_activity_player_detail.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/activity_player_detail.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout-w900dp_activity_gamerecord_list.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout-w900dp\\activity_gamerecord_list.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable_images_rotate_left.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable/images_rotate_left.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable_progressbar.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable\\progressbar.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-xxhdpi_ic_sync_black_24dp.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-xxhdpi/ic_sync_black_24dp.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-v21_ic_info_black_24dp.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-v21\\ic_info_black_24dp.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/font_roboto_thin.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/font/roboto_thin.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable_action_about.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable\\action_about.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable_header.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable/header.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable_check.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable\\check.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-xhdpi_collection.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-xhdpi/collection.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_team_spinner_item.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\team_spinner_item.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/raw_right.wav.flat",
-        "source": "de.pasligh.android.teamme-main-7:/raw/right.wav"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\raw_beep.wav.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\raw\\beep.wav"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-v21_ic_sync_black_24dp.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-v21/ic_sync_black_24dp.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-xhdpi_next.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-xhdpi\\next.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/menu_team_overview.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/menu/team_overview.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-mdpi_ic_notifications_black_24dp.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-mdpi\\ic_notifications_black_24dp.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/menu_player_selection.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/menu/player_selection.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-xxhdpi_ic_launcher.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable_action_about.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable/action_about.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable_bumper.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable\\bumper.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-hdpi_ic_notifications_black_24dp.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-hdpi/ic_notifications_black_24dp.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable_social_person.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable\\social_person.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_dialog_assignment_change.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/dialog_assignment_change.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_fragment_game_statistics.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\fragment_game_statistics.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-mdpi_ic_info_black_24dp.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-mdpi/ic_info_black_24dp.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\anim_left.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\anim\\left.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/menu_report_scores.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/menu/report_scores.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\menu_player_selection.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\menu\\player_selection.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-hdpi_baseline_person_black_18dp.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-hdpi/baseline_person_black_18dp.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-hdpi_baseline_person_black_18dp.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-hdpi\\baseline_person_black_18dp.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-xhdpi_next_white.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-xhdpi/next_white.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\menu_team_chooser.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\menu\\team_chooser.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_fragment_player_detail.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/fragment_player_detail.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable_collections_view_as_list.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable\\collections_view_as_list.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_activity_team_chooser_inputhead.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/activity_team_chooser_inputhead.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable_roundedbutton.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable\\roundedbutton.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_activity_gamerecord_list.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/activity_gamerecord_list.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\raw_fanfare_short.wav.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\raw\\fanfare_short.wav"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-xxhdpi_ic_launcher.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-xxhdpi/ic_launcher.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_activity_game_statistics.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\activity_game_statistics.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_header.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/header.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-xhdpi_collection.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-xhdpi\\collection.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable_roundedbuttonselected.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable/roundedbuttonselected.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\anim_shake1.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\anim\\shake1.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable_check.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable/check.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\drawable-xxxhdpi_ic_info_black_24dp.png.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\drawable-xxxhdpi\\ic_info_black_24dp.png"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/drawable-xxhdpi_ic_notifications_black_24dp.png.flat",
-        "source": "de.pasligh.android.teamme-main-7:/drawable-xxhdpi/ic_notifications_black_24dp.png"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\layout_fragment_player_detail.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\layout\\fragment_player_detail.xml"
     },
     {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/layout_activity_report_scores.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/layout/activity_report_scores.xml"
-    },
-    {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/xml_pref_headers.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/xml/pref_headers.xml"
-    },
-    {
-        "merged": "de.pasligh.android.teamme-merged_res-5:/anim_shake1.xml.flat",
-        "source": "de.pasligh.android.teamme-main-7:/anim/shake1.xml"
+        "merged": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-merged_res-5:\\anim_right.xml.flat",
+        "source": "D:\\Programme\\gradle\\daemon\\7.5\\de.pasligh.android.teamme-main-7:\\anim\\right.xml"
     }
 ]
