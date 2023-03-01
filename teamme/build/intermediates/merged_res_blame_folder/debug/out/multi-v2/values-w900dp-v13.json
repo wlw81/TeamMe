@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w900dp-v13\\values-w900dp-v13.xml",
+            "outputFile": "de.pasligh.android.teamme-mergeDebugResources-3:/values-w900dp-v13/values-w900dp-v13.xml",
             "map": [
                 {
                     "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\values-w900dp\\dimens.xml",

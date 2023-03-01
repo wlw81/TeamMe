@@ -1,10 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout-w900dp-v13\\activity_player_list.xml",
-        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout-w900dp\\activity_player_list.xml"
+        "merged": "de.pasligh.android.teamme-mergeDebugResources-4:/layout-w900dp-v13/activity_player_list.xml",
+        "source": "de.pasligh.android.teamme-main-7:/layout-w900dp/activity_player_list.xml"
     },
     {
-        "merged": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout-w900dp-v13\\activity_gamerecord_list.xml",
-        "source": "C:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\src\\main\\res\\layout-w900dp\\activity_gamerecord_list.xml"
+        "merged": "de.pasligh.android.teamme-mergeDebugResources-4:/layout-w900dp-v13/activity_gamerecord_list.xml",
+        "source": "de.pasligh.android.teamme-main-7:/layout-w900dp/activity_gamerecord_list.xml"
     }
 ]
