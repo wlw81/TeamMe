@@ -3,7 +3,6 @@ package de.pasligh.android.teamme;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -15,11 +14,11 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.Nullable;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.Nullable;
+import androidx.core.app.NavUtils;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,8 +26,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
-
-import de.pasligh.android.teamme.tools.Flags;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -226,7 +223,7 @@ public class SettingsActivity extends PreferenceActivity {
         getDelegate().onPostCreate(savedInstanceState);
     }
 
-    public android.support.v7.app.ActionBar getSupportActionBar() {
+    public androidx.appcompat.app.ActionBar getSupportActionBar() {
         return getDelegate().getSupportActionBar();
     }
 

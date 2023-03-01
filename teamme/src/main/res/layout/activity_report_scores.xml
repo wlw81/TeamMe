@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ReportScoresActivity">
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addScoreFAB"
         app:elevation="6dp"
         android:layout_width="wrap_content"
@@ -18,7 +18,7 @@
         app:pressedTranslationZ="16dp"
         android:src="@drawable/add" />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RoundResultRV"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_width="match_parent"

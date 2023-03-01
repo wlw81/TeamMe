@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools" >
     <item
         android:id="@+id/TeamOverviewShareContext"
-        app:actionProviderClass="android.support.v7.widget.ShareActionProvider"
+        app:actionProviderClass="androidx.appcompat.widget.ShareActionProvider"
         app:showAsAction="always"
         android:title="@string/share"></item>
     <item

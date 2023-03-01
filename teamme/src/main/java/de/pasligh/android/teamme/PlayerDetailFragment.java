@@ -3,9 +3,10 @@ package de.pasligh.android.teamme;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,14 +17,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import de.pasligh.android.teamme.backend.BackendFacade;
 import de.pasligh.android.teamme.objects.Player;
 import de.pasligh.android.teamme.tools.GameRecordRV_Adapter;
-import de.pasligh.android.teamme.tools.TeamReactor;
 
 /**
  * A fragment representing a single Player detail screen.
@@ -31,7 +29,7 @@ import de.pasligh.android.teamme.tools.TeamReactor;
  * in two-pane mode (on tablets) or a {@link PlayerDetailActivity}
  * on handsets.
  */
-public class PlayerDetailFragment extends android.support.v4.app.Fragment implements View.OnClickListener {
+public class PlayerDetailFragment extends Fragment implements View.OnClickListener {
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.

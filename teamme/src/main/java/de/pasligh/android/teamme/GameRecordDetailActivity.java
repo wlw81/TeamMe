@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import java.util.List;

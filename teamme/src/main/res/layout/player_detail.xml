@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -38,21 +38,21 @@
             android:layout_below="@+id/player_detail_layout"
             android:orientation="vertical">
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/player_detail_RV"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:orientation="vertical"></android.support.v7.widget.RecyclerView>
+                android:orientation="vertical"></androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
 
 
     </RelativeLayout>
 
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/player_detail_rename_FAB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
         app:pressedTranslationZ="16dp"
         app:srcCompat="@drawable/write" />
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/player_detail_FAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -75,4 +75,4 @@
         app:layout_anchor="@id/player_detail_layout"
         app:layout_anchorGravity="bottom|right|end"
         app:pressedTranslationZ="16dp" />
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
