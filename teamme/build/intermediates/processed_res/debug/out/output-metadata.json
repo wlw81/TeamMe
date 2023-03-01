@@ -5,7 +5,7 @@
     "kind": "Directory"
   },
   "applicationId": "de.pasligh.android.teamme",
-  "variantName": "processDebugResources",
+  "variantName": "debug",
   "elements": [
     {
       "type": "SINGLE",
