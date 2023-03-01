@@ -5,7 +5,7 @@
       <configuration>
         <option name="GRADLE_PROJECT_PATH" value=":teamme" />
         <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" value="4.1.0" />
-        <option name="LAST_KNOWN_AGP_VERSION" value="4.1.3" />
+        <option name="LAST_KNOWN_AGP_VERSION" value="4.2.2" />
       </configuration>
     </facet>
     <facet type="android" name="Android">
@@ -20,7 +20,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/../../../teamme/build/intermediates/javac/debug/classes" />
     <output-test url="file://$MODULE_DIR$/../../../teamme/build/intermediates/javac/debugUnitTest/classes" />
     <exclude-output />
