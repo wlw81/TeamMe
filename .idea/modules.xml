@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TeamMe.iml" filepath="$PROJECT_DIR$/TeamMe.iml" group="TeamMe" />
-      <module fileurl="file://$PROJECT_DIR$/teamme/teamme.iml" filepath="$PROJECT_DIR$/teamme/teamme.iml" group="TeamMe/teamme" />
+      <module fileurl="file://$PROJECT_DIR$/TeamMe.iml" filepath="$PROJECT_DIR$/TeamMe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/teamme/TeamMe.teamme.iml" filepath="$PROJECT_DIR$/.idea/modules/teamme/TeamMe.teamme.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/teamme/TeamMe.teamme.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/teamme/TeamMe.teamme.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/teamme/TeamMe.teamme.main.iml" filepath="$PROJECT_DIR$/.idea/modules/teamme/TeamMe.teamme.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/teamme/TeamMe.teamme.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/teamme/TeamMe.teamme.unitTest.iml" />
     </modules>
   </component>
 </project>
