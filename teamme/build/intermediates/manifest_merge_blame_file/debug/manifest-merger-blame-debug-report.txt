@@ -44,8 +44,8 @@
 27-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:6:9-47
 28        android:allowBackup="true"
 28-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:7:9-35
-29        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
-29-->[com.android.support:support-compat:28.0.0] C:\Users\thoma\.gradle\caches\transforms-3\7af8e8e412e279a62174e175d477e649\transformed\support-compat-28.0.0\AndroidManifest.xml:22:18-91
+29        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+29-->[androidx.core:core:1.0.0] C:\Users\thoma\.gradle\caches\transforms-3\beca9d1e887f5660bfbecb37fcc4e59d\transformed\core-1.0.0\AndroidManifest.xml:22:18-86
 30        android:debuggable="true"
 31        android:extractNativeLibs="false"
 32        android:icon="@drawable/ic_launcher"

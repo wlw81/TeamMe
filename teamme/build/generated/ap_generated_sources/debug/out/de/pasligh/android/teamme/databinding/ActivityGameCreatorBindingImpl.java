@@ -1,14 +1,14 @@
 package de.pasligh.android.teamme.databinding;
 import de.pasligh.android.teamme.R;
 import de.pasligh.android.teamme.BR;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.view.View;
 @SuppressWarnings("unchecked")
 public class ActivityGameCreatorBindingImpl extends ActivityGameCreatorBinding  {
 
     @Nullable
-    private static final android.databinding.ViewDataBinding.IncludedLayouts sIncludes;
+    private static final androidx.databinding.ViewDataBinding.IncludedLayouts sIncludes;
     @Nullable
     private static final android.util.SparseIntArray sViewsWithIds;
     static {
@@ -35,10 +35,10 @@ public class ActivityGameCreatorBindingImpl extends ActivityGameCreatorBinding  
     // listeners
     // Inverse Binding Event Handlers
 
-    public ActivityGameCreatorBindingImpl(@Nullable android.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
+    public ActivityGameCreatorBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
         this(bindingComponent, root, mapBindings(bindingComponent, root, 15, sIncludes, sViewsWithIds));
     }
-    private ActivityGameCreatorBindingImpl(android.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
+    private ActivityGameCreatorBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
             , (android.widget.NumberPicker) bindings[12]
             , (android.widget.LinearLayout) bindings[9]
@@ -47,14 +47,14 @@ public class ActivityGameCreatorBindingImpl extends ActivityGameCreatorBinding  
             , (android.widget.NumberPicker) bindings[10]
             , (android.widget.TextView) bindings[11]
             , (android.widget.TextView) bindings[13]
-            , (android.support.design.widget.AppBarLayout) bindings[5]
-            , (android.support.design.widget.CoordinatorLayout) bindings[1]
-            , (android.support.v4.widget.DrawerLayout) bindings[0]
-            , (android.support.v7.widget.Toolbar) bindings[6]
-            , (android.support.design.widget.NavigationView) bindings[14]
-            , (android.support.design.widget.FloatingActionButton) bindings[4]
+            , (com.google.android.material.appbar.AppBarLayout) bindings[5]
+            , (androidx.coordinatorlayout.widget.CoordinatorLayout) bindings[1]
+            , (androidx.drawerlayout.widget.DrawerLayout) bindings[0]
+            , (androidx.appcompat.widget.Toolbar) bindings[6]
+            , (com.google.android.material.navigation.NavigationView) bindings[14]
+            , (com.google.android.material.floatingactionbutton.FloatingActionButton) bindings[4]
             , (android.widget.TextView) bindings[2]
-            , (android.support.v7.widget.RecyclerView) bindings[3]
+            , (androidx.recyclerview.widget.RecyclerView) bindings[3]
             );
         this.gameCreatorDL.setTag(null);
         setRootTag(root);

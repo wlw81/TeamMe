@@ -1,4 +1,4 @@
 package de.pasligh.android.teamme;
 
-@android.databinding.BindingBuildInfo
+@androidx.databinding.BindingBuildInfo
 public class DataBindingTriggerClass {}
