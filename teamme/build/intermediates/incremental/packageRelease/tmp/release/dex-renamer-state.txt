@@ -1,4 +1,4 @@
-#Wed Mar 01 22:42:08 CET 2023
+#Thu Mar 02 19:25:40 CET 2023
 base.1=C\:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes2.dex
 path.1=classes2.dex
 base.0=C\:\\Users\\thoma\\StudioProjects\\TeamMe\\teamme\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex

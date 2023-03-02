@@ -1,8 +1,8 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="de.pasligh.android.teamme"
-4    android:versionCode="96"
-5    android:versionName="5.0.9" >
+4    android:versionCode="97"
+5    android:versionName="5.1.0" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="23"
