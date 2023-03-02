@@ -1,11 +1,11 @@
 package de.pasligh.android.teamme;
 
-import android.databinding.DataBinderMapper;
-import android.databinding.DataBindingComponent;
-import android.databinding.ViewDataBinding;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 import android.view.View;
+import androidx.databinding.DataBinderMapper;
+import androidx.databinding.DataBindingComponent;
+import androidx.databinding.ViewDataBinding;
 import de.pasligh.android.teamme.databinding.ActivityGameCreatorBindingImpl;
 import de.pasligh.android.teamme.databinding.ActivityGamerecordListBindingImpl;
 import de.pasligh.android.teamme.databinding.ActivityGamerecordListBindingW900dpImpl;
@@ -109,7 +109,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   @Override
   public List<DataBinderMapper> collectDependencies() {
     ArrayList<DataBinderMapper> result = new ArrayList<DataBinderMapper>(1);
-    result.add(new com.android.databinding.library.baseAdapters.DataBinderMapperImpl());
+    result.add(new androidx.databinding.library.baseAdapters.DataBinderMapperImpl());
     return result;
   }
 

@@ -1,14 +1,14 @@
 package de.pasligh.android.teamme.databinding;
 import de.pasligh.android.teamme.R;
 import de.pasligh.android.teamme.BR;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.view.View;
 @SuppressWarnings("unchecked")
 public class ActivityGamerecordListBindingImpl extends ActivityGamerecordListBinding  {
 
     @Nullable
-    private static final android.databinding.ViewDataBinding.IncludedLayouts sIncludes;
+    private static final androidx.databinding.ViewDataBinding.IncludedLayouts sIncludes;
     @Nullable
     private static final android.util.SparseIntArray sViewsWithIds;
     static {
@@ -26,13 +26,13 @@ public class ActivityGamerecordListBindingImpl extends ActivityGamerecordListBin
     // listeners
     // Inverse Binding Event Handlers
 
-    public ActivityGamerecordListBindingImpl(@Nullable android.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
+    public ActivityGamerecordListBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
         this(bindingComponent, root, mapBindings(bindingComponent, root, 3, sIncludes, sViewsWithIds));
     }
-    private ActivityGamerecordListBindingImpl(android.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
+    private ActivityGamerecordListBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
             , null
-            , (android.support.v7.widget.RecyclerView) bindings[2]
+            , (androidx.recyclerview.widget.RecyclerView) bindings[2]
             );
         this.mboundView0 = (android.widget.LinearLayout) bindings[0];
         this.mboundView0.setTag(null);

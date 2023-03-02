@@ -7,8 +7,8 @@ android {
         applicationId "de.pasligh.android.teamme"
         minSdkVersion 23
         targetSdkVersion 33
-        versionCode = 95
-        versionName = "5.0.8"
+        versionCode = 96
+        versionName = "5.0.9"
         vectorDrawables.useSupportLibrary = true
     }
 

@@ -1,13 +1,13 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="de.pasligh.android.teamme"
-4    android:versionCode="95"
-5    android:versionName="5.0.8" >
+4    android:versionCode="96"
+5    android:versionName="5.0.9" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="23"
 8-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
-9        android:targetSdkVersion="28" />
+9        android:targetSdkVersion="33" />
 9-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml
 10
 11    <supports-screens
@@ -38,160 +38,240 @@
 24-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:102:5-66
 24-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:102:22-63
 25
-26    <application
-26-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:5:5-86:19
-27        android:name="android.app.Application"
-27-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:6:9-47
-28        android:allowBackup="true"
-28-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:7:9-35
-29        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
-29-->[com.android.support:support-compat:28.0.0] C:\Users\thoma\.gradle\caches\transforms-2\files-2.1\00567bd0de14b33d1bf8a440dc72bff8\support-compat-28.0.0\AndroidManifest.xml:22:18-91
-30        android:extractNativeLibs="false"
-31        android:icon="@drawable/ic_launcher"
-31-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:8:9-45
-32        android:label="@string/app_name"
-32-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:9:9-41
-33        android:theme="@style/AppTheme" >
-33-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:10:9-40
-34        <activity
-34-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:11:9-19:20
-35            android:name="de.pasligh.android.teamme.GameCreatorActivity"
-35-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:12:13-48
-36            android:label="@string/app_name"
-36-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:13:13-45
-37            android:theme="@style/TeamMeNoActionBar" >
-37-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:14:13-53
-38            <intent-filter>
-38-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:15:13-18:29
-39                <action android:name="android.intent.action.MAIN" />
-39-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:16:17-69
-39-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:16:25-66
-40
-41                <category android:name="android.intent.category.LAUNCHER" />
-41-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:17:17-77
-41-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:17:27-74
-42            </intent-filter>
-43        </activity>
-44        <activity
-44-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:20:9-26:20
-45            android:name="de.pasligh.android.teamme.GameStatisticsActivity"
-45-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:21:13-51
-46            android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" >
-46-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:22:13-62
-47            <meta-data
-47-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:23:13-25:56
-48                android:name="android.support.PARENT_ACTIVITY"
-48-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:24:17-63
-49                android:value=".GameCreatorActivity" />
-49-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:25:17-53
+26    <permission
+26-->[androidx.core:core:1.9.0] D:\Programme\gradle\caches\transforms-3\ec4f76f6c0c02de8ba18086e7bd9baf5\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+27        android:name="de.pasligh.android.teamme.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+27-->[androidx.core:core:1.9.0] D:\Programme\gradle\caches\transforms-3\ec4f76f6c0c02de8ba18086e7bd9baf5\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+28        android:protectionLevel="signature" />
+28-->[androidx.core:core:1.9.0] D:\Programme\gradle\caches\transforms-3\ec4f76f6c0c02de8ba18086e7bd9baf5\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+29
+30    <uses-permission android:name="de.pasligh.android.teamme.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+30-->[androidx.core:core:1.9.0] D:\Programme\gradle\caches\transforms-3\ec4f76f6c0c02de8ba18086e7bd9baf5\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+30-->[androidx.core:core:1.9.0] D:\Programme\gradle\caches\transforms-3\ec4f76f6c0c02de8ba18086e7bd9baf5\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+31
+32    <application
+32-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:4:5-86:19
+33        android:name="android.app.Application"
+33-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:5:9-47
+34        android:allowBackup="true"
+34-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:6:9-35
+35        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+35-->[androidx.core:core:1.9.0] D:\Programme\gradle\caches\transforms-3\ec4f76f6c0c02de8ba18086e7bd9baf5\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+36        android:extractNativeLibs="false"
+37        android:icon="@drawable/ic_launcher"
+37-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:7:9-45
+38        android:label="@string/app_name"
+38-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:8:9-41
+39        android:theme="@style/AppTheme" >
+39-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:9:9-40
+40        <activity
+40-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:10:9-19:20
+41            android:name="de.pasligh.android.teamme.GameCreatorActivity"
+41-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:11:13-48
+42            android:exported="true"
+42-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:14:13-36
+43            android:label="@string/app_name"
+43-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:12:13-45
+44            android:theme="@style/TeamMeNoActionBar" >
+44-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:13:13-53
+45            <intent-filter>
+45-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:15:13-18:29
+46                <action android:name="android.intent.action.MAIN" />
+46-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:16:17-69
+46-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:16:25-66
+47
+48                <category android:name="android.intent.category.LAUNCHER" />
+48-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:17:17-77
+48-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:17:27-74
+49            </intent-filter>
 50        </activity>
 51        <activity
-51-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:27:9-31:65
-52            android:name="de.pasligh.android.teamme.TeamChooserActivity"
-52-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:28:13-48
-53            android:configChanges="keyboardHidden|orientation|screenSize"
-53-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:29:13-74
-54            android:label="@string/addPlayer"
-54-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:30:13-46
-55            android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" />
-55-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:31:13-62
-56        <activity
-56-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:33:9-40:20
-57            android:name="de.pasligh.android.teamme.ReportScoresActivity"
-57-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:34:13-49
-58            android:label="@string/title_activity_report_scores"
-58-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:35:13-65
-59            android:parentActivityName="de.pasligh.android.teamme.GameRecordListActivity" >
-59-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:36:13-65
-60            <meta-data
-60-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:23:13-25:56
-61                android:name="android.support.PARENT_ACTIVITY"
-61-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:24:17-63
-62                android:value=".GameRecordListActivity" />
-62-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:25:17-53
-63        </activity>
-64        <activity
-64-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:42:9-49:20
-65            android:name="de.pasligh.android.teamme.SettingsActivity"
-65-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:43:13-45
-66            android:label="@string/title_activity_settings"
-66-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:44:13-60
-67            android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" >
-67-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:45:13-62
-68            <meta-data
-68-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:23:13-25:56
-69                android:name="android.support.PARENT_ACTIVITY"
-69-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:24:17-63
-70                android:value="de.pasligh.android.teamme.GameCreatorActivity" />
-70-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:25:17-53
-71        </activity>
-72        <activity
-72-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:50:9-57:20
-73            android:name="de.pasligh.android.teamme.GameRecordListActivity"
-73-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:51:13-51
-74            android:label="@string/jump2game"
-74-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:52:13-46
-75            android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" >
-75-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:53:13-62
-76            <meta-data
-76-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:23:13-25:56
-77                android:name="android.support.PARENT_ACTIVITY"
-77-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:24:17-63
-78                android:value="de.pasligh.android.teamme.GameCreatorActivity" />
-78-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:25:17-53
-79        </activity>
-80        <activity
-80-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:58:9-65:20
-81            android:name="de.pasligh.android.teamme.GameRecordDetailActivity"
-81-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:59:13-53
-82            android:label="@string/overview"
-82-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:60:13-45
-83            android:parentActivityName="de.pasligh.android.teamme.GameRecordListActivity" >
-83-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:61:13-65
-84            <meta-data
-84-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:23:13-25:56
-85                android:name="android.support.PARENT_ACTIVITY"
-85-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:24:17-63
-86                android:value="de.pasligh.android.teamme.GameRecordListActivity" />
-86-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:25:17-53
-87        </activity>
-88        <activity
-88-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:66:9-73:20
-89            android:name="de.pasligh.android.teamme.PlayerListActivity"
-89-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:67:13-47
-90            android:label="@string/player"
-90-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:68:13-43
-91            android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" >
-91-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:69:13-62
-92            <meta-data
-92-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:23:13-25:56
-93                android:name="android.support.PARENT_ACTIVITY"
-93-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:24:17-63
-94                android:value="de.pasligh.android.teamme.GameCreatorActivity" />
-94-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:25:17-53
-95        </activity>
-96        <activity
-96-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:74:9-81:20
-97            android:name="de.pasligh.android.teamme.PlayerDetailActivity"
-97-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:75:13-49
-98            android:label="@string/player"
-98-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:76:13-43
-99            android:parentActivityName="de.pasligh.android.teamme.PlayerListActivity" >
-99-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:77:13-61
-100            <meta-data
-100-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:23:13-25:56
-101                android:name="android.support.PARENT_ACTIVITY"
-101-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:24:17-63
-102                android:value="de.pasligh.android.teamme.PlayerListActivity" />
-102-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:25:17-53
-103        </activity>
-104
-105        <meta-data
-105-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:83:9-85:57
-106            android:name="preloaded_fonts"
-106-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:84:13-43
-107            android:resource="@array/preloaded_fonts" />
-107-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:85:13-54
-108    </application>
-109
-110</manifest>
+51-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:20:9-26:20
+52            android:name="de.pasligh.android.teamme.GameStatisticsActivity"
+52-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:21:13-51
+53            android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" >
+53-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:22:13-62
+54            <meta-data
+54-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:23:13-25:56
+55                android:name="android.support.PARENT_ACTIVITY"
+55-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:24:17-63
+56                android:value=".GameCreatorActivity" />
+56-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:25:17-53
+57        </activity>
+58        <activity
+58-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:27:9-31:65
+59            android:name="de.pasligh.android.teamme.TeamChooserActivity"
+59-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:28:13-48
+60            android:configChanges="keyboardHidden|orientation|screenSize"
+60-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:29:13-74
+61            android:label="@string/addPlayer"
+61-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:30:13-46
+62            android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" />
+62-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:31:13-62
+63        <activity
+63-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:33:9-40:20
+64            android:name="de.pasligh.android.teamme.ReportScoresActivity"
+64-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:34:13-49
+65            android:label="@string/title_activity_report_scores"
+65-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:35:13-65
+66            android:parentActivityName="de.pasligh.android.teamme.GameRecordListActivity" >
+66-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:36:13-65
+67            <meta-data
+67-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:23:13-25:56
+68                android:name="android.support.PARENT_ACTIVITY"
+68-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:24:17-63
+69                android:value=".GameRecordListActivity" />
+69-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:25:17-53
+70        </activity>
+71        <activity
+71-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:42:9-49:20
+72            android:name="de.pasligh.android.teamme.SettingsActivity"
+72-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:43:13-45
+73            android:label="@string/title_activity_settings"
+73-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:44:13-60
+74            android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" >
+74-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:45:13-62
+75            <meta-data
+75-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:23:13-25:56
+76                android:name="android.support.PARENT_ACTIVITY"
+76-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:24:17-63
+77                android:value="de.pasligh.android.teamme.GameCreatorActivity" />
+77-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:25:17-53
+78        </activity>
+79        <activity
+79-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:50:9-57:20
+80            android:name="de.pasligh.android.teamme.GameRecordListActivity"
+80-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:51:13-51
+81            android:label="@string/jump2game"
+81-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:52:13-46
+82            android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" >
+82-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:53:13-62
+83            <meta-data
+83-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:23:13-25:56
+84                android:name="android.support.PARENT_ACTIVITY"
+84-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:24:17-63
+85                android:value="de.pasligh.android.teamme.GameCreatorActivity" />
+85-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:25:17-53
+86        </activity>
+87        <activity
+87-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:58:9-65:20
+88            android:name="de.pasligh.android.teamme.GameRecordDetailActivity"
+88-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:59:13-53
+89            android:label="@string/overview"
+89-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:60:13-45
+90            android:parentActivityName="de.pasligh.android.teamme.GameRecordListActivity" >
+90-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:61:13-65
+91            <meta-data
+91-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:23:13-25:56
+92                android:name="android.support.PARENT_ACTIVITY"
+92-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:24:17-63
+93                android:value="de.pasligh.android.teamme.GameRecordListActivity" />
+93-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:25:17-53
+94        </activity>
+95        <activity
+95-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:66:9-73:20
+96            android:name="de.pasligh.android.teamme.PlayerListActivity"
+96-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:67:13-47
+97            android:label="@string/player"
+97-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:68:13-43
+98            android:parentActivityName="de.pasligh.android.teamme.GameCreatorActivity" >
+98-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:69:13-62
+99            <meta-data
+99-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:23:13-25:56
+100                android:name="android.support.PARENT_ACTIVITY"
+100-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:24:17-63
+101                android:value="de.pasligh.android.teamme.GameCreatorActivity" />
+101-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:25:17-53
+102        </activity>
+103        <activity
+103-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:74:9-81:20
+104            android:name="de.pasligh.android.teamme.PlayerDetailActivity"
+104-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:75:13-49
+105            android:label="@string/player"
+105-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:76:13-43
+106            android:parentActivityName="de.pasligh.android.teamme.PlayerListActivity" >
+106-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:77:13-61
+107            <meta-data
+107-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:23:13-25:56
+108                android:name="android.support.PARENT_ACTIVITY"
+108-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:24:17-63
+109                android:value="de.pasligh.android.teamme.PlayerListActivity" />
+109-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:25:17-53
+110        </activity>
+111
+112        <meta-data
+112-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:83:9-85:57
+113            android:name="preloaded_fonts"
+113-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:84:13-43
+114            android:resource="@array/preloaded_fonts" />
+114-->C:\Users\thoma\StudioProjects\TeamMe\teamme\src\main\AndroidManifest.xml:85:13-54
+115
+116        <provider
+116-->[androidx.emoji2:emoji2:1.2.0] D:\Programme\gradle\caches\transforms-3\27ea2d1fe40306b6a6ebc7514e2ae640\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+117            android:name="androidx.startup.InitializationProvider"
+117-->[androidx.emoji2:emoji2:1.2.0] D:\Programme\gradle\caches\transforms-3\27ea2d1fe40306b6a6ebc7514e2ae640\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+118            android:authorities="de.pasligh.android.teamme.androidx-startup"
+118-->[androidx.emoji2:emoji2:1.2.0] D:\Programme\gradle\caches\transforms-3\27ea2d1fe40306b6a6ebc7514e2ae640\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+119            android:exported="false" >
+119-->[androidx.emoji2:emoji2:1.2.0] D:\Programme\gradle\caches\transforms-3\27ea2d1fe40306b6a6ebc7514e2ae640\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+120            <meta-data
+120-->[androidx.emoji2:emoji2:1.2.0] D:\Programme\gradle\caches\transforms-3\27ea2d1fe40306b6a6ebc7514e2ae640\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+121                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+121-->[androidx.emoji2:emoji2:1.2.0] D:\Programme\gradle\caches\transforms-3\27ea2d1fe40306b6a6ebc7514e2ae640\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+122                android:value="androidx.startup" />
+122-->[androidx.emoji2:emoji2:1.2.0] D:\Programme\gradle\caches\transforms-3\27ea2d1fe40306b6a6ebc7514e2ae640\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+123            <meta-data
+123-->[androidx.lifecycle:lifecycle-process:2.4.1] D:\Programme\gradle\caches\transforms-3\1d1173f99a1313055c26367e9296308a\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+124                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+124-->[androidx.lifecycle:lifecycle-process:2.4.1] D:\Programme\gradle\caches\transforms-3\1d1173f99a1313055c26367e9296308a\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+125                android:value="androidx.startup" />
+125-->[androidx.lifecycle:lifecycle-process:2.4.1] D:\Programme\gradle\caches\transforms-3\1d1173f99a1313055c26367e9296308a\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+126            <meta-data
+126-->[androidx.profileinstaller:profileinstaller:1.2.0] D:\Programme\gradle\caches\transforms-3\a53628279d39771d908ba7ea4e3160fd\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:30:13-32:52
+127                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+127-->[androidx.profileinstaller:profileinstaller:1.2.0] D:\Programme\gradle\caches\transforms-3\a53628279d39771d908ba7ea4e3160fd\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:31:17-85
+128                android:value="androidx.startup" />
+128-->[androidx.profileinstaller:profileinstaller:1.2.0] D:\Programme\gradle\caches\transforms-3\a53628279d39771d908ba7ea4e3160fd\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:32:17-49
+129        </provider>
+130
+131        <uses-library
+131-->[androidx.window:window:1.0.0] D:\Programme\gradle\caches\transforms-3\47c4e7fb7cf2c0bd5a93f179f378d7f3\transformed\jetified-window-1.0.0\AndroidManifest.xml:25:9-27:40
+132            android:name="androidx.window.extensions"
+132-->[androidx.window:window:1.0.0] D:\Programme\gradle\caches\transforms-3\47c4e7fb7cf2c0bd5a93f179f378d7f3\transformed\jetified-window-1.0.0\AndroidManifest.xml:26:13-54
+133            android:required="false" />
+133-->[androidx.window:window:1.0.0] D:\Programme\gradle\caches\transforms-3\47c4e7fb7cf2c0bd5a93f179f378d7f3\transformed\jetified-window-1.0.0\AndroidManifest.xml:27:13-37
+134        <uses-library
+134-->[androidx.window:window:1.0.0] D:\Programme\gradle\caches\transforms-3\47c4e7fb7cf2c0bd5a93f179f378d7f3\transformed\jetified-window-1.0.0\AndroidManifest.xml:28:9-30:40
+135            android:name="androidx.window.sidecar"
+135-->[androidx.window:window:1.0.0] D:\Programme\gradle\caches\transforms-3\47c4e7fb7cf2c0bd5a93f179f378d7f3\transformed\jetified-window-1.0.0\AndroidManifest.xml:29:13-51
+136            android:required="false" />
+136-->[androidx.window:window:1.0.0] D:\Programme\gradle\caches\transforms-3\47c4e7fb7cf2c0bd5a93f179f378d7f3\transformed\jetified-window-1.0.0\AndroidManifest.xml:30:13-37
+137
+138        <receiver
+138-->[androidx.profileinstaller:profileinstaller:1.2.0] D:\Programme\gradle\caches\transforms-3\a53628279d39771d908ba7ea4e3160fd\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:35:9-47:20
+139            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+139-->[androidx.profileinstaller:profileinstaller:1.2.0] D:\Programme\gradle\caches\transforms-3\a53628279d39771d908ba7ea4e3160fd\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:36:13-76
+140            android:directBootAware="false"
+140-->[androidx.profileinstaller:profileinstaller:1.2.0] D:\Programme\gradle\caches\transforms-3\a53628279d39771d908ba7ea4e3160fd\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:37:13-44
+141            android:enabled="true"
+141-->[androidx.profileinstaller:profileinstaller:1.2.0] D:\Programme\gradle\caches\transforms-3\a53628279d39771d908ba7ea4e3160fd\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:38:13-35
+142            android:exported="true"
+142-->[androidx.profileinstaller:profileinstaller:1.2.0] D:\Programme\gradle\caches\transforms-3\a53628279d39771d908ba7ea4e3160fd\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:39:13-36
+143            android:permission="android.permission.DUMP" >
+143-->[androidx.profileinstaller:profileinstaller:1.2.0] D:\Programme\gradle\caches\transforms-3\a53628279d39771d908ba7ea4e3160fd\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:40:13-57
+144            <intent-filter>
+144-->[androidx.profileinstaller:profileinstaller:1.2.0] D:\Programme\gradle\caches\transforms-3\a53628279d39771d908ba7ea4e3160fd\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:41:13-43:29
+145                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+145-->[androidx.profileinstaller:profileinstaller:1.2.0] D:\Programme\gradle\caches\transforms-3\a53628279d39771d908ba7ea4e3160fd\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:42:17-91
+145-->[androidx.profileinstaller:profileinstaller:1.2.0] D:\Programme\gradle\caches\transforms-3\a53628279d39771d908ba7ea4e3160fd\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:42:25-88
+146            </intent-filter>
+147            <intent-filter>
+147-->[androidx.profileinstaller:profileinstaller:1.2.0] D:\Programme\gradle\caches\transforms-3\a53628279d39771d908ba7ea4e3160fd\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:44:13-46:29
+148                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+148-->[androidx.profileinstaller:profileinstaller:1.2.0] D:\Programme\gradle\caches\transforms-3\a53628279d39771d908ba7ea4e3160fd\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:45:17-85
+148-->[androidx.profileinstaller:profileinstaller:1.2.0] D:\Programme\gradle\caches\transforms-3\a53628279d39771d908ba7ea4e3160fd\transformed\jetified-profileinstaller-1.2.0\AndroidManifest.xml:45:25-82
+149            </intent-filter>
+150        </receiver>
+151    </application>
+152
+153</manifest>
