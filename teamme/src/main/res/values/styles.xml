@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <style name="AppTheme" parent="Theme.Material3.DayNight">
         <item name="android:windowContentTransitions">true</item>
         <!-- enable overlapping of exiting and entering activities -->
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
@@ -19,7 +19,7 @@
         <item name="android:dropDownListViewStyle">@style/myDropDownListViewStyle</item>
     </style>
 
-    <style name="TeamMeNoActionBar" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="TeamMeNoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorAccent">@color/accent</item>
         <item name="android:colorPrimaryDark">@color/primary_dark</item>
         <item name="android:colorPrimary">@color/primary</item>
@@ -34,7 +34,7 @@
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
     </style>
 
-    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="AlertDialogCustom" parent="Theme.Material3.Dark.Dialog.Alert">
         <!-- Used for the buttons -->
         <item name="colorAccent">@color/accent</item>
         <!-- Used for the title and text -->
