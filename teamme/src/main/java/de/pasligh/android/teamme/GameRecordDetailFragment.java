@@ -3,6 +3,8 @@ package de.pasligh.android.teamme;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import com.google.android.material.tabs.TabLayout;
@@ -96,24 +98,35 @@ public class GameRecordDetailFragment extends Fragment {
 
         // Fetch and store ShareActionProvider
         ShareActionProvider mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
-        mShareActionProvider.setShareIntent(createShareIntent());
+            mShareActionProvider.setShareIntent(createShareIntent());
     }
 
-    private Intent createShareIntent() {
+    private Intent createShareIntent(){
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
         java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         StringBuilder shareText = new StringBuilder();
         String title = gameRecord.getSport() + " " + dateFormat.format(gameRecord.getStartedAt());
 
         shareText.append("[").append(title).append("] ");
         shareText.append(TextHelper.createTeamDecided_ShareText(getString(R.string.shareIntent), getString(R.string.team)));
+        try {
+            PackageManager pm= getActivity().getPackageManager();
+            PackageInfo info= pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+            shareIntent.setPackage("com.whatsapp");
+        } catch (PackageManager.NameNotFoundException e) {
+            Toast.makeText(getActivity(), "WhatsApp not Installed", Toast.LENGTH_SHORT)
+                    .show();
+        }
+        //Check if package exists or not. If not then code
+        //in catch block will be called
 
         // create app footer
         TextHelper.appendFooter_Signature(shareText, getString(R.string.shareFooter));
 
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_SUBJECT, R.string.decisiontext);
         shareIntent.putExtra(Intent.EXTRA_TEXT, shareText.toString().trim());
+        shareIntent.putExtra(Intent.EXTRA_TEXT, shareText.toString());
         return shareIntent;
     }
 
