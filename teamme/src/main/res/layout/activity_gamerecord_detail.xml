@@ -3,5 +3,6 @@
     android:id="@+id/gamerecord_detail_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="de.pasligh.android.teamme.GameRecordDetailActivity"
     tools:ignore="MergeRootFrame" />

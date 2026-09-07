@@ -1,21 +1,21 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdk 34
+    compileSdk 36
 
     defaultConfig {
         applicationId "de.pasligh.android.teamme"
         minSdkVersion 23
-        targetSdkVersion 33
-        versionCode = 97
-        versionName = "5.1.0"
+        targetSdk 36
+        versionCode = 99
+        versionName = "5.1.2"
         vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.txt'
         }
     }
 
